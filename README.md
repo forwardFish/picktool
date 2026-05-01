@@ -1,42 +1,39 @@
-# Pathnook
+# picktool
 
-Pathnook is a parent-facing AI learning and growth system for family learning support.
+`picktool` is the local project for AI Tool Decision Assistant.
 
-It helps families turn recent student work into:
-- an evidence-backed diagnosis
-- a clearer weekly focus
-- the shortest next step
-- a practical 7-day plan
-- a tutor-ready share summary
-- compare and continuity across reviews
+The product helps a user describe a task and receive:
 
-## What Pathnook does
+- the best AI tool setup for that task
+- how to use the tools in order
+- which tools can be skipped
+- better options for edge cases
+- lightweight cost advice
 
-Pathnook is designed for parents, guardians, and other authorized adults who want clearer learning decisions and steadier weekly follow-through.
+## Source of truth
 
-The current product workflow supports:
-- uploading recent homework, quizzes, tests, and corrections
-- capturing the parent's goal and current concern
-- generating an evidence-backed review
-- turning that review into a weekly action path
-- carrying progress forward across future reviews
+The product requirements live in `docs/`.
+
+This repository was bootstrapped from the local `familyEducation` Next.js template, but the old template business logic is not a source of truth.
 
 ## Tech stack
 
-- Next.js
+- Next.js App Router
+- React
 - TypeScript
 - Tailwind CSS
-- Drizzle ORM
-- Neon
-- Vercel
+- Deterministic local mock data for MVP
 
 ## Local development
 
-1. Copy `.env.example` to `.env.local`
-2. Install dependencies
-3. Run the development server
-4. Apply database migrations if needed
+```bash
+pnpm install
+pnpm dev
+```
 
-## Product status
+Useful checks:
 
-Pathnook is an actively developed web product. Public positioning, billing, and legal pages are aligned to the live product at pathnook.com.
+```bash
+pnpm lint
+pnpm build
+```

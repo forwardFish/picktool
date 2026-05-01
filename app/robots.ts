@@ -6,25 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: [
-          '/',
-          '/pricing',
-          '/faq',
-          '/help',
-          '/contact',
-          '/legal/',
-          '/data-deletion'
-        ],
-        disallow: [
-          '/dashboard/',
-          '/admin/',
-          '/api/',
-          '/share/',
-          '/sample-report',
-          '/sign-in',
-          '/sign-up',
-          '/webhook/'
-        ]
+        allow: ['/', '/results', '/tools/', '/setups/'],
+        disallow: ['/api/']
       }
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

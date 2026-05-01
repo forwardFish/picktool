@@ -1,9 +1,0 @@
-{
-  "status": "pass",
-  "reportsUrl": "http://127.0.0.1:3000/dashboard/reports",
-  "reportDetailUrl": "http://127.0.0.1:3000/dashboard/reports/5",
-  "checks": [
-    "reports_dashboard_loaded",
-    "report_detail_loaded"
-  ]
-}

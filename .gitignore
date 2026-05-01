@@ -46,6 +46,7 @@ docs/client_secret_*.json
 
 # local temp artifacts
 _tmp_*
+.codex-runtime/
 .codex*.log
 temp/
 scripts/__pycache__/

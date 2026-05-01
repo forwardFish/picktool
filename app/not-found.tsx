@@ -1,27 +1,28 @@
 import Link from 'next/link';
-import { CircleIcon } from 'lucide-react';
+import { ArrowLeft, SearchX } from 'lucide-react';
+import { SiteBackdrop, SiteHeader } from '@/components/picktool/site-chrome';
 
 export default function NotFound() {
   return (
-    <div className="flex items-center justify-center min-h-[100dvh]">
-      <div className="max-w-md space-y-8 p-4 text-center">
-        <div className="flex justify-center">
-          <CircleIcon className="size-12 text-orange-500" />
-        </div>
-        <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
-          Page Not Found
-        </h1>
-        <p className="text-base text-gray-500">
-          The page you are looking for might have been removed, had its name
-          changed, or is temporarily unavailable.
+    <main className="relative min-h-dvh overflow-hidden">
+      <SiteBackdrop />
+      <SiteHeader />
+      <section className="mx-auto flex w-full max-w-3xl flex-col items-center px-5 py-24 text-center sm:px-8">
+        <span className="flex size-16 items-center justify-center rounded-3xl border border-cyan-300/30 bg-cyan-300/10 text-cyan-100">
+          <SearchX className="size-8" aria-hidden="true" />
+        </span>
+        <h1 className="mt-7 text-4xl font-bold text-white">Page not found</h1>
+        <p className="mt-4 text-lg leading-8 text-slate-300">
+          This route is not part of the current MVP decision flow.
         </p>
         <Link
           href="/"
-          className="max-w-48 mx-auto flex justify-center py-2 px-4 border border-gray-300 rounded-full shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+          className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-cyan-300/40 bg-cyan-300/10 px-5 py-3 font-semibold text-cyan-100 transition hover:bg-cyan-300/16"
         >
-          Back to Home
+          <ArrowLeft className="size-4" aria-hidden="true" />
+          Back to home
         </Link>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
