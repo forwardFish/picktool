@@ -1,0 +1,75 @@
+project: "familyEducation"
+task_id: "FE-083"
+task_name: "Seven Day Plan Rule Templates"
+sprint: "Sprint 16 Diagnosis Productization And Calibration"
+epic: "Diagnosis Productization"
+story_id: "FE-083"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Generate 7-Day Plan day cards from rule templates and always include a parent-facing pauseList."
+business_value: "Gives parents concrete next-week actions and explicitly says what not to escalate."
+requirement_ids:
+  - "DIAG122-PLAN"
+test_case_ids:
+  - "TC-DIAG122-PLAN-001"
+  - "PAGE-DIAG122-PLAN-001"
+expected_evidence:
+  - "plan_template_fixture_output"
+  - "plan_pause_list_assertion"
+  - "plan_day_card_screenshot"
+  - "plan_rule_codes_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-082."
+  - "Read docs/需求文档_1.2_最终版.md section 4.5 before coding."
+acceptance_criteria:
+  - "Plan JSON includes 7 days with day, minutes, goal, tasks, parentPrompt, and successCheck."
+  - "Plan output includes pauseList and planRuleCodesJson or equivalent rule-code trace."
+  - "Templates cover procedure_gap, concept_gap, reading_issue, notation_error, and incomplete_reasoning at minimum."
+constraints:
+  - "Do not output direct homework answers."
+  - "Do not rely on free-form LLM output without a rule-template backbone."
+out_of_scope:
+  - "Full external worksheet recommendation engine."
+dependencies:
+  - "FE-082"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "lib/reports/*"
+  - "components/reports/*"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+  - "docs/requirements/*"
+primary_files:
+  - "lib/reports/*"
+  - "components/reports/*"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+secondary_files:
+  - "docs/requirements/*"
+test_cases:
+  normal:
+    - "Generate a procedure_gap plan with seven executable days and a pauseList."
+  exception:
+    - "When diagnosis is uncertain, generate cautious practice guidance instead of over-specific prescription."

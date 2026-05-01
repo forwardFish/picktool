@@ -1,0 +1,85 @@
+project: "familyEducation"
+task_id: "FE-123"
+task_name: "Sprint 27 API Cutover Acceptance"
+sprint: "Sprint 27 API Cutover And Compatibility"
+epic: "Sprint Acceptance"
+story_id: "FE-123"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 27 only if checkout, portal, webhook, and compatibility routes all converge on the new billing service."
+business_value: "Prevents the public brand/UI sprint from launching on top of route drift."
+requirement_ids:
+  - "GOV-003"
+  - "BILL14-CHECKOUT"
+  - "BILL14-PORTAL"
+  - "BILL14-WEBHOOK"
+  - "BILL14-CREEM-COMPAT"
+test_case_ids:
+  - "TC-GOV-004"
+  - "TC-BILL14-006"
+  - "FP-BILL14-003"
+expected_evidence:
+  - "sprint_27_traceability_audit"
+  - "api_cutover_acceptance_packet"
+  - "compat_route_visibility_report"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-121 and FE-122."
+acceptance_criteria:
+  - "Sprint 27 fails if any primary billing route still bypasses the service layer."
+  - "Acceptance evidence explicitly distinguishes new primary routes from hidden compatibility routes."
+  - "Release closeout artifacts exist for the sprint."
+constraints:
+  - "Do not claim public brand cutover complete from route evidence alone."
+out_of_scope:
+  - "Landing, pricing, and billing-center public copy acceptance."
+dependencies:
+  - "FE-121"
+  - "FE-122"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/billing"
+related_files:
+  - "app/api/*"
+  - "app/webhook/route.ts"
+  - "lib/payments/*"
+primary_files:
+  - "app/api/*"
+  - "app/webhook/route.ts"
+  - "lib/payments/*"
+secondary_files:
+  - "tasks/backlog_v6_freemius_primary_billing_1_4/*"
+  - "PROJECT_STATE.md"
+test_cases:
+  normal:
+    - "Audit every declared billing route and confirm it routes through the new service layer."
+  exception:
+    - "Fail if webhook or compatibility behavior leaves replay or rollback rules ambiguous."

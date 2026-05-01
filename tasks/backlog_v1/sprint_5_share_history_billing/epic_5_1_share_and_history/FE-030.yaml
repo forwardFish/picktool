@@ -1,0 +1,110 @@
+project: "familyEducation"
+task_id: "FE-030"
+task_name: "Share Token And Read Only Page"
+sprint: "Sprint 5 Share History Billing"
+epic: "Share And History"
+story_id: "FE-030"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "public_read_only_access"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Generate share tokens, handle expiry/revoke, and render a sanitized read-only share page."
+business_value: "Turns reports into collaboration-ready artifacts for tutors."
+requirement_ids:
+  - "PAGE-011"
+  - "SHR-001"
+  - "SHR-002"
+  - "SHR-003"
+test_case_ids:
+  - "PAGE-SHR-001"
+  - "PAGE-SHR-002"
+  - "PAGE-SHR-003"
+  - "PAGE-SHR-004"
+  - "PAGE-SHR-005"
+  - "API-SHR-001"
+  - "API-SHR-002"
+  - "DATA-SHR-001"
+  - "CLICK-006"
+expected_evidence:
+  - "before_after_screenshots"
+  - "browse_console_log"
+  - "browse_network_log"
+  - "qa_test_output"
+  - "acceptance_checklist"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档.md and docs/saas-starter 一天落地实施说明.md as the product truth source."
+  - "Read docs/requirements/prd_requirement_index.md and docs/requirements/prd_traceability_matrix.md before making scope decisions."
+  - "Dependencies accepted: FE-029."
+acceptance_criteria:
+  - "Share 页必须提供 tutor 只读访问能力。"
+  - "报告必须支持生成 share token。"
+  - "share token 必须支持到期和 revoke。"
+  - "share 页面必须只读并隐藏敏感家长内部信息。"
+constraints:
+  - "Do not mark requirement rows green without attached evidence."
+  - "Do not expand beyond the declared route/API/schema/document scope unless a blocker explicitly requires it."
+  - "Collect browse, design, and browser QA evidence for the changed routes."
+out_of_scope:
+  - "Any requirement not explicitly listed in requirement_ids."
+dependencies:
+  - "FE-029"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/share/[token]"
+qa_urls:
+  - "http://127.0.0.1:3000/share/[token]"
+related_files:
+  - "app/share/[token]/page.tsx"
+  - "app/api/reports/[reportId]/share/route.ts"
+  - "app/api/share/[token]/route.ts"
+  - "lib/db/schema.ts"
+primary_files:
+  - "app/share/[token]/page.tsx"
+  - "app/api/reports/[reportId]/share/route.ts"
+  - "app/api/share/[token]/route.ts"
+secondary_files:
+  - "lib/db/schema.ts"
+story_inputs:
+  - "The linked requirement IDs from the PRD requirement index."
+  - "The linked tests from the page/click/API/data/AI matrices."
+  - "The current starter repository structure and route layout."
+story_process:
+  - "Confirm the requirement and test scope before touching code or docs."
+  - "Implement only the declared route/API/schema/document scope."
+  - "Produce the evidence listed under expected_evidence and update the traceability row status accordingly."
+story_outputs:
+  - "Scoped code or documentation changes."
+  - "Acceptance evidence tied to the declared test_case_ids."
+  - "A delivery packet suitable for downstream Sprint Acceptance."
+verification_basis:
+  - "All declared test_case_ids execute or are deterministically evidenced."
+  - "Review, code acceptance, and acceptance gate pass without blocker findings."
+  - "Requirement rows tied to this Story move to Green only with evidence."
+test_cases:
+  normal:
+    - "Execute PAGE-SHR-001 and capture pass evidence."
+    - "Execute PAGE-SHR-002 and capture pass evidence."
+    - "Execute PAGE-SHR-003 and capture pass evidence."
+  exception:
+    - "Run the negative or edge coverage associated with CLICK-006."

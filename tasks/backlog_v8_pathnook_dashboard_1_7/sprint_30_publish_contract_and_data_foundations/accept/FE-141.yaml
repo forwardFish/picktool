@@ -1,0 +1,48 @@
+project: "familyEducation"
+task_id: "FE-141"
+task_name: "Sprint 30 Data Foundation Acceptance"
+sprint: "Sprint 30 Publish Contract And Data Foundations"
+epic: "Sprint Acceptance"
+story_id: "FE-141"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 30 only if the additive schema and publish contract are implemented without breaking the existing run pipeline."
+business_value: "Protects the product from data-layer churn before the dashboard pages cut over."
+requirement_ids:
+  - "GOV-003"
+  - "DASH17-STATE"
+test_case_ids:
+  - "TC-GOV-004"
+  - "API-RUN-001"
+expected_evidence:
+  - "sprint_30_dashboard_foundation_acceptance"
+required_modes:
+  - "qa"
+  - "review"
+  - "acceptance_gate"
+acceptance_criteria:
+  - "Schema, migration, repository, and upload-start routes are all wired together."
+  - "No regression is observed in the existing upload submit or run process endpoints."
+constraints:
+  - "Fail the sprint if the new foundation requires a second runtime chain."
+primary_files:
+  - "lib/db/schema.ts"
+  - "lib/family/repository.ts"
+  - "app/api/uploads/[uploadId]/*"
+test_cases:
+  normal:
+    - "Exercise the start-diagnosis path and confirm it lands in the same run lifecycle as submit."
+  exception:
+    - "Fail if run creation or report publish only works in one storage mode."

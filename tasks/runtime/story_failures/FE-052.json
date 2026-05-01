@@ -1,0 +1,15 @@
+{
+  "project": "familyEducation",
+  "backlog_id": "backlog_v2_beta_launch",
+  "sprint_id": "sprint_9_production_readiness_foundation",
+  "story_id": "FE-052",
+  "task_id": "task-cdf6daef-2",
+  "task_name": "FE-052",
+  "failure_type": "run_prod_task_exception",
+  "blocker_class": "shared_dependency_blocker",
+  "last_node": "Database Dev",
+  "recommended_recovery_action": "Resume from the failed story after the recorded blocker is addressed.",
+  "error_message": "[Errno 22] Invalid argument: 'D:\\\\lyh\\\\agent\\\\agent-frame\\\\agentsystem\\\\repo-worktree\\\\task-cdf6daef-2\\\\scripts\\\\*'",
+  "audit_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\prod_audit_task-cdf6daef-2.json",
+  "captured_at": "2026-04-09T08:59:01"
+}

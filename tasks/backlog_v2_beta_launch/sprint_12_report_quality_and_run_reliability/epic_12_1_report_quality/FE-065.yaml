@@ -1,0 +1,75 @@
+project: "familyEducation"
+task_id: "FE-065"
+task_name: "Seven Day Plan And Audience-Specific Report Upgrade"
+sprint: "Sprint 12 Report Quality And Run Reliability"
+epic: "Report Quality"
+story_id: "FE-065"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Upgrade the 7-day plan so it is actually actionable and keep parent/student/tutor outputs distinct and consistent."
+business_value: "Improves practical usefulness after purchase."
+requirement_ids:
+  - "QLT-003"
+test_case_ids:
+  - "PAGE2-RPT-003"
+  - "API2-RPT-001"
+  - "AI2-RPT-003"
+  - "AI2-RPT-004"
+expected_evidence:
+  - "report_variant_snapshot"
+  - "plan_screenshots"
+  - "api_contract_snapshot"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-064."
+  - "Read the plan and audience-variant requirement rows before changing report output."
+acceptance_criteria:
+  - "The 7-day plan contains concrete actions, guidance, and checks."
+  - "Audience variants remain consistent with the same facts while varying tone and detail correctly."
+constraints:
+  - "Do not blur the audience variants into near-identical output."
+out_of_scope:
+  - "History/trend APIs."
+dependencies:
+  - "FE-064"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "lib/reports/*"
+  - "app/api/reports/[reportId]/route.ts"
+primary_files:
+  - "lib/reports/*"
+  - "components/reports/*"
+secondary_files:
+  - "docs/testing/next_phase/api_data_ai_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute PAGE2-RPT-003, API2-RPT-001, AI2-RPT-003, and AI2-RPT-004."
+  exception:
+    - "Verify the plan still degrades safely when evidence is weak."

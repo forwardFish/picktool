@@ -1,0 +1,95 @@
+project: "familyEducation"
+task_id: "FE-057"
+task_name: "Billing And Auth Acceptance"
+sprint: "Sprint 10 Live Billing And Auth"
+epic: "Real External Auth"
+story_id: "FE-057"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "public_and_authenticated_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 10 only when live billing and auth behavior are verified across success, cancel, replay, and fallback paths."
+business_value: "Stops the Beta lane from shipping broken monetization or broken access control."
+requirement_ids:
+  - "GOV2-003"
+  - "BIL2-001"
+  - "BIL2-002"
+  - "BIL2-003"
+  - "AUTH2-001"
+  - "AUTH2-002"
+test_case_ids:
+  - "TC-GOV2-003"
+  - "PAGE2-PRC-001"
+  - "PAGE2-BIL-001"
+  - "PAGE2-SIN-001"
+  - "API2-BIL-001"
+  - "API2-BIL-003"
+  - "API2-AUTH-001"
+  - "DATA2-BIL-001"
+  - "OPS2-BIL-001"
+  - "CLICK2-002"
+  - "CLICK2-008"
+  - "CLICK2-010"
+expected_evidence:
+  - "sprint_acceptance_report"
+  - "traceability_audit"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-054, FE-055, FE-056."
+  - "Read docs/testing/next_phase/sprint_acceptance_template.md before starting Sprint audit work."
+acceptance_criteria:
+  - "Sprint 10 only closes when all billing and auth rows are green with latest provider evidence."
+  - "Any missing replay, cancel, or fallback evidence blocks acceptance."
+constraints:
+  - "Do not close the Sprint on happy-path-only checkout or auth testing."
+out_of_scope:
+  - "Sprint 11 conversion copy implementation."
+dependencies:
+  - "FE-054"
+  - "FE-055"
+  - "FE-056"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/sign-in"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+  - "http://127.0.0.1:3000/sign-up"
+related_files:
+  - "tasks/runtime/sprint_acceptance/sprint_10_acceptance_report.md"
+  - "tasks/runtime/traceability_audits/sprint_10_traceability_audit.md"
+primary_files:
+  - "docs/requirements/next_phase_traceability_matrix.md"
+  - "docs/testing/next_phase/sprint_acceptance_template.md"
+secondary_files:
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+test_cases:
+  normal:
+    - "Execute billing and auth page, API, click, and ops rows linked to Sprint 10."
+    - "Audit all Sprint 10 requirement rows against latest evidence."
+  exception:
+    - "Fail the Sprint if provider fallback or replay behavior is only partially evidenced."

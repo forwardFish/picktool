@@ -1,0 +1,75 @@
+project: "familyEducation"
+task_id: "FE-060"
+task_name: "Sample Report Page And Preview Funnel"
+sprint: "Sprint 11 Conversion Layer"
+epic: "Conversion Surfaces"
+story_id: "FE-060"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "public_route_with_auth_variants"
+auth_expectations: "public_entry_supported"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Create a `/sample-report` preview funnel that lets buyers inspect report structure before purchase."
+business_value: "Increases purchase confidence by showing concrete product output."
+requirement_ids:
+  - "MKT-003"
+test_case_ids:
+  - "PAGE2-SMP-001"
+  - "PAGE2-SMP-002"
+  - "CLICK2-003"
+  - "NF2-001"
+expected_evidence:
+  - "sample_report_screenshots"
+  - "cta_route_transcript"
+  - "browse_console_log"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read the sample-report requirements in docs/需求文档_1.1.md before deciding the preview scope."
+  - "Dependency accepted: FE-059."
+acceptance_criteria:
+  - "The page previews diagnosis, evidence, and 7-day plan structure without leaking private data."
+  - "The funnel routes users toward sign-up, pricing, or billing without a dead end."
+constraints:
+  - "Do not expose a private real customer report as the sample."
+out_of_scope:
+  - "Marketing event ingestion."
+dependencies:
+  - "FE-059"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/sample-report"
+qa_urls:
+  - "http://127.0.0.1:3000/sample-report"
+related_files:
+  - "app/(dashboard)/sample-report/page.tsx"
+  - "components/reports/*"
+primary_files:
+  - "app/(dashboard)/sample-report/page.tsx"
+  - "components/sample-report/*"
+secondary_files:
+  - "docs/testing/next_phase/page_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute PAGE2-SMP-001, PAGE2-SMP-002, and CLICK2-003."
+  exception:
+    - "Verify that unlock CTAs never point to a missing page or broken billing route."

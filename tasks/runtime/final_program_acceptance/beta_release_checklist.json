@@ -1,0 +1,146 @@
+{
+  "generated_at": "2026-04-09T22:30:11",
+  "phase": "next_phase",
+  "checklist": [
+    {
+      "name": "local_beta_smoke",
+      "status": "pass",
+      "artifact": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\final_api_smoke_manifest.json"
+    },
+    {
+      "name": "browser_evidence_pack",
+      "status": "pass",
+      "artifact": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_browser_evidence_manifest.json"
+    },
+    {
+      "name": "release_packet_definition",
+      "status": "pass",
+      "artifact": "D:\\lyh\\agent\\agent-frame\\familyEducation\\docs\\testing\\next_phase\\final_program_acceptance.md"
+    }
+  ],
+  "non_green_requirements": [],
+  "external_dependencies": [
+    {
+      "id": "neon_database",
+      "description": "Neon Postgres connection for Vercel-hosted FamilyEducation tables",
+      "required_env": [
+        "DATABASE_URL"
+      ],
+      "configured_env": [
+        "DATABASE_URL"
+      ],
+      "required_artifacts": [],
+      "configured_artifacts": [],
+      "status": "configured",
+      "follow_up": "Attach a Neon Postgres database to the Vercel project and run the Drizzle migrations against DATABASE_URL."
+    },
+    {
+      "id": "openai_live_processing",
+      "description": "OpenAI live vision pipeline for FamilyEducation analysis runs",
+      "required_env": [
+        "OPENAI_API_KEY",
+        "OPENAI_MODEL_VISION"
+      ],
+      "configured_env": [],
+      "required_artifacts": [],
+      "configured_artifacts": [],
+      "status": "follow_up",
+      "follow_up": "Provide a live OpenAI API key and model so preview and production runs use the real extraction pipeline instead of demo mode."
+    },
+    {
+      "id": "creem_live_checkout",
+      "description": "Creem live billing credentials and product mapping",
+      "required_env": [
+        "CREEM_API_KEY",
+        "CREEM_WEBHOOK_SECRET",
+        "CREEM_PRODUCT_ONE_TIME_ID",
+        "CREEM_PRODUCT_MONTHLY_ID",
+        "CREEM_PRODUCT_ANNUAL_ID"
+      ],
+      "configured_env": [],
+      "required_artifacts": [],
+      "configured_artifacts": [],
+      "status": "follow_up",
+      "follow_up": "Switch off test mode and point checkout/webhook flows at live Creem products."
+    },
+    {
+      "id": "google_oauth",
+      "description": "Google OAuth production registration",
+      "required_env": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_REDIRECT_URI"
+      ],
+      "configured_env": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_REDIRECT_URI"
+      ],
+      "required_artifacts": [],
+      "configured_artifacts": [],
+      "status": "configured",
+      "follow_up": "Register the production callback URL and verify success and failure paths against Google."
+    },
+    {
+      "id": "vercel_blob_storage",
+      "description": "Vercel Blob storage for upload, artifact, export, and share payloads",
+      "required_env": [
+        "FILE_STORAGE_BACKEND",
+        "BLOB_READ_WRITE_TOKEN"
+      ],
+      "configured_env": [
+        "FILE_STORAGE_BACKEND",
+        "BLOB_READ_WRITE_TOKEN"
+      ],
+      "required_artifacts": [],
+      "configured_artifacts": [],
+      "status": "follow_up",
+      "follow_up": "Move artifact reads and writes onto Vercel Blob and verify blob lifecycle in preview and production lanes."
+    },
+    {
+      "id": "vercel_preview_and_prod",
+      "description": "Preview and production Vercel smoke evidence",
+      "required_env": [
+        "VERCEL_PROJECT_ID",
+        "VERCEL_ORG_ID"
+      ],
+      "configured_env": [
+        "VERCEL_PROJECT_ID",
+        "VERCEL_ORG_ID"
+      ],
+      "required_artifacts": [
+        "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\vercel_deployment_smoke.json"
+      ],
+      "configured_artifacts": [
+        "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\vercel_deployment_smoke.json"
+      ],
+      "status": "configured",
+      "follow_up": "Rerun Git-based preview and production deployments until both deployments are READY, route smoke passes, and the smoke report stays green."
+    },
+    {
+      "id": "vercel_git_autodeploy",
+      "description": "Vercel linked GitHub repository and main branch auto deploy path stay aligned with the actual deployments",
+      "required_env": [
+        "VERCEL_PROJECT_ID",
+        "VERCEL_ORG_ID"
+      ],
+      "configured_env": [
+        "VERCEL_PROJECT_ID",
+        "VERCEL_ORG_ID"
+      ],
+      "required_artifacts": [
+        "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\vercel_deployment_smoke.json"
+      ],
+      "configured_artifacts": [
+        "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\vercel_deployment_smoke.json"
+      ],
+      "status": "configured",
+      "follow_up": "Keep the Vercel project linked to the FamilyEducation GitHub repo, confirm main stays the production branch, and rerun Git-based preview and production deployments until the smoke report shows deployment repo alignment."
+    }
+  ],
+  "blockers": [
+    "openai_live_processing: Provide a live OpenAI API key and model so preview and production runs use the real extraction pipeline instead of demo mode.",
+    "creem_live_checkout: Switch off test mode and point checkout/webhook flows at live Creem products.",
+    "vercel_blob_storage: Move artifact reads and writes onto Vercel Blob and verify blob lifecycle in preview and production lanes."
+  ]
+}

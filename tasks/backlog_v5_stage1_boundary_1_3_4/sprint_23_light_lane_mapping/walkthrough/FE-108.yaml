@@ -1,0 +1,76 @@
+project: "familyEducation"
+task_id: "FE-108"
+task_name: "Guided Walkthrough Positioning And Entry Contract"
+sprint: "Sprint 23 Light-Lane Mapping"
+epic: "Walkthrough Positioning"
+story_id: "FE-108"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "browser_and_docs_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Map `Guided Walkthrough` to the dependent `DECK13-PLAYER` lane as an optional entry layered on top of the report."
+business_value: "Preserves the walkthrough upsell without allowing it to overtake the report as the Stage 1 product identity."
+requirement_ids:
+  - "BND134-PARENT-FIRST"
+  - "BND134-WALKTHROUGH-LITE"
+test_case_ids:
+  - "TC-BND134-004"
+  - "PAGE-BND134-004"
+  - "CLICK-BND134-002"
+expected_evidence:
+  - "walkthrough_positioning_map"
+  - "v4_player_dependency_crosswalk"
+  - "secondary_entry_rulebook"
+  - "copy_and_default_ux_audit"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-107."
+  - "Read FE-091, FE-093, and docs/需求文档_1.3.3.md before drafting the light-lane map."
+acceptance_criteria:
+  - "Guided Walkthrough is documented as optional and secondary to diagnosis/evidence/plan."
+  - "The boundary map references the v4 parent player lane instead of redefining the runtime implementation."
+  - "Voice-off-by-default and parent-first naming rules are preserved in the light-lane contract."
+constraints:
+  - "Do not position walkthrough as the homepage hero or the primary report experience."
+out_of_scope:
+  - "Action whitelist, export lifecycle, or compare-history contracts."
+dependencies:
+  - "FE-107"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+related_files:
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_19_player_routes_and_playback/*"
+  - "docs/需求文档_1.3.3.md"
+  - "docs/requirements/*"
+primary_files:
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_19_player_routes_and_playback/*"
+  - "docs/requirements/*"
+secondary_files:
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+test_cases:
+  normal:
+    - "Audit the existing v4 player route and report entry against the `Guided Walkthrough` light-do rules."
+  exception:
+    - "Fail if the walkthrough mapping turns the report into a deck-first experience."

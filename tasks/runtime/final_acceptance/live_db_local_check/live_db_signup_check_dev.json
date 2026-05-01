@@ -1,0 +1,8 @@
+{
+  "status": "fail",
+  "email": "codex.live.1776867214774@example.com",
+  "finalUrl": "http://127.0.0.1:3000/sign-up",
+  "checks": [],
+  "textSample": "Pathnook\nFamily learning support\nStart with Google or create your account\n\nGoogle sign-in is recommended for the fastest setup. Email and password remain available for parent, guardian, or other authorized adult use. Children may not create accounts directly.\n\nContinue with Google\n\nUse your Google account to sign in or create an account in one step.\n\nEmail\nFull name\nCountry\nUnited States\nCanada\nMexico\nOther\nPassword\nI confirm that I am at least 18 years old and I am creating this account for parent, guardian, or other authorized adult use.\nI agree to the Pathnook Terms of Service and Privacy Policy.\nLoading...\nOr continue with email\nSign in to existing account",
+  "error": "Signup did not leave auth page."
+}

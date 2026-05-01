@@ -1,0 +1,70 @@
+project: "familyEducation"
+task_id: "FE-063"
+task_name: "Diagnosis Quality Upgrade"
+sprint: "Sprint 12 Report Quality And Run Reliability"
+epic: "Report Quality"
+story_id: "FE-063"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Improve the top-level diagnosis so that primary vs secondary issues and pattern vs sporadic judgments are more trustworthy."
+business_value: "Raises report credibility for real paying users."
+requirement_ids:
+  - "QLT-001"
+test_case_ids:
+  - "PAGE2-RPT-001"
+  - "AI2-RPT-001"
+expected_evidence:
+  - "report_json_assertions"
+  - "diagnosis_screenshots"
+  - "qa_test_output"
+  - "review_notes"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-062."
+  - "Read the quality requirements before adjusting diagnosis aggregation or copy."
+acceptance_criteria:
+  - "Diagnosis output is more proportionate and less likely to overreact to weak evidence."
+  - "Primary and secondary issue presentation stays consistent between payload and UI."
+constraints:
+  - "Do not weaken the no-overclaim quality bar to make more content appear."
+out_of_scope:
+  - "Evidence overlay or 7-day plan structure."
+dependencies:
+  - "FE-062"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "lib/reports/*"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+primary_files:
+  - "lib/reports/*"
+  - "app/api/reports/[reportId]/route.ts"
+secondary_files:
+  - "components/reports/*"
+test_cases:
+  normal:
+    - "Execute PAGE2-RPT-001 and AI2-RPT-001."
+  exception:
+    - "Verify low-evidence findings do not become overconfident summary statements."

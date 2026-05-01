@@ -1,0 +1,1237 @@
+{
+  "generated_at": "2026-04-10T20:34:03",
+  "story_id": "FE-078",
+  "story_file": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\backlog_v3_diagnosis_1_2_2\\sprint_15_foundation\\data\\FE-078.yaml",
+  "story_kind": "ui",
+  "required_modes": [
+    "plan-eng-review",
+    "review",
+    "qa",
+    "browse",
+    "plan-design-review",
+    "design-consultation",
+    "design-review"
+  ],
+  "advisory_modes": [],
+  "expanded_required_agents": [
+    "browse",
+    "plan_design_review",
+    "design_consultation",
+    "requirement_analysis",
+    "architecture_review",
+    "workspace_prep",
+    "frontend_dev",
+    "sync_merge",
+    "code_style_reviewer",
+    "tester",
+    "browser_qa",
+    "qa_design_review",
+    "security_scanner",
+    "reviewer",
+    "code_acceptance",
+    "acceptance_gate",
+    "doc_writer",
+    "fixer"
+  ],
+  "mode_to_agent_map": {
+    "plan-eng-review": [
+      "requirement_analysis",
+      "architecture_review"
+    ],
+    "review": [
+      "reviewer"
+    ],
+    "qa": [
+      "tester",
+      "browser_qa",
+      "fixer"
+    ],
+    "browse": [
+      "browse"
+    ],
+    "plan-design-review": [
+      "plan_design_review"
+    ],
+    "design-consultation": [
+      "design_consultation"
+    ],
+    "design-review": [
+      "browser_qa",
+      "qa_design_review"
+    ]
+  },
+  "parity_evidence_contract": {
+    "plan-eng-review": [
+      "architecture_review_report",
+      "qa_test_plan_path"
+    ],
+    "review": [
+      "review_report"
+    ],
+    "qa": [
+      "test_report",
+      "runtime_or_browser_qa_report"
+    ],
+    "browse": [
+      "browse_report"
+    ],
+    "plan-design-review": [
+      "plan_design_review_report"
+    ],
+    "design-consultation": [
+      "design_consultation_report",
+      "design_contract_path"
+    ],
+    "design-review": [
+      "browser_qa_report",
+      "qa_design_review_report"
+    ]
+  },
+  "implementation_contract": {
+    "story_id": "FE-078",
+    "story_kind": "ui",
+    "story_track": "ui",
+    "required_artifact_types": [
+      "schema",
+      "browser_evidence",
+      "design_evidence"
+    ],
+    "artifact_inventory": {
+      "supporting_code": [
+        "app/api/uploads/[uploadId]/intake/route.ts",
+        "lib/db/queries.ts",
+        "components/uploads/upload-workspace.tsx",
+        "lib/family/admin-review-auth.ts",
+        "lib/family/admin-review.ts",
+        "lib/family/billing.ts",
+        "lib/family/config.ts",
+        "lib/family/demo-auth.ts",
+        "lib/family/mock-store.ts",
+        "lib/family/options.ts",
+        "lib/family/reporting.ts",
+        "lib/family/repository.ts",
+        "lib/family/storage.ts",
+        "lib/family/tutor-workspace.ts",
+        "lib/family/types.ts",
+        "lib/family/upload-storage.ts"
+      ],
+      "schema": [
+        "lib/db/schema.ts"
+      ]
+    },
+    "contract_scope_paths": [],
+    "requires_browser_evidence": true,
+    "requires_design_evidence": true,
+    "requires_database_dev": false,
+    "requires_persistence_changes": false,
+    "completion_rule": "implementation_contract + agent_execution_contract + agent_coverage_report + acceptance_gate"
+  },
+  "required_artifact_types": [
+    "schema",
+    "browser_evidence",
+    "design_evidence"
+  ],
+  "agent_execution_contract": [
+    {
+      "agent": "browse",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "browser_evidence"
+      ],
+      "downstream": "plan_design_review",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "plan_design_review",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "design_route_contract",
+        "design_review_report"
+      ],
+      "downstream": "design_consultation",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "design_consultation",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "design_consultation_report",
+        "DESIGN.md"
+      ],
+      "downstream": "requirement_analysis",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "requirement_analysis",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "requirement_breakdown",
+        "task_payload_refresh"
+      ],
+      "downstream": "architecture_review",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "architecture_review",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "architecture_review_report",
+        "qa_test_plan"
+      ],
+      "downstream": "workspace_prep",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "workspace_prep",
+      "entry_condition": "Runs after requirement and architecture framing are available.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "workspace_ready"
+      ],
+      "downstream": "frontend_dev",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "frontend_dev",
+      "entry_condition": "Requires UI story classification.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "ui_changes"
+      ],
+      "downstream": "sync_merge",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": true
+    },
+    {
+      "agent": "sync_merge",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "merged_story_workspace"
+      ],
+      "downstream": "code_style_reviewer",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "code_style_reviewer",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "code_style_review_report"
+      ],
+      "downstream": "tester",
+      "failure_return_target": "fixer",
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "tester",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract",
+        "required_artifact_types"
+      ],
+      "expected_outputs": [
+        "test_report"
+      ],
+      "downstream": "browser_qa",
+      "failure_return_target": "fixer",
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "browser_qa",
+      "entry_condition": "Requires browser surface evidence or UI story classification.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract",
+        "browse_report"
+      ],
+      "expected_outputs": [
+        "browser_qa_report"
+      ],
+      "downstream": "qa_design_review",
+      "failure_return_target": "fixer",
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "qa_design_review",
+      "entry_condition": "Requires browser surface evidence or UI story classification.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract",
+        "browser_qa_report",
+        "design_contract_path"
+      ],
+      "expected_outputs": [
+        "qa_design_review_report"
+      ],
+      "downstream": "security_scanner",
+      "failure_return_target": "fixer",
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "security_scanner",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "security_report"
+      ],
+      "downstream": "reviewer",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "reviewer",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "review_report"
+      ],
+      "downstream": "code_acceptance",
+      "failure_return_target": "fixer",
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "code_acceptance",
+      "entry_condition": "Runs when upstream required inputs are present.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "code_acceptance_report"
+      ],
+      "downstream": "acceptance_gate",
+      "failure_return_target": "fixer",
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "acceptance_gate",
+      "entry_condition": "Runs only after style review, reviewer, and code acceptance report green or waived.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract",
+        "agent_coverage_report",
+        "delivery_evidence"
+      ],
+      "expected_outputs": [
+        "acceptance_report",
+        "agent_contract_satisfaction"
+      ],
+      "downstream": "doc_writer",
+      "failure_return_target": "fixer",
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "doc_writer",
+      "entry_condition": "Runs only after acceptance_gate passes.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract",
+        "acceptance_report",
+        "delivery_evidence"
+      ],
+      "expected_outputs": [
+        "delivery_docs"
+      ],
+      "downstream": "fixer",
+      "failure_return_target": null,
+      "fixer_allowed": false,
+      "primary_implementation_owner": false
+    },
+    {
+      "agent": "fixer",
+      "entry_condition": "Only after a validation agent fails and emits a blocking issue.",
+      "required_inputs": [
+        "task_payload",
+        "implementation_contract",
+        "agent_execution_contract"
+      ],
+      "expected_outputs": [
+        "fix_report"
+      ],
+      "downstream": null,
+      "failure_return_target": "tester",
+      "fixer_allowed": true,
+      "primary_implementation_owner": false
+    }
+  ],
+  "blocking_issue_types": [
+    "syntax_invalid",
+    "cross_language_contamination",
+    "placeholder_artifact",
+    "integration_missing",
+    "agent_contract_missing"
+  ],
+  "requirement_ids": [
+    "DIAG122-INTAKE"
+  ],
+  "test_case_ids": [
+    "TC-DIAG122-INTAKE-001",
+    "PAGE-DIAG122-UPLOAD-001",
+    "API-DIAG122-INTAKE-001"
+  ],
+  "expected_evidence": [
+    "db_migration_or_schema_assertion",
+    "upload_page_intake_screenshot",
+    "intake_api_smoke_output",
+    "run_payload_includes_intake"
+  ],
+  "requires_traceability_contract": true,
+  "related_files": [
+    "app/api/uploads/[uploadId]/intake/route.ts",
+    "lib/db/schema.ts",
+    "lib/db/queries.ts"
+  ],
+  "scope_globs": [
+    "app/(dashboard)/dashboard/children/[childId]/upload/*",
+    "components/uploads/*",
+    "lib/family/*"
+  ],
+  "acceptance_criteria_count": 3,
+  "has_browser_urls": true,
+  "formal_execution_requested": true,
+  "admitted": true,
+  "errors": [],
+  "warnings": [],
+  "task_payload": {
+    "project": "familyEducation",
+    "task_id": "FE-078",
+    "task_name": "Diagnostic Intake Context Capture",
+    "sprint": "Sprint 15 Professional Diagnosis Pipeline Foundation",
+    "epic": "Diagnostic Data Foundation",
+    "story_id": "FE-078",
+    "auto_run": true,
+    "execution_policy": "continuous_full_sprint",
+    "interaction_policy": "non_interactive_auto_run",
+    "pause_policy": "story_boundary_or_shared_blocker_only",
+    "blocker_class": null,
+    "blast_radius": "L2",
+    "business_value": "Makes reports feel like professional diagnosis instead of generic AI summaries.",
+    "execution_mode": "Safe",
+    "mode": "Safe",
+    "agent_policy": "auto",
+    "requires_auth": false,
+    "goal": "Add the Diagnostic Intake Card before analysis so runs can use parent context for diagnosis tone and weekly focus.",
+    "entry_criteria": [
+      "Read docs/需求文档_1.2_最终版.md section 4.1 before coding."
+    ],
+    "acceptance_criteria": [
+      "Upload page includes diagnosticGoal, recentTrend, teacherFeedbackPresent, parentConcern, hasTutor, and notes.",
+      "POST and GET intake APIs persist and retrieve intake for an upload.",
+      "Run processing can read intake and report summary behavior can vary by diagnosticGoal and parentConcern."
+    ],
+    "constraints": [
+      "Keep the product parent-first and do not introduce tutor account scope."
+    ],
+    "explicitly_not_doing": [
+      "Problem item extraction, taxonomy classification, or final diagnosis aggregation."
+    ],
+    "not_do": [
+      "Problem item extraction, taxonomy classification, or final diagnosis aggregation."
+    ],
+    "out_of_scope": [
+      "Problem item extraction, taxonomy classification, or final diagnosis aggregation."
+    ],
+    "dependencies": [],
+    "related_files": [
+      "app/api/uploads/[uploadId]/intake/route.ts",
+      "lib/db/schema.ts",
+      "lib/db/queries.ts"
+    ],
+    "primary_files": [
+      "app/api/uploads/[uploadId]/intake/route.ts",
+      "lib/db/schema.ts",
+      "lib/db/queries.ts"
+    ],
+    "secondary_files": [
+      "components/uploads/upload-workspace.tsx",
+      "lib/family/admin-review-auth.ts",
+      "lib/family/admin-review.ts",
+      "lib/family/billing.ts",
+      "lib/family/config.ts",
+      "lib/family/demo-auth.ts",
+      "lib/family/mock-store.ts",
+      "lib/family/options.ts",
+      "lib/family/reporting.ts",
+      "lib/family/repository.ts",
+      "lib/family/storage.ts",
+      "lib/family/tutor-workspace.ts",
+      "lib/family/types.ts",
+      "lib/family/upload-storage.ts"
+    ],
+    "test_cases": {
+      "normal": [
+        "Save intake for an upload and confirm the run payload can read it."
+      ],
+      "exception": [
+        "Reject missing diagnosticGoal and preserve a clear parent-facing validation message."
+      ]
+    },
+    "test_failure_info": null,
+    "story_inputs": [
+      "Read docs/需求文档_1.2_最终版.md section 4.1 before coding.",
+      "In-scope files: app/(dashboard)/dashboard/children/[childId]/upload/*, app/api/uploads/[uploadId]/intake/route.ts, lib/db/schema.ts, lib/db/queries.ts"
+    ],
+    "story_process": [
+      "Inspect the declared scope and understand the current implementation before editing.",
+      "Implement only the change required for this story goal and keep the blast radius within the card.",
+      "Run story-specific validation and record reusable evidence for acceptance."
+    ],
+    "story_outputs": [
+      "Updated story artifacts in: app/(dashboard)/dashboard/children/[childId]/upload/*, app/api/uploads/[uploadId]/intake/route.ts, lib/db/schema.ts, lib/db/queries.ts",
+      "Validation evidence and delivery artifacts archived for this story."
+    ],
+    "verification_basis": [
+      "Upload page includes diagnosticGoal, recentTrend, teacherFeedbackPresent, parentConcern, hasTutor, and notes.",
+      "POST and GET intake APIs persist and retrieve intake for an upload.",
+      "Run processing can read intake and report summary behavior can vary by diagnosticGoal and parentConcern."
+    ],
+    "story_type": "ui_story",
+    "session_policy": "authenticated_browser_required",
+    "auth_expectations": "upload_auth_required",
+    "workflow_enforcement_policy": "strict_agentsystem",
+    "upstream_agent_parity": {
+      "repo": "https://github.com/garrytan/gstack",
+      "commit": "8ddfab233d3999edb172bed54aaf06fc5ff92646",
+      "license": "MIT",
+      "tracked_modes": {
+        "plan-eng-review": {
+          "entry_mode": "requirement_analysis",
+          "stop_after": "architecture_review",
+          "parity_status": "workflow_wired",
+          "upstream_skill": "vendors/gstack/plan-eng-review/SKILL.md"
+        },
+        "review": {
+          "entry_mode": "reviewer",
+          "stop_after": "reviewer",
+          "parity_status": "workflow_wired",
+          "upstream_skill": "vendors/gstack/review/SKILL.md"
+        },
+        "qa": {
+          "entry_mode": "tester",
+          "stop_after": "browser_qa",
+          "parity_status": "workflow_wired",
+          "upstream_skill": "vendors/gstack/qa/SKILL.md"
+        },
+        "browse": {
+          "entry_mode": "browse",
+          "stop_after": "browse",
+          "parity_status": "partial_runtime",
+          "upstream_skill": "vendors/gstack/browse/SKILL.md"
+        },
+        "plan-design-review": {
+          "entry_mode": "plan_design_review",
+          "stop_after": "plan_design_review",
+          "parity_status": "workflow_wired",
+          "upstream_skill": "vendors/gstack/plan-design-review/SKILL.md"
+        },
+        "design-consultation": {
+          "entry_mode": "design_consultation",
+          "stop_after": "design_consultation",
+          "parity_status": "workflow_wired",
+          "upstream_skill": "vendors/gstack/design-consultation/SKILL.md"
+        },
+        "design-review": {
+          "entry_mode": "browser_qa",
+          "stop_after": "qa_design_review",
+          "parity_status": "workflow_wired",
+          "upstream_skill": "vendors/gstack/design-review/SKILL.md"
+        }
+      },
+      "intentional_deviations": [
+        "Telemetry and upgrade endpoints remain disabled by default in local agentsystem runs.",
+        "Claude-host-specific preambles are mirrored into local standards and adapters rather than executed verbatim."
+      ]
+    },
+    "approval_required": false,
+    "requirement_ids": [
+      "DIAG122-INTAKE"
+    ],
+    "test_case_ids": [
+      "TC-DIAG122-INTAKE-001",
+      "PAGE-DIAG122-UPLOAD-001",
+      "API-DIAG122-INTAKE-001"
+    ],
+    "expected_evidence": [
+      "db_migration_or_schema_assertion",
+      "upload_page_intake_screenshot",
+      "intake_api_smoke_output",
+      "run_payload_includes_intake"
+    ],
+    "required_modes": [
+      "plan-eng-review",
+      "review",
+      "qa",
+      "browse",
+      "plan-design-review",
+      "design-consultation",
+      "design-review"
+    ],
+    "preview_base_url": "http://127.0.0.1:3000",
+    "preview_urls": [
+      "http://127.0.0.1:3000/dashboard/children/[childId]/upload"
+    ],
+    "qa_urls": [
+      "http://127.0.0.1:3000/dashboard/children/[childId]/upload"
+    ],
+    "related_files_patterns": [
+      "app/(dashboard)/dashboard/children/[childId]/upload/*",
+      "app/api/uploads/[uploadId]/intake/route.ts",
+      "lib/db/schema.ts",
+      "lib/db/queries.ts"
+    ],
+    "primary_files_patterns": [
+      "app/(dashboard)/dashboard/children/[childId]/upload/*",
+      "app/api/uploads/[uploadId]/intake/route.ts",
+      "lib/db/schema.ts",
+      "lib/db/queries.ts"
+    ],
+    "secondary_files_patterns": [
+      "components/uploads/*",
+      "lib/family/*"
+    ],
+    "scope_globs": [
+      "app/(dashboard)/dashboard/children/[childId]/upload/*",
+      "components/uploads/*",
+      "lib/family/*"
+    ],
+    "tasks_root": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks",
+    "backlog_id": "backlog_v3_diagnosis_1_2_2",
+    "sprint_id": "sprint_15_foundation",
+    "story_file": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\backlog_v3_diagnosis_1_2_2\\sprint_15_foundation\\data\\FE-078.yaml",
+    "project_repo_root": "D:\\lyh\\agent\\agent-frame\\familyEducation",
+    "backlog_root": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\backlog_v3_diagnosis_1_2_2",
+    "office_hours_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\office_hours\\office_hours_report.md",
+    "plan_ceo_review_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\plan_ceo_review\\product_review_report.md",
+    "sprint_framing_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_15_foundation\\sprint_framing_artifact.json",
+    "authoritative_attempt": "sprint_15_foundation-attempt-20260410203402",
+    "sprint_rerun_policy": "isolation_snapshot_full_rerun",
+    "formal_entry": true,
+    "agent_activation_plan": {
+      "story_kind": "ui",
+      "risk_level": "high",
+      "workflow_enforcement_policy": "strict_agentsystem",
+      "is_bugfix": false,
+      "is_planning_request": false,
+      "is_release_closeout": false,
+      "has_browser_surface": true,
+      "requires_auth": false,
+      "needs_design_review": true,
+      "needs_qa_design_review": true,
+      "needs_design_consultation": true,
+      "needs_ceo_review_advice": true,
+      "qa_strategy": "browser",
+      "required_modes": [
+        "plan-eng-review",
+        "review",
+        "qa",
+        "browse",
+        "plan-design-review",
+        "design-consultation",
+        "design-review"
+      ],
+      "advisory_modes": [],
+      "next_recommended_actions": [],
+      "effective_qa_mode": "qa",
+      "auto_upgrade_to_qa": false,
+      "expanded_required_agents": [
+        "browse",
+        "plan_design_review",
+        "design_consultation",
+        "requirement_analysis",
+        "architecture_review",
+        "workspace_prep",
+        "frontend_dev",
+        "sync_merge",
+        "code_style_reviewer",
+        "tester",
+        "browser_qa",
+        "qa_design_review",
+        "security_scanner",
+        "reviewer",
+        "code_acceptance",
+        "acceptance_gate",
+        "doc_writer",
+        "fixer"
+      ],
+      "mode_to_agent_map": {
+        "plan-eng-review": [
+          "requirement_analysis",
+          "architecture_review"
+        ],
+        "review": [
+          "reviewer"
+        ],
+        "qa": [
+          "tester",
+          "browser_qa",
+          "fixer"
+        ],
+        "browse": [
+          "browse"
+        ],
+        "plan-design-review": [
+          "plan_design_review"
+        ],
+        "design-consultation": [
+          "design_consultation"
+        ],
+        "design-review": [
+          "browser_qa",
+          "qa_design_review"
+        ]
+      },
+      "parity_evidence_contract": {
+        "plan-eng-review": [
+          "architecture_review_report",
+          "qa_test_plan_path"
+        ],
+        "review": [
+          "review_report"
+        ],
+        "qa": [
+          "test_report",
+          "runtime_or_browser_qa_report"
+        ],
+        "browse": [
+          "browse_report"
+        ],
+        "plan-design-review": [
+          "plan_design_review_report"
+        ],
+        "design-consultation": [
+          "design_consultation_report",
+          "design_contract_path"
+        ],
+        "design-review": [
+          "browser_qa_report",
+          "qa_design_review_report"
+        ]
+      }
+    },
+    "story_kind": "ui",
+    "risk_level": "high",
+    "has_browser_surface": true,
+    "needs_design_review": true,
+    "needs_qa_design_review": true,
+    "needs_design_consultation": true,
+    "needs_ceo_review_advice": true,
+    "qa_strategy": "browser",
+    "advisory_modes": [],
+    "next_recommended_actions": [],
+    "effective_qa_mode": "qa",
+    "auto_upgrade_to_qa": false,
+    "expanded_required_agents": [
+      "browse",
+      "plan_design_review",
+      "design_consultation",
+      "requirement_analysis",
+      "architecture_review",
+      "workspace_prep",
+      "frontend_dev",
+      "sync_merge",
+      "code_style_reviewer",
+      "tester",
+      "browser_qa",
+      "qa_design_review",
+      "security_scanner",
+      "reviewer",
+      "code_acceptance",
+      "acceptance_gate",
+      "doc_writer",
+      "fixer"
+    ],
+    "mode_to_agent_map": {
+      "plan-eng-review": [
+        "requirement_analysis",
+        "architecture_review"
+      ],
+      "review": [
+        "reviewer"
+      ],
+      "qa": [
+        "tester",
+        "browser_qa",
+        "fixer"
+      ],
+      "browse": [
+        "browse"
+      ],
+      "plan-design-review": [
+        "plan_design_review"
+      ],
+      "design-consultation": [
+        "design_consultation"
+      ],
+      "design-review": [
+        "browser_qa",
+        "qa_design_review"
+      ]
+    },
+    "parity_evidence_contract": {
+      "plan-eng-review": [
+        "architecture_review_report",
+        "qa_test_plan_path"
+      ],
+      "review": [
+        "review_report"
+      ],
+      "qa": [
+        "test_report",
+        "runtime_or_browser_qa_report"
+      ],
+      "browse": [
+        "browse_report"
+      ],
+      "plan-design-review": [
+        "plan_design_review_report"
+      ],
+      "design-consultation": [
+        "design_consultation_report",
+        "design_contract_path"
+      ],
+      "design-review": [
+        "browser_qa_report",
+        "qa_design_review_report"
+      ]
+    },
+    "fixer_allowed": true,
+    "browser_qa_report_only": false,
+    "runtime_qa_report_only": false,
+    "browser_qa_mode": "quick",
+    "implementation_contract": {
+      "story_id": "FE-078",
+      "story_kind": "ui",
+      "story_track": "ui",
+      "required_artifact_types": [
+        "schema",
+        "browser_evidence",
+        "design_evidence"
+      ],
+      "artifact_inventory": {
+        "supporting_code": [
+          "app/api/uploads/[uploadId]/intake/route.ts",
+          "lib/db/queries.ts",
+          "components/uploads/upload-workspace.tsx",
+          "lib/family/admin-review-auth.ts",
+          "lib/family/admin-review.ts",
+          "lib/family/billing.ts",
+          "lib/family/config.ts",
+          "lib/family/demo-auth.ts",
+          "lib/family/mock-store.ts",
+          "lib/family/options.ts",
+          "lib/family/reporting.ts",
+          "lib/family/repository.ts",
+          "lib/family/storage.ts",
+          "lib/family/tutor-workspace.ts",
+          "lib/family/types.ts",
+          "lib/family/upload-storage.ts"
+        ],
+        "schema": [
+          "lib/db/schema.ts"
+        ]
+      },
+      "contract_scope_paths": [],
+      "requires_browser_evidence": true,
+      "requires_design_evidence": true,
+      "requires_database_dev": false,
+      "requires_persistence_changes": false,
+      "completion_rule": "implementation_contract + agent_execution_contract + agent_coverage_report + acceptance_gate"
+    },
+    "required_artifact_types": [
+      "schema",
+      "browser_evidence",
+      "design_evidence"
+    ],
+    "contract_scope_paths": [],
+    "agent_execution_contract": [
+      {
+        "agent": "browse",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "browser_evidence"
+        ],
+        "downstream": "plan_design_review",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "plan_design_review",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "design_route_contract",
+          "design_review_report"
+        ],
+        "downstream": "design_consultation",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "design_consultation",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "design_consultation_report",
+          "DESIGN.md"
+        ],
+        "downstream": "requirement_analysis",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "requirement_analysis",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "requirement_breakdown",
+          "task_payload_refresh"
+        ],
+        "downstream": "architecture_review",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "architecture_review",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "architecture_review_report",
+          "qa_test_plan"
+        ],
+        "downstream": "workspace_prep",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "workspace_prep",
+        "entry_condition": "Runs after requirement and architecture framing are available.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "workspace_ready"
+        ],
+        "downstream": "frontend_dev",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "frontend_dev",
+        "entry_condition": "Requires UI story classification.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "ui_changes"
+        ],
+        "downstream": "sync_merge",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": true
+      },
+      {
+        "agent": "sync_merge",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "merged_story_workspace"
+        ],
+        "downstream": "code_style_reviewer",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "code_style_reviewer",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "code_style_review_report"
+        ],
+        "downstream": "tester",
+        "failure_return_target": "fixer",
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "tester",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract",
+          "required_artifact_types"
+        ],
+        "expected_outputs": [
+          "test_report"
+        ],
+        "downstream": "browser_qa",
+        "failure_return_target": "fixer",
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "browser_qa",
+        "entry_condition": "Requires browser surface evidence or UI story classification.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract",
+          "browse_report"
+        ],
+        "expected_outputs": [
+          "browser_qa_report"
+        ],
+        "downstream": "qa_design_review",
+        "failure_return_target": "fixer",
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "qa_design_review",
+        "entry_condition": "Requires browser surface evidence or UI story classification.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract",
+          "browser_qa_report",
+          "design_contract_path"
+        ],
+        "expected_outputs": [
+          "qa_design_review_report"
+        ],
+        "downstream": "security_scanner",
+        "failure_return_target": "fixer",
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "security_scanner",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "security_report"
+        ],
+        "downstream": "reviewer",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "reviewer",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "review_report"
+        ],
+        "downstream": "code_acceptance",
+        "failure_return_target": "fixer",
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "code_acceptance",
+        "entry_condition": "Runs when upstream required inputs are present.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "code_acceptance_report"
+        ],
+        "downstream": "acceptance_gate",
+        "failure_return_target": "fixer",
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "acceptance_gate",
+        "entry_condition": "Runs only after style review, reviewer, and code acceptance report green or waived.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract",
+          "agent_coverage_report",
+          "delivery_evidence"
+        ],
+        "expected_outputs": [
+          "acceptance_report",
+          "agent_contract_satisfaction"
+        ],
+        "downstream": "doc_writer",
+        "failure_return_target": "fixer",
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "doc_writer",
+        "entry_condition": "Runs only after acceptance_gate passes.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract",
+          "acceptance_report",
+          "delivery_evidence"
+        ],
+        "expected_outputs": [
+          "delivery_docs"
+        ],
+        "downstream": "fixer",
+        "failure_return_target": null,
+        "fixer_allowed": false,
+        "primary_implementation_owner": false
+      },
+      {
+        "agent": "fixer",
+        "entry_condition": "Only after a validation agent fails and emits a blocking issue.",
+        "required_inputs": [
+          "task_payload",
+          "implementation_contract",
+          "agent_execution_contract"
+        ],
+        "expected_outputs": [
+          "fix_report"
+        ],
+        "downstream": null,
+        "failure_return_target": "tester",
+        "fixer_allowed": true,
+        "primary_implementation_owner": false
+      }
+    ],
+    "blocking_issue_types": [
+      "syntax_invalid",
+      "cross_language_contamination",
+      "placeholder_artifact",
+      "integration_missing",
+      "agent_contract_missing"
+    ]
+  }
+}

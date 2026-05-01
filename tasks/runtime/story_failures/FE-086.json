@@ -1,0 +1,15 @@
+{
+  "project": "familyEducation",
+  "backlog_id": "backlog_v3_diagnosis_1_2_2",
+  "sprint_id": "sprint_16_product",
+  "story_id": "FE-086",
+  "task_id": "task-d7f07509",
+  "task_name": "FE-086",
+  "failure_type": "loop_detected",
+  "blocker_class": "story_local_blocker",
+  "last_node": "Fixer",
+  "recommended_recovery_action": "Resume from the failed story after the recorded blocker is addressed.",
+  "error_message": "Loop detected after repeated reviewer/fixer attempts with no material progress.",
+  "audit_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\prod_audit_task-d7f07509.json",
+  "captured_at": "2026-04-10T20:36:53"
+}

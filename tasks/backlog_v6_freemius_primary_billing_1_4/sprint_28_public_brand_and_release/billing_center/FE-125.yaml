@@ -1,0 +1,91 @@
+project: "familyEducation"
+task_id: "FE-125"
+task_name: "Billing Center UX, Provider Status, And Regression Evidence"
+sprint: "Sprint 28 Public Brand And Release"
+epic: "Billing Center And Regression"
+story_id: "FE-125"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "parent_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Turn `/dashboard/billing` into a Pathnook billing center that shows entitlements, plan status, portal access, provider state, and controlled unavailable UX while preserving report/share/deck flows."
+business_value: "Gives parents a trustworthy billing center without leaking internal provider transitions or breaking current product usage."
+requirement_ids:
+  - "PAGE-010"
+  - "BILL14-BILLING-CENTER"
+  - "BILL14-NON-REGRESSION"
+  - "BILL14-FLAGS-ROLLBACK"
+test_case_ids:
+  - "PAGE-BILL14-004"
+  - "PAGE-BILL14-005"
+  - "PAGE-BILL14-006"
+  - "CLICK-BILL14-001"
+  - "CLICK-BILL14-002"
+  - "API-BILL14-007"
+  - "NF-BILL14-003"
+expected_evidence:
+  - "billing_center_before_after_screenshots"
+  - "provider_unavailable_state_proof"
+  - "entitlement_diff_evidence"
+  - "non_regression_route_sweep"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-124."
+  - "Review current dashboard billing UX and the Sprint 25 baseline notes before editing the page."
+acceptance_criteria:
+  - "/dashboard/billing shows entitlement state, current plan, period-end or credit state, portal entry, and provider status using Pathnook copy."
+  - "If Freemius is not fully configured, the UI shows a controlled unavailable state rather than public Creem fallback copy."
+  - "Upload, analysis, report, share, and deck/walkthrough routes remain regression-safe after billing-center changes."
+constraints:
+  - "Do not publicly expose Creem entry points as a fallback UX."
+out_of_scope:
+  - "Renaming internal tables or repository paths."
+dependencies:
+  - "FE-124"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/share/[token]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+related_files:
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+  - "lib/family/billing.ts"
+  - "lib/payments/entitlements.ts"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+  - "app/share/[token]/page.tsx"
+primary_files:
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+  - "lib/family/billing.ts"
+  - "lib/payments/entitlements.ts"
+secondary_files:
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+  - "app/share/[token]/page.tsx"
+  - "tests/deck-playback.test.ts"
+test_cases:
+  normal:
+    - "Verify the billing center reflects local entitlement state and portal availability with Pathnook copy."
+  exception:
+    - "Fail if any existing report/share/deck route regresses or if public Creem copy reappears as a fallback."

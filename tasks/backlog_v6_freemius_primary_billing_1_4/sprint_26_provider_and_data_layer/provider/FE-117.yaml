@@ -1,0 +1,82 @@
+project: "familyEducation"
+task_id: "FE-117"
+task_name: "Billing Provider Interface And Service Layer"
+sprint: "Sprint 26 Provider And Data Layer"
+epic: "Provider Abstraction"
+story_id: "FE-117"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "billing_service_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Introduce provider-neutral billing interfaces, separate Freemius and Creem implementations, and expose a single billing service entry point."
+business_value: "Lets the product change the public billing provider without rewriting every route or UI surface."
+requirement_ids:
+  - "BILL14-PROVIDER-INTERFACE"
+  - "BILL14-CREEM-COMPAT"
+  - "BILL14-FLAGS-ROLLBACK"
+test_case_ids:
+  - "API-BILL14-001"
+  - "API-BILL14-002"
+  - "DATA-BILL14-001"
+  - "NF-BILL14-001"
+expected_evidence:
+  - "provider_interface_contract"
+  - "service_selection_matrix"
+  - "creem_provider_extraction_report"
+  - "feature_flag_switch_proof"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-116."
+  - "Read lib/payments/catalog.ts, lib/payments/actions.ts, lib/payments/creem.ts, and docs/需求文档_1.4.md before defining interfaces."
+acceptance_criteria:
+  - "A provider interface and service entry point define checkout, portal, redirect processing, and webhook processing contracts."
+  - "Creem is moved behind the provider/service layer without deleting its implementation or env contracts."
+  - "Feature flags choose the active provider without forcing public UI copy to expose Creem."
+constraints:
+  - "Do not delete lib/payments/creem.ts or app/api/creem/*."
+out_of_scope:
+  - "Final public Pathnook copy changes."
+dependencies:
+  - "FE-116"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/pricing"
+qa_urls:
+  - "http://127.0.0.1:3000/api/billing/checkout-session"
+related_files:
+  - "lib/payments/actions.ts"
+  - "lib/payments/catalog.ts"
+  - "lib/payments/creem.ts"
+  - "lib/payments/providers/*"
+  - "lib/payments/service.ts"
+primary_files:
+  - "lib/payments/actions.ts"
+  - "lib/payments/catalog.ts"
+  - "lib/payments/creem.ts"
+  - "lib/payments/providers/*"
+  - "lib/payments/service.ts"
+secondary_files:
+  - ".env.example"
+  - "app/api/billing/checkout-session/route.ts"
+  - "app/api/creem/*"
+test_cases:
+  normal:
+    - "Verify service-layer selection returns Freemius by default and can be switched back to Creem via env flags."
+  exception:
+    - "Fail if any public checkout call path still hard-codes Creem-only logic outside the provider layer."

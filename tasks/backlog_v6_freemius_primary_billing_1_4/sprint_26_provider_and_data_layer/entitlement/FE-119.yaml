@@ -1,0 +1,76 @@
+project: "familyEducation"
+task_id: "FE-119"
+task_name: "Local Entitlement Projection And Snapshot Service"
+sprint: "Sprint 26 Provider And Data Layer"
+epic: "Entitlements"
+story_id: "FE-119"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "billing_service_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Map provider purchases and subscriptions into local entitlement snapshots that control report unlocks, subscription status, portal availability, and historical rights."
+business_value: "Keeps Pathnook in control of product access even when third-party billing state changes or is temporarily unavailable."
+requirement_ids:
+  - "BILL14-ENTITLEMENT-LAYER"
+  - "BILL14-NON-REGRESSION"
+test_case_ids:
+  - "API-BILL14-004"
+  - "API-BILL14-005"
+  - "DATA-BILL14-005"
+  - "DATA-BILL14-006"
+expected_evidence:
+  - "entitlement_projection_rules"
+  - "monthly_annual_upgrade_map"
+  - "one_time_credit_mapping"
+  - "billing_snapshot_contract"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-118."
+  - "Read current billing snapshot and paywall logic before defining new entitlement projections."
+acceptance_criteria:
+  - "Local snapshots explicitly cover one_time, monthly, annual, cancel, expire, and upgrade paths."
+  - "Report unlock, subscription validity, portal access, and history retention all flow through the local entitlement layer."
+  - "Legacy billing reads remain available as fallback until full cutover is complete."
+constraints:
+  - "Do not let front-end state depend directly on raw Freemius or Creem payloads."
+out_of_scope:
+  - "Public copy or legal text updates."
+dependencies:
+  - "FE-118"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "lib/payments/entitlements.ts"
+  - "lib/family/billing.ts"
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+primary_files:
+  - "lib/payments/entitlements.ts"
+  - "lib/family/billing.ts"
+secondary_files:
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+test_cases:
+  normal:
+    - "Verify one-time credits, active subscriptions, and upgrade transitions all project into a stable local billing snapshot."
+  exception:
+    - "Fail if subscription cancellation or expiration would revoke historical access incorrectly."

@@ -1,0 +1,82 @@
+project: "familyEducation"
+task_id: "FE-093"
+task_name: "ActionEngine PlaybackEngine And Snapshot Persistence"
+sprint: "Sprint 19 Player Routes And Playback"
+epic: "Playback Core"
+story_id: "FE-093"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Implement the playback state machine, persist playback snapshots, and expose a stable playback contract for parent/share/admin consumers."
+business_value: "Allows walkthrough sessions to resume safely instead of restarting from slide one every time."
+requirement_ids:
+  - "DECK13-PLAYER"
+  - "DECK13-TTS"
+test_case_ids:
+  - "PAGE-DCK-006"
+  - "PAGE-DCK-007"
+  - "PAGE-DCK-008"
+  - "CLICK-DCK-001"
+  - "CLICK-DCK-002"
+  - "CLICK-DCK-008"
+  - "API-DCK-005"
+  - "API-DCK-006"
+  - "API-DCK-007"
+  - "DATA-DCK-005"
+expected_evidence:
+  - "playback_state_machine_output"
+  - "snapshot_save_restore_output"
+  - "tts_fallback_output"
+  - "playback_api_smoke_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-090."
+acceptance_criteria:
+  - "Playback supports start, pause, resume, stop, nextAction, nextSlide, prevSlide, getSnapshot, and restore."
+  - "Snapshots persist the active slide, action position, voice settings, and playback mode."
+  - "Browser TTS fallback is available and defaults to voice off."
+constraints:
+  - "Playback must respect the deck tier degrade contract."
+out_of_scope:
+  - "Parent/share page layout and admin review controls."
+dependencies:
+  - "FE-090"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+qa_urls:
+  - "http://127.0.0.1:3000/api/decks/[deckId]/playback"
+  - "http://127.0.0.1:3000/api/decks/[deckId]/snapshot"
+related_files:
+  - "lib/family/*deck*"
+  - "app/api/decks/[deckId]/playback/route.ts"
+  - "app/api/decks/[deckId]/snapshot/route.ts"
+primary_files:
+  - "lib/family/*deck*"
+  - "app/api/decks/[deckId]/playback/route.ts"
+  - "app/api/decks/[deckId]/snapshot/route.ts"
+secondary_files:
+  - "app/(dashboard)/dashboard/reports/[reportId]/play/page.tsx"
+  - "app/share/[token]/play/page.tsx"
+test_cases:
+  normal:
+    - "Resume a persisted walkthrough and confirm it restores to the prior slide/action position."
+  exception:
+    - "Reject restoring a snapshot that belongs to a different user or deck."

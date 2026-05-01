@@ -1,0 +1,74 @@
+project: "familyEducation"
+task_id: "FE-082"
+task_name: "Diagnosis Aggregation And Issue Scoring"
+sprint: "Sprint 16 Diagnosis Productization And Calibration"
+epic: "Diagnosis Productization"
+story_id: "FE-082"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Aggregate taxonomy evidence into primary diagnosis, secondary diagnosis, pattern issues, sporadic issues, and do-not-overreact points."
+business_value: "Upgrades reports from error lists to professional judgment."
+requirement_ids:
+  - "DIAG122-DIAGNOSIS"
+test_case_ids:
+  - "TC-DIAG122-DX-001"
+  - "DATA-DIAG122-DX-001"
+expected_evidence:
+  - "diagnosis_json_assertion"
+  - "pattern_sporadic_fixture_output"
+  - "do_not_overreact_output"
+  - "report_ui_diagnosis_screenshot"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-078, FE-079, FE-080, FE-081."
+  - "Read docs/需求文档_1.2_最终版.md section 4.4 before coding."
+acceptance_criteria:
+  - "Diagnosis uses frequency, severity, cross-page repetition, and teacher signal support rather than simple label counts."
+  - "Reports persist and display primaryDiagnosisCode, secondaryDiagnosisCodesJson, patternSummaryJson, sporadicSummaryJson, doNotOverreactJson, and overallConfidence or equivalent structured payload fields."
+  - "Top Findings map back to evidence and taxonomy support."
+constraints:
+  - "Do not overreact to sporadic weak evidence."
+out_of_scope:
+  - "7-Day Plan template expansion and Confidence Gate publication policy."
+dependencies:
+  - "FE-081"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "lib/reports/*"
+  - "app/api/reports/[reportId]/route.ts"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+  - "components/reports/*"
+primary_files:
+  - "lib/reports/*"
+  - "app/api/reports/[reportId]/route.ts"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+secondary_files:
+  - "components/reports/*"
+test_cases:
+  normal:
+    - "Aggregate repeated taxonomy labels into pattern issues with evidence support."
+  exception:
+    - "Keep single weak labels as sporadic or do-not-overreact points instead of primary diagnosis."

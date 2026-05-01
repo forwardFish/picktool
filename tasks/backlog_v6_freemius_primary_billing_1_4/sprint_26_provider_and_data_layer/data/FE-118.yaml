@@ -1,0 +1,77 @@
+project: "familyEducation"
+task_id: "FE-118"
+task_name: "Billing Tables, Compat Reads, And Legacy Mapping"
+sprint: "Sprint 26 Provider And Data Layer"
+epic: "Billing Data And Compatibility"
+story_id: "FE-118"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "billing_service_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Add the new provider-account, entitlement, and webhook-event tables and keep the existing billing reads available as compatibility fallbacks."
+business_value: "Creates a provider-neutral persistence layer without invalidating current users or unlock history."
+requirement_ids:
+  - "BILL14-DATA-LAYER"
+  - "BILL14-CREEM-COMPAT"
+  - "BILL14-NON-REGRESSION"
+test_case_ids:
+  - "API-BILL14-003"
+  - "DATA-BILL14-002"
+  - "DATA-BILL14-003"
+  - "DATA-BILL14-004"
+expected_evidence:
+  - "billing_table_migration_output"
+  - "legacy_mapping_contract"
+  - "compat_read_order_note"
+  - "webhook_event_idempotency_schema_proof"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-117."
+  - "Read lib/db/schema.ts and current subscription/billing-event fields before adding new tables."
+acceptance_criteria:
+  - "billing_provider_accounts, billing_entitlements, and billing_webhook_events are modeled additively."
+  - "Existing subscriptions, billing_events, and relevant team fields remain readable as compatibility inputs."
+  - "Migration notes describe how old rows map into the new provider-neutral shape."
+constraints:
+  - "Do not delete or rename existing billing tables or columns in this story."
+out_of_scope:
+  - "Public UI rendering changes."
+dependencies:
+  - "FE-117"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/api/billing/checkout-session"
+related_files:
+  - "lib/db/schema.ts"
+  - "lib/db/migrations/*"
+  - "lib/payments/service.ts"
+  - "lib/payments/entitlements.ts"
+primary_files:
+  - "lib/db/schema.ts"
+  - "lib/db/migrations/*"
+secondary_files:
+  - "lib/payments/service.ts"
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+test_cases:
+  normal:
+    - "Verify the new tables can store provider identity, entitlement, and webhook-event state without losing legacy lookup coverage."
+  exception:
+    - "Fail if the migration removes existing subscription or billing-event reads that power current paywall behavior."

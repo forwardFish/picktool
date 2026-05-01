@@ -1,0 +1,77 @@
+project: "familyEducation"
+task_id: "FE-095"
+task_name: "H5 Export And PDF Deck Enhancement"
+sprint: "Sprint 20 Admin Export And Release"
+epic: "Deck Export And Release"
+story_id: "FE-095"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Persist H5 and PDF export artifacts for diagnosis decks and record deck metrics through the export lifecycle."
+business_value: "Lets the guided walkthrough become a reusable enhancement artifact without replacing the report."
+requirement_ids:
+  - "DECK13-EXPORT"
+  - "DECK13-METRICS"
+test_case_ids:
+  - "CLICK-DCK-006"
+  - "CLICK-DCK-007"
+  - "API-DCK-008"
+  - "API-DCK-009"
+  - "DATA-DCK-004"
+expected_evidence:
+  - "h5_export_artifact_output"
+  - "pdf_export_artifact_output"
+  - "deck_export_lifecycle_output"
+  - "deck_metrics_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-094."
+acceptance_criteria:
+  - "Deck exports support export-h5 and export-pdf API contracts."
+  - "Artifact records include lifecycle metadata and can be read back from the repository contract."
+  - "H5 export is positioned as the walkthrough enhancement and PDF remains secondary to the main report."
+constraints:
+  - "Do not replace the accepted report PDF flow; extend it with deck-aware metadata."
+out_of_scope:
+  - "Formal lane closeout and final acceptance verdict."
+dependencies:
+  - "FE-094"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+qa_urls:
+  - "http://127.0.0.1:3000/api/decks/[deckId]/export-h5"
+  - "http://127.0.0.1:3000/api/decks/[deckId]/export-pdf"
+related_files:
+  - "app/api/decks/[deckId]/export-h5/route.ts"
+  - "app/api/decks/[deckId]/export-pdf/route.ts"
+  - "lib/family/*deck*"
+primary_files:
+  - "app/api/decks/[deckId]/export-h5/route.ts"
+  - "app/api/decks/[deckId]/export-pdf/route.ts"
+  - "lib/family/*deck*"
+secondary_files:
+  - "app/(dashboard)/dashboard/reports/[reportId]/play/page.tsx"
+  - "app/admin/review/[runId]/deck/page.tsx"
+test_cases:
+  normal:
+    - "Export a strong deck to H5 and PDF and confirm artifact metadata is persisted."
+  exception:
+    - "Reject export for a missing or unauthorized deck id."

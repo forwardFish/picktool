@@ -1,0 +1,85 @@
+project: "familyEducation"
+task_id: "FE-098"
+task_name: "Sprint 18 Generation And Gate Acceptance"
+sprint: "Sprint 18 Generation And Gate"
+epic: "Generation And Gate Acceptance"
+story_id: "FE-098"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Accept Sprint 18 only if deck outline generation, slide generation, and deck quality gate behavior are grounded, deterministic, and degradable."
+business_value: "Prevents player routes from shipping on top of weak or unvalidated deck payloads."
+requirement_ids:
+  - "GOV-003"
+  - "DECK13-GENERATION"
+  - "DECK13-GATE"
+  - "DECK13-TTS"
+test_case_ids:
+  - "TC-GOV-004"
+  - "AI-DCK-001"
+  - "AI-DCK-002"
+  - "AI-DCK-003"
+  - "AI-DCK-004"
+  - "AI-DCK-005"
+  - "AI-DCK-006"
+  - "AI-DCK-007"
+  - "AI-DCK-008"
+  - "AI-DCK-009"
+  - "API-DCK-004"
+expected_evidence:
+  - "sprint_18_traceability_audit"
+  - "deck_outline_fixture_packet"
+  - "deck_quality_gate_packet"
+  - "degrade_policy_assertion"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-089 and FE-090."
+acceptance_criteria:
+  - "Decks are generated from diagnosis/report/plan/share facts rather than raw DOM."
+  - "Slide, anchor, and action validation reruns after regenerate operations and emits A/B/C/D deck tiers."
+  - "Voice guidance defaults and degrade policy are represented in the generated playback contract."
+constraints:
+  - "Do not bypass gate failures by forcing a playable deck tier."
+out_of_scope:
+  - "Parent/share player route implementation and export tooling."
+dependencies:
+  - "FE-089"
+  - "FE-090"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "lib/family/*"
+  - "app/api/reports/[reportId]/*"
+  - "docs/requirements/*"
+  - "docs/testing/*"
+primary_files:
+  - "lib/family/*"
+  - "app/api/reports/[reportId]/*"
+secondary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+test_cases:
+  normal:
+    - "Run the deck generation and gate suites against the latest Sprint 18 implementation."
+  exception:
+    - "Fail acceptance if any generated deck uses raw DOM replay or if C/D tier behavior is not enforced."

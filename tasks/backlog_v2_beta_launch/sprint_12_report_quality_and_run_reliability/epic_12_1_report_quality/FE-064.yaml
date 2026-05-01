@@ -1,0 +1,74 @@
+project: "familyEducation"
+task_id: "FE-064"
+task_name: "Evidence Clarity And Source Anchoring Upgrade"
+sprint: "Sprint 12 Report Quality And Run Reliability"
+epic: "Report Quality"
+story_id: "FE-064"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Make evidence grouping, source anchoring, overlay behavior, and low-evidence fallback easier to understand."
+business_value: "Strengthens trust in how the diagnosis was produced."
+requirement_ids:
+  - "QLT-002"
+test_case_ids:
+  - "PAGE2-RPT-002"
+  - "AI2-RPT-002"
+  - "CLICK2-005"
+expected_evidence:
+  - "before_after_screenshots"
+  - "source_anchor_transcript"
+  - "browse_console_log"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-063."
+  - "Read the evidence/source requirement rows before editing report evidence UI."
+acceptance_criteria:
+  - "Evidence grouping and source panels are understandable in both strong-anchor and weak-anchor cases."
+  - "Low-evidence fallback text stays useful instead of pretending precision."
+constraints:
+  - "Do not hide missing or weak anchors behind decorative UI."
+out_of_scope:
+  - "Weekly review history."
+dependencies:
+  - "FE-063"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "components/reports/PageViewer.tsx"
+  - "components/reports/*"
+primary_files:
+  - "components/reports/*"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+secondary_files:
+  - "docs/testing/next_phase/page_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute PAGE2-RPT-002, AI2-RPT-002, and CLICK2-005."
+  exception:
+    - "Verify the fallback panel remains informative when an anchor cannot be rendered directly."

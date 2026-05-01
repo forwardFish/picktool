@@ -1,0 +1,78 @@
+project: "familyEducation"
+task_id: "FE-061"
+task_name: "Marketing Event Tracking Baseline"
+sprint: "Sprint 11 Conversion Layer"
+epic: "Conversion Measurement And Acceptance"
+story_id: "FE-061"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "runtime_and_browser_required"
+auth_expectations: "public_and_authenticated_events"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Capture deterministic CTA and checkout-intent events across the public conversion funnel."
+business_value: "Makes the next-phase funnel measurable rather than aesthetic only."
+requirement_ids:
+  - "MKT-004"
+test_case_ids:
+  - "API2-MKT-001"
+  - "DATA2-MKT-001"
+  - "CLICK2-001"
+  - "CLICK2-002"
+  - "CLICK2-003"
+expected_evidence:
+  - "event_payload_snapshot"
+  - "funnel_trace_log"
+  - "data_integrity_output"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-060."
+  - "Read next-phase marketing and data test rows before adding events."
+acceptance_criteria:
+  - "Conversion-critical events are recorded with stable names and usable context."
+  - "Event capture is testable and documented."
+constraints:
+  - "Do not create analytics-only behavior that changes routing."
+out_of_scope:
+  - "Deeper BI or dashboard reporting."
+dependencies:
+  - "FE-060"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/sample-report"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+related_files:
+  - "lib/analytics/*"
+  - "app/(dashboard)/page.tsx"
+  - "app/(dashboard)/pricing/page.tsx"
+primary_files:
+  - "lib/analytics/*"
+  - "app/(dashboard)/page.tsx"
+  - "app/(dashboard)/sample-report/page.tsx"
+secondary_files:
+  - "docs/testing/next_phase/api_data_ai_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute API2-MKT-001 and DATA2-MKT-001."
+    - "Confirm event capture along CLICK2-001 through CLICK2-003."
+  exception:
+    - "Verify repeated CTA actions do not create unusable or ambiguous event records."

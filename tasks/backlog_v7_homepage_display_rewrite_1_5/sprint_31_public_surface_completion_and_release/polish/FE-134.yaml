@@ -1,0 +1,83 @@
+project: "familyEducation"
+task_id: "FE-134"
+task_name: "Homepage Responsive Polish, Sample CTA Flow, And Copy Regression"
+sprint: "Sprint 31 Public Surface Completion And Release"
+epic: "Homepage Responsive And Copy Polish"
+story_id: "FE-134"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "public_route_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Finish responsive homepage polish, validate CTA chains into sample/pricing surfaces, and audit copy regressions across the full public route set."
+business_value: "Makes the homepage rewrite release-safe on both desktop and mobile without disturbing billing implementation scope."
+requirement_ids:
+  - "HOME15-RESPONSIVE-CTA"
+  - "HOME15-COPY-GUARDRAILS"
+test_case_ids:
+  - "PAGE-HOME15-009"
+  - "PAGE-HOME15-010"
+  - "CLICK-HOME15-003"
+  - "NF-HOME15-001"
+  - "NF-HOME15-002"
+expected_evidence:
+  - "desktop_mobile_homepage_screenshots"
+  - "sample_report_cta_flow_log"
+  - "copy_regression_audit"
+  - "public_route_smoke_notes"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-133."
+  - "Review the Sprint 29 baseline evidence and Sprint 30 positioning guardrails before final polish."
+acceptance_criteria:
+  - "Desktop and mobile homepage layouts are readable, stable, and free of blocking overflow."
+  - "Homepage CTAs reach sample report and pricing flows without broken links or outdated copy."
+  - "Copy regression audit confirms the homepage no longer presents math-only, family-action-plan-first, bilingual-first, or billing-mechanics-first positioning."
+constraints:
+  - "Do not add new payment-provider flows, portal mechanics, or deck runtime logic."
+out_of_scope:
+  - "Billing-provider implementation or dashboard feature changes."
+dependencies:
+  - "FE-133"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/sample-report"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+related_files:
+  - "app/(dashboard)/page.tsx"
+  - "components/landing/*"
+  - "app/(dashboard)/pricing/page.tsx"
+  - "app/(dashboard)/sample-report/*"
+primary_files:
+  - "app/(dashboard)/page.tsx"
+  - "components/landing/*"
+secondary_files:
+  - "app/(dashboard)/pricing/page.tsx"
+  - "app/(dashboard)/sample-report/*"
+test_cases:
+  normal:
+    - "Verify desktop/mobile homepage screenshots and CTA chains to sample report and pricing flows."
+  exception:
+    - "Fail if public copy regressions reintroduce the old narrow positioning or if mobile polish breaks CTA usability."

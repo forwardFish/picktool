@@ -1,0 +1,79 @@
+project: "familyEducation"
+task_id: "FE-052"
+task_name: "Production Smoke And Observability Baseline"
+sprint: "Sprint 9 Production Readiness Foundation"
+epic: "Production Smoke And Acceptance"
+story_id: "FE-052"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "runtime_and_browser_required"
+auth_expectations: "route_specific"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Create the smoke and observability baseline required to see provider failures and release-lane health."
+business_value: "Makes Beta readiness measurable instead of implied."
+requirement_ids:
+  - "PROD-003"
+test_case_ids:
+  - "OPS2-OBS-001"
+  - "OPS2-OBS-002"
+  - "NF2-002"
+  - "NF2-003"
+expected_evidence:
+  - "smoke_test_output"
+  - "telemetry_snapshot"
+  - "provider_failure_log"
+  - "acceptance_checklist"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read the next-phase master test plan and ops rows before changing smoke or telemetry scripts."
+  - "Dependencies accepted: FE-050, FE-051."
+acceptance_criteria:
+  - "Smoke commands exist for the declared routes and provider-sensitive flows."
+  - "Structured logs, error visibility, and cost or provider telemetry are available for Beta audit."
+constraints:
+  - "Do not mark observability complete with placeholder logs only."
+  - "Do not hide provider failures behind silent fallbacks."
+out_of_scope:
+  - "Live checkout product mapping."
+dependencies:
+  - "FE-050"
+  - "FE-051"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/sign-in"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard"
+  - "http://127.0.0.1:3000/dashboard/billing"
+related_files:
+  - "scripts/run_sprint9_smoke.mjs"
+  - "scripts/run_sprint9_browser_smoke.mjs"
+  - "scripts/run_sprint9_delivery.py"
+primary_files:
+  - "scripts/*"
+  - "lib/telemetry/*"
+secondary_files:
+  - "docs/testing/next_phase/final_program_acceptance.md"
+test_cases:
+  normal:
+    - "Execute OPS2-OBS-001 and OPS2-OBS-002 and capture telemetry outputs."
+    - "Execute NF2-003 through the Sprint 9 smoke lane."
+  exception:
+    - "Simulate a provider failure and verify a user-safe fallback plus operator-visible logging."

@@ -1,0 +1,78 @@
+project: "familyEducation"
+task_id: "FE-051"
+task_name: "Production Storage Adapter And Artifact Lifecycle"
+sprint: "Sprint 9 Production Readiness Foundation"
+epic: "Production Foundation"
+story_id: "FE-051"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "runtime_and_browser_required"
+auth_expectations: "owner_and_share_scope"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Replace local-only artifact assumptions with a production-ready storage adapter and explicit artifact lifecycle handling."
+business_value: "Makes upload, export, and share artifacts durable and operable in a real Beta lane."
+requirement_ids:
+  - "PROD-002"
+test_case_ids:
+  - "API2-STO-001"
+  - "DATA2-STO-001"
+  - "OPS2-STO-001"
+expected_evidence:
+  - "api_contract_snapshot"
+  - "artifact_lifecycle_audit"
+  - "runtime_log_snapshot"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read the next-phase requirement, traceability, and testing documents before touching artifact paths or storage abstractions."
+  - "Dependency accepted: FE-050."
+acceptance_criteria:
+  - "Upload, export, share, revoke, and delete operations use the declared production storage strategy or a clearly documented adapter layer."
+  - "Artifact create/read/delete evidence is collected without overstating remote rollout progress."
+constraints:
+  - "Do not leave new artifact paths undocumented."
+  - "Do not keep silent fallback behavior for missing storage configuration."
+out_of_scope:
+  - "Live billing and auth provider changes."
+dependencies:
+  - "FE-050"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]/upload"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/share/[token]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/share/[token]"
+related_files:
+  - "lib/storage/*"
+  - "app/api/reports/[reportId]/export/route.ts"
+  - "app/api/reports/[reportId]/share/route.ts"
+primary_files:
+  - "lib/storage/*"
+  - "lib/uploads/*"
+  - "lib/reports/*"
+secondary_files:
+  - "docs/testing/next_phase/api_data_ai_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute API2-STO-001 and capture artifact create/read/delete evidence."
+    - "Execute DATA2-STO-001 and OPS2-STO-001 for lifecycle consistency."
+  exception:
+    - "Verify missing artifact or revoked-share reads fail deterministically."

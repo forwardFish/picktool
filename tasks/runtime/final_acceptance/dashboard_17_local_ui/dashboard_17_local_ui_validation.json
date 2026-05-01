@@ -1,0 +1,46 @@
+{
+  "status": "pass",
+  "mode": "demo-auto-auth",
+  "childId": 4,
+  "runId": 4,
+  "reportId": 8,
+  "captures": [
+    {
+      "url": "http://127.0.0.1:3000/dashboard/children",
+      "file": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\dashboard_17_local_ui\\20_members_workspace_after_review_fix.png",
+      "textSample": "Pathnook\nOverview\nMembers\nReports\nACCOUNT\nBilling\nSettings\nO\nOrion\nOwner\nMembers\n/\nLin-4117\nNew Diagnosis\nL\nLin-4117\n7th Grade\nOK\nL\nLin-3561\n7th Grade\nL\nLin-1930\n7th Grade\nF\nFinalFlow-1775721652949\n5th Grade\n+\nAdd Member\nL\nLin-4117\n7th Grade\nOpen Detail\nCurriculum\nGeneral Math\nCurrent focus\nCurrent focus\nLast diagnosis\n4/22/2026\nWeekly review\n4/22/2026\nPlan state\nPlan in progress\nDiagnosis in progress\n\nNeeds review before the full report is released.\n\nNEXT MOVE\n\nNeeds review before the full report is released.\n\nRECENT SCORE\n\n45 / 100\n\nPLAN STATUS\n\nPlan in progress\n\nSubjects\nReports\nSubjects (1)\nManage\nGeneral Math\n1 topic across 1 review\nFirst report for this child. Use this as the baseline for next week.\n1 REVIEWS / 1 TOPICS\n44%\nNeeds Focus"
+    },
+    {
+      "url": "http://127.0.0.1:3000/dashboard/children/4",
+      "file": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\dashboard_17_local_ui\\21_member_detail_after_review_fix.png",
+      "textSample": "Pathnook\nOverview\nMembers\nReports\nACCOUNT\nBilling\nSettings\nO\nOrion\nOwner\nMembers\n/\nLin-4117\nChild Detail\n\nThis page ties the child profile, recent reports, current focus, and next move into one real workspace summary.\n\n7th Grade1 reportsPlan in progress\nL\nLin-4117\n7th Grade / General Math\nCurrent focus / Current focus\nRecent score / 45\nWeekly review / 4/22/2026\nCurrent bottleneck\nCurrent focus\nNext move\nNeeds review before the full report is released.\nQuick actions\nStart or continue diagnosis\nOpen upload workspace\nOpen latest report\nGo to detail\nBack to members workspace\nReturn to member switcher\nSubject summaries\n\nDerived from recent reports, issue trends, and review history.\n\nGeneral Math\n1 reviews / 1 topics / Needs Focus\nFirst report for this child. Use this as the baseline for next week.\nRecent reports for Lin-4117\n\nUse the review timeline to compare runs and keep weekly notes in one place.\n\nREPORT #8\n\n2026/4/22 21:19:25\n\nOpen Report\n\nTop Finding\n\nFinding label pending\n\nWeekly Compare\n\nFirst report for this child. Use this as the baseline for next week.\n\nUploaded pages could not be parsed into reliable worksheet evidence. Please re-upload a clearer file or review manually.\n\nPa"
+    },
+    {
+      "url": "http://127.0.0.1:3000/dashboard/reports",
+      "file": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\dashboard_17_local_ui\\23_reports_workspace_after_review_fix.png",
+      "textSample": "Pathnook\nOverview\nMembers\nReports\nACCOUNT\nBilling\nSettings\nO\nOrion\nOwner\nReports\n/\nAll Reports\nReports Dashboard\n\nThis view is now driven by real report rows, recent activity, billing lock state, and unfinished plan counts.\n\nNew Diagnosis\n\nTotal Reports\n\n4\n\nAcross all members\n\nCompleted\n\n0\n\nReady to review\n\nIn Review\n\n3\n\nStill being finalized\n\nThis Week\n\n1\n\nRecently generated\n\nAll Reports\n\nUse this page as the main desktop list for entering the detail flow.\n\nFilters coming next\nAll Members\nAll Subjects\nAll Status\nREPORT\nMEMBER\nDATE\nSTATUS\nSCORE\nDiagnosis finding not titled yet\nUploaded pages could not be parsed into reliable worksheet evidence. Please re-upload a clearer file or review manually.\nL\nLin-4117\n7th Grade / quiz\nApr 22, 2026\nNeeds Review\n45\nProcedure gap\nProcedure gap is the clearest repeat pattern across this upload, with Calculation slip showing up as the next focus area.\nF\nFinalFlow-1775721652949\n5th Grade / quiz\nApr 9, 2026\nNeeds Review\n81\nProcedure gap\nProcedure gap is the clearest repeat pattern across this upload, with Calculation slip showing up as the next focus area.\nF\nFinalFlow-1775721652949\n5th Grade / quiz\nApr 9, 2026\nNeeds Review\n81\nProcedure gap\nProcedure gap is the clearest repeat pattern across this upload, with Calculation slip showing up as the next focus area.\nF\nFinalFlow-1775721652949\n5th Grade / quiz\nApr 9, 2026\nReady\n81\nRecent Activity\n\nLatest report, run, and workspace events.\n\nRun needs review for Lin-4117\nApr 22, 09:22 PM\nReport needs review for Lin-4117\nApr 22, 09:22 PM\nSubmit Upload\nApr 22, 08:46 PM\nCreate Upload\nApr 22, 08:46 PM\nQuick"
+    },
+    {
+      "url": "http://127.0.0.1:3000/dashboard/reports/8",
+      "file": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\dashboard_17_local_ui\\24_report_detail_after_review_fix.png",
+      "textSample": "Page Not Found\n\nThe page you are looking for might have been removed, had its name changed, or is temporarily unavailable.\n\nBack to Home"
+    },
+    {
+      "url": "http://127.0.0.1:3000/dashboard/reports/10",
+      "file": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\dashboard_17_local_ui\\24_report_detail_after_review_fix.png",
+      "textSample": "Pathnook\nOverview\nMembers\nReports\nACCOUNT\nBilling\nSettings\nO\nOrion\nOwner\nReports\n/\nLin-4117\n/\nDiagnosis, evidence, and next steps\nLin-4117 diagnosis report\n\nUploaded pages could not be parsed into reliable worksheet evidence. Please re-upload a clearer file or review manually. Created 2026/4/22. Source: quiz.\n\nShare state: no active share yet / Quality gate: needs_review\n\nneeds review\nExport PDF\nShare\nGuided Walkthrough\nBack to Reports\nDiagnosis\nEvidence\n7-Day Plan\nOutput Gates\nCompare\n\nDraft report only\n\nDraft report only: Uploaded pages could not be parsed into reliable worksheet evidence. Please re-upload a clearer file or review manually.\n\nThis run concludes\n\nStart with judgment, not overload. The goal is to help the parent quickly see what this run is actually saying.\n\nPrimary judgment layer\nMain conclusion\nNeeds manual review\n\nUploaded pages could not be parsed into reliable worksheet evidence. Please re-upload a clearer file or review manually.\n\nPrimary bottleneck / Needs manual review\nIgnore for now / Do not treat this draft as a confirmed learning diagnosis until readable evidence is available.\nDecision / Re-upload clearer pages or use a text-based PDF before acting on this draft diagnosis.\nConfidence score\n45\nDEVELOPING\nOverall learning confidence\nUse this score as a confidence signal for the diagnosis, not as a pressure score for the child.\nTrend\nDeveloping\n\nCompare this report against the previous run before adding more load.\n\nPriority\nHigh\n\nFix this now to unlock later work.\n\nRisk\nNeeds review\n\nChanged wording and transfer are the main watch-outs.\n\nJudgment layer\n\nThis is where the real issue is surfaced. Supporting explanation stays inside accordions.\n\n!\nReal learning bottleneck\nThe current upload points to a repeat pattern that needs clearer concept under"
+    }
+  ],
+  "checks": [
+    "members_page_loaded",
+    "child_detail_shows_review_state",
+    "reports_page_honest_review_state",
+    "report_detail_honest_review_state"
+  ],
+  "actualReportDetailHref": "/dashboard/reports/10",
+  "remainingIssues": [
+    "dashboard/runs/4 is slow enough to exceed a 30s browser navigation timeout during local demo verification.",
+    "dashboard/children/4 still has visible layout compression in the top summary row (grade / report count / plan state collapse together, and the avatar block alignment is off).",
+    "process API returned reportId=8 while the reports workspace linked the newest detail page at /dashboard/reports/10, so there is still an ID mismatch between the processing response and report detail routing."
+  ]
+}

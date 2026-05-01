@@ -1,0 +1,80 @@
+project: "familyEducation"
+task_id: "FE-085"
+task_name: "Share Summary And Calibration Starter Assets"
+sprint: "Sprint 16 Diagnosis Productization And Calibration"
+epic: "Diagnosis Productization"
+story_id: "FE-085"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_docs_and_fixture_required"
+auth_expectations: "share_link_rules_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Update tutor-friendly share output and add starter calibration assets for stable diagnosis behavior."
+business_value: "Makes the professional diagnosis layer repeatable and shareable without drifting into direct homework answers."
+requirement_ids:
+  - "DIAG122-SHARE"
+  - "DIAG122-CALIBRATION"
+test_case_ids:
+  - "TC-DIAG122-SHARE-001"
+  - "DOC-DIAG122-CAL-001"
+expected_evidence:
+  - "share_summary_payload_output"
+  - "gold_sample_fixture_index"
+  - "taxonomy_handbook_doc"
+  - "diagnosis_rules_doc"
+  - "plan_template_doc_or_config"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-082, FE-083, FE-084."
+  - "Read docs/需求文档_1.2_最终版.md sections 5 and 6 before coding."
+acceptance_criteria:
+  - "Share payload includes tutor-friendly diagnosis, evidence, plan, caution, and do-not-overreact summary fields."
+  - "Starter calibration assets include >=10 gold samples, taxonomy handbook, diagnosis aggregation rules, and 7-Day Plan rule templates."
+  - "Assets preserve parent-first framing and prohibit direct homework-answer output."
+constraints:
+  - "Do not create a full tutor account product or large-scale review operations UI."
+out_of_scope:
+  - "Full 20-30 real-sample production calibration program."
+dependencies:
+  - "FE-084"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/share/[token]"
+qa_urls:
+  - "http://127.0.0.1:3000/share/[token]"
+related_files:
+  - "app/share/[token]/*"
+  - "app/api/share/[token]/route.ts"
+  - "lib/reports/*"
+  - "docs/requirements/*"
+  - "components/reports/*"
+  - "tasks/runtime/*"
+primary_files:
+  - "app/share/[token]/*"
+  - "app/api/share/[token]/route.ts"
+  - "lib/reports/*"
+  - "docs/requirements/*"
+secondary_files:
+  - "components/reports/*"
+  - "tasks/runtime/*"
+test_cases:
+  normal:
+    - "Fetch a share link and verify tutor-friendly diagnosis fields are present."
+    - "Verify calibration docs/fixtures include the starter required set."
+  exception:
+    - "Confirm share output does not provide direct homework answers or overclaim weak evidence."

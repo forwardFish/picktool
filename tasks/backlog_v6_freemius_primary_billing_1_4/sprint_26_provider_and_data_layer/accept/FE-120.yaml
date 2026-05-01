@@ -1,0 +1,82 @@
+project: "familyEducation"
+task_id: "FE-120"
+task_name: "Sprint 26 Provider And Data Acceptance"
+sprint: "Sprint 26 Provider And Data Layer"
+epic: "Sprint Acceptance"
+story_id: "FE-120"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 26 only if provider abstraction, billing tables, and entitlement projection are all structurally complete and regression-safe."
+business_value: "Stops API cutover from starting until the new billing foundation is stable."
+requirement_ids:
+  - "GOV-003"
+  - "BILL14-PROVIDER-INTERFACE"
+  - "BILL14-DATA-LAYER"
+  - "BILL14-ENTITLEMENT-LAYER"
+test_case_ids:
+  - "TC-GOV-004"
+  - "TC-BILL14-005"
+  - "FP-BILL14-002"
+expected_evidence:
+  - "sprint_26_traceability_audit"
+  - "provider_and_data_acceptance_packet"
+  - "entitlement_snapshot_examples"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-117, FE-118, and FE-119."
+acceptance_criteria:
+  - "The provider/data sprint fails if interfaces, tables, compatibility reads, or entitlement projections are under-specified."
+  - "Acceptance evidence distinguishes structural foundation work from later route and UI cutover work."
+  - "Release closeout artifacts exist for the sprint."
+constraints:
+  - "Do not claim public billing cutover complete from provider/data evidence alone."
+out_of_scope:
+  - "Public checkout and billing-center UI acceptance."
+dependencies:
+  - "FE-117"
+  - "FE-118"
+  - "FE-119"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+related_files:
+  - "lib/payments/*"
+  - "lib/db/*"
+  - "tasks/backlog_v6_freemius_primary_billing_1_4/*"
+primary_files:
+  - "lib/payments/*"
+  - "lib/db/*"
+secondary_files:
+  - "tasks/backlog_v6_freemius_primary_billing_1_4/*"
+  - "PROJECT_STATE.md"
+test_cases:
+  normal:
+    - "Audit the provider/data contracts and confirm each required requirement row has evidence and linked tests."
+  exception:
+    - "Fail if old billing reads are removed without an explicit compatibility replacement."

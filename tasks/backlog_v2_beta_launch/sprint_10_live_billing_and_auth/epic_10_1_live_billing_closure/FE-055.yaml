@@ -1,0 +1,77 @@
+project: "familyEducation"
+task_id: "FE-055"
+task_name: "Creem Webhook Entitlements And Customer Portal"
+sprint: "Sprint 10 Live Billing And Auth"
+epic: "Live Billing Closure"
+story_id: "FE-055"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "billing_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Make subscription lifecycle, entitlement sync, webhook replay handling, and portal access production-ready."
+business_value: "Prevents live revenue loss and inconsistent unlock states."
+requirement_ids:
+  - "BIL2-003"
+test_case_ids:
+  - "API2-BIL-003"
+  - "API2-BIL-004"
+  - "DATA2-BIL-001"
+  - "OPS2-BIL-001"
+  - "CLICK2-008"
+expected_evidence:
+  - "webhook_replay_output"
+  - "entitlement_snapshot"
+  - "portal_session_evidence"
+  - "runtime_log_snapshot"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-054."
+  - "Read the billing API/data/ops rows before changing webhook or portal behavior."
+acceptance_criteria:
+  - "Webhook processing is idempotent across replay and lifecycle-change scenarios."
+  - "Customer portal access is consistent with the account's actual billing state."
+constraints:
+  - "Do not unlock reports or subscriptions twice on replay."
+  - "Do not expose portal access to non-entitled users."
+out_of_scope:
+  - "Google OAuth."
+dependencies:
+  - "FE-054"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+related_files:
+  - "app/api/creem/webhook/route.ts"
+  - "app/api/creem/portal/route.ts"
+  - "lib/payments/creem.ts"
+primary_files:
+  - "app/api/creem/webhook/route.ts"
+  - "app/api/creem/portal/route.ts"
+  - "lib/payments/creem.ts"
+secondary_files:
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+test_cases:
+  normal:
+    - "Execute API2-BIL-003, API2-BIL-004, and CLICK2-008."
+    - "Confirm DATA2-BIL-001 and OPS2-BIL-001 with replay evidence."
+  exception:
+    - "Replay the same webhook and verify no duplicate entitlement side effect occurs."

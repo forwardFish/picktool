@@ -1,0 +1,97 @@
+project: "familyEducation"
+task_id: "FE-024"
+task_name: "Sprint 3 Acceptance"
+sprint: "Sprint 3 Extraction And QC"
+epic: "Labeling And QC"
+story_id: "FE-024"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "authenticated_browser_and_runtime_evidence_required"
+auth_expectations: "no_browser_auth"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Confirm the extraction layer is safe and structurally correct before report generation begins."
+business_value: "Keeps unsafe or weak AI output from propagating to user-facing reports."
+requirement_ids:
+  - "GOV-003"
+test_case_ids:
+  - "AI-EXT-001"
+  - "AI-LBL-001"
+  - "AI-SAFE-001"
+  - "AI-QC-002"
+expected_evidence:
+  - "traceability_audit"
+  - "sprint_acceptance_report"
+  - "browser_regression_pack"
+  - "api_data_assertions"
+  - "remaining_risks_log"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Read docs/需求文档.md and docs/saas-starter 一天落地实施说明.md as the product truth source."
+  - "Read docs/requirements/prd_requirement_index.md and docs/requirements/prd_traceability_matrix.md before making scope decisions."
+  - "Dependencies accepted: FE-019 FE-020 FE-021 FE-022 FE-023."
+acceptance_criteria:
+  - "每个 Sprint 都必须有独立 Sprint Acceptance Story 和 traceability audit。"
+constraints:
+  - "Do not mark requirement rows green without attached evidence."
+  - "Do not expand beyond the declared route/API/schema/document scope unless a blocker explicitly requires it."
+  - "Do not add new feature work in this Story; this Story is only for regression, audit, and evidence."
+out_of_scope:
+  - "Any requirement not explicitly listed in requirement_ids."
+dependencies:
+  - "FE-019"
+  - "FE-020"
+  - "FE-021"
+  - "FE-022"
+  - "FE-023"
+related_files:
+  - "docs/requirements/prd_traceability_matrix.md"
+  - "docs/testing/api_data_ai_test_matrix.md"
+  - "tasks/backlog_v1/sprint_3_extraction_and_qc/sprint_plan.md"
+primary_files:
+  - "docs/requirements/prd_traceability_matrix.md"
+  - "docs/testing/api_data_ai_test_matrix.md"
+  - "tasks/backlog_v1/sprint_3_extraction_and_qc/sprint_plan.md"
+secondary_files:
+  - "docs/requirements/prd_traceability_matrix.md"
+story_inputs:
+  - "The linked requirement IDs from the PRD requirement index."
+  - "The linked tests from the page/click/API/data/AI matrices."
+  - "The current starter repository structure and route layout."
+story_process:
+  - "Confirm the requirement and test scope before touching code or docs."
+  - "Implement only the declared route/API/schema/document scope."
+  - "Produce the evidence listed under expected_evidence and update the traceability row status accordingly."
+story_outputs:
+  - "Scoped code or documentation changes."
+  - "Acceptance evidence tied to the declared test_case_ids."
+  - "A delivery packet suitable for downstream Sprint Acceptance."
+verification_basis:
+  - "All declared test_case_ids execute or are deterministically evidenced."
+  - "Review, code acceptance, and acceptance gate pass without blocker findings."
+  - "Requirement rows tied to this Story move to Green only with evidence."
+test_cases:
+  normal:
+    - "Execute AI-EXT-001 and capture pass evidence."
+    - "Execute AI-LBL-001 and capture pass evidence."
+    - "Execute AI-SAFE-001 and capture pass evidence."
+  exception:
+    - "Run the negative or edge coverage associated with AI-QC-002."

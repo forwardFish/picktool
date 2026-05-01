@@ -1,0 +1,23 @@
+{
+  "id": "run_cost_1777033129185_2fa5e304",
+  "createdAt": "2026-04-24T12:18:49.185Z",
+  "runId": 19,
+  "userId": 29,
+  "engine": "moonshot",
+  "pageCount": 5,
+  "labeledItemCount": 0,
+  "status": "needs_review",
+  "metadata": {
+    "confidence": 0.45,
+    "reviewReason": "Uploaded pages could not be parsed into reliable worksheet evidence. Please re-upload a clearer file or review manually.",
+    "engine": "moonshot",
+    "requestedEngine": "openai",
+    "fallbackApplied": true,
+    "attemptCount": 2,
+    "taskType": "extract-items",
+    "modelVersion": "kimi-k2.5"
+  },
+  "estimatedInputTokens": 6000,
+  "estimatedOutputTokens": 450,
+  "estimatedUsd": 0.0374
+}

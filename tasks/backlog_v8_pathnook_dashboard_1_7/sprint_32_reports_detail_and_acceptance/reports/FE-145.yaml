@@ -1,0 +1,55 @@
+project: "familyEducation"
+task_id: "FE-145"
+task_name: "1.7 Reports Dashboard Cutover"
+sprint: "Sprint 32 Reports Detail And Acceptance"
+epic: "Reports Dashboard"
+story_id: "FE-145"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Implement the reports dashboard aggregator and remove static report stats/activity from `/dashboard/reports`."
+business_value: "Parents get a trustworthy report list, real recent activity, and quick overview metrics that actually follow completed work."
+requirement_ids:
+  - "DASH17-REPORTS"
+  - "DASH17-STATE"
+  - "DASH17-RESUME"
+  - "DASH17-EMPTY"
+test_case_ids:
+  - "PAGE-RPT-001"
+  - "PAGE-RPT-002"
+  - "PAGE-RPT-003"
+  - "PAGE-RPT-004"
+expected_evidence:
+  - "reports_dashboard_service_assertions"
+  - "reports_dashboard_screenshots"
+required_modes:
+  - "builder"
+  - "qa"
+  - "review"
+acceptance_criteria:
+  - "The reports page reads real summary stats, rows, recent activity, and quick overview from a dedicated server-side aggregator."
+  - "Locked report state reflects billing snapshot rather than fake button affordances."
+constraints:
+  - "Do not use recentActivity = visibleReports.slice(0, 3) as the final source."
+primary_files:
+  - "lib/reports/get-reports-dashboard-data.ts"
+  - "app/(dashboard)/dashboard/reports/page.tsx"
+secondary_files:
+  - "lib/family/billing.ts"
+  - "lib/family/repository.ts"
+test_cases:
+  normal:
+    - "Verify empty, completed, in-review, and locked report list states."
+  exception:
+    - "Fail if report stats or quick overview can drift from the underlying row set."

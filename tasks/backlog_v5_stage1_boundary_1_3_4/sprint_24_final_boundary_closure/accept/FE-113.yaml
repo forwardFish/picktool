@@ -1,0 +1,95 @@
+project: "familyEducation"
+task_id: "FE-113"
+task_name: "1.3.4 Stage-Boundary Final Acceptance"
+sprint: "Sprint 24 Final Boundary Closure"
+epic: "Final Boundary Acceptance"
+story_id: "FE-113"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close the `1.3.4` stage-boundary lane only if every must-do and light-do row is green or correctly delegated and every postpone rule remains out of execution."
+business_value: "Provides a single authoritative acceptance gate for the Stage 1 boundary contract before later execution proceeds."
+requirement_ids:
+  - "GOV-004"
+  - "BND134-FINAL-ACCEPT"
+  - "BND134-POSTPONE-GUARDRAIL"
+test_case_ids:
+  - "TC-BND134-006"
+  - "FP-BND134-001"
+  - "FP-BND134-002"
+  - "FP-BND134-003"
+  - "FP-BND134-004"
+expected_evidence:
+  - "bnd134_traceability_audit"
+  - "must_do_lane_acceptance_packet"
+  - "light_lane_delegation_packet"
+  - "postpone_guardrail_packet"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-107, FE-111, and FE-112."
+acceptance_criteria:
+  - "All BND134 rows are green or explicitly delegated to accepted dependency lanes with evidence."
+  - "The final acceptance pack distinguishes must-do, light-do, and postpone classes."
+  - "The final boundary closeout includes ship, document-release, and retro artifacts."
+constraints:
+  - "Do not mark the `1.3.4` boundary lane complete from v4 lane evidence alone; the boundary audit itself must be green."
+out_of_scope:
+  - "Runtime feature implementation beyond the documented boundary contract."
+dependencies:
+  - "FE-107"
+  - "FE-111"
+  - "FE-112"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/share/[token]"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/share/[token]"
+related_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/*"
+  - "docs/handoff/current_handoff.md"
+  - "PROJECT_STATE.md"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+  - "docs/handoff/current_handoff.md"
+secondary_files:
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/*"
+  - "PROJECT_STATE.md"
+  - "README.md"
+test_cases:
+  normal:
+    - "Run the full BND134 boundary acceptance sweep and verify each class is audited separately."
+  exception:
+    - "Fail if any postponed feature enters execution or any must/light row lacks traceability."

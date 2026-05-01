@@ -1,0 +1,83 @@
+project: "familyEducation"
+task_id: "FE-101"
+task_name: "BND134 Requirement, Test, And Traceability Expansion"
+sprint: "Sprint 21 Boundary Bootstrap And Traceability"
+epic: "Traceability Expansion"
+story_id: "FE-101"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Extend the canonical requirement, traceability, and testing docs so `BND134-*` becomes the authoritative namespace for the `1.3.4` boundary contract."
+business_value: "Prevents `1.3.4` from fragmenting into disconnected notes outside the existing planning system."
+requirement_ids:
+  - "GOV-001"
+  - "GOV-002"
+  - "BND134-FINAL-ACCEPT"
+test_case_ids:
+  - "TC-GOV-002"
+  - "TC-BND134-002"
+  - "TC-BND134-003"
+expected_evidence:
+  - "bnd134_requirement_rows"
+  - "bnd134_traceability_rows"
+  - "bnd134_test_matrix_rows"
+  - "matrix_crosslink_audit"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-100."
+acceptance_criteria:
+  - "Requirement index includes BND134-PARENT-FIRST through BND134-FINAL-ACCEPT."
+  - "Traceability matrix includes one row per BND134 requirement with story ids, test ids, expected evidence, and planned status."
+  - "Governance, page, click, API/data/AI, and final acceptance docs all include the new BND134 test namespaces."
+constraints:
+  - "Do not create a second requirement index or alternate traceability matrix."
+out_of_scope:
+  - "Implementing or changing runtime behavior behind the mapped routes."
+dependencies:
+  - "FE-100"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "docs/requirements/prd_requirement_index.md"
+  - "docs/requirements/prd_traceability_matrix.md"
+  - "docs/testing/governance_test_matrix.md"
+  - "docs/testing/page_test_matrix.md"
+  - "docs/testing/click_path_matrix.md"
+  - "docs/testing/api_data_ai_test_matrix.md"
+  - "docs/testing/final_program_acceptance.md"
+primary_files:
+  - "docs/requirements/prd_requirement_index.md"
+  - "docs/requirements/prd_traceability_matrix.md"
+  - "docs/testing/governance_test_matrix.md"
+  - "docs/testing/page_test_matrix.md"
+  - "docs/testing/click_path_matrix.md"
+  - "docs/testing/api_data_ai_test_matrix.md"
+  - "docs/testing/final_program_acceptance.md"
+secondary_files:
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+  - "scripts/validate_planning_assets.py"
+test_cases:
+  normal:
+    - "Verify each BND134 requirement has at least one story id and one test row in canonical docs."
+  exception:
+    - "Fail if any BND134 row is only documented in the backlog and not in the authoritative matrices."

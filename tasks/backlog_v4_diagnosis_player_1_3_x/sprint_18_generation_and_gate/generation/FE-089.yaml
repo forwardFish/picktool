@@ -1,0 +1,74 @@
+project: "familyEducation"
+task_id: "FE-089"
+task_name: "Deck Outline And Slide Content Generation"
+sprint: "Sprint 18 Generation And Gate"
+epic: "Deck Generation Pipeline"
+story_id: "FE-089"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Generate a fixed-order diagnosis deck outline and slide set from existing diagnosis, report, plan, and share facts."
+business_value: "Turns the accepted diagnosis layer into a replayable guided walkthrough without duplicating content generation logic."
+requirement_ids:
+  - "DECK13-GENERATION"
+test_case_ids:
+  - "AI-DCK-001"
+  - "AI-DCK-002"
+  - "AI-DCK-005"
+  - "AI-DCK-007"
+  - "AI-DCK-008"
+expected_evidence:
+  - "deck_outline_fixture_output"
+  - "slide_payload_contract_output"
+  - "facts_only_generation_assertion"
+  - "fixed_page_order_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-088."
+acceptance_criteria:
+  - "Deck generation consumes diagnosis/report/plan/share facts only."
+  - "The fixed page order is stable for equivalent report inputs."
+  - "Each generated slide persists title, summary, evidence refs, and rendering metadata."
+constraints:
+  - "Do not read raw DOM or scrape page markup as the source of truth."
+out_of_scope:
+  - "Playback transport, snapshotting, or export lifecycle."
+dependencies:
+  - "FE-088"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/api/reports/[reportId]/generate-deck"
+related_files:
+  - "lib/family/*deck*"
+  - "app/api/reports/[reportId]/generate-deck/route.ts"
+  - "app/api/reports/[reportId]/deck/route.ts"
+primary_files:
+  - "lib/family/*deck*"
+  - "app/api/reports/[reportId]/generate-deck/route.ts"
+secondary_files:
+  - "app/api/reports/[reportId]/deck/route.ts"
+  - "components/reports/*"
+test_cases:
+  normal:
+    - "Generate a deck for a strong report and confirm the slide order and content are stable."
+  exception:
+    - "Fail generation if the report lacks enough structured facts to map into the required slide set."

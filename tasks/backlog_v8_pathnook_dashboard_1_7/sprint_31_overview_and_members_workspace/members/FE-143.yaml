@@ -1,0 +1,56 @@
+project: "familyEducation"
+task_id: "FE-143"
+task_name: "1.7 Members Workspace Cutover"
+sprint: "Sprint 31 Overview And Members Workspace"
+epic: "Members Workspace"
+story_id: "FE-143"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Implement the members page data service and remove prototype member data from the children workspace routes."
+business_value: "Parents can switch members, read current focus, review real history, and start diagnosis from the actual child context."
+requirement_ids:
+  - "DASH17-MEMBERS"
+  - "DASH17-STATE"
+  - "DASH17-EMPTY"
+test_case_ids:
+  - "PAGE-CHD-001"
+  - "PAGE-CHD-002"
+  - "PAGE-CHD-004"
+  - "PAGE-CHD-005"
+  - "PAGE-CHD-006"
+expected_evidence:
+  - "members_workspace_service_assertions"
+  - "member_workspace_screenshots"
+required_modes:
+  - "builder"
+  - "qa"
+  - "review"
+acceptance_criteria:
+  - "The members routes read switcher cards, child detail, subject summaries, recent reports, and next move from a server-side aggregator."
+  - "Subject summaries derive from recent reports, issue trends, and review histories instead of static percentages."
+constraints:
+  - "Do not leave prototype avatars, hard-coded ages, or fixed subject progress values on the logged-in surface."
+primary_files:
+  - "lib/members/get-members-page-data.ts"
+  - "app/(dashboard)/dashboard/children/page.tsx"
+  - "app/(dashboard)/dashboard/children/[childId]/page.tsx"
+secondary_files:
+  - "components/dashboard/member-tabs.tsx"
+  - "components/children/report-history-client.tsx"
+test_cases:
+  normal:
+    - "Verify no-members, member-with-no-reports, and member-with-plan-in-progress states."
+  exception:
+    - "Fail if members view still renders static report or subject cards unrelated to the selected child."

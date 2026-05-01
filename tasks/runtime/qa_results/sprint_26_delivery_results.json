@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-04-13T16:20:00+08:00",
+  "sprint": "sprint_26_provider_and_data_layer",
+  "stories": [
+    {
+      "story_id": "FE-117",
+      "status": "implemented",
+      "evidence": [
+        "provider_interface_contract",
+        "service_selection_matrix",
+        "creem_provider_extraction_report",
+        "feature_flag_switch_proof"
+      ]
+    },
+    {
+      "story_id": "FE-118",
+      "status": "implemented",
+      "evidence": [
+        "billing_table_migration_output",
+        "legacy_mapping_contract",
+        "compat_read_order_note",
+        "webhook_event_idempotency_schema_proof"
+      ]
+    },
+    {
+      "story_id": "FE-119",
+      "status": "implemented",
+      "evidence": [
+        "entitlement_projection_rules",
+        "monthly_annual_upgrade_map",
+        "one_time_credit_mapping",
+        "billing_snapshot_contract"
+      ]
+    },
+    {
+      "story_id": "FE-120",
+      "status": "audit_completed",
+      "evidence": [
+        "sprint_26_traceability_audit",
+        "provider_and_data_acceptance_packet",
+        "entitlement_snapshot_examples"
+      ]
+    }
+  ],
+  "verification": {
+    "typecheck": {
+      "command": "pnpm exec tsc --noEmit --pretty false",
+      "status": "passed"
+    },
+    "unit_tests": {
+      "command": "npx tsx --test tests/billing-provider.test.ts tests/billing-entitlements.test.ts",
+      "status": "passed"
+    },
+    "build": {
+      "command": "pnpm build",
+      "status": "passed"
+    },
+    "planning_assets": {
+      "command": "python scripts/validate_planning_assets.py",
+      "status": "passed"
+    }
+  },
+  "notes": [
+    "Sprint 26 only closes the provider/data foundation. Public route cutover (/api/checkout, /api/portal, /webhook) is intentionally deferred.",
+    "Freemius remains a contract-compatible shell in Sprint 26 and safely reports unavailable when it is not configured.",
+    "Creem remains the explicit rollback path through BILLING_PROVIDER_ALLOW_CREEM_FALLBACK and legacy compatibility routes."
+  ],
+  "required_matrix_ids": [
+    "API-BILL14-001",
+    "API-BILL14-002",
+    "API-BILL14-003",
+    "API-BILL14-004",
+    "API-BILL14-005",
+    "DATA-BILL14-001",
+    "DATA-BILL14-002",
+    "DATA-BILL14-003",
+    "DATA-BILL14-004",
+    "DATA-BILL14-005",
+    "DATA-BILL14-006",
+    "NF-BILL14-001"
+  ]
+}

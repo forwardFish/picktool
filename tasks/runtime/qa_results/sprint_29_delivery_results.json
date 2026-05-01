@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-04-13T00:00:00+08:00",
+  "sprint": "sprint_29_bootstrap_and_traceability",
+  "stories": [
+    {
+      "story_id": "FE-127",
+      "status": "implemented",
+      "evidence": [
+        "tasks/backlog_v7_homepage_display_rewrite_1_5/sprint_overview.md",
+        "docs/handoff/current_handoff.md",
+        ".meta/familyEducation/continuity/continuity_manifest.json"
+      ]
+    },
+    {
+      "story_id": "FE-128",
+      "status": "implemented",
+      "evidence": [
+        "docs/requirements/prd_requirement_index.md",
+        "docs/requirements/prd_traceability_matrix.md",
+        "docs/testing/page_test_matrix.md"
+      ]
+    },
+    {
+      "story_id": "FE-129",
+      "status": "implemented",
+      "evidence": [
+        "tasks/runtime/traceability_audits/sprint_29_traceability_audit.md",
+        "tasks/runtime/sprint_acceptance/sprint_29_acceptance_report.md"
+      ]
+    }
+  ],
+  "verification": {
+    "planning_validation": "passed"
+  }
+}

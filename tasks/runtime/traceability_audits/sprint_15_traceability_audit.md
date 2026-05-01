@@ -1,0 +1,15 @@
+# Sprint 15 Traceability Audit
+
+Generated at: `2026-04-10T20:34:04`
+
+## Story Coverage
+- `FE-078`: requirements=DIAG122-INTAKE; tests=TC-DIAG122-INTAKE-001, PAGE-DIAG122-UPLOAD-001, API-DIAG122-INTAKE-001; accepted=yes
+- `FE-079`: requirements=DIAG122-ITEM; tests=TC-DIAG122-ITEM-001, API-DIAG122-ITEM-001, DATA-DIAG122-ITEM-001; accepted=yes
+- `FE-080`: requirements=DIAG122-TAXONOMY; tests=TC-DIAG122-TAX-001, API-DIAG122-TAX-001, DATA-DIAG122-TAX-001; accepted=yes
+- `FE-081`: requirements=DIAG122-FOUNDATION-ACCEPT; tests=TC-DIAG122-SPRINT15-ACCEPT; accepted=yes
+
+## Matrix Status
+- `DIAG122-FOUNDATION-ACCEPT`: Green
+- `DIAG122-INTAKE`: Green
+- `DIAG122-ITEM`: Green
+- `DIAG122-TAXONOMY`: Green

@@ -1,0 +1,147 @@
+{
+  "generated_at": "2026-04-19T02:02:12.790Z",
+  "status": "fail",
+  "issues": [
+    "preview deployment is built from forwardFish/familyEducation, expected forwardFish/pathnook."
+  ],
+  "project": {
+    "id": "prj_uVnuKJSGB3bjvNwSB3tpPZTFVGHw",
+    "name": "pathnook",
+    "rootDirectory": ".",
+    "expectedRootDirectory": ".",
+    "linkedRepo": {
+      "owner": "forwardFish",
+      "repo": "pathnook",
+      "full": "forwardFish/pathnook"
+    },
+    "productionBranch": "main",
+    "localGit": {
+      "head": "e65d8c434c395b9aaab2d4f452a8afd7ea971975",
+      "branch": "main",
+      "remote": {
+        "raw": "git@github.com:forwardFish/pathnook.git",
+        "provider": "github",
+        "owner": "forwardFish",
+        "repo": "pathnook",
+        "full": "forwardFish/pathnook"
+      }
+    },
+    "localRemoteMatchesLinkedRepo": true,
+    "localRemoteWarning": null,
+    "previewDeploymentId": "dpl_F7SoMQDuPuGyPz6w63qo2XsPujrK",
+    "productionDeploymentId": "dpl_FSc7BSewb9t5rjXsC2tizwQgVHz5",
+    "productionAliases": [
+      "www.pathnook.com",
+      "family-education-chi.vercel.app",
+      "pathnook-5184250-8087s-projects.vercel.app",
+      "pathnook-5184250-8087-5184250-8087s-projects.vercel.app",
+      "pathnook.com"
+    ]
+  },
+  "suites": [
+    {
+      "label": "preview",
+      "baseUrl": "https://family-education-akjjfqd8u-5184250-8087s-projects.vercel.app",
+      "aliases": [],
+      "deploymentId": "dpl_F7SoMQDuPuGyPz6w63qo2XsPujrK",
+      "target": null,
+      "readyState": "READY",
+      "readySubstate": "STAGED",
+      "github": {
+        "owner": "forwardFish",
+        "repo": "familyEducation",
+        "sha": "276f67ec28272566c76366d6a362729efae4aa6b",
+        "message": "Trigger Vercel preview deployment",
+        "ref": "vercel-sync-preview"
+      },
+      "linkedRepoMatch": false,
+      "checks": [
+        {
+          "route": "/",
+          "url": "https://family-education-akjjfqd8u-5184250-8087s-projects.vercel.app/",
+          "status": 200
+        },
+        {
+          "route": "/pricing",
+          "url": "https://family-education-akjjfqd8u-5184250-8087s-projects.vercel.app/pricing",
+          "status": 200
+        },
+        {
+          "route": "/sign-up",
+          "url": "https://family-education-akjjfqd8u-5184250-8087s-projects.vercel.app/sign-up",
+          "status": 200
+        },
+        {
+          "route": "/sign-in",
+          "url": "https://family-education-akjjfqd8u-5184250-8087s-projects.vercel.app/sign-in",
+          "status": 200
+        },
+        {
+          "route": "/dashboard",
+          "url": "https://family-education-akjjfqd8u-5184250-8087s-projects.vercel.app/dashboard",
+          "status": 307
+        },
+        {
+          "route": "/dashboard/billing",
+          "url": "https://family-education-akjjfqd8u-5184250-8087s-projects.vercel.app/dashboard/billing",
+          "status": 307
+        }
+      ],
+      "status": "failed",
+      "errors": [
+        "preview deployment is built from forwardFish/familyEducation, expected forwardFish/pathnook."
+      ]
+    },
+    {
+      "label": "production",
+      "baseUrl": "https://pathnook-88mj9u773-5184250-8087s-projects.vercel.app",
+      "aliases": [],
+      "deploymentId": "dpl_FSc7BSewb9t5rjXsC2tizwQgVHz5",
+      "target": "production",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "github": {
+        "owner": "forwardFish",
+        "repo": "pathnook",
+        "sha": "e65d8c434c395b9aaab2d4f452a8afd7ea971975",
+        "message": "Complete Freemius 1.5.4 fixpack and pricing v2 rollout",
+        "ref": "main"
+      },
+      "linkedRepoMatch": true,
+      "checks": [
+        {
+          "route": "/",
+          "url": "https://pathnook-88mj9u773-5184250-8087s-projects.vercel.app/",
+          "status": 200
+        },
+        {
+          "route": "/pricing",
+          "url": "https://pathnook-88mj9u773-5184250-8087s-projects.vercel.app/pricing",
+          "status": 200
+        },
+        {
+          "route": "/sign-up",
+          "url": "https://pathnook-88mj9u773-5184250-8087s-projects.vercel.app/sign-up",
+          "status": 200
+        },
+        {
+          "route": "/sign-in",
+          "url": "https://pathnook-88mj9u773-5184250-8087s-projects.vercel.app/sign-in",
+          "status": 200
+        },
+        {
+          "route": "/dashboard",
+          "url": "https://pathnook-88mj9u773-5184250-8087s-projects.vercel.app/dashboard",
+          "status": 307
+        },
+        {
+          "route": "/dashboard/billing",
+          "url": "https://pathnook-88mj9u773-5184250-8087s-projects.vercel.app/dashboard/billing",
+          "status": 307
+        }
+      ],
+      "status": "passed",
+      "errors": []
+    }
+  ]
+}

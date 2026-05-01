@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-04-09T08:00:36.215141+00:00",
+  "retention_windows": {
+    "archived_children_days": 30,
+    "runtime_event_days": 30,
+    "reminder_event_days": 90
+  },
+  "cleanup_counts": {
+    "archived_children_purged": 1,
+    "linked_uploads_removed": 0,
+    "linked_runs_removed": 0,
+    "linked_reports_removed": 0,
+    "linked_share_links_removed": 0,
+    "reminder_events_removed": 0,
+    "lifecycle_events_removed": 1,
+    "error_events_removed": 1,
+    "cost_artifacts_removed": 1,
+    "run_artifact_files_removed": 0
+  }
+}

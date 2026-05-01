@@ -1,0 +1,85 @@
+project: "familyEducation"
+task_id: "FE-102"
+task_name: "Sprint 21 Boundary Bootstrap Acceptance"
+sprint: "Sprint 21 Boundary Bootstrap And Traceability"
+epic: "Sprint 21 Acceptance"
+story_id: "FE-102"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Accept Sprint 21 only if v5 is authoritative in continuity and `BND134-*` is fully registered across the canonical planning matrices."
+business_value: "Prevents later boundary stories from building on an unregistered or continuity-drifting backlog lane."
+requirement_ids:
+  - "GOV-003"
+  - "BND134-FINAL-ACCEPT"
+test_case_ids:
+  - "TC-GOV-004"
+  - "TC-BND134-001"
+  - "TC-BND134-002"
+expected_evidence:
+  - "sprint_21_traceability_audit"
+  - "v5_continuity_acceptance_report"
+  - "bnd134_matrix_acceptance_packet"
+  - "planning_validation_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-100 and FE-101."
+acceptance_criteria:
+  - "v5 is listed in continuity files, authoritative backlog roots, and continuity manifest delivery assets."
+  - "The planning validator passes with `backlog_v5_stage1_boundary_1_3_4` included."
+  - "All BND134 rows exist in requirement, traceability, and testing docs before Sprint 22 begins."
+constraints:
+  - "Do not mark Sprint 21 accepted from continuity files alone; matrix coverage must also be complete."
+out_of_scope:
+  - "Must-do and light-do contract mapping content."
+dependencies:
+  - "FE-100"
+  - "FE-101"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "NOW.md"
+  - "STATE.md"
+  - "DECISIONS.md"
+  - "docs/handoff/current_handoff.md"
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+secondary_files:
+  - "NOW.md"
+  - "STATE.md"
+  - "DECISIONS.md"
+  - "docs/handoff/current_handoff.md"
+  - "scripts/validate_planning_assets.py"
+test_cases:
+  normal:
+    - "Run the planning validator and verify all Sprint 21 artifacts cross-link correctly."
+  exception:
+    - "Fail acceptance if v5 exists on disk but is missing from continuity or authoritative backlog validation."

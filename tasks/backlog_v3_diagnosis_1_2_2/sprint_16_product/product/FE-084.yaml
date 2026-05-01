@@ -1,0 +1,81 @@
+project: "familyEducation"
+task_id: "FE-084"
+task_name: "Confidence Gate And Review Gate"
+sprint: "Sprint 16 Diagnosis Productization And Calibration"
+epic: "Diagnosis Productization"
+story_id: "FE-084"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "run_and_report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Implement report quality tiers and review routing so low-confidence inputs cannot be overclaimed."
+business_value: "Protects trust by making the system visibly cautious when evidence is weak."
+requirement_ids:
+  - "DIAG122-GATE"
+test_case_ids:
+  - "TC-DIAG122-GATE-001"
+  - "PAGE-DIAG122-GATE-001"
+  - "API-DIAG122-GATE-001"
+expected_evidence:
+  - "quality_gate_score_output"
+  - "needs_review_route_output"
+  - "cautious_report_screenshot"
+  - "low_confidence_block_assertion"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-083."
+  - "Read docs/需求文档_1.2_最终版.md section 4.6 before coding."
+acceptance_criteria:
+  - "Quality Gate assigns A/B/C/D or equivalent tiers from extraction, evidence, taxonomy, diagnosis, and plan checks."
+  - "B-tier reports show cautious messaging; C/D-tier cases route to needs_review or block complete report publication."
+  - "Runs page shows extraction, classification, diagnosis, plan, and quality-check stages."
+constraints:
+  - "Do not lower the evidence bar merely to publish more complete reports."
+out_of_scope:
+  - "Large-scale human review operations dashboard beyond starter review routing."
+dependencies:
+  - "FE-083"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "lib/reports/*"
+  - "app/api/runs/[runId]/*"
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+  - "components/runs/*"
+  - "components/reports/*"
+primary_files:
+  - "lib/reports/*"
+  - "app/api/runs/[runId]/*"
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+secondary_files:
+  - "components/runs/*"
+  - "components/reports/*"
+test_cases:
+  normal:
+    - "High-confidence report publishes with formal messaging and complete plan."
+  exception:
+    - "Low-confidence run enters needs_review and explains why the parent should re-upload or wait for review."

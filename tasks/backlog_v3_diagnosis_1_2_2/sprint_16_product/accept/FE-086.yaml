@@ -1,0 +1,88 @@
+project: "familyEducation"
+task_id: "FE-086"
+task_name: "Sprint 16 And 1.2.2 Diagnosis Lane Acceptance"
+sprint: "Sprint 16 Diagnosis Productization And Calibration"
+epic: "Calibration And Release Acceptance"
+story_id: "FE-086"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close the v1.2.2 diagnosis lane only if the six-step pipeline and calibration starter set are evidenced."
+business_value: "Prevents claiming professional diagnosis readiness before the pipeline, gates, and calibration assets are actually verified."
+requirement_ids:
+  - "DIAG122-FINAL-ACCEPT"
+test_case_ids:
+  - "TC-DIAG122-SPRINT16-ACCEPT"
+  - "TC-DIAG122-FINAL-RELEASE"
+expected_evidence:
+  - "final_1_2_2_traceability_audit"
+  - "six_step_pipeline_evidence"
+  - "calibration_asset_index"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-082, FE-083, FE-084, FE-085."
+acceptance_criteria:
+  - "The final release checklist verifies intake, item extraction, taxonomy, diagnosis, 7-Day Plan, confidence gate, share summary, and calibration starter assets."
+  - "Low-confidence overclaiming, missing evidence, missing pauseList, or missing do-not-overreact output fails acceptance."
+  - "The verdict explicitly states that true OpenAI quality remains subject to the P0 live analysis blocker where applicable."
+constraints:
+  - "Do not describe P1 professional diagnosis as replacing the existing P0 launch blockers."
+out_of_scope:
+  - "Google OAuth, live Creem, Blob private link, or full OpenAI production validation unless already completed by the P0 lane."
+dependencies:
+  - "FE-082"
+  - "FE-083"
+  - "FE-084"
+  - "FE-085"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+  - "http://127.0.0.1:3000/share/[token]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+related_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/runtime/*"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+  - "README.md"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/runtime/*"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+secondary_files:
+  - "README.md"
+test_cases:
+  normal:
+    - "Run the final v1.2.2 release checklist against the latest implemented evidence."
+  exception:
+    - "Fail acceptance if any Top Finding lacks evidence, if pauseList is missing, or if C/D-tier reports publish as complete."

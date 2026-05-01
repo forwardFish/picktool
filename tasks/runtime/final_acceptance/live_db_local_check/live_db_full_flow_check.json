@@ -1,0 +1,15 @@
+{
+  "status": "fail",
+  "email": "codex.live.flow.1776867366442@example.com",
+  "nickname": "Live-6442",
+  "childId": 0,
+  "runId": null,
+  "reportId": null,
+  "checks": [
+    "signup_dashboard",
+    "child_created"
+  ],
+  "error": "page.setInputFiles: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[type=\"file\"]')\u001b[22m\n",
+  "finalUrl": "http://127.0.0.1:3000/dashboard/children/0/upload",
+  "textSample": "Page Not Found\n\nThe page you are looking for might have been removed, had its name changed, or is temporarily unavailable.\n\nBack to Home"
+}

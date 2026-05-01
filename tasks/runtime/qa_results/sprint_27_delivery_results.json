@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-04-13T00:00:00+08:00",
+  "sprint": "sprint_27_api_cutover_and_compatibility",
+  "stories": [
+    {
+      "story_id": "FE-121",
+      "status": "implemented",
+      "evidence": [
+        "checkout_route_smoke",
+        "portal_route_smoke",
+        "compat_facade_switch_report",
+        "provider_default_behavior_proof"
+      ]
+    },
+    {
+      "story_id": "FE-122",
+      "status": "implemented",
+      "evidence": [
+        "webhook_listener_contract",
+        "webhook_replay_idempotency_proof",
+        "creem_compat_proxy_report",
+        "entitlement_sync_event_map"
+      ]
+    }
+  ],
+  "verification": {
+    "typecheck": "passed",
+    "build": "passed"
+  }
+}

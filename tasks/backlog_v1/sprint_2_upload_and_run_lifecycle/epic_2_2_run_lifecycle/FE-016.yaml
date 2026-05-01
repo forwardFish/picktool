@@ -1,0 +1,110 @@
+project: "familyEducation"
+task_id: "FE-016"
+task_name: "Run Status State Machine And Progress Page"
+sprint: "Sprint 2 Upload And Run Lifecycle"
+epic: "Run Lifecycle"
+story_id: "FE-016"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "parent_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Expose run creation, status transitions, and live progress on the run page."
+business_value: "Makes long-running analysis understandable to the user."
+requirement_ids:
+  - "PAGE-008"
+  - "RUN-001"
+  - "RUN-002"
+  - "RUN-003"
+test_case_ids:
+  - "PAGE-RUN-001"
+  - "PAGE-RUN-002"
+  - "PAGE-RUN-003"
+  - "PAGE-RUN-007"
+  - "PAGE-RUN-008"
+  - "API-RUN-001"
+  - "API-RUN-002"
+  - "DATA-RUN-001"
+  - "CLICK-003"
+expected_evidence:
+  - "before_after_screenshots"
+  - "browse_console_log"
+  - "browse_network_log"
+  - "qa_test_output"
+  - "acceptance_checklist"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档.md and docs/saas-starter 一天落地实施说明.md as the product truth source."
+  - "Read docs/requirements/prd_requirement_index.md and docs/requirements/prd_traceability_matrix.md before making scope decisions."
+  - "Dependencies accepted: FE-014 FE-015."
+acceptance_criteria:
+  - "Run Status 页必须展示步骤、状态、进度、失败重试、support 入口。"
+  - "提交上传后必须创建 analysis_run 并跳转到进度页。"
+  - "analysis_run 必须支持 queued、running、done、failed、needs_review。"
+  - "进度页必须展示步骤、百分比或阶段状态与预计时间。"
+constraints:
+  - "Do not mark requirement rows green without attached evidence."
+  - "Do not expand beyond the declared route/API/schema/document scope unless a blocker explicitly requires it."
+  - "Collect browse, design, and browser QA evidence for the changed routes."
+out_of_scope:
+  - "Any requirement not explicitly listed in requirement_ids."
+dependencies:
+  - "FE-014"
+  - "FE-015"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+related_files:
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+  - "app/api/runs/[runId]/route.ts"
+  - "lib/db/schema.ts"
+primary_files:
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+  - "app/api/runs/[runId]/route.ts"
+  - "lib/db/schema.ts"
+secondary_files:
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+story_inputs:
+  - "The linked requirement IDs from the PRD requirement index."
+  - "The linked tests from the page/click/API/data/AI matrices."
+  - "The current starter repository structure and route layout."
+story_process:
+  - "Confirm the requirement and test scope before touching code or docs."
+  - "Implement only the declared route/API/schema/document scope."
+  - "Produce the evidence listed under expected_evidence and update the traceability row status accordingly."
+story_outputs:
+  - "Scoped code or documentation changes."
+  - "Acceptance evidence tied to the declared test_case_ids."
+  - "A delivery packet suitable for downstream Sprint Acceptance."
+verification_basis:
+  - "All declared test_case_ids execute or are deterministically evidenced."
+  - "Review, code acceptance, and acceptance gate pass without blocker findings."
+  - "Requirement rows tied to this Story move to Green only with evidence."
+test_cases:
+  normal:
+    - "Execute PAGE-RUN-001 and capture pass evidence."
+    - "Execute PAGE-RUN-002 and capture pass evidence."
+    - "Execute PAGE-RUN-003 and capture pass evidence."
+  exception:
+    - "Run the negative or edge coverage associated with CLICK-003."

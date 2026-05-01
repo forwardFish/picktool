@@ -1,0 +1,103 @@
+project: "familyEducation"
+task_id: "FE-008"
+task_name: "18 Plus Signup Gate"
+sprint: "Sprint 1 Parent Identity And Dashboard"
+epic: "Parent Identity"
+story_id: "FE-008"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "parent_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Extend sign-up so a parent cannot register without the required age and consent gates."
+business_value: "Matches the PRD and reduces compliance risk at the first touchpoint."
+requirement_ids:
+  - "PAGE-003"
+  - "AUTH-001"
+  - "AUTH-002"
+test_case_ids:
+  - "PAGE-SUP-001"
+  - "PAGE-SUP-002"
+  - "PAGE-SUP-003"
+  - "API-AUTH-001"
+  - "API-AUTH-002"
+expected_evidence:
+  - "before_after_screenshots"
+  - "browse_console_log"
+  - "browse_network_log"
+  - "qa_test_output"
+  - "acceptance_checklist"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档.md and docs/saas-starter 一天落地实施说明.md as the product truth source."
+  - "Read docs/requirements/prd_requirement_index.md and docs/requirements/prd_traceability_matrix.md before making scope decisions."
+  - "Dependencies accepted: FE-007."
+acceptance_criteria:
+  - "Sign-up 页必须包含 email、password、country、timezone、18+、TOS/Privacy。"
+  - "家长注册必须要求 18+ 勾选，否则不可提交。"
+  - "家长注册必须要求同意 TOS/Privacy。"
+constraints:
+  - "Do not mark requirement rows green without attached evidence."
+  - "Do not expand beyond the declared route/API/schema/document scope unless a blocker explicitly requires it."
+  - "Collect browse, design, and browser QA evidence for the changed routes."
+out_of_scope:
+  - "Any requirement not explicitly listed in requirement_ids."
+dependencies:
+  - "FE-007"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/sign-up"
+qa_urls:
+  - "http://127.0.0.1:3000/sign-up"
+related_files:
+  - "app/(login)/login.tsx"
+  - "app/(login)/actions.ts"
+  - "lib/db/schema.ts"
+primary_files:
+  - "app/(login)/login.tsx"
+  - "app/(login)/actions.ts"
+  - "lib/db/schema.ts"
+secondary_files:
+  - "app/(login)/login.tsx"
+story_inputs:
+  - "The linked requirement IDs from the PRD requirement index."
+  - "The linked tests from the page/click/API/data/AI matrices."
+  - "The current starter repository structure and route layout."
+story_process:
+  - "Confirm the requirement and test scope before touching code or docs."
+  - "Implement only the declared route/API/schema/document scope."
+  - "Produce the evidence listed under expected_evidence and update the traceability row status accordingly."
+story_outputs:
+  - "Scoped code or documentation changes."
+  - "Acceptance evidence tied to the declared test_case_ids."
+  - "A delivery packet suitable for downstream Sprint Acceptance."
+verification_basis:
+  - "All declared test_case_ids execute or are deterministically evidenced."
+  - "Review, code acceptance, and acceptance gate pass without blocker findings."
+  - "Requirement rows tied to this Story move to Green only with evidence."
+test_cases:
+  normal:
+    - "Execute PAGE-SUP-001 and capture pass evidence."
+    - "Execute PAGE-SUP-002 and capture pass evidence."
+    - "Execute PAGE-SUP-003 and capture pass evidence."
+  exception:
+    - "Run the negative or edge coverage associated with API-AUTH-002."

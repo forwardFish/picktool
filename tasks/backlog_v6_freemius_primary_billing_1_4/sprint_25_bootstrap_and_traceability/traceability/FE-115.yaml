@@ -1,0 +1,87 @@
+project: "familyEducation"
+task_id: "FE-115"
+task_name: "1.4 Requirement, Traceability, And Billing Baseline Expansion"
+sprint: "Sprint 25 Bootstrap And Traceability"
+epic: "Traceability And Baseline"
+story_id: "FE-115"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Register `BILL14-*` rows across requirement, traceability, and testing docs and document the live Pathnook brand/billing gaps that justify the lane."
+business_value: "Gives implementation work a canonical requirement-to-test contract and a baseline evidence list for later acceptance."
+requirement_ids:
+  - "GOV-001"
+  - "BILL14-BASELINE"
+  - "BILL14-NON-REGRESSION"
+test_case_ids:
+  - "TC-GOV-002"
+  - "TC-BILL14-002"
+  - "TC-BILL14-003"
+expected_evidence:
+  - "bill14_requirement_rows"
+  - "bill14_traceability_rows"
+  - "billing_test_matrix_expansion"
+  - "public_copy_baseline_evidence_plan"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-114."
+  - "Read docs/需求文档_1.4.md and audit the current pricing, billing, landing, footer, and legal requirements before editing matrix files."
+acceptance_criteria:
+  - "Requirement, traceability, governance, page, click, API/data/AI, and final-acceptance docs all include `BILL14-*` coverage."
+  - "Baseline evidence requirements explicitly call out current public `FamilyEducation` or `Creem` leakage and Freemius configuration-gap handling."
+  - "No `1.4` row exists only in backlog files; every story requirement is cross-linked in canonical docs."
+constraints:
+  - "Do not mark existing `DECK13-*` or `BND134-*` rows green as part of `1.4` planning."
+out_of_scope:
+  - "Implementing payment-provider code or copy changes in runtime surfaces."
+dependencies:
+  - "FE-114"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+related_files:
+  - "docs/requirements/prd_requirement_index.md"
+  - "docs/requirements/prd_traceability_matrix.md"
+  - "docs/testing/governance_test_matrix.md"
+  - "docs/testing/page_test_matrix.md"
+  - "docs/testing/click_path_matrix.md"
+  - "docs/testing/api_data_ai_test_matrix.md"
+  - "docs/testing/final_program_acceptance.md"
+primary_files:
+  - "docs/requirements/prd_requirement_index.md"
+  - "docs/requirements/prd_traceability_matrix.md"
+  - "docs/testing/governance_test_matrix.md"
+  - "docs/testing/page_test_matrix.md"
+  - "docs/testing/click_path_matrix.md"
+  - "docs/testing/api_data_ai_test_matrix.md"
+  - "docs/testing/final_program_acceptance.md"
+secondary_files:
+  - "docs/需求文档_1.4.md"
+  - "tasks/backlog_v6_freemius_primary_billing_1_4/*"
+test_cases:
+  normal:
+    - "Cross-check every `BILL14-*` requirement row against at least one story and one testing matrix row."
+  exception:
+    - "Fail if any `1.4` planning asset omits the baseline or regression expectations."

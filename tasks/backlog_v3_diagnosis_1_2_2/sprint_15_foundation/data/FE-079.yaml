@@ -1,0 +1,78 @@
+project: "familyEducation"
+task_id: "FE-079"
+task_name: "Problem Item Extraction Contract"
+sprint: "Sprint 15 Professional Diagnosis Pipeline Foundation"
+epic: "Diagnostic Data Foundation"
+story_id: "FE-079"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "run_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Upgrade problem items into the fact layer for diagnosis with source, topic, teacher signal, and evidence anchors."
+business_value: "Creates the evidence backbone needed for credible findings and tutor-readable summaries."
+requirement_ids:
+  - "DIAG122-ITEM"
+test_case_ids:
+  - "TC-DIAG122-ITEM-001"
+  - "API-DIAG122-ITEM-001"
+  - "DATA-DIAG122-ITEM-001"
+expected_evidence:
+  - "problem_item_schema_assertion"
+  - "extract_items_api_output"
+  - "evidence_anchor_fixture"
+  - "low_confidence_item_handling_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-078."
+  - "Read docs/需求文档_1.2_最终版.md section 4.2 before coding."
+acceptance_criteria:
+  - "Problem items include questionSummary, studentResponseSummary, workType, topicHint, sourceSnippet, evidenceAnchorJson, and normalizedTeacherSignal."
+  - "POST /api/runs/[runId]/extract-items and GET /api/runs/[runId]/items are available or existing process routes expose equivalent behavior with this contract documented."
+  - "Evidence can trace at least one Top Finding back to a problem item and page/anchor."
+constraints:
+  - "Do not fabricate items for weak OCR or insufficient input."
+out_of_scope:
+  - "Taxonomy scoring or final report UI redesign."
+dependencies:
+  - "FE-078"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+related_files:
+  - "app/api/runs/[runId]/*"
+  - "lib/reports/*"
+  - "lib/db/schema.ts"
+  - "lib/db/queries.ts"
+  - "components/runs/*"
+  - "components/reports/*"
+primary_files:
+  - "app/api/runs/[runId]/*"
+  - "lib/reports/*"
+  - "lib/db/schema.ts"
+  - "lib/db/queries.ts"
+secondary_files:
+  - "components/runs/*"
+  - "components/reports/*"
+test_cases:
+  normal:
+    - "Extract items for a deterministic fixture and verify page/anchor traceability."
+  exception:
+    - "For weak extraction confidence, surface a warning instead of overclaiming usable items."

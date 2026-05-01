@@ -1,0 +1,79 @@
+project: "familyEducation"
+task_id: "FE-104"
+task_name: "Parent Report, ExplanationCard, And SevenDayPlan Boundary Alignment"
+sprint: "Sprint 22 Must-Do Core Alignment"
+epic: "Report And Plan"
+story_id: "FE-104"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "browser_and_docs_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Align report section order, explanation-card reuse, and seven-day plan structure with the `1.3.4` must-do contract while preserving the report as the primary Stage 1 value layer."
+business_value: "Prevents light walkthrough concepts from displacing the diagnosis, evidence, and 7-day plan experience that parents actually buy."
+requirement_ids:
+  - "BND134-REPORT-LAYER"
+  - "BND134-EXPLANATION-CARD"
+  - "BND134-PLAN-CONTRACT"
+test_case_ids:
+  - "PAGE-BND134-001"
+  - "PAGE-BND134-002"
+  - "API-BND134-002"
+  - "DATA-BND134-003"
+expected_evidence:
+  - "report_section_priority_audit"
+  - "explanation_card_reuse_map"
+  - "seven_day_plan_contract_map"
+  - "parent_first_report_boundary_notes"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-103."
+  - "Read FE-082, FE-083, and FE-084 before drafting the boundary alignment."
+acceptance_criteria:
+  - "Diagnosis, Evidence, and 7-Day Plan remain the primary report surfaces in the boundary mapping."
+  - "ExplanationCard and SevenDayPlan are modeled as reusable structured contracts rather than classroom-only UI paragraphs."
+  - "The report boundary explicitly keeps walkthrough optional and secondary."
+constraints:
+  - "Do not redefine the report as a deck-first or student-first product."
+out_of_scope:
+  - "Playback transport, trial playback, or export lifecycle details."
+dependencies:
+  - "FE-103"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "tasks/backlog_v3_diagnosis_1_2_2/sprint_16_product/product/*"
+  - "app/(dashboard)/dashboard/reports/[reportId]/*"
+  - "docs/需求文档_1.3.4.md"
+  - "docs/requirements/*"
+primary_files:
+  - "tasks/backlog_v3_diagnosis_1_2_2/sprint_16_product/product/*"
+  - "app/(dashboard)/dashboard/reports/[reportId]/*"
+  - "docs/requirements/*"
+secondary_files:
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+test_cases:
+  normal:
+    - "Audit the report route and accepted FE-082 through FE-084 stories against the `1.3.4` report-layer rules."
+  exception:
+    - "Fail if the boundary mapping elevates walkthrough above diagnosis/evidence/plan."

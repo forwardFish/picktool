@@ -1,0 +1,81 @@
+project: "familyEducation"
+task_id: "FE-131"
+task_name: "Homepage Stage-1 Value, Proof, Trust, And Stage-2 Bridge"
+sprint: "Sprint 30 Homepage Narrative And Structure Rewrite"
+epic: "Homepage Value, Proof, And Trust"
+story_id: "FE-131"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "public_route_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Rewrite the homepage middle narrative so current Stage 1 value, proof, trust, and Stage 2 bridge all support the Pathnook system story without stealing focus from current family-learning support."
+business_value: "Turns the homepage from a feature pile into a coherent public narrative with believable trust and future upside."
+requirement_ids:
+  - "HOME15-STAGE1-VALUE"
+  - "HOME15-PROOF-TRUST"
+  - "HOME15-STAGE2-BRIDGE"
+test_case_ids:
+  - "PAGE-HOME15-004"
+  - "PAGE-HOME15-005"
+  - "PAGE-HOME15-006"
+  - "TC-HOME15-006"
+expected_evidence:
+  - "stage1_value_section_audit"
+  - "proof_before_pay_screenshots"
+  - "trust_section_copy_audit"
+  - "stage2_bridge_positioning_notes"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-130."
+  - "Recheck the `1.4` Pathnook public billing/legal direction so trust copy stays aligned."
+acceptance_criteria:
+  - "A `What families get today` section exists and stays clearly focused on Stage 1 family learning support."
+  - "Proof and trust sections explain sample output, evidence-first reasoning, parent-first clarity, share-safe design, and quality-gated release."
+  - "A secondary Stage 2 bridge exists, but Stage 2 remains clearly future-facing and not the homepage primary CTA story."
+constraints:
+  - "Do not surface new billing-provider mechanics, technical pipeline details, or creator/adult-growth narratives."
+out_of_scope:
+  - "FAQ, footer, pricing preview, and responsive polish."
+dependencies:
+  - "FE-130"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/sample-report"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+related_files:
+  - "app/(dashboard)/page.tsx"
+  - "components/landing/*"
+  - "app/(dashboard)/sample-report/*"
+primary_files:
+  - "app/(dashboard)/page.tsx"
+  - "components/landing/*"
+secondary_files:
+  - "app/(dashboard)/sample-report/*"
+  - "app/(dashboard)/pricing/page.tsx"
+test_cases:
+  normal:
+    - "Verify Stage 1 value, proof, trust, and Stage 2 bridge sections appear in the intended order and support the new narrative."
+  exception:
+    - "Fail if Stage 2 becomes the public primary story or if proof/trust sections collapse back into generic feature bullets."

@@ -1,0 +1,73 @@
+project: "familyEducation"
+task_id: "FE-074"
+task_name: "Audit Logging And Access Boundary Hardening"
+sprint: "Sprint 14 Privacy And Beta Launch"
+epic: "Privacy And Audit"
+story_id: "FE-074"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "runtime_and_browser_required"
+auth_expectations: "privileged_action_audit_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Harden audit logging around privileged actions and make access-boundary behavior explicit and testable."
+business_value: "Supports Beta launch review, privacy defense, and operator trust."
+requirement_ids:
+  - "PRIV2-002"
+test_case_ids:
+  - "API2-AUD-001"
+  - "DATA2-AUD-001"
+expected_evidence:
+  - "audit_log_snapshot"
+  - "api_contract_snapshot"
+  - "qa_test_output"
+  - "traceability_row_update"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-073."
+  - "Read the audit-boundary requirement rows before modifying privileged-action handlers."
+acceptance_criteria:
+  - "Unlock, revoke, approve, and delete flows all leave operator-auditable evidence."
+  - "Audit records remain stable and attributable after replay or repeat actions."
+constraints:
+  - "Do not silently drop audit records on retry or failure paths."
+out_of_scope:
+  - "Release checklist and final verdict."
+dependencies:
+  - "FE-073"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+  - "http://127.0.0.1:3000/admin/review"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/tutor"
+related_files:
+  - "lib/audit/*"
+  - "app/api/creem/webhook/route.ts"
+  - "app/api/reports/[reportId]/share/revoke/route.ts"
+primary_files:
+  - "lib/audit/*"
+  - "app/api/creem/webhook/route.ts"
+  - "app/api/admin/review/*"
+secondary_files:
+  - "docs/testing/next_phase/api_data_ai_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute API2-AUD-001 and DATA2-AUD-001."
+  exception:
+    - "Verify repeated privileged actions do not produce missing or ambiguous audit state."

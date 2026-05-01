@@ -1,0 +1,81 @@
+project: "familyEducation"
+task_id: "FE-132"
+task_name: "Sprint 30 Homepage Narrative Acceptance"
+sprint: "Sprint 30 Homepage Narrative And Structure Rewrite"
+epic: "Sprint Acceptance"
+story_id: "FE-132"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 30 only if the homepage narrative order, copy hierarchy, and Stage 1/Stage 2 framing are coherent and evidence-backed."
+business_value: "Stops public-surface completion work from launching on top of unresolved positioning drift."
+requirement_ids:
+  - "GOV-003"
+  - "HOME15-HERO-POSITIONING"
+  - "HOME15-STAGE1-VALUE"
+  - "HOME15-PROOF-TRUST"
+  - "HOME15-STAGE2-BRIDGE"
+test_case_ids:
+  - "TC-GOV-004"
+  - "TC-HOME15-007"
+  - "FP-HOME15-002"
+expected_evidence:
+  - "sprint_30_traceability_audit"
+  - "homepage_narrative_acceptance_packet"
+  - "positioning_guardrail_checklist"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-130 and FE-131."
+acceptance_criteria:
+  - "Sprint 30 fails if the homepage still reads as math-only, report-only, or feature-list-first."
+  - "Acceptance evidence explicitly verifies the new hero, positioning, Stage 1 value, proof, trust, and Stage 2 bridge sections."
+  - "Release closeout artifacts exist for the sprint."
+constraints:
+  - "Do not claim full homepage release complete before Sprint 31 routes and responsive evidence close."
+out_of_scope:
+  - "FAQ/footer/pricing-preview completion and responsive final polish."
+dependencies:
+  - "FE-130"
+  - "FE-131"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+related_files:
+  - "app/(dashboard)/page.tsx"
+  - "components/landing/*"
+primary_files:
+  - "app/(dashboard)/page.tsx"
+  - "components/landing/*"
+secondary_files:
+  - "tasks/backlog_v7_homepage_display_rewrite_1_5/*"
+  - "PROJECT_STATE.md"
+test_cases:
+  normal:
+    - "Audit the homepage narrative structure and confirm every Sprint 30 row has implementation evidence."
+  exception:
+    - "Fail if Stage 1 and Stage 2 public framing remain ambiguous."

@@ -1,0 +1,83 @@
+{
+  "generatedAt": "2026-04-19T13:35:23.538Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "runtimeMode": "live",
+  "defaultCase": {
+    "label": "default",
+    "runId": 8,
+    "reportId": 1,
+    "runStatus": "done",
+    "bundleEngine": "moonshot",
+    "bundleModelVersion": "kimi-k2.5",
+    "fallbackApplied": false,
+    "attemptCount": 2,
+    "modelRows": [
+      {
+        "runId": 8,
+        "attemptIndex": 0,
+        "providerName": "openai",
+        "modelName": "gpt-4.1-mini",
+        "status": "skipped",
+        "finishReason": "provider_unavailable"
+      },
+      {
+        "runId": 8,
+        "attemptIndex": 1,
+        "providerName": "moonshot",
+        "modelName": "kimi-k2.5",
+        "status": "success",
+        "finishReason": "stop"
+      }
+    ],
+    "failoverRows": [
+      {
+        "runId": 8,
+        "fromProviderName": "openai",
+        "toProviderName": "moonshot",
+        "errorType": "provider_unavailable"
+      }
+    ]
+  },
+  "forcedCase": {
+    "label": "forced",
+    "runId": 9,
+    "reportId": 2,
+    "runStatus": "done",
+    "bundleEngine": "moonshot",
+    "bundleModelVersion": "kimi-k2.5",
+    "fallbackApplied": false,
+    "attemptCount": 2,
+    "modelRows": [
+      {
+        "runId": 9,
+        "attemptIndex": 0,
+        "providerName": "openai",
+        "modelName": "gpt-4.1-mini",
+        "status": "skipped",
+        "finishReason": "provider_unavailable"
+      },
+      {
+        "runId": 9,
+        "attemptIndex": 1,
+        "providerName": "moonshot",
+        "modelName": "kimi-k2.5",
+        "status": "success",
+        "finishReason": "stop"
+      }
+    ],
+    "failoverRows": [
+      {
+        "runId": 9,
+        "fromProviderName": "openai",
+        "toProviderName": "moonshot",
+        "errorType": "provider_unavailable"
+      }
+    ]
+  },
+  "runtimeAudit": {
+    "mode": "live",
+    "demoModeEnabled": false,
+    "databaseSource": "database_url",
+    "storageBackend": "local"
+  }
+}

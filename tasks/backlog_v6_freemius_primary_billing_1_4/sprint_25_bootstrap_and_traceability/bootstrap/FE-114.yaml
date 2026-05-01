@@ -1,0 +1,84 @@
+project: "familyEducation"
+task_id: "FE-114"
+task_name: "1.4 Continuity Repair And Backlog V6 Bootstrap"
+sprint: "Sprint 25 Bootstrap And Traceability"
+epic: "Billing Bootstrap"
+story_id: "FE-114"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Create the `1.4` backlog root, switch continuity to v6, and preserve older lanes as immutable dependencies while Pathnook billing becomes the next execution lane."
+business_value: "Lets future sessions resume from a fully registered Freemius-primary billing lane instead of an orphaned document."
+requirement_ids:
+  - "GOV-001"
+  - "GOV-002"
+  - "BILL14-PROGRAM-LANE"
+test_case_ids:
+  - "TC-GOV-001"
+  - "TC-GOV-002"
+  - "TC-BILL14-001"
+expected_evidence:
+  - "v6_backlog_bootstrap_packet"
+  - "continuity_switch_report"
+  - "inheritance_rules_doc"
+  - "planning_validator_root_update"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档_1.4.md before editing continuity or backlog assets."
+  - "Review the existing v4 and v5 backlog roots so `1.4` does not overwrite inherited lanes."
+acceptance_criteria:
+  - "tasks/backlog_v6_freemius_primary_billing_1_4 contains Sprint 25 through Sprint 28 assets and story cards FE-114 through FE-126."
+  - "NOW.md, STATE.md, DECISIONS.md, current_handoff, PROJECT_STATE.md, and continuity_manifest point to the v6 billing lane."
+  - "Older accepted or in-progress lanes remain intact and are referenced only through dependency or regression rules."
+constraints:
+  - "Do not modify accepted story YAMLs inside backlog_v1, backlog_v3_diagnosis_1_2_2, backlog_v4_diagnosis_player_1_3_x, or backlog_v5_stage1_boundary_1_3_4."
+out_of_scope:
+  - "Runtime billing or UI implementation changes."
+dependencies: []
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/pricing"
+qa_urls:
+  - "http://127.0.0.1:3000/pricing"
+related_files:
+  - "NOW.md"
+  - "STATE.md"
+  - "DECISIONS.md"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+  - ".meta/familyEducation/continuity/continuity_manifest.json"
+  - "tasks/backlog_v6_freemius_primary_billing_1_4/*"
+primary_files:
+  - "NOW.md"
+  - "STATE.md"
+  - "DECISIONS.md"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+  - ".meta/familyEducation/continuity/continuity_manifest.json"
+  - "tasks/backlog_v6_freemius_primary_billing_1_4/*"
+secondary_files:
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+  - "scripts/validate_planning_assets.py"
+test_cases:
+  normal:
+    - "Validate that v6 is present in continuity files and validator backlog roots."
+  exception:
+    - "Fail if any inherited backlog is renamed, deleted, or rewritten."

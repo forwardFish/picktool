@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-04-13T00:00:00+08:00",
+  "sprint": "sprint_31_public_surface_completion_and_release",
+  "stories": [
+    {
+      "story_id": "FE-133",
+      "status": "implemented",
+      "evidence": [
+        "components/landing/family-landing-page.tsx",
+        "components/landing/landing-footer.tsx",
+        "app/(dashboard)/sample-report/page.tsx"
+      ]
+    },
+    {
+      "story_id": "FE-134",
+      "status": "implemented",
+      "evidence": [
+        "app/(dashboard)/layout.tsx",
+        "tasks/runtime/final_program_acceptance/home15_final_acceptance.md"
+      ]
+    },
+    {
+      "story_id": "FE-135",
+      "status": "implemented",
+      "evidence": [
+        "tasks/runtime/traceability_audits/sprint_31_traceability_audit.md",
+        "tasks/runtime/sprint_acceptance/sprint_31_acceptance_report.md",
+        "tasks/runtime/final_program_acceptance/home15_final_acceptance.md"
+      ]
+    }
+  ],
+  "verification": {
+    "planning_validation": "passed",
+    "build": "passed"
+  }
+}

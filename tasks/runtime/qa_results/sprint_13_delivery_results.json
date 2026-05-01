@@ -1,0 +1,174 @@
+{
+  "generated_at": "2026-04-09T13:53:58",
+  "project": "familyEducation",
+  "sprint_id": "sprint_13_retention_and_tutor_handoff",
+  "completed_story_ids": [
+    "FE-071",
+    "FE-072"
+  ],
+  "failed_story_ids": [],
+  "story_reports": [
+    {
+      "story_id": "FE-068",
+      "requirement_ids": [
+        "RET2-001"
+      ],
+      "test_case_ids": [
+        "API2-RET-001",
+        "API2-RET-002",
+        "DATA2-RET-001"
+      ],
+      "expected_evidence": [
+        "api_contract_snapshot",
+        "data_integrity_output",
+        "qa_test_output",
+        "traceability_row_update"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-069",
+      "requirement_ids": [
+        "RET2-002"
+      ],
+      "test_case_ids": [
+        "PAGE2-CHD-001",
+        "CLICK2-006",
+        "NF2-001"
+      ],
+      "expected_evidence": [
+        "before_after_screenshots",
+        "weekly_review_transcript",
+        "browse_console_log",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-070",
+      "requirement_ids": [
+        "RET2-003"
+      ],
+      "test_case_ids": [
+        "PAGE2-CHD-002",
+        "API2-RET-003"
+      ],
+      "expected_evidence": [
+        "annual_summary_screenshots",
+        "api_contract_snapshot",
+        "qa_test_output",
+        "entitlement_assertion"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-071",
+      "requirement_ids": [
+        "TUT2-001",
+        "TUT2-002"
+      ],
+      "test_case_ids": [
+        "PAGE2-TUT-001",
+        "PAGE2-SHR-001",
+        "API2-SHR-001",
+        "DATA2-SHR-001",
+        "CLICK2-007"
+      ],
+      "expected_evidence": [
+        "workspace_screenshots",
+        "share_analytics_snapshot",
+        "browse_console_log",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-072",
+      "requirement_ids": [
+        "GOV2-003",
+        "RET2-001",
+        "RET2-002",
+        "RET2-003",
+        "TUT2-001",
+        "TUT2-002"
+      ],
+      "test_case_ids": [
+        "TC-GOV2-003",
+        "PAGE2-CHD-001",
+        "PAGE2-CHD-002",
+        "PAGE2-TUT-001",
+        "PAGE2-SHR-001",
+        "API2-RET-001",
+        "API2-RET-002",
+        "API2-RET-003",
+        "API2-SHR-001",
+        "DATA2-RET-001",
+        "DATA2-SHR-001",
+        "CLICK2-006",
+        "CLICK2-007"
+      ],
+      "expected_evidence": [
+        "sprint_acceptance_report",
+        "traceability_audit",
+        "browser_evidence_manifest",
+        "ship_packet",
+        "document_release_packet",
+        "retro_packet"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    }
+  ],
+  "requirement_statuses": [
+    {
+      "requirement_id": "GOV2-003",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "RET2-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "RET2-002",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "RET2-003",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "TUT2-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "TUT2-002",
+      "status": "Green"
+    }
+  ],
+  "post_hook_artifacts": {
+    "document_release_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_13_retention_and_tutor_handoff\\document_release_report.md",
+    "retro_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_13_retention_and_tutor_handoff\\retro_report.md",
+    "ship_report_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\ship\\ship_readiness_report.md"
+  },
+  "missing_items": [],
+  "passed": true
+}

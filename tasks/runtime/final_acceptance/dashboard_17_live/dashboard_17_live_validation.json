@@ -1,0 +1,35 @@
+{
+  "status": "fail",
+  "baseUrl": "http://127.0.0.1:3000",
+  "email": "codex.dashboard.1776845073835@example.com",
+  "childName": "Codex-073835",
+  "childId": 13,
+  "runId": null,
+  "reportId": null,
+  "screenshots": {
+    "dashboardEmpty": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\dashboard_17_live\\01_dashboard_empty.png",
+    "childDetail": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\dashboard_17_live\\02_child_detail.png",
+    "dashboardWithChild": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\dashboard_17_live\\03_dashboard_with_child.png"
+  },
+  "checks": [
+    {
+      "page": "/dashboard",
+      "state": "empty",
+      "pass": true,
+      "note": "Empty workspace shown right after signup."
+    },
+    {
+      "page": "/dashboard/children/13",
+      "state": "member-created",
+      "pass": true,
+      "note": "Child detail page loaded after create flow."
+    },
+    {
+      "page": "/dashboard",
+      "state": "member-present",
+      "pass": true,
+      "note": "Overview shows the created member and diagnosis CTA."
+    }
+  ],
+  "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at waitForBodyText ([stdin]:16:14)\n    at [stdin]:92:11"
+}

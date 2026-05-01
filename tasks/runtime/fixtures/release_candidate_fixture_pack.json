@@ -1,0 +1,55 @@
+{
+  "generated_for": "Sprint 7 release-candidate dry run",
+  "fixtures": [
+    {
+      "id": "FIX-001",
+      "name": "first_time_parent_no_children",
+      "purpose": "Empty household shell validation"
+    },
+    {
+      "id": "FIX-002",
+      "name": "two_children_no_reports",
+      "purpose": "Multi-child dashboard validation"
+    },
+    {
+      "id": "FIX-003",
+      "name": "weekly_review_history",
+      "purpose": "Two completed reports for compare-to-last validation"
+    },
+    {
+      "id": "FIX-004",
+      "name": "failed_run",
+      "purpose": "Telemetry and retry evidence"
+    },
+    {
+      "id": "FIX-005",
+      "name": "needs_review_run",
+      "purpose": "Draft report and admin review evidence"
+    },
+    {
+      "id": "FIX-006",
+      "name": "active_share_token",
+      "purpose": "Tutor share validation"
+    },
+    {
+      "id": "FIX-007",
+      "name": "expired_share_token",
+      "purpose": "Expired share validation"
+    },
+    {
+      "id": "FIX-008",
+      "name": "revoked_share_token",
+      "purpose": "Revoked share validation"
+    },
+    {
+      "id": "FIX-009",
+      "name": "unpaid_account",
+      "purpose": "Paywall and locked report validation"
+    },
+    {
+      "id": "FIX-010",
+      "name": "paid_account",
+      "purpose": "Unlocked report, PDF export, and tutor share validation"
+    }
+  ]
+}

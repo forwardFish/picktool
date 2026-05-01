@@ -1,0 +1,72 @@
+project: "familyEducation"
+task_id: "FE-076"
+task_name: "Beta Launch Handoff And Metrics Baseline"
+sprint: "Sprint 14 Privacy And Beta Launch"
+epic: "Beta Launch Governance"
+story_id: "FE-076"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "runtime_and_browser_required"
+auth_expectations: "documentation_and_ops_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Prepare the Beta handoff packet, metrics baseline, remaining-risks summary, and continuity updates."
+business_value: "Makes the next development step clear and keeps the Beta state understandable for a fresh session."
+requirement_ids:
+  - "REL2-002"
+test_case_ids:
+  - "OPS2-BETA-002"
+  - "TC-GOV2-005"
+  - "FP2-001"
+expected_evidence:
+  - "handoff_packet"
+  - "metrics_snapshot"
+  - "remaining_risks_doc"
+  - "continuity_update"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-075."
+  - "Read full_system_summary.md and the next-phase final acceptance doc before editing handoff artifacts."
+acceptance_criteria:
+  - "Handoff docs explain the actual Beta state, metrics baseline, and follow-up work."
+  - "Continuity documents stay aligned across project-state and handoff surfaces."
+constraints:
+  - "Do not mark unresolved provider or deployment work as complete."
+out_of_scope:
+  - "Final Beta verdict."
+dependencies:
+  - "FE-075"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard"
+related_files:
+  - "docs/handoff/current_handoff.md"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/full_system_summary.md"
+primary_files:
+  - "docs/handoff/current_handoff.md"
+  - "PROJECT_STATE.md"
+  - "tasks/runtime/final_program_acceptance/*"
+secondary_files:
+  - "README.md"
+test_cases:
+  normal:
+    - "Execute OPS2-BETA-002, TC-GOV2-005, and FP2-001."
+  exception:
+    - "Verify stale or contradictory handoff details are corrected before acceptance."

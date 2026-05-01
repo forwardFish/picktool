@@ -1,0 +1,9 @@
+{
+  "status": "pass",
+  "email": "codex.live.1776867278873@example.com",
+  "finalUrl": "http://127.0.0.1:3000/dashboard",
+  "checks": [
+    "signup_redirect_dashboard"
+  ],
+  "textSample": "Pathnook\nOverview\nMembers\nReports\nACCOUNT\nBilling\nSettings\nCL\nCodex Live DB\nOwner\nOverview\n/\nAI Learning Workspace\nStart your Pathnook workspace\n\nAdd your first child profile so the workspace can track real reports, runs, and next actions.\n\nEmpty state / No members yet\nStart with your first child\n\nOnce a member exists, Pathnook can connect uploads, diagnosis runs, reports, and weekly follow-through in one workspace.\n\nAdd Member"
+}

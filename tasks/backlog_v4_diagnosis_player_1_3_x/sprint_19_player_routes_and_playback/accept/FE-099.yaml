@@ -1,0 +1,100 @@
+project: "familyEducation"
+task_id: "FE-099"
+task_name: "Sprint 19 Player Routes And Playback Acceptance"
+sprint: "Sprint 19 Player Routes And Playback"
+epic: "Player And Playback Acceptance"
+story_id: "FE-099"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Accept Sprint 19 only if playback state, snapshots, parent walkthrough routes, and share walkthrough routes behave correctly on desktop and mobile."
+business_value: "Prevents the optional Guided Walkthrough surface from regressing the report, share, and tutor flows that already shipped."
+requirement_ids:
+  - "GOV-003"
+  - "DECK13-PLAYER"
+  - "DECK13-SHARE-PLAY"
+  - "DECK13-TTS"
+test_case_ids:
+  - "TC-GOV-004"
+  - "PAGE-DCK-001"
+  - "PAGE-DCK-002"
+  - "PAGE-DCK-003"
+  - "PAGE-DCK-004"
+  - "PAGE-DCK-005"
+  - "PAGE-DCK-006"
+  - "PAGE-DCK-007"
+  - "PAGE-DCK-008"
+  - "PAGE-DCK-009"
+  - "PAGE-DCK-010"
+  - "PAGE-DCK-011"
+  - "PAGE-DCK-012"
+  - "CLICK-DCK-001"
+  - "CLICK-DCK-002"
+  - "CLICK-DCK-003"
+  - "CLICK-DCK-008"
+  - "API-DCK-005"
+  - "API-DCK-006"
+  - "API-DCK-007"
+  - "DATA-DCK-005"
+expected_evidence:
+  - "sprint_19_traceability_audit"
+  - "player_route_browser_packet"
+  - "share_playback_packet"
+  - "snapshot_restore_packet"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-091, FE-092, and FE-093."
+acceptance_criteria:
+  - "Playback transport controls and snapshot restore are stable for parent walkthrough routes."
+  - "Share walkthrough remains read-only, owner-scoped, and free of parent-only notes."
+  - "User-facing copy follows the `1.3.3` naming and default-voice rules."
+constraints:
+  - "Do not expose deck playback entry points for D-tier decks."
+out_of_scope:
+  - "Admin review and export lifecycle implementation."
+dependencies:
+  - "FE-093"
+  - "FE-091"
+  - "FE-092"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+  - "http://127.0.0.1:3000/share/[token]/play"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+  - "http://127.0.0.1:3000/share/[token]/play"
+related_files:
+  - "app/(dashboard)/dashboard/reports/[reportId]/play/*"
+  - "app/share/[token]/play/*"
+  - "app/api/decks/*"
+  - "docs/testing/*"
+primary_files:
+  - "app/(dashboard)/dashboard/reports/[reportId]/play/*"
+  - "app/share/[token]/play/*"
+  - "app/api/decks/*"
+secondary_files:
+  - "docs/testing/*"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+  - "app/share/[token]/page.tsx"
+test_cases:
+  normal:
+    - "Run the deck player and snapshot suites across desktop and mobile breakpoints."
+  exception:
+    - "Fail acceptance if share playback leaks parent-only data or if playback state cannot be restored."

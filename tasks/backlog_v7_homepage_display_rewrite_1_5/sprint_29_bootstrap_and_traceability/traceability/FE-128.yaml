@@ -1,0 +1,85 @@
+project: "familyEducation"
+task_id: "FE-128"
+task_name: "1.5 Requirement, Traceability, And Homepage Baseline Expansion"
+sprint: "Sprint 29 Bootstrap And Traceability"
+epic: "Homepage V7 Traceability And Baseline"
+story_id: "FE-128"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Register `HOME15-*` requirement and test rows across canonical docs and capture baseline evidence for the current homepage copy, structure, CTA flow, and positioning debt."
+business_value: "Gives the homepage rewrite a canonical requirement-to-test contract and a before-state that later acceptance can measure against."
+requirement_ids:
+  - "GOV-001"
+  - "HOME15-BASELINE"
+  - "HOME15-COPY-GUARDRAILS"
+test_case_ids:
+  - "TC-GOV-002"
+  - "TC-HOME15-002"
+  - "TC-HOME15-003"
+expected_evidence:
+  - "home15_requirement_rows"
+  - "home15_traceability_rows"
+  - "homepage_baseline_copy_inventory"
+  - "homepage_baseline_structure_map"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-127."
+  - "Read docs/需求文档_1.5.md and audit the current landing page before editing canonical docs."
+acceptance_criteria:
+  - "Requirement, traceability, governance, page, click, API/non-functional, and final-acceptance docs all include `HOME15-*` coverage."
+  - "Baseline evidence explicitly records old homepage copy, section order, CTA behavior, and positioning debt."
+  - "Copy guardrails explicitly block math-only, report-only, bilingual-first, and family-action-plan-first positioning."
+constraints:
+  - "Do not mark `HOME15-*` implementation rows green during planning."
+out_of_scope:
+  - "Homepage runtime implementation changes."
+dependencies:
+  - "FE-127"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+related_files:
+  - "docs/requirements/prd_requirement_index.md"
+  - "docs/requirements/prd_traceability_matrix.md"
+  - "docs/testing/governance_test_matrix.md"
+  - "docs/testing/page_test_matrix.md"
+  - "docs/testing/click_path_matrix.md"
+  - "docs/testing/api_data_ai_test_matrix.md"
+  - "docs/testing/final_program_acceptance.md"
+primary_files:
+  - "docs/requirements/prd_requirement_index.md"
+  - "docs/requirements/prd_traceability_matrix.md"
+  - "docs/testing/governance_test_matrix.md"
+  - "docs/testing/page_test_matrix.md"
+  - "docs/testing/click_path_matrix.md"
+  - "docs/testing/api_data_ai_test_matrix.md"
+  - "docs/testing/final_program_acceptance.md"
+secondary_files:
+  - "docs/需求文档_1.5.md"
+  - "tasks/backlog_v7_homepage_display_rewrite_1_5/*"
+test_cases:
+  normal:
+    - "Cross-check every `HOME15-*` requirement row against at least one story and one testing matrix row."
+  exception:
+    - "Fail if any homepage rewrite rule exists only in backlog files and not in canonical docs."

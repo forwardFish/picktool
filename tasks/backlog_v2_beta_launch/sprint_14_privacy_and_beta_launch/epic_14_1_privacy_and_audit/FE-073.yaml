@@ -1,0 +1,76 @@
+project: "familyEducation"
+task_id: "FE-073"
+task_name: "Privacy And Deletion UX"
+sprint: "Sprint 14 Privacy And Beta Launch"
+epic: "Privacy And Audit"
+story_id: "FE-073"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "owner_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Turn deletion and privacy-retention behavior into understandable owner-facing UX."
+business_value: "Reduces risk and confusion at the most sensitive points of the product."
+requirement_ids:
+  - "PRIV2-001"
+test_case_ids:
+  - "PAGE2-ACC-001"
+  - "API2-PRIV-001"
+  - "CLICK2-009"
+  - "DATA2-DEL-001"
+expected_evidence:
+  - "privacy_ui_screenshots"
+  - "deletion_transcript"
+  - "access_denial_evidence"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-072."
+  - "Read privacy and deletion requirement rows before editing account or protected delete UX."
+acceptance_criteria:
+  - "Delete entry points explain consequences and retention effects clearly."
+  - "Deleted artifacts can no longer be reopened through old URLs or share/export paths."
+constraints:
+  - "Do not add destructive flows without deterministic post-delete denial checks."
+out_of_scope:
+  - "Audit logging internals."
+dependencies:
+  - "FE-072"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/account"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/account"
+related_files:
+  - "app/(dashboard)/dashboard/account/page.tsx"
+  - "app/api/children/[childId]/route.ts"
+  - "app/api/reports/[reportId]/route.ts"
+primary_files:
+  - "app/(dashboard)/dashboard/account/page.tsx"
+  - "components/account/*"
+secondary_files:
+  - "docs/testing/next_phase/page_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute PAGE2-ACC-001, API2-PRIV-001, CLICK2-009, and DATA2-DEL-001."
+  exception:
+    - "Verify repeated access to deleted artifacts fails deterministically."

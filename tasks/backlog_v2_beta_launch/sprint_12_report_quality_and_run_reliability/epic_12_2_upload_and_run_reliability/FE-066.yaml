@@ -1,0 +1,78 @@
+project: "familyEducation"
+task_id: "FE-066"
+task_name: "Upload Guidance And Run Reliability UX"
+sprint: "Sprint 12 Report Quality And Run Reliability"
+epic: "Upload And Run Reliability"
+story_id: "FE-066"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "owner_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Make source-quality warnings, retry reasons, stuck states, and `needs_review` explanations much clearer in upload and run UX."
+business_value: "Reduces support load and confusion for real users."
+requirement_ids:
+  - "RUN2-001"
+  - "RUN2-002"
+test_case_ids:
+  - "PAGE2-UPL-001"
+  - "PAGE2-RUN-001"
+  - "API2-RUN-001"
+  - "CLICK2-004"
+  - "NF2-002"
+expected_evidence:
+  - "before_after_screenshots"
+  - "run_state_transcript"
+  - "browse_console_log"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-065."
+  - "Read the upload/run rows before editing upload or run-state copy."
+acceptance_criteria:
+  - "Users receive clear next-step guidance for weak source material and ambiguous run states."
+  - "Retryable, blocked, and review-required states are visually and behaviorally distinct."
+constraints:
+  - "Do not collapse different failure modes into a single vague error."
+out_of_scope:
+  - "Historical compare surfaces."
+dependencies:
+  - "FE-065"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]/upload"
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+related_files:
+  - "app/(dashboard)/dashboard/children/[childId]/upload/page.tsx"
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+primary_files:
+  - "app/(dashboard)/dashboard/children/[childId]/upload/page.tsx"
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+secondary_files:
+  - "docs/testing/next_phase/page_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute PAGE2-UPL-001, PAGE2-RUN-001, API2-RUN-001, and CLICK2-004."
+  exception:
+    - "Verify provider or processing failure still yields user-safe messaging and logs."

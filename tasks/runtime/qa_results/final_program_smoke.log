@@ -1,0 +1,79 @@
+
+> @ build D:\lyh\agent\agent-frame\familyEducation
+> next build
+
+   ▲ Next.js 15.6.0-canary.59 (Turbopack)
+   - Experiments (use with caution):
+     ✓ ppr
+     ✓ rdcForNavigations (enabled by `experimental.ppr`)
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 6.1s
+   Running TypeScript ...
+   Collecting page data ...
+   Generating static pages (0/31) ...
+   Generating static pages (7/31) 
+   Generating static pages (15/31) 
+   Generating static pages (23/31) 
+ ✓ Generating static pages (31/31) in 7.1s
+   Finalizing page optimization ...
+
+Route (app)                                        Revalidate  Expire
+┌ ◐ /
+├ ◐ /_not-found
+├ ƒ /admin/review
+├ ◐ /admin/review/[runId]
+├   └ /admin/review/[runId]
+├ ƒ /api/admin/review
+├ ƒ /api/admin/review/[runId]
+├ ƒ /api/admin/review/[runId]/approve
+├ ƒ /api/admin/review/[runId]/request-more-photos
+├ ƒ /api/billing/checkout-session
+├ ƒ /api/children
+├ ƒ /api/children/[childId]
+├ ƒ /api/notifications/schedule
+├ ƒ /api/pages/[pageId]/artifact
+├ ƒ /api/reports/[reportId]
+├ ƒ /api/reports/[reportId]/export
+├ ƒ /api/reports/[reportId]/share
+├ ƒ /api/runs/[runId]
+├ ƒ /api/runs/[runId]/process
+├ ƒ /api/runs/[runId]/retry
+├ ƒ /api/share/[token]
+├ ƒ /api/stripe/checkout
+├ ƒ /api/stripe/webhook
+├ ƒ /api/team
+├ ƒ /api/tutor
+├ ƒ /api/uploads
+├ ƒ /api/uploads/[uploadId]
+├ ƒ /api/uploads/[uploadId]/files
+├ ƒ /api/uploads/[uploadId]/submit
+├ ƒ /api/user
+├ ƒ /dashboard
+├ ◐ /dashboard/account
+├ ◐ /dashboard/activity
+├ ƒ /dashboard/billing
+├ ƒ /dashboard/billing/demo-checkout
+├ ƒ /dashboard/children
+├ ◐ /dashboard/children/[childId]
+├   └ /dashboard/children/[childId]
+├ ◐ /dashboard/children/[childId]/upload
+├   └ /dashboard/children/[childId]/upload
+├ ◐ /dashboard/children/new
+├ ◐ /dashboard/general
+├ ◐ /dashboard/reports/[reportId]
+├   └ /dashboard/reports/[reportId]
+├ ◐ /dashboard/runs/[runId]
+├   └ /dashboard/runs/[runId]
+├ ◐ /dashboard/security
+├ ƒ /dashboard/tutor
+├ ◐ /pricing                                               1h      1y
+├ ◐ /share/[token]
+├   └ /share/[token]
+├ ƒ /sign-in
+└ ƒ /sign-up
+
+
+◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content
+ƒ  (Dynamic)            server-rendered on demand
+

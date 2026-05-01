@@ -1,0 +1,94 @@
+project: "familyEducation"
+task_id: "FE-062"
+task_name: "Conversion Layer Acceptance"
+sprint: "Sprint 11 Conversion Layer"
+epic: "Conversion Measurement And Acceptance"
+story_id: "FE-062"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "public_and_authenticated_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 11 only when the public funnel, pricing funnel, sample preview, and event tracking all stay green together."
+business_value: "Prevents marketing-facing pages from becoming disconnected from product reality."
+requirement_ids:
+  - "GOV2-003"
+  - "MKT-001"
+  - "MKT-002"
+  - "MKT-003"
+  - "MKT-004"
+test_case_ids:
+  - "TC-GOV2-003"
+  - "PAGE2-LND-001"
+  - "PAGE2-PRC-001"
+  - "PAGE2-SMP-001"
+  - "API2-MKT-001"
+  - "DATA2-MKT-001"
+  - "CLICK2-001"
+  - "CLICK2-002"
+  - "CLICK2-003"
+  - "NF2-001"
+expected_evidence:
+  - "sprint_acceptance_report"
+  - "traceability_audit"
+  - "browser_evidence_manifest"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-058, FE-059, FE-060, FE-061."
+  - "Read docs/testing/next_phase/sprint_acceptance_template.md before starting Sprint audit work."
+acceptance_criteria:
+  - "Sprint 11 closes only when all conversion rows are green and the event layer is evidenced."
+  - "Any broken CTA or undocumented copy divergence blocks acceptance."
+constraints:
+  - "Do not treat visual polish without funnel evidence as acceptable completion."
+out_of_scope:
+  - "Sprint 12 quality work."
+dependencies:
+  - "FE-058"
+  - "FE-059"
+  - "FE-060"
+  - "FE-061"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/sample-report"
+qa_urls:
+  - "http://127.0.0.1:3000/sign-up"
+related_files:
+  - "tasks/runtime/sprint_acceptance/sprint_11_acceptance_report.md"
+  - "tasks/runtime/traceability_audits/sprint_11_traceability_audit.md"
+primary_files:
+  - "docs/requirements/next_phase_traceability_matrix.md"
+  - "docs/testing/next_phase/sprint_acceptance_template.md"
+secondary_files:
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+test_cases:
+  normal:
+    - "Execute all Sprint 11 page, click, API, and data rows."
+    - "Audit all Sprint 11 requirement rows against latest evidence."
+  exception:
+    - "Fail the Sprint if any CTA or sample-report route remains unverified."

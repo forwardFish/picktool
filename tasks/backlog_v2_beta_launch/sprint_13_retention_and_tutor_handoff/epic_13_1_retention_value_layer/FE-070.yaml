@@ -1,0 +1,74 @@
+project: "familyEducation"
+task_id: "FE-070"
+task_name: "Annual Value Layer And Quarterly Summary"
+sprint: "Sprint 13 Retention And Tutor Handoff"
+epic: "Retention Value Layer"
+story_id: "FE-070"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "annual_plan_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Add the annual-plan value layer with quarterly summaries and longer-horizon progress surfaces."
+business_value: "Gives the yearly plan a concrete retained-value story."
+requirement_ids:
+  - "RET2-003"
+test_case_ids:
+  - "PAGE2-CHD-002"
+  - "API2-RET-003"
+expected_evidence:
+  - "annual_summary_screenshots"
+  - "api_contract_snapshot"
+  - "qa_test_output"
+  - "entitlement_assertion"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-069."
+  - "Read the annual-value requirements before introducing plan-specific UI gates."
+acceptance_criteria:
+  - "Quarterly or annual summaries appear only for the correct entitlement state."
+  - "Long-horizon value surfaces stay consistent with the child's actual report history."
+constraints:
+  - "Do not expose annual-only content to non-annual accounts."
+out_of_scope:
+  - "Tutor workspace analytics."
+dependencies:
+  - "FE-069"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+related_files:
+  - "app/(dashboard)/dashboard/children/[childId]/page.tsx"
+  - "app/api/children/[childId]/summary/route.ts"
+primary_files:
+  - "app/(dashboard)/dashboard/children/[childId]/page.tsx"
+  - "app/api/children/[childId]/summary/route.ts"
+secondary_files:
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+test_cases:
+  normal:
+    - "Execute PAGE2-CHD-002 and API2-RET-003."
+  exception:
+    - "Verify non-annual accounts do not receive annual-value UI or data."

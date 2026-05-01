@@ -1,0 +1,6 @@
+{
+  "email": "codex.live.child.1776867472842@example.com",
+  "nickname": "Live-2842",
+  "afterCreateUrl": "http://127.0.0.1:3000/dashboard/children/new",
+  "bodyText": "Pathnook\nOverview\nMembers\nReports\nACCOUNT\nBilling\nSettings\nCL\nCodex Live Child\nOwner\nMembers\n/\nAdd Member\nCreate a child learning profile\n\nStart with the minimum structure the dashboard needs: nickname, grade, and curriculum. This keeps future uploads and report history correctly scoped.\n\nCHILD PROFILE\n\nNew member setup\nChild nickname\nGrade\nSelect a grade\nKindergarten\n1st Grade\n2nd Grade\n3rd Grade\n4th Grade\n5th Grade\n6th Grade\n7th Grade\n8th Grade\nAlgebra 1\nGeometry\nAlgebra 2\nOther\nCurriculum\nSelect a curriculum\nGeneral Math\nCommon Core\nSingapore Math\nEureka Math\nIB / International\nAdvanced / Honors\nOther\nSaving..."
+}

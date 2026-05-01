@@ -1,0 +1,79 @@
+project: "familyEducation"
+task_id: "FE-092"
+task_name: "Share Play Route And Read-Only Tutor Player"
+sprint: "Sprint 19 Player Routes And Playback"
+epic: "Share Player"
+story_id: "FE-092"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "browser_and_share_token_required"
+auth_expectations: "share_token_read_only"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Add a read-only tutor walkthrough route on top of the accepted share token lifecycle without exposing parent-only details."
+business_value: "Extends the tutor handoff surface from static share payloads to guided review without breaking privacy rules."
+requirement_ids:
+  - "DECK13-SHARE-PLAY"
+test_case_ids:
+  - "PAGE-DCK-010"
+  - "PAGE-DCK-011"
+  - "PAGE-DCK-012"
+  - "CLICK-DCK-003"
+expected_evidence:
+  - "share_player_route_screenshot"
+  - "read_only_walkthrough_assertion"
+  - "expiry_revoke_regression_output"
+  - "privacy_sanitization_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-093 and FE-091."
+acceptance_criteria:
+  - "Tutor share route exists at /share/[token]/play."
+  - "The walkthrough is read-only and hides parent-only notes or restricted report details."
+  - "Share expiry, revoke, and owner-scoped lifecycle behavior remain intact."
+constraints:
+  - "Do not introduce tutor account write access."
+out_of_scope:
+  - "Admin-only review tools and export lifecycle."
+dependencies:
+  - "FE-093"
+  - "FE-091"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/share/[token]"
+  - "http://127.0.0.1:3000/share/[token]/play"
+qa_urls:
+  - "http://127.0.0.1:3000/share/[token]/play"
+related_files:
+  - "app/share/[token]/page.tsx"
+  - "app/share/[token]/play/page.tsx"
+  - "app/api/share/[token]/deck/route.ts"
+  - "app/api/share/[token]/playback/route.ts"
+primary_files:
+  - "app/share/[token]/page.tsx"
+  - "app/share/[token]/play/page.tsx"
+  - "app/api/share/[token]/deck/route.ts"
+  - "app/api/share/[token]/playback/route.ts"
+secondary_files:
+  - "components/*deck*"
+  - "lib/family/*deck*"
+test_cases:
+  normal:
+    - "Open a valid share token walkthrough and confirm the tutor can move through slides without editing."
+  exception:
+    - "Return expired or revoked states for invalid share walkthrough URLs."

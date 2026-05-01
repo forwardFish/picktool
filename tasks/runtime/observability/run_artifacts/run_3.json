@@ -1,0 +1,17 @@
+{
+  "id": "run_cost_1775721654272_806b9456",
+  "createdAt": "2026-04-09T08:00:54.272Z",
+  "runId": 3,
+  "userId": 1,
+  "engine": "openai",
+  "pageCount": 5,
+  "labeledItemCount": 10,
+  "status": "needs_review",
+  "metadata": {
+    "confidence": 0.81,
+    "reviewReason": "This upload was explicitly flagged for manual review before release."
+  },
+  "estimatedInputTokens": 6000,
+  "estimatedOutputTokens": 2050,
+  "estimatedUsd": 0.0422
+}

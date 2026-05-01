@@ -1,0 +1,84 @@
+project: "familyEducation"
+task_id: "FE-054"
+task_name: "Live Creem Product Mapping And Checkout"
+sprint: "Sprint 10 Live Billing And Auth"
+epic: "Live Billing Closure"
+story_id: "FE-054"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "billing_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Map the three Creem commercial plans to live checkout flows and align pricing, billing, and return UX."
+business_value: "Turns the product into a real paid Beta rather than a local-only paywall simulation."
+requirement_ids:
+  - "BIL2-001"
+  - "BIL2-002"
+test_case_ids:
+  - "PAGE2-PRC-001"
+  - "PAGE2-BIL-001"
+  - "API2-BIL-001"
+  - "API2-BIL-002"
+  - "CLICK2-002"
+  - "CLICK2-003"
+expected_evidence:
+  - "pricing_screenshots"
+  - "checkout_session_snapshot"
+  - "billing_return_log"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read the next-phase billing rows and master test plan before touching pricing or checkout logic."
+  - "Dependency accepted: FE-053."
+acceptance_criteria:
+  - "The three declared commercial plans route into live Creem checkout or the correct auth gate."
+  - "Billing success and cancel behavior remains consistent between pricing and dashboard billing."
+constraints:
+  - "Do not keep test or placeholder product mapping in the live Beta lane."
+  - "Do not break normal sign-up or sign-in routing for public visitors."
+out_of_scope:
+  - "Webhook lifecycle and customer portal."
+dependencies:
+  - "FE-053"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/billing"
+related_files:
+  - "app/api/creem/checkout/route.ts"
+  - "app/(dashboard)/pricing/page.tsx"
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+primary_files:
+  - "lib/payments/creem.ts"
+  - "app/api/creem/checkout/route.ts"
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+secondary_files:
+  - "docs/release/creem_payment_plan.md"
+test_cases:
+  normal:
+    - "Execute API2-BIL-001 and API2-BIL-002 for all three plans."
+    - "Execute CLICK2-002 and CLICK2-003 from pricing and sample-report entry paths."
+  exception:
+    - "Verify public users are routed into auth first when required instead of seeing a broken checkout path."

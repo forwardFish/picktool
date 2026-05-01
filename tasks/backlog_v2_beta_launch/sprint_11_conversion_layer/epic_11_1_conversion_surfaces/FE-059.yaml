@@ -1,0 +1,77 @@
+project: "familyEducation"
+task_id: "FE-059"
+task_name: "Pricing Page Full Conversion Implementation"
+sprint: "Sprint 11 Conversion Layer"
+epic: "Conversion Surfaces"
+story_id: "FE-059"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "public_route_with_auth_variants"
+auth_expectations: "pricing_funnel_supported"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Make `/pricing` a complete commercial decision surface for the three FamilyEducation plans."
+business_value: "Reduces friction between interest and purchase."
+requirement_ids:
+  - "MKT-002"
+test_case_ids:
+  - "PAGE2-PRC-001"
+  - "PAGE2-PRC-002"
+  - "CLICK2-002"
+  - "NF2-001"
+expected_evidence:
+  - "pricing_screenshots"
+  - "faq_copy_review"
+  - "cta_route_transcript"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read the pricing sections in docs/需求文档_1.1.md before making pricing-surface decisions."
+  - "Dependency accepted: FE-058."
+acceptance_criteria:
+  - "Pricing clearly distinguishes one-time, weekly, and annual plans."
+  - "CTA routing from public and authenticated states remains coherent."
+constraints:
+  - "Do not let marketing copy drift away from live billing behavior."
+  - "Do not remove the path back into sign-up or billing."
+out_of_scope:
+  - "Sample-report page."
+dependencies:
+  - "FE-058"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/pricing"
+qa_urls:
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/billing"
+related_files:
+  - "app/(dashboard)/pricing/page.tsx"
+  - "components/pricing/*"
+primary_files:
+  - "app/(dashboard)/pricing/page.tsx"
+  - "components/pricing/*"
+secondary_files:
+  - "docs/release/creem_payment_plan.md"
+test_cases:
+  normal:
+    - "Execute PAGE2-PRC-001, PAGE2-PRC-002, and CLICK2-002."
+  exception:
+    - "Verify the plan CTA still routes safely when the user is not authenticated."

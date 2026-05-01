@@ -1,0 +1,159 @@
+{
+  "generated_at": "2026-04-09T11:44:16",
+  "project": "familyEducation",
+  "sprint_id": "sprint_10_live_billing_and_auth",
+  "completed_story_ids": [
+    "FE-054",
+    "FE-055",
+    "FE-056",
+    "FE-057"
+  ],
+  "failed_story_ids": [],
+  "story_reports": [
+    {
+      "story_id": "FE-054",
+      "requirement_ids": [
+        "BIL2-001",
+        "BIL2-002"
+      ],
+      "test_case_ids": [
+        "PAGE2-PRC-001",
+        "PAGE2-BIL-001",
+        "API2-BIL-001",
+        "API2-BIL-002",
+        "CLICK2-002",
+        "CLICK2-003"
+      ],
+      "expected_evidence": [
+        "pricing_screenshots",
+        "checkout_session_snapshot",
+        "billing_return_log",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-055",
+      "requirement_ids": [
+        "BIL2-003"
+      ],
+      "test_case_ids": [
+        "API2-BIL-003",
+        "API2-BIL-004",
+        "DATA2-BIL-001",
+        "OPS2-BIL-001",
+        "CLICK2-008"
+      ],
+      "expected_evidence": [
+        "webhook_replay_output",
+        "entitlement_snapshot",
+        "portal_session_evidence",
+        "runtime_log_snapshot"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-056",
+      "requirement_ids": [
+        "AUTH2-001",
+        "AUTH2-002"
+      ],
+      "test_case_ids": [
+        "PAGE2-SIN-001",
+        "PAGE2-SUP-001",
+        "API2-AUTH-001",
+        "CLICK2-010",
+        "NF2-002"
+      ],
+      "expected_evidence": [
+        "before_after_screenshots",
+        "oauth_callback_transcript",
+        "browse_console_log",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-057",
+      "requirement_ids": [
+        "GOV2-003",
+        "BIL2-001",
+        "BIL2-002",
+        "BIL2-003",
+        "AUTH2-001",
+        "AUTH2-002"
+      ],
+      "test_case_ids": [
+        "TC-GOV2-003",
+        "PAGE2-PRC-001",
+        "PAGE2-BIL-001",
+        "PAGE2-SIN-001",
+        "API2-BIL-001",
+        "API2-BIL-003",
+        "API2-AUTH-001",
+        "DATA2-BIL-001",
+        "OPS2-BIL-001",
+        "CLICK2-002",
+        "CLICK2-008",
+        "CLICK2-010"
+      ],
+      "expected_evidence": [
+        "sprint_acceptance_report",
+        "traceability_audit",
+        "ship_packet",
+        "document_release_packet",
+        "retro_packet"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    }
+  ],
+  "requirement_statuses": [
+    {
+      "requirement_id": "AUTH2-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "AUTH2-002",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "BIL2-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "BIL2-002",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "BIL2-003",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "GOV2-003",
+      "status": "Green"
+    }
+  ],
+  "post_hook_artifacts": {
+    "document_release_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_10_live_billing_and_auth\\document_release_report.md",
+    "retro_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_10_live_billing_and_auth\\retro_report.md",
+    "ship_report_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\ship\\ship_readiness_report.md"
+  },
+  "missing_items": [],
+  "passed": true
+}

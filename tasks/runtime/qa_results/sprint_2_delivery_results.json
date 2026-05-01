@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-04-04T15:57:27",
+  "results": [
+    {
+      "name": "planning_validation",
+      "command": "python scripts\\validate_planning_assets.py",
+      "returncode": 0,
+      "stdout": "PASS: planning assets are structurally complete and internally linked.\nPASS: validated 72 requirement IDs.\nPASS: validated 49 story YAML files.\nPASS: validated 166 test case IDs across matrices.\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "name": "db_generate",
+      "command": "powershell -NoProfile -Command \"$env:POSTGRES_URL='postgres://postgres:postgres@127.0.0.1:54322/postgres'; pnpm db:generate\"",
+      "returncode": 0,
+      "stdout": "\n> @ db:generate D:\\lyh\\agent\\agent-frame\\familyEducation\n> drizzle-kit generate\n\nNo config path provided, using default 'drizzle.config.ts'\nReading config file 'D:\\lyh\\agent\\agent-frame\\familyEducation\\drizzle.config.ts'\n11 tables\nactivity_logs 6 columns 0 indexes 2 fks\nanalysis_runs 15 columns 0 indexes 3 fks\nchildren 8 columns 0 indexes 1 fks\ninvitations 7 columns 0 indexes 2 fks\npages 13 columns 0 indexes 2 fks\nreports 7 columns 0 indexes 1 fks\nteam_members 5 columns 0 indexes 2 fks\nteams 9 columns 0 indexes 0 fks\nupload_files 9 columns 0 indexes 1 fks\nuploads 10 columns 0 indexes 2 fks\nusers 12 columns 0 indexes 0 fks\n\nNo schema changes, nothing to migrate 😴\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "returncode": 0,
+      "stdout": "\n> @ build D:\\lyh\\agent\\agent-frame\\familyEducation\n> next build\n\n   ▲ Next.js 15.6.0-canary.59 (Turbopack)\n   - Experiments (use with caution):\n     ✓ ppr\n     ✓ rdcForNavigations (enabled by `experimental.ppr`)\n\n   Creating an optimized production build ...\n ✓ Compiled successfully in 4.5s\n   Running TypeScript ...\n   Collecting page data ...\n   Generating static pages (0/25) ...\n   Generating static pages (6/25) \n   Generating static pages (12/25) \n   Generating static pages (18/25) \n ✓ Generating static pages (25/25) in 1643ms\n   Finalizing page optimization ...\n\nRoute (app)                                 Revalidate  Expire\n┌ ◐ /\n├ ◐ /_not-found\n├ ƒ /api/children\n├ ƒ /api/children/[childId]\n├ ƒ /api/runs/[runId]\n├ ƒ /api/runs/[runId]/retry\n├ ƒ /api/stripe/checkout\n├ ƒ /api/stripe/webhook\n├ ƒ /api/team\n├ ƒ /api/uploads\n├ ƒ /api/uploads/[uploadId]/files\n├ ƒ /api/uploads/[uploadId]/submit\n├ ƒ /api/user\n├ ƒ /dashboard\n├ ◐ /dashboard/account\n├ ◐ /dashboard/activity\n├ ƒ /dashboard/billing\n├ ƒ /dashboard/children\n├ ◐ /dashboard/children/[childId]\n├   └ /dashboard/children/[childId]\n├ ◐ /dashboard/children/[childId]/upload\n├   └ /dashboard/children/[childId]/upload\n├ ◐ /dashboard/children/new\n├ ◐ /dashboard/general\n├ ◐ /dashboard/reports/[reportId]\n├   └ /dashboard/reports/[reportId]\n├ ◐ /dashboard/runs/[runId]\n├   └ /dashboard/runs/[runId]\n├ ◐ /dashboard/security\n├ ◐ /pricing                                        1h      1y\n├ ƒ /sign-in\n└ ƒ /sign-up\n\n\n◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content\nƒ  (Dynamic)            server-rendered on demand\n\n",
+      "stderr": "[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n ⚠ The \"middleware\" file convention is deprecated. Please use \"proxy\" instead.\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`\n",
+      "status": "passed"
+    },
+    {
+      "name": "api_smoke",
+      "command": "node scripts\\run_sprint2_smoke.mjs",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"checks\": [\n    \"api_children_create_demo\",\n    \"api_upload_create\",\n    \"api_upload_files\",\n    \"api_run_done\",\n    \"api_run_failed\",\n    \"api_run_retry\",\n    \"api_run_needs_review\",\n    \"api_run_timeout\",\n    \"report_route_demo\"\n  ]\n}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "name": "browser_smoke",
+      "command": "node scripts\\run_sprint2_browser_smoke.mjs",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"checks\": [\n    \"dashboard_browser\",\n    \"child_create_browser\",\n    \"upload_page_browser\",\n    \"run_done_browser\",\n    \"report_browser\",\n    \"run_retry_browser\",\n    \"run_needs_review_browser\",\n    \"run_timeout_browser\"\n  ]\n}\n",
+      "stderr": "",
+      "status": "passed"
+    }
+  ]
+}

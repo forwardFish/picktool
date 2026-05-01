@@ -1,0 +1,79 @@
+project: "familyEducation"
+task_id: "FE-106"
+task_name: "Provider, Storage, Jobs, And Run Lifecycle Boundary Alignment"
+sprint: "Sprint 22 Must-Do Core Alignment"
+epic: "Provider And Jobs"
+story_id: "FE-106"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Align Stage 1 provider abstraction, quality gate routing, and run lifecycle states to the reusable `1.3.4` must-do boundary."
+business_value: "Preserves additive storage/parse/LLM/job reuse so the family-education frontend does not hard-code the backend into a dead-end."
+requirement_ids:
+  - "BND134-QUALITY-GATE"
+  - "BND134-PROVIDER-JOBS"
+test_case_ids:
+  - "TC-BND134-003"
+  - "API-BND134-004"
+  - "API-BND134-005"
+  - "DATA-BND134-005"
+expected_evidence:
+  - "provider_abstraction_crosswalk"
+  - "run_state_boundary_audit"
+  - "retry_review_degrade_mapping"
+  - "accepted_job_lane_dependency_map"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-105."
+  - "Read FE-016, FE-017, FE-043, FE-084, and FE-088 through FE-090 before drafting the provider/jobs alignment."
+acceptance_criteria:
+  - "Storage, parse, and LLM providers are documented as additive abstractions rather than route-local assumptions."
+  - "Run states preserve queued, running, needs_review, done, failed, retry, and degrade-safe behavior."
+  - "Deck/player light-lane hooks are documented as dependent consumers of these reusable job and gate contracts."
+constraints:
+  - "Do not claim new provider runtime implementations beyond what already exists in accepted or dependent lanes."
+out_of_scope:
+  - "Parent walkthrough UI or export artifact UX."
+dependencies:
+  - "FE-105"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+qa_urls:
+  - "http://127.0.0.1:3000/api/runs/[runId]"
+related_files:
+  - "tasks/backlog_v1/sprint_2_upload_and_run_lifecycle/*"
+  - "tasks/backlog_v3_diagnosis_1_2_2/sprint_16_product/product/FE-084.yaml"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_17_continuity_and_schema/schema/FE-088.yaml"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_18_generation_and_gate/*"
+  - "docs/requirements/*"
+primary_files:
+  - "tasks/backlog_v1/sprint_2_upload_and_run_lifecycle/*"
+  - "tasks/backlog_v3_diagnosis_1_2_2/sprint_16_product/product/FE-084.yaml"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_17_continuity_and_schema/schema/FE-088.yaml"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_18_generation_and_gate/*"
+secondary_files:
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+test_cases:
+  normal:
+    - "Audit provider and run-state contracts across accepted diagnosis and dependent deck lanes."
+  exception:
+    - "Fail if Stage 1 provider or job contracts are written as one-off route logic or if needs_review disappears from the boundary."

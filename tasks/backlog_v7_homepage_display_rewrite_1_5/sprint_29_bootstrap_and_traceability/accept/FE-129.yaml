@@ -1,0 +1,83 @@
+project: "familyEducation"
+task_id: "FE-129"
+task_name: "Sprint 29 Homepage Bootstrap Acceptance"
+sprint: "Sprint 29 Bootstrap And Traceability"
+epic: "Sprint Acceptance"
+story_id: "FE-129"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 29 only if the `1.5` homepage lane is structurally executable and fully linked into canonical planning docs."
+business_value: "Prevents narrative rewrite work from starting on top of missing traceability or ambiguous sequence rules."
+requirement_ids:
+  - "GOV-003"
+  - "HOME15-PROGRAM-LANE"
+  - "HOME15-FINAL-ACCEPT"
+test_case_ids:
+  - "TC-GOV-004"
+  - "TC-HOME15-004"
+  - "FP-HOME15-001"
+expected_evidence:
+  - "sprint_29_traceability_audit"
+  - "v7_bootstrap_acceptance_packet"
+  - "homepage_baseline_evidence_index"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-127 and FE-128."
+acceptance_criteria:
+  - "Sprint 29 fails if v7 continuity, requirement rows, or testing rows are missing."
+  - "The acceptance packet includes the homepage baseline and explicit sequence gating behind `1.4 v6` closeout."
+  - "Release closeout artifacts exist even though homepage runtime code has not changed yet."
+constraints:
+  - "Do not claim homepage rewrite delivery complete from planning artifacts alone."
+out_of_scope:
+  - "Hero, pricing-preview, FAQ, or footer implementation changes."
+dependencies:
+  - "FE-127"
+  - "FE-128"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+related_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v7_homepage_display_rewrite_1_5/*"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v7_homepage_display_rewrite_1_5/*"
+secondary_files:
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+test_cases:
+  normal:
+    - "Run the Sprint 29 traceability audit and confirm v7 is treated as the next authoritative backlog root."
+  exception:
+    - "Fail if any Sprint 29 required document or execution-order file is missing."

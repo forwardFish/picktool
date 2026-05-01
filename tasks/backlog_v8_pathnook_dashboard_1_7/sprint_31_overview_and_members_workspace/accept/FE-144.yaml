@@ -1,0 +1,49 @@
+project: "familyEducation"
+task_id: "FE-144"
+task_name: "Sprint 31 Workspace Acceptance"
+sprint: "Sprint 31 Overview And Members Workspace"
+epic: "Sprint Acceptance"
+story_id: "FE-144"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 31 only when overview and members workspaces are fully real-data-driven and empty-state safe."
+business_value: "Prevents a half-cutover workspace where one route is real and the next route still feels like a demo."
+requirement_ids:
+  - "GOV-003"
+  - "DASH17-OVERVIEW"
+  - "DASH17-MEMBERS"
+test_case_ids:
+  - "TC-GOV-004"
+  - "PAGE-DAS-004"
+  - "PAGE-CHD-006"
+expected_evidence:
+  - "sprint_31_workspace_acceptance"
+required_modes:
+  - "qa"
+  - "review"
+  - "acceptance_gate"
+acceptance_criteria:
+  - "Overview and members routes no longer depend on hardcoded member/report arrays."
+  - "Workspace screenshots and contract tests cover both populated and empty states."
+constraints:
+  - "Fail the sprint if any logged-in workspace route still uses prototype child identity."
+primary_files:
+  - "app/(dashboard)/dashboard/page.tsx"
+  - "app/(dashboard)/dashboard/children/*"
+test_cases:
+  normal:
+    - "Run overview and members contract checks plus populated/empty UI verification."
+  exception:
+    - "Fail if dashboard hints, focus cards, or member tabs mismatch the actual selected child."

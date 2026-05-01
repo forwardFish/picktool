@@ -1,0 +1,102 @@
+project: "familyEducation"
+task_id: "FE-026"
+task_name: "Evidence Experience"
+sprint: "Sprint 4 Report Core"
+epic: "Report Experience"
+story_id: "FE-026"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "parent_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Render evidence groups, page/problem jumps, and proof anchors for each finding."
+business_value: "Makes the diagnosis auditable and shareable."
+requirement_ids:
+  - "REP-004"
+  - "REP-005"
+  - "AI-005"
+test_case_ids:
+  - "PAGE-RPT-004"
+  - "PAGE-RPT-005"
+  - "AI-RPT-001"
+  - "CLICK-004"
+expected_evidence:
+  - "before_after_screenshots"
+  - "browse_console_log"
+  - "browse_network_log"
+  - "qa_test_output"
+  - "acceptance_checklist"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档.md and docs/saas-starter 一天落地实施说明.md as the product truth source."
+  - "Read docs/requirements/prd_requirement_index.md and docs/requirements/prd_traceability_matrix.md before making scope decisions."
+  - "Dependencies accepted: FE-025."
+acceptance_criteria:
+  - "Evidence 必须按错误类型分组展示。"
+  - "Evidence 必须允许打开页图并定位到 pageNo/problemNo。"
+  - "每个 finding 至少需要 2 条 evidence，否则降级或不输出。"
+constraints:
+  - "Do not mark requirement rows green without attached evidence."
+  - "Do not expand beyond the declared route/API/schema/document scope unless a blocker explicitly requires it."
+  - "Collect browse, design, and browser QA evidence for the changed routes."
+out_of_scope:
+  - "Any requirement not explicitly listed in requirement_ids."
+dependencies:
+  - "FE-025"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "components/reports/EvidenceTab.tsx"
+  - "components/reports/PageViewer.tsx"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+primary_files:
+  - "components/reports/EvidenceTab.tsx"
+  - "components/reports/PageViewer.tsx"
+  - "app/(dashboard)/dashboard/reports/[reportId]/page.tsx"
+secondary_files:
+  - "components/reports/EvidenceTab.tsx"
+story_inputs:
+  - "The linked requirement IDs from the PRD requirement index."
+  - "The linked tests from the page/click/API/data/AI matrices."
+  - "The current starter repository structure and route layout."
+story_process:
+  - "Confirm the requirement and test scope before touching code or docs."
+  - "Implement only the declared route/API/schema/document scope."
+  - "Produce the evidence listed under expected_evidence and update the traceability row status accordingly."
+story_outputs:
+  - "Scoped code or documentation changes."
+  - "Acceptance evidence tied to the declared test_case_ids."
+  - "A delivery packet suitable for downstream Sprint Acceptance."
+verification_basis:
+  - "All declared test_case_ids execute or are deterministically evidenced."
+  - "Review, code acceptance, and acceptance gate pass without blocker findings."
+  - "Requirement rows tied to this Story move to Green only with evidence."
+test_cases:
+  normal:
+    - "Execute PAGE-RPT-004 and capture pass evidence."
+    - "Execute PAGE-RPT-005 and capture pass evidence."
+    - "Execute AI-RPT-001 and capture pass evidence."
+  exception:
+    - "Run the negative or edge coverage associated with CLICK-004."

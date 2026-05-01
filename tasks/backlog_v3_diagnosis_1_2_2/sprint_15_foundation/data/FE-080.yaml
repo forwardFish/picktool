@@ -1,0 +1,88 @@
+project: "familyEducation"
+task_id: "FE-080"
+task_name: "Taxonomy Classification Contract"
+sprint: "Sprint 15 Professional Diagnosis Pipeline Foundation"
+epic: "Diagnostic Data Foundation"
+story_id: "FE-080"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "run_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Add the fixed MVP taxonomy and item error contract for stable downstream diagnosis aggregation."
+business_value: "Turns raw mistakes into a consistent professional error language."
+requirement_ids:
+  - "DIAG122-TAXONOMY"
+test_case_ids:
+  - "TC-DIAG122-TAX-001"
+  - "API-DIAG122-TAX-001"
+  - "DATA-DIAG122-TAX-001"
+expected_evidence:
+  - "taxonomy_enum_assertion"
+  - "classify_items_api_output"
+  - "item_errors_schema_assertion"
+  - "report_taxonomy_trace_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-079."
+  - "Read docs/需求文档_1.2_最终版.md section 4.3 before coding."
+acceptance_criteria:
+  - "MVP taxonomy supports concept_gap, procedure_gap, calculation_slip, reading_issue, notation_error, strategy_error, careless_slip, and incomplete_reasoning."
+  - "Item errors include severity, confidence, rationale, and primary/secondary role."
+  - "Low-confidence labels cannot directly become primary diagnosis inputs."
+constraints:
+  - "Each item should have at most one primary error and one optional secondary error for MVP."
+out_of_scope:
+  - "Full diagnosis aggregation and plan generation."
+dependencies:
+  - "FE-079"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+related_files:
+  - "lib/ai/taxonomy.ts"
+  - "lib/ai/extraction-schema.ts"
+  - "lib/ai/demo-engine.ts"
+  - "lib/db/schema.ts"
+  - "lib/db/migrations/0008_primary_item_error_role.sql"
+  - "lib/db/migrations/meta/_journal.json"
+  - "lib/family/types.ts"
+  - "lib/family/repository.ts"
+  - "lib/family/admin-review.ts"
+  - "lib/family/mock-store.ts"
+  - "docs/requirements/fe_080_taxonomy_contract.md"
+primary_files:
+  - "lib/ai/taxonomy.ts"
+  - "lib/ai/extraction-schema.ts"
+  - "lib/db/schema.ts"
+  - "lib/family/repository.ts"
+secondary_files:
+  - "lib/ai/demo-engine.ts"
+  - "lib/db/migrations/0008_primary_item_error_role.sql"
+  - "lib/db/migrations/meta/_journal.json"
+  - "lib/family/types.ts"
+  - "lib/family/admin-review.ts"
+  - "lib/family/mock-store.ts"
+  - "docs/requirements/fe_080_taxonomy_contract.md"
+test_cases:
+  normal:
+    - "Classify deterministic items and verify rationale plus severity are persisted."
+  exception:
+    - "Reject or downrank labels with missing rationale or weak confidence."

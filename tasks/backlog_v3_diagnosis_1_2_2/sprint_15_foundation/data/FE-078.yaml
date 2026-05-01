@@ -1,0 +1,75 @@
+project: "familyEducation"
+task_id: "FE-078"
+task_name: "Diagnostic Intake Context Capture"
+sprint: "Sprint 15 Professional Diagnosis Pipeline Foundation"
+epic: "Diagnostic Data Foundation"
+story_id: "FE-078"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "upload_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Add the Diagnostic Intake Card before analysis so runs can use parent context for diagnosis tone and weekly focus."
+business_value: "Makes reports feel like professional diagnosis instead of generic AI summaries."
+requirement_ids:
+  - "DIAG122-INTAKE"
+test_case_ids:
+  - "TC-DIAG122-INTAKE-001"
+  - "PAGE-DIAG122-UPLOAD-001"
+  - "API-DIAG122-INTAKE-001"
+expected_evidence:
+  - "db_migration_or_schema_assertion"
+  - "upload_page_intake_screenshot"
+  - "intake_api_smoke_output"
+  - "run_payload_includes_intake"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档_1.2_最终版.md section 4.1 before coding."
+acceptance_criteria:
+  - "Upload page includes diagnosticGoal, recentTrend, teacherFeedbackPresent, parentConcern, hasTutor, and notes."
+  - "POST and GET intake APIs persist and retrieve intake for an upload."
+  - "Run processing can read intake and report summary behavior can vary by diagnosticGoal and parentConcern."
+constraints:
+  - "Keep the product parent-first and do not introduce tutor account scope."
+out_of_scope:
+  - "Problem item extraction, taxonomy classification, or final diagnosis aggregation."
+dependencies: []
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]/upload"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]/upload"
+related_files:
+  - "app/(dashboard)/dashboard/children/[childId]/upload/*"
+  - "app/api/uploads/[uploadId]/intake/route.ts"
+  - "lib/db/schema.ts"
+  - "lib/db/queries.ts"
+primary_files:
+  - "app/(dashboard)/dashboard/children/[childId]/upload/*"
+  - "app/api/uploads/[uploadId]/intake/route.ts"
+  - "lib/db/schema.ts"
+  - "lib/db/queries.ts"
+secondary_files:
+  - "components/uploads/*"
+  - "lib/family/*"
+test_cases:
+  normal:
+    - "Save intake for an upload and confirm the run payload can read it."
+  exception:
+    - "Reject missing diagnosticGoal and preserve a clear parent-facing validation message."

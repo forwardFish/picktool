@@ -1,0 +1,179 @@
+{
+  "generated_at": "2026-04-09T12:14:09",
+  "project": "familyEducation",
+  "sprint_id": "sprint_12_report_quality_and_run_reliability",
+  "completed_story_ids": [
+    "FE-063",
+    "FE-064",
+    "FE-065",
+    "FE-066",
+    "FE-067"
+  ],
+  "failed_story_ids": [],
+  "story_reports": [
+    {
+      "story_id": "FE-063",
+      "requirement_ids": [
+        "QLT-001"
+      ],
+      "test_case_ids": [
+        "PAGE2-RPT-001",
+        "AI2-RPT-001"
+      ],
+      "expected_evidence": [
+        "report_json_assertions",
+        "diagnosis_screenshots",
+        "qa_test_output",
+        "review_notes"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-064",
+      "requirement_ids": [
+        "QLT-002"
+      ],
+      "test_case_ids": [
+        "PAGE2-RPT-002",
+        "AI2-RPT-002",
+        "CLICK2-005"
+      ],
+      "expected_evidence": [
+        "before_after_screenshots",
+        "source_anchor_transcript",
+        "browse_console_log",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-065",
+      "requirement_ids": [
+        "QLT-003"
+      ],
+      "test_case_ids": [
+        "PAGE2-RPT-003",
+        "API2-RPT-001",
+        "AI2-RPT-003",
+        "AI2-RPT-004"
+      ],
+      "expected_evidence": [
+        "report_variant_snapshot",
+        "plan_screenshots",
+        "api_contract_snapshot",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-066",
+      "requirement_ids": [
+        "RUN2-001",
+        "RUN2-002"
+      ],
+      "test_case_ids": [
+        "PAGE2-UPL-001",
+        "PAGE2-RUN-001",
+        "API2-RUN-001",
+        "CLICK2-004",
+        "NF2-002"
+      ],
+      "expected_evidence": [
+        "before_after_screenshots",
+        "run_state_transcript",
+        "browse_console_log",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-067",
+      "requirement_ids": [
+        "GOV2-003",
+        "QLT-001",
+        "QLT-002",
+        "QLT-003",
+        "RUN2-001",
+        "RUN2-002"
+      ],
+      "test_case_ids": [
+        "TC-GOV2-003",
+        "PAGE2-RPT-001",
+        "PAGE2-RPT-002",
+        "PAGE2-RPT-003",
+        "PAGE2-UPL-001",
+        "PAGE2-RUN-001",
+        "API2-RPT-001",
+        "API2-RUN-001",
+        "AI2-RPT-001",
+        "AI2-RPT-002",
+        "AI2-RPT-003",
+        "AI2-RPT-004",
+        "CLICK2-004",
+        "CLICK2-005"
+      ],
+      "expected_evidence": [
+        "sprint_acceptance_report",
+        "traceability_audit",
+        "browser_evidence_manifest",
+        "ship_packet",
+        "document_release_packet",
+        "retro_packet"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    }
+  ],
+  "requirement_statuses": [
+    {
+      "requirement_id": "GOV2-003",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "QLT-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "QLT-002",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "QLT-003",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "RUN2-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "RUN2-002",
+      "status": "Green"
+    }
+  ],
+  "post_hook_artifacts": {
+    "document_release_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_12_report_quality_and_run_reliability\\document_release_report.md",
+    "retro_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_12_report_quality_and_run_reliability\\retro_report.md",
+    "ship_report_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\ship\\ship_readiness_report.md"
+  },
+  "missing_items": [],
+  "passed": true
+}

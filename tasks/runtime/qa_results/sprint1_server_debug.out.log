@@ -1,0 +1,11 @@
+
+> @ start D:\lyh\agent\agent-frame\familyEducation
+> next start
+
+   ▲ Next.js 15.6.0-canary.59
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.3.33:3000
+
+ ✓ Starting...
+ ✓ Ready in 715ms
+ ELIFECYCLE  Command failed with exit code 1.

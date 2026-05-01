@@ -1,0 +1,100 @@
+project: "familyEducation"
+task_id: "FE-077"
+task_name: "Sprint 14 Acceptance And Beta Verdict"
+sprint: "Sprint 14 Privacy And Beta Launch"
+epic: "Beta Launch Governance"
+story_id: "FE-077"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Run the final next-phase audit and issue the Beta verdict only from the latest green evidence set."
+business_value: "Prevents the product from being described as Beta-ready on partial or stale evidence."
+requirement_ids:
+  - "GOV2-003"
+  - "GOV2-004"
+  - "PRIV2-001"
+  - "PRIV2-002"
+  - "REL2-001"
+  - "REL2-002"
+test_case_ids:
+  - "TC-GOV2-003"
+  - "TC-GOV2-005"
+  - "TC-GOV2-006"
+  - "PAGE2-ACC-001"
+  - "API2-PRIV-001"
+  - "API2-AUD-001"
+  - "DATA2-DEL-001"
+  - "DATA2-AUD-001"
+  - "CLICK2-009"
+  - "OPS2-BETA-001"
+  - "OPS2-BETA-002"
+  - "FP2-001"
+  - "FP2-002"
+expected_evidence:
+  - "final_acceptance_report"
+  - "final_traceability_audit"
+  - "final_evidence_pack"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-073, FE-074, FE-075, FE-076."
+  - "Read docs/testing/next_phase/final_program_acceptance.md before starting the final verdict flow."
+acceptance_criteria:
+  - "The final verdict is issued only from the latest traceability state and evidence pack."
+  - "If any next-phase requirement row is non-green, the verdict is FAIL."
+constraints:
+  - "Do not carry forward old Sprint evidence without re-auditing against the latest Beta candidate."
+out_of_scope:
+  - "Any post-Beta roadmap work."
+dependencies:
+  - "FE-073"
+  - "FE-074"
+  - "FE-075"
+  - "FE-076"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/account"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+  - "http://127.0.0.1:3000/dashboard/tutor"
+related_files:
+  - "tasks/runtime/final_program_acceptance/*"
+  - "docs/testing/next_phase/final_program_acceptance.md"
+primary_files:
+  - "docs/requirements/next_phase_traceability_matrix.md"
+  - "docs/testing/next_phase/final_program_acceptance.md"
+  - "docs/testing/next_phase/sprint_acceptance_template.md"
+secondary_files:
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+test_cases:
+  normal:
+    - "Execute the full Beta-level acceptance suite and final traceability audit."
+    - "Confirm the final verdict matches the latest row state and evidence pack."
+  exception:
+    - "Fail the final verdict immediately if any next-phase requirement remains non-green or unevidenced."

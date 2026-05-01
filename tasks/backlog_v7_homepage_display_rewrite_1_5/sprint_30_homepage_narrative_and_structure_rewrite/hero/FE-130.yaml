@@ -1,0 +1,79 @@
+project: "familyEducation"
+task_id: "FE-130"
+task_name: "Homepage Hero, Positioning, And Why-Use Rewrite"
+sprint: "Sprint 30 Homepage Narrative And Structure Rewrite"
+epic: "Homepage Hero And Positioning"
+story_id: "FE-130"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "public_route_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Rewrite the homepage hero, positioning section, and why-use section around the fixed Pathnook system definition and Stage 1 public story."
+business_value: "Lets first-time visitors understand within seconds what Pathnook is and why they should care."
+requirement_ids:
+  - "HOME15-SYSTEM-DEFINITION"
+  - "HOME15-HERO-POSITIONING"
+  - "HOME15-WHY-USE"
+test_case_ids:
+  - "PAGE-HOME15-001"
+  - "PAGE-HOME15-002"
+  - "PAGE-HOME15-003"
+  - "TC-HOME15-005"
+expected_evidence:
+  - "hero_before_after_screenshots"
+  - "system_definition_copy_audit"
+  - "why_use_structure_proof"
+  - "five_second_positioning_notes"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-129."
+  - "Read docs/需求文档_1.5.md and the Sprint 29 homepage baseline before editing public copy."
+acceptance_criteria:
+  - "Hero uses `Pathnook is an AI learning and growth system.` and `AI-driven clarity, next-step guidance, and family learning follow-through.`"
+  - "A dedicated positioning section explains that Pathnook is more than a report tool."
+  - "A dedicated why-use section explains clarity, next steps, and follow-through instead of listing feature mechanics."
+constraints:
+  - "Do not reintroduce `math pages`, `family action plan`, or bilingual output as the homepage primary definition."
+out_of_scope:
+  - "Pricing preview, FAQ, footer, or billing mechanics changes."
+dependencies:
+  - "FE-129"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+related_files:
+  - "app/(dashboard)/page.tsx"
+  - "components/landing/*"
+primary_files:
+  - "app/(dashboard)/page.tsx"
+  - "components/landing/*"
+secondary_files:
+  - "docs/需求文档_1.5.md"
+  - "app/(dashboard)/sample-report/*"
+test_cases:
+  normal:
+    - "Verify the first viewport communicates the Pathnook system definition and the new why-use structure in under five seconds."
+  exception:
+    - "Fail if the hero still reads as math-only, report-only, or bilingual-first."

@@ -1,0 +1,78 @@
+project: "familyEducation"
+task_id: "FE-081"
+task_name: "Sprint 15 Diagnostic Foundation Acceptance"
+sprint: "Sprint 15 Professional Diagnosis Pipeline Foundation"
+epic: "Pipeline Foundation Acceptance"
+story_id: "FE-081"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Accept Sprint 15 only if intake, problem items, and taxonomy are verified as a reusable diagnosis foundation."
+business_value: "Prevents diagnosis aggregation work from building on incomplete or untraceable facts."
+requirement_ids:
+  - "DIAG122-FOUNDATION-ACCEPT"
+test_case_ids:
+  - "TC-DIAG122-SPRINT15-ACCEPT"
+expected_evidence:
+  - "sprint_15_traceability_audit"
+  - "sprint_15_api_and_data_evidence"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-078, FE-079, FE-080."
+acceptance_criteria:
+  - "Sprint evidence proves the data foundation is implemented, verified, agentized, and accepted."
+  - "Any missing evidence anchor, taxonomy rationale, or intake persistence issue fails the sprint."
+constraints:
+  - "Do not mark Sprint 15 accepted from stale Sprint 12 evidence."
+out_of_scope:
+  - "Sprint 16 diagnosis, plan, gate, and calibration implementation."
+dependencies:
+  - "FE-078"
+  - "FE-079"
+  - "FE-080"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]/upload"
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+related_files:
+  - "tasks/runtime/*"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+  - "docs/testing/*"
+primary_files:
+  - "tasks/runtime/*"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+secondary_files:
+  - "docs/testing/*"
+test_cases:
+  normal:
+    - "Run the Sprint 15 traceability and API/data evidence check."
+  exception:
+    - "Fail acceptance if any Sprint 15 contract depends on fabricated items or missing taxonomy rationale."

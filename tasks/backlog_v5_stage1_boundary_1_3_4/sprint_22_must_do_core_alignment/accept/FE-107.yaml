@@ -1,0 +1,90 @@
+project: "familyEducation"
+task_id: "FE-107"
+task_name: "Sprint 22 Must-Do Boundary Acceptance"
+sprint: "Sprint 22 Must-Do Core Alignment"
+epic: "Sprint 22 Acceptance"
+story_id: "FE-107"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Accept Sprint 22 only if every `must-do` Stage 1 boundary row is mapped to accepted contracts with tests and non-rewrite evidence."
+business_value: "Prevents Stage 1 boundary work from staying at the slogan level instead of becoming execution-ready dependency maps."
+requirement_ids:
+  - "GOV-003"
+  - "BND134-CORE-FACTS"
+  - "BND134-DIAGNOSIS-CONTRACT"
+  - "BND134-REPORT-LAYER"
+  - "BND134-EXPLANATION-CARD"
+  - "BND134-PLAN-CONTRACT"
+  - "BND134-QUALITY-GATE"
+  - "BND134-SHARE-PRIVACY"
+  - "BND134-PROVIDER-JOBS"
+test_case_ids:
+  - "TC-GOV-004"
+  - "TC-BND134-003"
+  - "TC-BND134-004"
+expected_evidence:
+  - "sprint_22_boundary_audit"
+  - "must_do_dependency_crosswalk_packet"
+  - "non_rewrite_acceptance_report"
+  - "planning_validation_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-103, FE-104, FE-105, and FE-106."
+acceptance_criteria:
+  - "All must-do BND134 rows map to accepted route/API/schema contracts or documented dependency lanes."
+  - "No must-do row relies on rewriting accepted story cards."
+  - "The stage-boundary packet keeps diagnosis, evidence, and 7-day plan as the primary product layer."
+constraints:
+  - "Do not pass Sprint 22 if any must-do row points only to future light-lane implementation."
+out_of_scope:
+  - "Light-lane walkthrough/playback mapping and non-scope guardrails."
+dependencies:
+  - "FE-103"
+  - "FE-104"
+  - "FE-105"
+  - "FE-106"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/share/[token]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+  - "http://127.0.0.1:3000/share/[token]"
+related_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v3_diagnosis_1_2_2/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/sprint_22_must_do_core_alignment/*"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/sprint_22_must_do_core_alignment/*"
+secondary_files:
+  - "tasks/backlog_v3_diagnosis_1_2_2/*"
+  - "tasks/backlog_v1/*"
+test_cases:
+  normal:
+    - "Run the must-do boundary audit and verify every row has a cross-linked dependency map."
+  exception:
+    - "Fail acceptance if any must-do row is still undocumented, untested, or dependent on non-scope functionality."

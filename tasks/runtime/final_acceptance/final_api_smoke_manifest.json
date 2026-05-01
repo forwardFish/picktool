@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-04-09T08:00:33.885Z",
+  "checks": [
+    "api_child_create",
+    "api_upload_create",
+    "api_upload_files",
+    "api_run_done",
+    "billing_lock_gate",
+    "billing_unlock_checkout",
+    "api_report_locale_variants",
+    "api_report_export",
+    "api_report_plan_progress",
+    "api_share_create_and_read",
+    "api_share_revoke",
+    "history_compare_surface",
+    "api_tutor_workspace",
+    "api_reminder_schedule",
+    "api_needs_review_routing",
+    "api_retry_run",
+    "api_timeout_run",
+    "ops_observability_and_cost",
+    "ops_delete_report",
+    "ops_delete_upload",
+    "ops_delete_child",
+    "ops_retention_cleanup"
+  ],
+  "artifacts": {
+    "observability_dir": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\observability",
+    "retention_audit": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\retention\\latest_cleanup_audit.json",
+    "reminder_events": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\family_local_runtime\\reminder_events.json"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "processStatus": 200,
+  "processReportId": 11,
+  "processRunStatus": "needs_review",
+  "firstReportsHref": "/dashboard/reports/11",
+  "childFile": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\final_acceptance\\dashboard_17_local_ui\\25_child_detail_after_layout_fix.png",
+  "childTextSample": "Pathnook\nOverview\nMembers\nReports\nACCOUNT\nBilling\nSettings\nO\nOrion\nOwner\nMembers\n/\nLin-4117\nChild Detail\n\nThis page ties the child profile, recent reports, current focus, and next move into one real workspace summary.\n\n7th Grade\n1 reports\nPlan in progress\nL\nLin-4117\n7th Grade / General Math\nCurrent focus / Current focus\nRecent score / 45\nWeekly review / 4/22/2026\nCurrent bottleneck\nCurrent focus\nNext move\nNeeds review before the full report is released.\nQuick actions\nStart or continue diagnosis\nOpen upload workspace\nOpen latest report\nGo to detail\nBack to members workspace\nReturn to member switcher\nSubject summaries\n\nDerived from recent reports, issue trends, and review history.\n\nGeneral Math\n1 reviews / 1 topics / Needs Focus\nFirst report for this child. Use this as the baseline for next week.\nRecent reports for Lin-4117\n\nUse the review timeline to compare runs and keep weekly notes in one place.\n\nREPORT #11\n\n2026/4/22 21:53:54\n\nOpen Report\n\nTop Finding\n\nFinding label pending\n\nWeekly Compare\n\nFirst report for this child. Use this as the baseline for next week.\n\nUploaded pages could not be parsed into reliable worksheet evidence. Please re-upload a clearer file or review manually.\n",
+  "runReports": [
+    {
+      "id": 11,
+      "createdAt": "2026-04-22T13:53:54.314Z",
+      "updatedAt": "2026-04-22T13:53:54.314Z"
+    }
+  ]
+}

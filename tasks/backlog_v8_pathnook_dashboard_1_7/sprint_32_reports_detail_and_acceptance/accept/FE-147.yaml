@@ -1,0 +1,53 @@
+project: "familyEducation"
+task_id: "FE-147"
+task_name: "Sprint 32 Dashboard Lane Acceptance"
+sprint: "Sprint 32 Reports Detail And Acceptance"
+epic: "Sprint Acceptance"
+story_id: "FE-147"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close the 1.7 dashboard lane only when reports/detail cutover, contract tests, and targeted regressions are green."
+business_value: "Ensures the logged-in Pathnook workspace ships as a coherent real-data product surface."
+requirement_ids:
+  - "GOV-003"
+  - "DASH17-REPORTS"
+  - "DASH17-DETAIL"
+test_case_ids:
+  - "TC-GOV-004"
+  - "PAGE-RPT-004"
+  - "PAGE-RPT-008"
+expected_evidence:
+  - "sprint_32_dashboard_acceptance_packet"
+  - "dashboard_regression_bundle"
+required_modes:
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+acceptance_criteria:
+  - "Reports and report-detail surfaces run from the new aggregators and contract tests pass."
+  - "Targeted regression suite plus planning validator are green before the lane is described as ready."
+constraints:
+  - "Fail the sprint if any core logged-in dashboard route still uses demo arrays."
+primary_files:
+  - "app/(dashboard)/dashboard/reports/*"
+  - "tests/*dashboard*"
+  - "tests/*report*"
+test_cases:
+  normal:
+    - "Run targeted report/dashboard contract tests, report history tests, billing tests, and the planning validator."
+  exception:
+    - "Fail if evidence of structured detail cutover is missing or any real-data surface falls back to static placeholders."

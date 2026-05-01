@@ -1,0 +1,89 @@
+project: "familyEducation"
+task_id: "FE-053"
+task_name: "Sprint 9 Acceptance"
+sprint: "Sprint 9 Production Readiness Foundation"
+epic: "Production Smoke And Acceptance"
+story_id: "FE-053"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "mixed_route_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Audit Sprint 9 end to end and block closeout until production-readiness rows are green with evidence."
+business_value: "Preserves the Beta lane by stopping premature release claims."
+requirement_ids:
+  - "GOV2-003"
+  - "PROD-001"
+  - "PROD-002"
+  - "PROD-003"
+test_case_ids:
+  - "TC-GOV2-003"
+  - "OPS2-DEP-001"
+  - "OPS2-DEP-002"
+  - "API2-STO-001"
+  - "OPS2-OBS-001"
+  - "OPS2-OBS-002"
+  - "NF2-002"
+  - "NF2-003"
+expected_evidence:
+  - "sprint_acceptance_report"
+  - "traceability_audit"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-050, FE-051, FE-052."
+  - "Read docs/testing/next_phase/sprint_acceptance_template.md before starting Sprint audit work."
+acceptance_criteria:
+  - "Sprint 9 may only close when all owned rows are green and the required closeout packet exists."
+  - "Any missing env, storage, or telemetry evidence blocks acceptance."
+constraints:
+  - "Do not close the Sprint on partial smoke or partial traceability."
+out_of_scope:
+  - "Sprint 10 billing and auth implementation."
+dependencies:
+  - "FE-050"
+  - "FE-051"
+  - "FE-052"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/sign-in"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "tasks/runtime/sprint_acceptance/sprint_9_acceptance_report.md"
+  - "tasks/runtime/traceability_audits/sprint_9_traceability_audit.md"
+primary_files:
+  - "docs/requirements/next_phase_traceability_matrix.md"
+  - "docs/testing/next_phase/sprint_acceptance_template.md"
+secondary_files:
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+test_cases:
+  normal:
+    - "Execute the Sprint 9 smoke, browser, and delivery suite outputs."
+    - "Audit all Sprint 9 requirement rows against latest evidence."
+  exception:
+    - "Fail the Sprint if any row remains Planned, In Progress, or evidence-light."

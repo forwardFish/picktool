@@ -1,0 +1,86 @@
+project: "familyEducation"
+task_id: "FE-121"
+task_name: "Primary Checkout And Portal Route Cutover"
+sprint: "Sprint 27 API Cutover And Compatibility"
+epic: "Checkout And Portal"
+story_id: "FE-121"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "parent_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Add the new checkout and portal entry routes and move existing checkout actions onto the billing service."
+business_value: "Makes Freemius the primary route-level billing provider while preserving stable public URLs."
+requirement_ids:
+  - "BILL14-CHECKOUT"
+  - "BILL14-PORTAL"
+  - "BILL14-FLAGS-ROLLBACK"
+test_case_ids:
+  - "PAGE-BILL14-001"
+  - "PAGE-BILL14-005"
+  - "CLICK-BILL14-001"
+  - "CLICK-BILL14-002"
+  - "API-BILL14-006"
+  - "API-BILL14-007"
+expected_evidence:
+  - "checkout_route_smoke"
+  - "portal_route_smoke"
+  - "compat_facade_switch_report"
+  - "provider_default_behavior_proof"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-120."
+  - "Read current checkoutAction, customerPortalAction, and /api/billing/checkout-session behavior before route changes."
+acceptance_criteria:
+  - "POST /api/checkout and POST /api/portal exist as the primary route handlers."
+  - "/api/billing/checkout-session remains as a compatibility facade that uses the new service layer."
+  - "The default provider behavior is Freemius-first and does not expose Creem in public route responses."
+constraints:
+  - "Do not break the existing /pricing and /dashboard/billing URLs."
+out_of_scope:
+  - "Landing/footer/legal copy updates."
+dependencies:
+  - "FE-120"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/billing"
+related_files:
+  - "app/api/checkout/route.ts"
+  - "app/api/portal/route.ts"
+  - "app/api/billing/checkout-session/route.ts"
+  - "lib/payments/actions.ts"
+  - "lib/payments/service.ts"
+primary_files:
+  - "app/api/checkout/route.ts"
+  - "app/api/portal/route.ts"
+  - "app/api/billing/checkout-session/route.ts"
+  - "lib/payments/actions.ts"
+  - "lib/payments/service.ts"
+secondary_files:
+  - "app/(dashboard)/pricing/page.tsx"
+  - "app/(dashboard)/dashboard/billing/page.tsx"
+test_cases:
+  normal:
+    - "Verify the public checkout and portal flows call the new service routes and return provider-neutral payloads."
+  exception:
+    - "Fail if the compat facade bypasses the billing service or leaks Creem-specific copy publicly."

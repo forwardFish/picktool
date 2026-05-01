@@ -1,0 +1,8 @@
+{
+  "status": "fail",
+  "email": "codex.live.1776866794607@example.com",
+  "finalUrl": "http://127.0.0.1:3000/sign-up",
+  "checks": [],
+  "textSample": "Application error: a server-side exception has occurred while loading 127.0.0.1 (see the server logs for more information).\n\nDigest: 4192722937",
+  "error": "Signup did not leave auth page."
+}

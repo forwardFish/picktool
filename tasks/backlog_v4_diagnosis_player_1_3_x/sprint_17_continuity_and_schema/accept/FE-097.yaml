@@ -1,0 +1,83 @@
+project: "familyEducation"
+task_id: "FE-097"
+task_name: "Sprint 17 Continuity And Schema Acceptance"
+sprint: "Sprint 17 Continuity And Schema"
+epic: "Continuity And Schema Acceptance"
+story_id: "FE-097"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Accept Sprint 17 only if continuity repair, v4 planning assets, and deck persistence contracts are structurally complete and traceable."
+business_value: "Prevents deck generation work from building on incomplete planning or unstable persistence contracts."
+requirement_ids:
+  - "GOV-003"
+  - "DECK13-DATA"
+test_case_ids:
+  - "TC-GOV-004"
+  - "API-DCK-001"
+  - "API-DCK-002"
+  - "DATA-DCK-001"
+  - "DATA-DCK-002"
+  - "DATA-DCK-003"
+  - "DATA-DCK-006"
+  - "DATA-DCK-007"
+expected_evidence:
+  - "sprint_17_traceability_audit"
+  - "planning_validation_output"
+  - "deck_schema_contract_packet"
+  - "deck_repository_smoke_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-087 and FE-088."
+acceptance_criteria:
+  - "Continuity files, requirement docs, and canonical testing docs all point at the 1.3.x lane."
+  - "Deck schema and repository contracts persist deck shell, slide shell, action shell, export shell, and playback snapshot linkage."
+  - "The planning validator passes with the v4 lane included in the authoritative backlog roots."
+constraints:
+  - "Do not rewrite accepted v2 or v3 story YAMLs during sprint acceptance."
+out_of_scope:
+  - "Deck generation, playback UI, and export implementation."
+dependencies:
+  - "FE-087"
+  - "FE-088"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+related_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/*"
+  - "lib/db/schema.ts"
+  - "lib/family/*"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "lib/db/schema.ts"
+  - "lib/family/*"
+secondary_files:
+  - "scripts/validate_planning_assets.py"
+  - "docs/handoff/current_handoff.md"
+test_cases:
+  normal:
+    - "Run the planning validator and the deck persistence contract checks against the Sprint 17 implementation."
+  exception:
+    - "Fail acceptance if any v4 planning row is unlinked or if report/run deck linkage is missing."

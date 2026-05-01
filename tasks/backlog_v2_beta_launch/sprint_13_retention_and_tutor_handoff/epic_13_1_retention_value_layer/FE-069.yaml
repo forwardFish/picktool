@@ -1,0 +1,74 @@
+project: "familyEducation"
+task_id: "FE-069"
+task_name: "Child Detail Trend Cards And Report Compare UI"
+sprint: "Sprint 13 Retention And Tutor Handoff"
+epic: "Retention Value Layer"
+story_id: "FE-069"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "owner_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Surface compare controls, weekly review, and trend cards in child detail so parents can understand progress over time."
+business_value: "Raises weekly-return value without needing a separate product surface."
+requirement_ids:
+  - "RET2-002"
+test_case_ids:
+  - "PAGE2-CHD-001"
+  - "CLICK2-006"
+  - "NF2-001"
+expected_evidence:
+  - "before_after_screenshots"
+  - "weekly_review_transcript"
+  - "browse_console_log"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-068."
+  - "Read the retention UI rows before changing child detail surfaces."
+acceptance_criteria:
+  - "Compare and weekly-review controls are discoverable and child-scoped."
+  - "The UI reflects real compare data rather than placeholder summaries."
+constraints:
+  - "Do not overload the child detail page with non-scoped or duplicated information."
+out_of_scope:
+  - "Annual-plan only quarterly summaries."
+dependencies:
+  - "FE-068"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+related_files:
+  - "app/(dashboard)/dashboard/children/[childId]/page.tsx"
+  - "components/children/*"
+primary_files:
+  - "app/(dashboard)/dashboard/children/[childId]/page.tsx"
+  - "components/children/*"
+secondary_files:
+  - "docs/testing/next_phase/page_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute PAGE2-CHD-001 and CLICK2-006."
+  exception:
+    - "Verify the page does not show compare controls when the child lacks enough report history."

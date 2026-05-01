@@ -1,0 +1,46 @@
+{
+  "events": [
+    {
+      "id": "reminder_1775721654227_9b6de85e",
+      "kind": "report_ready",
+      "userId": 1,
+      "reportId": 2,
+      "childId": 1,
+      "deliveryChannel": "email_safe_fallback",
+      "status": "send_attempted",
+      "subject": "FamilyEducation report ready for FinalFlow-1775721652949",
+      "message": "Your report is now readable in the parent dashboard. Review the diagnosis, evidence, and 7-day plan before you share it onward.",
+      "metadata": {
+        "reportId": 2,
+        "childNickname": "FinalFlow-1775721652949",
+        "source": "billing_unlock",
+        "dedupeKey": "report_ready:1:2",
+        "transport": "safe_fallback_artifact_only"
+      },
+      "createdAt": "2026-04-09T08:00:54.227Z",
+      "scheduledFor": "2026-04-09T08:00:54.227Z",
+      "attemptedAt": "2026-04-09T08:00:54.227Z"
+    },
+    {
+      "id": "reminder_1775721654143_747fa1fd",
+      "kind": "report_ready",
+      "userId": 1,
+      "reportId": 1,
+      "childId": 1,
+      "deliveryChannel": "email_safe_fallback",
+      "status": "send_attempted",
+      "subject": "FamilyEducation report ready for FinalFlow-1775721652949",
+      "message": "Your report is now readable in the parent dashboard. Review the diagnosis, evidence, and 7-day plan before you share it onward.",
+      "metadata": {
+        "reportId": 1,
+        "childNickname": "FinalFlow-1775721652949",
+        "source": "billing_unlock",
+        "dedupeKey": "report_ready:1:1",
+        "transport": "safe_fallback_artifact_only"
+      },
+      "createdAt": "2026-04-09T08:00:54.143Z",
+      "scheduledFor": "2026-04-09T08:00:54.143Z",
+      "attemptedAt": "2026-04-09T08:00:54.143Z"
+    }
+  ]
+}

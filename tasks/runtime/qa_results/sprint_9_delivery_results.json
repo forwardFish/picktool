@@ -1,0 +1,148 @@
+{
+  "generated_at": "2026-04-09T10:54:48",
+  "project": "familyEducation",
+  "sprint_id": "sprint_9_production_readiness_foundation",
+  "completed_story_ids": [
+    "FE-050",
+    "FE-051",
+    "FE-052",
+    "FE-053"
+  ],
+  "failed_story_ids": [],
+  "story_reports": [
+    {
+      "story_id": "FE-050",
+      "requirement_ids": [
+        "GOV2-001",
+        "GOV2-002",
+        "PROD-001"
+      ],
+      "test_case_ids": [
+        "TC-GOV2-001",
+        "TC-GOV2-002",
+        "OPS2-DEP-001",
+        "OPS2-DEP-002"
+      ],
+      "expected_evidence": [
+        "environment_checklist",
+        "deployment_config_review",
+        "smoke_test_output",
+        "traceability_row_update"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-051",
+      "requirement_ids": [
+        "PROD-002"
+      ],
+      "test_case_ids": [
+        "API2-STO-001",
+        "DATA2-STO-001",
+        "OPS2-STO-001"
+      ],
+      "expected_evidence": [
+        "api_contract_snapshot",
+        "artifact_lifecycle_audit",
+        "runtime_log_snapshot",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-052",
+      "requirement_ids": [
+        "PROD-003"
+      ],
+      "test_case_ids": [
+        "OPS2-OBS-001",
+        "OPS2-OBS-002",
+        "NF2-002",
+        "NF2-003"
+      ],
+      "expected_evidence": [
+        "smoke_test_output",
+        "telemetry_snapshot",
+        "provider_failure_log",
+        "acceptance_checklist"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-053",
+      "requirement_ids": [
+        "GOV2-003",
+        "PROD-001",
+        "PROD-002",
+        "PROD-003"
+      ],
+      "test_case_ids": [
+        "TC-GOV2-003",
+        "OPS2-DEP-001",
+        "OPS2-DEP-002",
+        "API2-STO-001",
+        "OPS2-OBS-001",
+        "OPS2-OBS-002",
+        "NF2-002",
+        "NF2-003"
+      ],
+      "expected_evidence": [
+        "sprint_acceptance_report",
+        "traceability_audit",
+        "ship_packet",
+        "document_release_packet",
+        "retro_packet"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    }
+  ],
+  "requirement_statuses": [
+    {
+      "requirement_id": "GOV2-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "GOV2-002",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "GOV2-003",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "PROD-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "PROD-002",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "PROD-003",
+      "status": "Green"
+    }
+  ],
+  "post_hook_artifacts": {
+    "document_release_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_9_production_readiness_foundation\\document_release_report.md",
+    "retro_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_9_production_readiness_foundation\\retro_report.md",
+    "ship_report_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\ship\\ship_readiness_report.md"
+  },
+  "missing_items": [],
+  "passed": true
+}

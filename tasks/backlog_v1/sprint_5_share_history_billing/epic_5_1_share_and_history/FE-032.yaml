@@ -1,0 +1,104 @@
+project: "familyEducation"
+task_id: "FE-032"
+task_name: "Weekly Review Compare And Parent Notes"
+sprint: "Sprint 5 Share History Billing"
+epic: "Share And History"
+story_id: "FE-032"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "parent_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Compare consecutive reports and allow parents to record review notes."
+business_value: "Makes progress visible and actionable across weeks."
+requirement_ids:
+  - "HIS-002"
+  - "HIS-003"
+  - "AI-007"
+test_case_ids:
+  - "PAGE-CHD-005"
+  - "PAGE-CHD-006"
+  - "API-HIS-001"
+  - "DATA-HIS-001"
+  - "AI-RVW-001"
+  - "CLICK-009"
+expected_evidence:
+  - "before_after_screenshots"
+  - "browse_console_log"
+  - "browse_network_log"
+  - "qa_test_output"
+  - "acceptance_checklist"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档.md and docs/saas-starter 一天落地实施说明.md as the product truth source."
+  - "Read docs/requirements/prd_requirement_index.md and docs/requirements/prd_traceability_matrix.md before making scope decisions."
+  - "Dependencies accepted: FE-031."
+acceptance_criteria:
+  - "weekly review 必须支持与上一次报告对比并展示趋势变化。"
+  - "家长必须可以写复盘笔记。"
+  - "weekly review 必须能利用 previous report summary 做趋势比较。"
+constraints:
+  - "Do not mark requirement rows green without attached evidence."
+  - "Do not expand beyond the declared route/API/schema/document scope unless a blocker explicitly requires it."
+  - "Collect browse, design, and browser QA evidence for the changed routes."
+out_of_scope:
+  - "Any requirement not explicitly listed in requirement_ids."
+dependencies:
+  - "FE-031"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+related_files:
+  - "app/(dashboard)/dashboard/children/[childId]/page.tsx"
+  - "components/history/WeeklyReview.tsx"
+  - "app/api/children/[childId]/weekly-review/route.ts"
+primary_files:
+  - "app/(dashboard)/dashboard/children/[childId]/page.tsx"
+  - "components/history/WeeklyReview.tsx"
+  - "app/api/children/[childId]/weekly-review/route.ts"
+secondary_files:
+  - "app/(dashboard)/dashboard/children/[childId]/page.tsx"
+story_inputs:
+  - "The linked requirement IDs from the PRD requirement index."
+  - "The linked tests from the page/click/API/data/AI matrices."
+  - "The current starter repository structure and route layout."
+story_process:
+  - "Confirm the requirement and test scope before touching code or docs."
+  - "Implement only the declared route/API/schema/document scope."
+  - "Produce the evidence listed under expected_evidence and update the traceability row status accordingly."
+story_outputs:
+  - "Scoped code or documentation changes."
+  - "Acceptance evidence tied to the declared test_case_ids."
+  - "A delivery packet suitable for downstream Sprint Acceptance."
+verification_basis:
+  - "All declared test_case_ids execute or are deterministically evidenced."
+  - "Review, code acceptance, and acceptance gate pass without blocker findings."
+  - "Requirement rows tied to this Story move to Green only with evidence."
+test_cases:
+  normal:
+    - "Execute PAGE-CHD-005 and capture pass evidence."
+    - "Execute PAGE-CHD-006 and capture pass evidence."
+    - "Execute API-HIS-001 and capture pass evidence."
+  exception:
+    - "Run the negative or edge coverage associated with CLICK-009."

@@ -1,0 +1,83 @@
+project: "familyEducation"
+task_id: "FE-116"
+task_name: "Sprint 25 Billing Bootstrap Acceptance"
+sprint: "Sprint 25 Bootstrap And Traceability"
+epic: "Sprint Acceptance"
+story_id: "FE-116"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 25 only if the `1.4` billing lane is structurally executable and fully linked into the canonical planning docs."
+business_value: "Prevents provider work from starting on top of incomplete continuity or missing traceability."
+requirement_ids:
+  - "GOV-003"
+  - "BILL14-PROGRAM-LANE"
+  - "BILL14-FINAL-ACCEPT"
+test_case_ids:
+  - "TC-GOV-004"
+  - "TC-BILL14-004"
+  - "FP-BILL14-001"
+expected_evidence:
+  - "sprint_25_traceability_audit"
+  - "v6_bootstrap_acceptance_packet"
+  - "baseline_gap_evidence_index"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-114 and FE-115."
+acceptance_criteria:
+  - "Sprint 25 fails if v6 continuity, requirement rows, or testing rows are missing."
+  - "The acceptance packet includes a clear baseline of public brand and billing gaps for later implementation stories."
+  - "Release closeout artifacts exist even though runtime code is not yet changed."
+constraints:
+  - "Do not mark `1.4` runtime implementation complete from planning artifacts alone."
+out_of_scope:
+  - "Provider, route, or UI code changes."
+dependencies:
+  - "FE-114"
+  - "FE-115"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/pricing"
+qa_urls:
+  - "http://127.0.0.1:3000/pricing"
+related_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v6_freemius_primary_billing_1_4/*"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v6_freemius_primary_billing_1_4/*"
+secondary_files:
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+test_cases:
+  normal:
+    - "Run the Sprint 25 traceability audit and confirm v6 is treated as an authoritative backlog root."
+  exception:
+    - "Fail if any Sprint 25 required document or execution-order file is missing."

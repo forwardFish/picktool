@@ -1,0 +1,220 @@
+{
+  "events": [
+    {
+      "id": "run_err_1775721635630_e6618a1a",
+      "createdAt": "2026-04-09T08:00:35.630Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775720536600_18a21593",
+      "createdAt": "2026-04-09T07:42:16.600Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775717330717_e776de97",
+      "createdAt": "2026-04-09T06:48:50.717Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775527906313_ed7c109a",
+      "createdAt": "2026-04-07T02:11:46.313Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775527678623_2ce36356",
+      "createdAt": "2026-04-07T02:07:58.623Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775527195808_b76ce83c",
+      "createdAt": "2026-04-07T01:59:55.808Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775526632029_360ca10b",
+      "createdAt": "2026-04-07T01:50:32.029Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775526526528_114d43ab",
+      "createdAt": "2026-04-07T01:48:46.528Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775525329227_fb0d60de",
+      "createdAt": "2026-04-07T01:28:49.227Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "timeout",
+      "message": "This run exceeded the expected time window. Please retry or contact support.",
+      "metadata": {
+        "uploadId": 4,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775525316739_fd53032b",
+      "createdAt": "2026-04-07T01:28:36.739Z",
+      "runId": 2,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 2,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775525131708_072abd4b",
+      "createdAt": "2026-04-07T01:25:31.708Z",
+      "runId": 2,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 2,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775524395910_4913088a",
+      "createdAt": "2026-04-07T01:13:15.910Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775524213558_008b119e",
+      "createdAt": "2026-04-07T01:10:13.558Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775523531842_c2397df2",
+      "createdAt": "2026-04-07T00:58:51.842Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775523437160_32267a42",
+      "createdAt": "2026-04-07T00:57:17.160Z",
+      "runId": 5,
+      "userId": 1,
+      "errorType": "timeout",
+      "message": "This run exceeded the expected time window. Please retry or contact support.",
+      "metadata": {
+        "uploadId": 6,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775523437111_e33eb35a",
+      "createdAt": "2026-04-07T00:57:17.111Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775522547017_284745a8",
+      "createdAt": "2026-04-07T00:42:27.017Z",
+      "runId": 5,
+      "userId": 1,
+      "errorType": "timeout",
+      "message": "This run exceeded the expected time window. Please retry or contact support.",
+      "metadata": {
+        "uploadId": 6,
+        "childId": 1
+      }
+    },
+    {
+      "id": "run_err_1775522546972_87d73e0c",
+      "createdAt": "2026-04-07T00:42:26.972Z",
+      "runId": 4,
+      "userId": 1,
+      "errorType": "forced_failure",
+      "message": "The run was intentionally forced into failure mode for retry testing.",
+      "metadata": {
+        "uploadId": 5,
+        "childId": 1
+      }
+    }
+  ]
+}

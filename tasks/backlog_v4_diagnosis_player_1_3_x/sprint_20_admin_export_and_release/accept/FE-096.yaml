@@ -1,0 +1,92 @@
+project: "familyEducation"
+task_id: "FE-096"
+task_name: "Sprint Acceptance For 1.3.x Player Lane"
+sprint: "Sprint 20 Admin Export And Release"
+epic: "Deck Export And Release"
+story_id: "FE-096"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close the 1.3.x diagnosis player lane only if traceability, browser, API/data/AI, and export/share/admin evidence all pass together."
+business_value: "Prevents the guided walkthrough lane from being claimed complete before the player, share, admin, and export surfaces are all verified."
+requirement_ids:
+  - "DECK13-FINAL-ACCEPT"
+test_case_ids:
+  - "FP-DCK-001"
+  - "FP-DCK-002"
+  - "FP-DCK-003"
+  - "FP-DCK-004"
+expected_evidence:
+  - "deck_traceability_audit"
+  - "deck_browser_evidence_manifest"
+  - "deck_api_data_ai_manifest"
+  - "deck_export_share_admin_manifest"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-091, FE-092, FE-093, FE-094, FE-095."
+acceptance_criteria:
+  - "FP-DCK-001 through FP-DCK-004 all pass with linked evidence."
+  - "DECK13 requirement rows are green in the canonical traceability matrix."
+  - "Player, share, admin, and export artifacts all include the latest browser/API/data evidence."
+constraints:
+  - "Do not mark the 1.3.x player lane accepted from stale Sprint 16 evidence."
+out_of_scope:
+  - "Unrelated v2/v3 feature rewrites or remote deployment claims."
+dependencies:
+  - "FE-091"
+  - "FE-092"
+  - "FE-093"
+  - "FE-094"
+  - "FE-095"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+  - "http://127.0.0.1:3000/share/[token]/play"
+  - "http://127.0.0.1:3000/admin/review/[runId]/deck"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+  - "http://127.0.0.1:3000/share/[token]/play"
+  - "http://127.0.0.1:3000/admin/review/[runId]/deck"
+related_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/runtime/*"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/runtime/*"
+  - "docs/handoff/current_handoff.md"
+secondary_files:
+  - "PROJECT_STATE.md"
+  - "README.md"
+test_cases:
+  normal:
+    - "Run the full 1.3.x deck lane acceptance sweep against the latest implementation."
+  exception:
+    - "Fail acceptance if any player, share, admin, or export contract remains partial or evidence-light."

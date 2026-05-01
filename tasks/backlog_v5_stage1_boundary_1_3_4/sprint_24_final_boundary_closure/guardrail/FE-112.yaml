@@ -1,0 +1,76 @@
+project: "familyEducation"
+task_id: "FE-112"
+task_name: "Postpone Guardrails And Non-Scope Audit"
+sprint: "Sprint 24 Final Boundary Closure"
+epic: "Postpone Guardrails"
+story_id: "FE-112"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Freeze the `1.3.4` postpone boundary so PPTX, strong whiteboard, realtime Q&A, multi-agent UI, student app, and generalized growth frontend work stay out of Stage 1 execution."
+business_value: "Protects the Stage 1 roadmap from scope creep into flashy but non-reusable features."
+requirement_ids:
+  - "BND134-POSTPONE-GUARDRAIL"
+test_case_ids:
+  - "TC-BND134-005"
+  - "PAGE-BND134-007"
+  - "API-BND134-009"
+expected_evidence:
+  - "postpone_guardrail_table"
+  - "non_scope_execution_audit"
+  - "blocked_feature_inventory"
+  - "stage1_scope_freeze_note"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-111."
+acceptance_criteria:
+  - "The postpone feature list is written into the canonical docs and the final boundary lane."
+  - "No postponed feature appears in Sprint 21 through Sprint 24 execution orders."
+  - "The non-scope audit explicitly blocks PPTX, strong whiteboard, realtime walkthrough Q&A, multi-agent UI, student app, and generalized growth frontend scope."
+constraints:
+  - "Do not convert postponed features into placeholder execution stories."
+out_of_scope:
+  - "Future post-Stage-1 roadmap planning beyond documenting the guardrails."
+dependencies:
+  - "FE-111"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+related_files:
+  - "docs/需求文档_1.3.4.md"
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+primary_files:
+  - "docs/需求文档_1.3.4.md"
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+secondary_files:
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/*"
+  - "tasks/backlog_v3_diagnosis_1_2_2/*"
+test_cases:
+  normal:
+    - "Audit the v5 backlog and canonical docs for the documented non-scope list."
+  exception:
+    - "Fail if a postponed feature appears as an executable Stage 1 story."

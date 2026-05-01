@@ -1,0 +1,78 @@
+project: "familyEducation"
+task_id: "FE-105"
+task_name: "Share, Tutor Handoff, And Privacy Boundary Alignment"
+sprint: "Sprint 22 Must-Do Core Alignment"
+epic: "Share And Privacy"
+story_id: "FE-105"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "browser_and_docs_required"
+auth_expectations: "share_link_rules_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Align tutor handoff, share-token lifecycle, and parent-first privacy boundaries to the `1.3.4` must-do contract."
+business_value: "Preserves trust with parents while keeping tutor handoff as a core Stage 1 value instead of an afterthought."
+requirement_ids:
+  - "BND134-PARENT-FIRST"
+  - "BND134-SHARE-PRIVACY"
+test_case_ids:
+  - "PAGE-BND134-003"
+  - "API-BND134-003"
+  - "DATA-BND134-004"
+  - "CLICK-BND134-001"
+expected_evidence:
+  - "share_privacy_boundary_map"
+  - "tutor_handoff_contract_crosswalk"
+  - "revocation_expiry_rule_audit"
+  - "parent_only_data_boundary_notes"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-104."
+  - "Read FE-030, FE-042, and FE-085 before drafting the share/privacy alignment."
+acceptance_criteria:
+  - "Tutor summary, share token, revoke/expiry, and read-only boundaries are explicitly mapped to accepted share contracts."
+  - "Parent-only notes and internal fields remain out of tutor-facing routes in the boundary mapping."
+  - "Share is positioned as a core Stage 1 must-do, while tutor walkthrough remains a later light-lane enhancement."
+constraints:
+  - "Do not introduce a write-capable tutor product surface."
+out_of_scope:
+  - "Deck share playback implementation or admin review surfaces."
+dependencies:
+  - "FE-104"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/share/[token]"
+qa_urls:
+  - "http://127.0.0.1:3000/share/[token]"
+related_files:
+  - "tasks/backlog_v1/sprint_5_share_history_billing/*"
+  - "tasks/backlog_v3_diagnosis_1_2_2/sprint_16_product/product/FE-085.yaml"
+  - "app/share/[token]/*"
+  - "docs/requirements/*"
+primary_files:
+  - "tasks/backlog_v1/sprint_5_share_history_billing/*"
+  - "tasks/backlog_v3_diagnosis_1_2_2/sprint_16_product/product/FE-085.yaml"
+  - "app/share/[token]/*"
+secondary_files:
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+test_cases:
+  normal:
+    - "Audit accepted share and privacy flows against the `1.3.4` must-do boundary."
+  exception:
+    - "Fail if tutor handoff depends on exposing parent-only data or on light-lane playback."

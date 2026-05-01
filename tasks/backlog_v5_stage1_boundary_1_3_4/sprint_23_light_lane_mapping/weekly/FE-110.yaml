@@ -1,0 +1,78 @@
+project: "familyEducation"
+task_id: "FE-110"
+task_name: "Weekly Review, Timeline, And Compare Lite Hooks"
+sprint: "Sprint 23 Light-Lane Mapping"
+epic: "Weekly And Timeline Lite Hooks"
+story_id: "FE-110"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "browser_and_docs_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Define weekly review, timeline, and compare support as lightweight child-scoped hooks that reuse accepted history data plus dependent playback snapshot capability."
+business_value: "Protects the Stage 1 surface from turning into a heavy analytics dashboard while still leaving growth hooks for later phases."
+requirement_ids:
+  - "BND134-WEEKLY-TIMELINE-LITE"
+test_case_ids:
+  - "PAGE-BND134-006"
+  - "CLICK-BND134-003"
+  - "API-BND134-008"
+  - "DATA-BND134-006"
+  - "DATA-BND134-007"
+expected_evidence:
+  - "weekly_compare_lite_map"
+  - "timeline_hook_dependency_crosswalk"
+  - "history_scope_boundary_notes"
+  - "no_heavy_dashboard_assertion"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-109."
+  - "Read FE-031, FE-032, and FE-093 before drafting the compare/timeline mapping."
+acceptance_criteria:
+  - "Weekly review and compare remain child-scoped lightweight hooks backed by accepted history contracts."
+  - "Timeline references are limited to compare-ready summaries and playback snapshot hooks, not a new generalized graph system."
+  - "No new heavy dashboard lane is introduced into Stage 1 execution."
+constraints:
+  - "Do not add multi-month analytics dashboards or generalized adult-growth frontends."
+out_of_scope:
+  - "Final non-scope guardrail enforcement."
+dependencies:
+  - "FE-109"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+related_files:
+  - "tasks/backlog_v1/sprint_5_share_history_billing/*"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_19_player_routes_and_playback/playback/FE-093.yaml"
+  - "docs/requirements/*"
+primary_files:
+  - "tasks/backlog_v1/sprint_5_share_history_billing/*"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_19_player_routes_and_playback/playback/FE-093.yaml"
+  - "docs/requirements/*"
+secondary_files:
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+test_cases:
+  normal:
+    - "Audit accepted history/compare behavior against the `1.3.4` light-do limits."
+  exception:
+    - "Fail if the mapping introduces new heavyweight timeline or general-growth dashboard scope."

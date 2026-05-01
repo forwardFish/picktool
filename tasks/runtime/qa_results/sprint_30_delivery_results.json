@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-04-13T00:00:00+08:00",
+  "sprint": "sprint_30_homepage_narrative_and_structure_rewrite",
+  "stories": [
+    {
+      "story_id": "FE-130",
+      "status": "implemented",
+      "evidence": [
+        "components/landing/family-landing-page.tsx",
+        "components/landing/landing-nav.ts",
+        "components/landing/landing-header.tsx"
+      ]
+    },
+    {
+      "story_id": "FE-131",
+      "status": "implemented",
+      "evidence": [
+        "components/landing/family-landing-page.tsx",
+        "components/landing/landing-footer.tsx",
+        "app/(dashboard)/sample-report/page.tsx"
+      ]
+    },
+    {
+      "story_id": "FE-132",
+      "status": "implemented",
+      "evidence": [
+        "tasks/runtime/traceability_audits/sprint_30_traceability_audit.md",
+        "tasks/runtime/sprint_acceptance/sprint_30_acceptance_report.md"
+      ]
+    }
+  ],
+  "verification": {
+    "build": "passed"
+  }
+}

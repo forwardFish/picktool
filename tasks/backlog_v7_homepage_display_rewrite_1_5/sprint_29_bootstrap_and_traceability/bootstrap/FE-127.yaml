@@ -1,0 +1,84 @@
+project: "familyEducation"
+task_id: "FE-127"
+task_name: "1.5 Continuity Repair And Backlog V7 Bootstrap"
+sprint: "Sprint 29 Bootstrap And Traceability"
+epic: "Homepage V7 Bootstrap"
+story_id: "FE-127"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "planning_assets_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Create the `1.5` backlog root, register the post-1.4 execution lane, and preserve `1.4 v6` as the current closeout dependency."
+business_value: "Lets future sessions resume the homepage rewrite from an authoritative lane without losing the unfinished billing closeout order."
+requirement_ids:
+  - "GOV-001"
+  - "GOV-002"
+  - "HOME15-PROGRAM-LANE"
+test_case_ids:
+  - "TC-GOV-001"
+  - "TC-GOV-002"
+  - "TC-HOME15-001"
+expected_evidence:
+  - "v7_backlog_bootstrap_packet"
+  - "v7_continuity_queue_report"
+  - "homepage_component_scope_map"
+  - "planning_validator_v7_update"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档_1.5.md before editing continuity or backlog assets."
+  - "Keep FE-117 as the active in-flight story while preparing v7 as the queued next lane."
+acceptance_criteria:
+  - "tasks/backlog_v7_homepage_display_rewrite_1_5 contains Sprint 29 through Sprint 31 assets and story cards FE-127 through FE-135."
+  - "Continuity assets explicitly state that `1.4 v6` closes first and `1.5 v7` starts only after FE-126."
+  - "Older backlog roots remain intact and are referenced only through dependency or reuse rules."
+constraints:
+  - "Do not replace the active FE-117 continuity state with FE-127 yet."
+out_of_scope:
+  - "Runtime homepage implementation changes."
+dependencies:
+  - "FE-126"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+related_files:
+  - "NOW.md"
+  - "STATE.md"
+  - "DECISIONS.md"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+  - ".meta/familyEducation/continuity/continuity_manifest.json"
+  - "tasks/backlog_v7_homepage_display_rewrite_1_5/*"
+primary_files:
+  - "NOW.md"
+  - "STATE.md"
+  - "DECISIONS.md"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+  - ".meta/familyEducation/continuity/continuity_manifest.json"
+  - "tasks/backlog_v7_homepage_display_rewrite_1_5/*"
+secondary_files:
+  - "tasks/backlog_v6_freemius_primary_billing_1_4/*"
+  - "scripts/validate_planning_assets.py"
+test_cases:
+  normal:
+    - "Validate that v7 is registered as the next authoritative backlog root while v6 remains the active unfinished lane."
+  exception:
+    - "Fail if continuity assets imply FE-127 should start before FE-126 closes."

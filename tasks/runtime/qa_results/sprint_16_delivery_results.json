@@ -1,0 +1,158 @@
+{
+  "generated_at": "2026-04-10T20:50:54",
+  "project": "familyEducation",
+  "sprint_id": "sprint_16_product",
+  "completed_story_ids": [
+    "FE-082",
+    "FE-083",
+    "FE-084",
+    "FE-085",
+    "FE-086"
+  ],
+  "failed_story_ids": [],
+  "story_reports": [
+    {
+      "story_id": "FE-082",
+      "requirement_ids": [
+        "DIAG122-DIAGNOSIS"
+      ],
+      "test_case_ids": [
+        "TC-DIAG122-DX-001",
+        "DATA-DIAG122-DX-001"
+      ],
+      "expected_evidence": [
+        "diagnosis_json_assertion",
+        "pattern_sporadic_fixture_output",
+        "do_not_overreact_output",
+        "report_ui_diagnosis_screenshot"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-083",
+      "requirement_ids": [
+        "DIAG122-PLAN"
+      ],
+      "test_case_ids": [
+        "TC-DIAG122-PLAN-001",
+        "PAGE-DIAG122-PLAN-001"
+      ],
+      "expected_evidence": [
+        "plan_template_fixture_output",
+        "plan_pause_list_assertion",
+        "plan_day_card_screenshot",
+        "plan_rule_codes_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-084",
+      "requirement_ids": [
+        "DIAG122-GATE"
+      ],
+      "test_case_ids": [
+        "TC-DIAG122-GATE-001",
+        "PAGE-DIAG122-GATE-001",
+        "API-DIAG122-GATE-001"
+      ],
+      "expected_evidence": [
+        "quality_gate_score_output",
+        "needs_review_route_output",
+        "cautious_report_screenshot",
+        "low_confidence_block_assertion"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-085",
+      "requirement_ids": [
+        "DIAG122-SHARE",
+        "DIAG122-CALIBRATION"
+      ],
+      "test_case_ids": [
+        "TC-DIAG122-SHARE-001",
+        "DOC-DIAG122-CAL-001"
+      ],
+      "expected_evidence": [
+        "share_summary_payload_output",
+        "gold_sample_fixture_index",
+        "taxonomy_handbook_doc",
+        "diagnosis_rules_doc",
+        "plan_template_doc_or_config"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-086",
+      "requirement_ids": [
+        "DIAG122-FINAL-ACCEPT"
+      ],
+      "test_case_ids": [
+        "TC-DIAG122-SPRINT16-ACCEPT",
+        "TC-DIAG122-FINAL-RELEASE"
+      ],
+      "expected_evidence": [
+        "final_1_2_2_traceability_audit",
+        "six_step_pipeline_evidence",
+        "calibration_asset_index",
+        "ship_packet",
+        "document_release_packet",
+        "retro_packet"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    }
+  ],
+  "requirement_statuses": [
+    {
+      "requirement_id": "DIAG122-CALIBRATION",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "DIAG122-DIAGNOSIS",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "DIAG122-FINAL-ACCEPT",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "DIAG122-GATE",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "DIAG122-PLAN",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "DIAG122-SHARE",
+      "status": "Green"
+    }
+  ],
+  "post_hook_artifacts": {
+    "document_release_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_16_product\\document_release_report.md",
+    "retro_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_16_product\\retro_report.md",
+    "ship_report_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\ship\\ship_readiness_report.md"
+  },
+  "missing_items": [],
+  "passed": true
+}

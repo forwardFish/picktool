@@ -1,0 +1,80 @@
+project: "familyEducation"
+task_id: "FE-122"
+task_name: "Primary Webhook Route And Creem Compatibility Delegation"
+sprint: "Sprint 27 API Cutover And Compatibility"
+epic: "Webhook And Compatibility"
+story_id: "FE-122"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "billing_service_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Introduce the primary Freemius webhook route, persist events idempotently, and proxy hidden Creem compatibility handlers through the service layer."
+business_value: "Keeps entitlement sync reliable while preserving rollback options."
+requirement_ids:
+  - "BILL14-WEBHOOK"
+  - "BILL14-CREEM-COMPAT"
+  - "BILL14-ENTITLEMENT-LAYER"
+test_case_ids:
+  - "API-BILL14-008"
+  - "API-BILL14-009"
+  - "DATA-BILL14-004"
+  - "CLICK-BILL14-003"
+expected_evidence:
+  - "webhook_listener_contract"
+  - "webhook_replay_idempotency_proof"
+  - "creem_compat_proxy_report"
+  - "entitlement_sync_event_map"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-121."
+  - "Read current /api/creem/webhook behavior and the `1.4` webhook requirements before editing route contracts."
+acceptance_criteria:
+  - "POST /webhook exists as the new primary billing webhook route."
+  - "Webhook events are written to billing_webhook_events before entitlement application and replay safely by provider event id."
+  - "Creem compatibility webhook routes remain present but no longer define the default public production path."
+constraints:
+  - "Do not remove or invalidate current webhook env keys while Freemius is being added."
+out_of_scope:
+  - "Pricing, landing, or billing-page copy updates."
+dependencies:
+  - "FE-121"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/billing"
+related_files:
+  - "app/webhook/route.ts"
+  - "app/api/creem/webhook/route.ts"
+  - "lib/payments/providers/freemius.ts"
+  - "lib/payments/service.ts"
+  - "lib/payments/entitlements.ts"
+primary_files:
+  - "app/webhook/route.ts"
+  - "app/api/creem/webhook/route.ts"
+  - "lib/payments/providers/freemius.ts"
+  - "lib/payments/service.ts"
+secondary_files:
+  - "lib/payments/entitlements.ts"
+  - "lib/db/schema.ts"
+test_cases:
+  normal:
+    - "Replay a webhook event and verify the second attempt is idempotent while entitlement state remains correct."
+  exception:
+    - "Fail if the hidden Creem routes still act as the public primary webhook path."

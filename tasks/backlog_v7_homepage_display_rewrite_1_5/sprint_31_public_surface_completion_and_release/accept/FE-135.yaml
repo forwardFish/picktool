@@ -1,0 +1,94 @@
+project: "familyEducation"
+task_id: "FE-135"
+task_name: "1.5 Homepage Rewrite Final Acceptance"
+sprint: "Sprint 31 Public Surface Completion And Release"
+epic: "Sprint Acceptance"
+story_id: "FE-135"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close the `1.5` lane only if the homepage rewrite is structurally complete, responsive, copy-audited, route-smoked, and aligned with the `1.4` Pathnook public trust surface."
+business_value: "Provides a single authoritative acceptance gate for the homepage rewrite release."
+requirement_ids:
+  - "GOV-004"
+  - "HOME15-FINAL-ACCEPT"
+  - "HOME15-COPY-GUARDRAILS"
+test_case_ids:
+  - "TC-HOME15-008"
+  - "FP-HOME15-001"
+  - "FP-HOME15-002"
+  - "FP-HOME15-003"
+  - "FP-HOME15-004"
+expected_evidence:
+  - "home15_traceability_audit"
+  - "browser_evidence_bundle"
+  - "copy_audit_packet"
+  - "responsive_evidence_bundle"
+  - "public_route_smoke"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-134."
+acceptance_criteria:
+  - "The final acceptance pack proves the homepage explains Pathnook as an AI learning and growth system while keeping Stage 1 family learning support as the current public focus."
+  - "Desktop/mobile evidence, CTA chains, FAQ/footer/legal links, and copy guardrails are all green."
+  - "The final closeout explicitly checks regression against the `1.4` Pathnook public brand and billing trust direction."
+constraints:
+  - "Do not claim billing-provider implementation changes as part of `1.5`; only public-surface regression checks may reference `1.4`."
+out_of_scope:
+  - "Future Stage 2 product delivery or new billing features."
+dependencies:
+  - "FE-134"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/contact"
+  - "http://127.0.0.1:3000/legal/privacy"
+  - "http://127.0.0.1:3000/legal/terms"
+  - "http://127.0.0.1:3000/legal/refunds"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+related_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v7_homepage_display_rewrite_1_5/*"
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v7_homepage_display_rewrite_1_5/*"
+secondary_files:
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+  - "app/(dashboard)/page.tsx"
+test_cases:
+  normal:
+    - "Run the full HOME15 acceptance sweep and verify copy, route, responsive, and regression evidence are all present."
+  exception:
+    - "Fail if the homepage still reads narrowly, if CTA/legal routes break, or if responsive/copy evidence is missing."

@@ -1,0 +1,92 @@
+project: "familyEducation"
+task_id: "FE-124"
+task_name: "Pathnook Public Copy, Pricing, Footer, And Legal Alignment"
+sprint: "Sprint 28 Public Brand And Release"
+epic: "Public Brand And Legal UI"
+story_id: "FE-124"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "public_route_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Switch landing, pricing, footer, legal, and trust copy to the Pathnook public brand and remove public Creem leakage."
+business_value: "Makes the live site consistent with the product brand and the Freemius-first billing strategy."
+requirement_ids:
+  - "PAGE-001"
+  - "PAGE-002"
+  - "BILL14-BRAND-PUBLIC"
+  - "BILL14-LEGAL-PUBLIC"
+test_case_ids:
+  - "PAGE-BILL14-002"
+  - "PAGE-BILL14-003"
+  - "CLICK-BILL14-004"
+  - "NF-BILL14-002"
+expected_evidence:
+  - "public_copy_before_after_screenshots"
+  - "pathnook_brand_copy_audit"
+  - "legal_footer_link_matrix"
+  - "creem_public_copy_removal_report"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-123."
+  - "Review the live public copy baseline captured in Sprint 25 before updating public copy."
+acceptance_criteria:
+  - "Landing, pricing, footer, contact, and legal routes use `Pathnook` publicly and no longer expose `FamilyEducation` or `Creem` in billing copy."
+  - "Terms, privacy, refunds, contact, and billing-support disclosures are reachable and consistent."
+  - "Public copy remains provider-neutral or Freemius-first without promising automatic fallback to public Creem."
+constraints:
+  - "Do not rename the repository, internal code namespaces, or legacy schema fields as part of the public brand switch."
+out_of_scope:
+  - "Provider abstraction or migration logic changes."
+dependencies:
+  - "FE-123"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/contact"
+  - "http://127.0.0.1:3000/legal/privacy"
+  - "http://127.0.0.1:3000/legal/terms"
+  - "http://127.0.0.1:3000/legal/refunds"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+related_files:
+  - "app/(dashboard)/page.tsx"
+  - "app/(dashboard)/pricing/page.tsx"
+  - "app/(dashboard)/contact/page.tsx"
+  - "app/(dashboard)/legal/*"
+  - "components/landing/*"
+primary_files:
+  - "app/(dashboard)/page.tsx"
+  - "app/(dashboard)/pricing/page.tsx"
+  - "app/(dashboard)/contact/page.tsx"
+  - "app/(dashboard)/legal/*"
+  - "components/landing/*"
+secondary_files:
+  - "README.md"
+  - "docs/requirements/*"
+test_cases:
+  normal:
+    - "Review the public routes and confirm Pathnook branding, legal links, and provider-neutral billing disclosure are consistent."
+  exception:
+    - "Fail if public pages still show `FamilyEducation` or `Creem` in billing or support copy."

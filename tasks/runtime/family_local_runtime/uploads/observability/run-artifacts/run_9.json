@@ -1,0 +1,23 @@
+{
+  "id": "run_cost_1776605699548_4ce63d17",
+  "createdAt": "2026-04-19T13:34:59.548Z",
+  "runId": 9,
+  "userId": 12,
+  "engine": "moonshot",
+  "pageCount": 5,
+  "labeledItemCount": 5,
+  "status": "done",
+  "metadata": {
+    "confidence": 0.45,
+    "reviewReason": null,
+    "engine": "moonshot",
+    "requestedEngine": "openai",
+    "fallbackApplied": true,
+    "attemptCount": 2,
+    "taskType": "extract-items",
+    "modelVersion": "kimi-k2.5"
+  },
+  "estimatedInputTokens": 6000,
+  "estimatedOutputTokens": 1250,
+  "estimatedUsd": 0.0398
+}

@@ -1,0 +1,80 @@
+project: "familyEducation"
+task_id: "FE-088"
+task_name: "Deck Schema, Types, And Migrations"
+sprint: "Sprint 17 Continuity And Schema"
+epic: "Deck Schema And Contracts"
+story_id: "FE-088"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_data_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Add the persistent deck data model, deck linkage fields, and repository/query contracts required by the diagnosis player lane."
+business_value: "Makes decks first-class artifacts instead of temporary UI-only renderings."
+requirement_ids:
+  - "DECK13-DATA"
+test_case_ids:
+  - "API-DCK-001"
+  - "API-DCK-002"
+  - "DATA-DCK-001"
+  - "DATA-DCK-002"
+  - "DATA-DCK-003"
+  - "DATA-DCK-006"
+  - "DATA-DCK-007"
+expected_evidence:
+  - "deck_schema_assertion"
+  - "deck_repository_contract_output"
+  - "empty_deck_persistence_output"
+  - "snapshot_roundtrip_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-087."
+acceptance_criteria:
+  - "Deck schema includes diagnosis_decks, diagnosis_slides, diagnosis_slide_actions, deck_exports, deck_share_settings, and deck_playback_snapshots."
+  - "reports and analysis_runs expose deck linkage and deck status fields."
+  - "Repository functions can create, read, and update an empty deck and a saved snapshot."
+constraints:
+  - "Keep the deck contract additive to the accepted report/share pipeline."
+out_of_scope:
+  - "Deck generation logic, playback rendering, and export artifact content."
+dependencies:
+  - "FE-087"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]"
+qa_urls:
+  - "http://127.0.0.1:3000/api/reports/[reportId]/deck"
+related_files:
+  - "lib/db/schema.ts"
+  - "lib/db/migrations/*"
+  - "lib/family/types.ts"
+  - "lib/family/*deck*"
+  - "app/api/reports/[reportId]/deck/route.ts"
+primary_files:
+  - "lib/db/schema.ts"
+  - "lib/db/migrations/*"
+  - "lib/family/types.ts"
+  - "lib/family/*deck*"
+secondary_files:
+  - "app/api/reports/[reportId]/deck/route.ts"
+  - "app/api/decks/*"
+test_cases:
+  normal:
+    - "Persist an empty deck for an accepted report and read it back through the repository contract."
+  exception:
+    - "Reject reading a deck from a report or snapshot that is not owned by the caller."

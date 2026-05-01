@@ -1,0 +1,9 @@
+{
+  "status": "fail",
+  "baseUrl": "http://127.0.0.1:3000",
+  "email": "codex.dashboard.1776845073835@example.com",
+  "childName": "Codex-073835",
+  "reportId": 3,
+  "pages": [],
+  "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at waitForText ([stdin]:19:14)\n    at [stdin]:76:15"
+}

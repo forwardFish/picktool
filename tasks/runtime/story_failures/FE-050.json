@@ -1,0 +1,12 @@
+{
+  "project": "familyEducation",
+  "backlog_id": "backlog_v2_beta_launch",
+  "sprint_id": "sprint_9_production_readiness_foundation",
+  "story_id": "FE-050",
+  "task_name": "FE-050",
+  "failure_type": "run_prod_task_exception",
+  "blocker_class": "shared_dependency_blocker",
+  "recommended_recovery_action": "Inspect the shared execution blocker, then resume from this story.",
+  "error_message": "",
+  "captured_at": "2026-04-08T22:57:27"
+}

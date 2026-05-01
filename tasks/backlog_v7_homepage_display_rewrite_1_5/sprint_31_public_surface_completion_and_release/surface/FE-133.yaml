@@ -1,0 +1,89 @@
+project: "familyEducation"
+task_id: "FE-133"
+task_name: "Homepage How-It-Works, Pricing Preview, FAQ, And Footer Rewrite"
+sprint: "Sprint 31 Public Surface Completion And Release"
+epic: "Homepage Public Surface Completion"
+story_id: "FE-133"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "public_route_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Rewrite the homepage how-it-works, pricing-preview, FAQ, and footer sections so the full public surface aligns with the new Pathnook positioning and the `1.4` billing/legal trust direction."
+business_value: "Completes the public homepage story without leaving outdated footer, pricing, or FAQ messaging behind."
+requirement_ids:
+  - "HOME15-HOW-IT-WORKS"
+  - "HOME15-PRICING-PREVIEW"
+  - "HOME15-FAQ-FOOTER"
+test_case_ids:
+  - "PAGE-HOME15-007"
+  - "PAGE-HOME15-008"
+  - "CLICK-HOME15-001"
+  - "CLICK-HOME15-002"
+expected_evidence:
+  - "how_it_works_before_after_screenshots"
+  - "pricing_preview_trust_audit"
+  - "faq_copy_audit"
+  - "footer_link_matrix"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-132."
+  - "Review the `1.4` legal/footer/billing trust rules before touching pricing preview or footer copy."
+acceptance_criteria:
+  - "How-it-works explains the product flow in public-value language rather than internal pipeline mechanics."
+  - "Pricing preview and footer/legal links stay aligned with the `1.4` Pathnook trust surface."
+  - "FAQ answers the positioning questions defined in `1.5`, including math-only, family-first, billing, and guided-walkthrough questions."
+constraints:
+  - "Do not add new billing-provider mechanics or deck runtime promises to the homepage."
+out_of_scope:
+  - "Responsive final polish and end-to-end CTA regression."
+dependencies:
+  - "FE-132"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/contact"
+  - "http://127.0.0.1:3000/legal/privacy"
+  - "http://127.0.0.1:3000/legal/terms"
+  - "http://127.0.0.1:3000/legal/refunds"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+related_files:
+  - "app/(dashboard)/page.tsx"
+  - "app/(dashboard)/pricing/page.tsx"
+  - "components/landing/*"
+  - "app/(dashboard)/contact/page.tsx"
+  - "app/(dashboard)/legal/*"
+primary_files:
+  - "app/(dashboard)/page.tsx"
+  - "app/(dashboard)/pricing/page.tsx"
+  - "components/landing/*"
+secondary_files:
+  - "app/(dashboard)/contact/page.tsx"
+  - "app/(dashboard)/legal/*"
+test_cases:
+  normal:
+    - "Verify how-it-works, pricing-preview, FAQ, and footer sections all align to the new Pathnook story and legal trust links remain reachable."
+  exception:
+    - "Fail if footer/legal/pricing copy forks away from the `1.4` Pathnook trust surface."

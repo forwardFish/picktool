@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-04-13T00:00:00+08:00",
+  "sprint": "sprint_28_public_brand_and_release",
+  "stories": [
+    {
+      "story_id": "FE-124",
+      "status": "implemented",
+      "evidence": [
+        "public_copy_before_after_screenshots",
+        "pathnook_brand_copy_audit",
+        "legal_footer_link_matrix",
+        "creem_public_copy_removal_report"
+      ]
+    },
+    {
+      "story_id": "FE-125",
+      "status": "implemented",
+      "evidence": [
+        "billing_center_before_after_screenshots",
+        "provider_unavailable_state_proof",
+        "entitlement_diff_evidence",
+        "non_regression_route_sweep"
+      ]
+    }
+  ],
+  "verification": {
+    "typecheck": "passed",
+    "build": "passed"
+  }
+}

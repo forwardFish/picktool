@@ -1,0 +1,176 @@
+{
+  "generated_at": "2026-04-09T15:55:45",
+  "project": "familyEducation",
+  "sprint_id": "sprint_14_privacy_and_beta_launch",
+  "completed_story_ids": [
+    "FE-073",
+    "FE-074",
+    "FE-075",
+    "FE-076",
+    "FE-077"
+  ],
+  "failed_story_ids": [],
+  "story_reports": [
+    {
+      "story_id": "FE-073",
+      "requirement_ids": [
+        "PRIV2-001"
+      ],
+      "test_case_ids": [
+        "PAGE2-ACC-001",
+        "API2-PRIV-001",
+        "CLICK2-009",
+        "DATA2-DEL-001"
+      ],
+      "expected_evidence": [
+        "privacy_ui_screenshots",
+        "deletion_transcript",
+        "access_denial_evidence",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-074",
+      "requirement_ids": [
+        "PRIV2-002"
+      ],
+      "test_case_ids": [
+        "API2-AUD-001",
+        "DATA2-AUD-001"
+      ],
+      "expected_evidence": [
+        "audit_log_snapshot",
+        "api_contract_snapshot",
+        "qa_test_output",
+        "traceability_row_update"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-075",
+      "requirement_ids": [
+        "REL2-001",
+        "GOV2-004"
+      ],
+      "test_case_ids": [
+        "OPS2-BETA-001",
+        "FP2-002",
+        "TC-GOV2-006"
+      ],
+      "expected_evidence": [
+        "beta_smoke_output",
+        "release_checklist",
+        "blocker_register",
+        "qa_test_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-076",
+      "requirement_ids": [
+        "REL2-002"
+      ],
+      "test_case_ids": [
+        "OPS2-BETA-002",
+        "TC-GOV2-005",
+        "FP2-001"
+      ],
+      "expected_evidence": [
+        "handoff_packet",
+        "metrics_snapshot",
+        "remaining_risks_doc",
+        "continuity_update"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-077",
+      "requirement_ids": [
+        "GOV2-003",
+        "GOV2-004",
+        "PRIV2-001",
+        "PRIV2-002",
+        "REL2-001",
+        "REL2-002"
+      ],
+      "test_case_ids": [
+        "TC-GOV2-003",
+        "TC-GOV2-005",
+        "TC-GOV2-006",
+        "PAGE2-ACC-001",
+        "API2-PRIV-001",
+        "API2-AUD-001",
+        "DATA2-DEL-001",
+        "DATA2-AUD-001",
+        "CLICK2-009",
+        "OPS2-BETA-001",
+        "OPS2-BETA-002",
+        "FP2-001",
+        "FP2-002"
+      ],
+      "expected_evidence": [
+        "final_acceptance_report",
+        "final_traceability_audit",
+        "final_evidence_pack",
+        "ship_packet",
+        "document_release_packet",
+        "retro_packet"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    }
+  ],
+  "requirement_statuses": [
+    {
+      "requirement_id": "GOV2-003",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "GOV2-004",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "PRIV2-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "PRIV2-002",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "REL2-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "REL2-002",
+      "status": "Green"
+    }
+  ],
+  "post_hook_artifacts": {
+    "document_release_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_14_privacy_and_beta_launch\\document_release_report.md",
+    "retro_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_14_privacy_and_beta_launch\\retro_report.md",
+    "ship_report_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\ship\\ship_readiness_report.md"
+  },
+  "missing_items": [],
+  "passed": true
+}

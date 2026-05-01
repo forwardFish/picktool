@@ -1,0 +1,82 @@
+project: "familyEducation"
+task_id: "FE-109"
+task_name: "Playback, Action, Voice, Export, And Share-Light Contract"
+sprint: "Sprint 23 Light-Lane Mapping"
+epic: "Playback And Export Light Contracts"
+story_id: "FE-109"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "api_and_browser_required"
+auth_expectations: "report_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Map playback, action, voice, share-play, and export enhancement rules to the dependent `DECK13-*` lane without promoting them above the report."
+business_value: "Keeps light-do enhancements reusable and bounded while protecting the parent-first diagnosis value layer."
+requirement_ids:
+  - "BND134-PLAYBACK-LITE"
+  - "BND134-SHARE-PRIVACY"
+test_case_ids:
+  - "TC-BND134-004"
+  - "PAGE-BND134-005"
+  - "API-BND134-006"
+  - "API-BND134-007"
+  - "CLICK-BND134-001"
+expected_evidence:
+  - "playback_lite_contract_map"
+  - "voice_default_off_boundary_audit"
+  - "share_play_export_dependency_crosswalk"
+  - "deck_lane_non_primary_assertion"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-108."
+  - "Read FE-090 through FE-095 before drafting the playback/export boundary map."
+acceptance_criteria:
+  - "Playback/action/voice/export/share-light capabilities are delegated to the v4 deck lane and remain explicitly secondary."
+  - "Voice stays optional and off by default in the boundary contract."
+  - "Export remains an enhancement artifact and does not replace the main report or accepted report-PDF flow."
+constraints:
+  - "Do not introduce PPTX, strong whiteboard, or realtime Q&A into the light-lane contract."
+out_of_scope:
+  - "Weekly compare hooks and final non-scope guardrail closure."
+dependencies:
+  - "FE-108"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+  - "http://127.0.0.1:3000/share/[token]/play"
+qa_urls:
+  - "http://127.0.0.1:3000/api/decks/[deckId]/playback"
+  - "http://127.0.0.1:3000/api/decks/[deckId]/export-h5"
+related_files:
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_18_generation_and_gate/*"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_19_player_routes_and_playback/*"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_20_admin_export_and_release/*"
+  - "docs/requirements/*"
+primary_files:
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_18_generation_and_gate/*"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_19_player_routes_and_playback/*"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/sprint_20_admin_export_and_release/*"
+  - "docs/requirements/*"
+secondary_files:
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/*"
+test_cases:
+  normal:
+    - "Audit v4 deck/player/export stories against the `1.3.4` playback-light rules."
+  exception:
+    - "Fail if any light-lane enhancement is documented as a Stage 1 primary value layer."

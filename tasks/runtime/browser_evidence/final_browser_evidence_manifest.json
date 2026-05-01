@@ -1,0 +1,212 @@
+{
+  "generated_at": "2026-04-09T07:42:54.500Z",
+  "checks": [
+    "RESP-001",
+    "RESP-002",
+    "RESP-003",
+    "NF-001",
+    "CLICK-006",
+    "CLICK-007",
+    "CLICK-009",
+    "CLICK-010",
+    "FULL-ROUTE-COVERAGE"
+  ],
+  "routes": [
+    {
+      "slug": "landing",
+      "url": "http://127.0.0.1:3000/",
+      "final_url": "http://127.0.0.1:3000/",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\landing_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\landing_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "pricing",
+      "url": "http://127.0.0.1:3000/pricing",
+      "final_url": "http://127.0.0.1:3000/pricing",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\pricing_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\pricing_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "sign_up",
+      "url": "http://127.0.0.1:3000/sign-up",
+      "final_url": "http://127.0.0.1:3000/sign-up",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\sign_up_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\sign_up_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "sign_in",
+      "url": "http://127.0.0.1:3000/sign-in",
+      "final_url": "http://127.0.0.1:3000/sign-in",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\sign_in_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\sign_in_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "dashboard",
+      "url": "http://127.0.0.1:3000/dashboard",
+      "final_url": "http://127.0.0.1:3000/dashboard",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "dashboard_account",
+      "url": "http://127.0.0.1:3000/dashboard/account",
+      "final_url": "http://127.0.0.1:3000/dashboard/account",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_account_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_account_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "dashboard_activity",
+      "url": "http://127.0.0.1:3000/dashboard/activity",
+      "final_url": "http://127.0.0.1:3000/dashboard/activity",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_activity_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_activity_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "dashboard_billing",
+      "url": "http://127.0.0.1:3000/dashboard/billing",
+      "final_url": "http://127.0.0.1:3000/dashboard/billing",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_billing_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_billing_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "dashboard_demo_checkout",
+      "url": "http://127.0.0.1:3000/dashboard/billing/demo-checkout?priceId=price_fe_one_time&session_id=demo-preview-session",
+      "final_url": "http://127.0.0.1:3000/dashboard/billing/demo-checkout?priceId=price_fe_one_time&session_id=demo-preview-session",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_demo_checkout_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_demo_checkout_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "dashboard_children",
+      "url": "http://127.0.0.1:3000/dashboard/children",
+      "final_url": "http://127.0.0.1:3000/dashboard/children",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_children_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_children_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "dashboard_child_new",
+      "url": "http://127.0.0.1:3000/dashboard/children/new",
+      "final_url": "http://127.0.0.1:3000/dashboard/children/new",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_child_new_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_child_new_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "child_detail",
+      "url": "http://127.0.0.1:3000/dashboard/children/1",
+      "final_url": "http://127.0.0.1:3000/dashboard/children/1",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\child_detail_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\child_detail_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "upload",
+      "url": "http://127.0.0.1:3000/dashboard/children/1/upload",
+      "final_url": "http://127.0.0.1:3000/dashboard/children/1/upload",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\upload_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\upload_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "dashboard_general",
+      "url": "http://127.0.0.1:3000/dashboard/general",
+      "final_url": "http://127.0.0.1:3000/dashboard/general",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_general_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_general_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "dashboard_security",
+      "url": "http://127.0.0.1:3000/dashboard/security",
+      "final_url": "http://127.0.0.1:3000/dashboard/security",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_security_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\dashboard_security_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "run_status",
+      "url": "http://127.0.0.1:3000/dashboard/runs/1",
+      "final_url": "http://127.0.0.1:3000/dashboard/runs/1",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\run_status_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\run_status_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "report",
+      "url": "http://127.0.0.1:3000/dashboard/reports/1",
+      "final_url": "http://127.0.0.1:3000/dashboard/reports/1",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\report_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\report_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "tutor_workspace",
+      "url": "http://127.0.0.1:3000/dashboard/tutor",
+      "final_url": "http://127.0.0.1:3000/dashboard/tutor",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\tutor_workspace_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\tutor_workspace_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "share_read_only",
+      "url": "http://127.0.0.1:3000/share/703632a04749486683b2de62869c4232",
+      "final_url": "http://127.0.0.1:3000/share/703632a04749486683b2de62869c4232",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\share_read_only_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\share_read_only_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "admin_review",
+      "url": "http://127.0.0.1:3000/admin/review",
+      "final_url": "http://127.0.0.1:3000/admin/review",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\admin_review_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\admin_review_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    },
+    {
+      "slug": "admin_review_detail",
+      "url": "http://127.0.0.1:3000/admin/review/3",
+      "final_url": "http://127.0.0.1:3000/admin/review/3",
+      "desktop_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\admin_review_detail_desktop.png",
+      "mobile_screenshot": "D:\\lyh\\agent\\agent-frame\\familyEducation\\tasks\\runtime\\browser_evidence\\final_program\\admin_review_detail_mobile.png",
+      "mobile_check": "pass",
+      "console_errors": []
+    }
+  ],
+  "final_flow": {
+    "first_report_id": 1,
+    "second_report_id": 2,
+    "review_run_id": 3,
+    "share_url": "http://127.0.0.1:3000/share/703632a04749486683b2de62869c4232",
+    "route_count": 21
+  }
+}

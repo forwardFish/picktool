@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-04-10T20:34:04",
+  "project": "familyEducation",
+  "sprint_id": "sprint_15_foundation",
+  "completed_story_ids": [
+    "FE-078",
+    "FE-079",
+    "FE-080",
+    "FE-081"
+  ],
+  "failed_story_ids": [],
+  "story_reports": [
+    {
+      "story_id": "FE-078",
+      "requirement_ids": [
+        "DIAG122-INTAKE"
+      ],
+      "test_case_ids": [
+        "TC-DIAG122-INTAKE-001",
+        "PAGE-DIAG122-UPLOAD-001",
+        "API-DIAG122-INTAKE-001"
+      ],
+      "expected_evidence": [
+        "db_migration_or_schema_assertion",
+        "upload_page_intake_screenshot",
+        "intake_api_smoke_output",
+        "run_payload_includes_intake"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-079",
+      "requirement_ids": [
+        "DIAG122-ITEM"
+      ],
+      "test_case_ids": [
+        "TC-DIAG122-ITEM-001",
+        "API-DIAG122-ITEM-001",
+        "DATA-DIAG122-ITEM-001"
+      ],
+      "expected_evidence": [
+        "problem_item_schema_assertion",
+        "extract_items_api_output",
+        "evidence_anchor_fixture",
+        "low_confidence_item_handling_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-080",
+      "requirement_ids": [
+        "DIAG122-TAXONOMY"
+      ],
+      "test_case_ids": [
+        "TC-DIAG122-TAX-001",
+        "API-DIAG122-TAX-001",
+        "DATA-DIAG122-TAX-001"
+      ],
+      "expected_evidence": [
+        "taxonomy_enum_assertion",
+        "classify_items_api_output",
+        "item_errors_schema_assertion",
+        "report_taxonomy_trace_output"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-081",
+      "requirement_ids": [
+        "DIAG122-FOUNDATION-ACCEPT"
+      ],
+      "test_case_ids": [
+        "TC-DIAG122-SPRINT15-ACCEPT"
+      ],
+      "expected_evidence": [
+        "sprint_15_traceability_audit",
+        "sprint_15_api_and_data_evidence",
+        "ship_packet",
+        "document_release_packet",
+        "retro_packet"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    }
+  ],
+  "requirement_statuses": [
+    {
+      "requirement_id": "DIAG122-FOUNDATION-ACCEPT",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "DIAG122-INTAKE",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "DIAG122-ITEM",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "DIAG122-TAXONOMY",
+      "status": "Green"
+    }
+  ],
+  "post_hook_artifacts": {
+    "document_release_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_15_foundation\\document_release_report.md",
+    "retro_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_15_foundation\\retro_report.md",
+    "ship_report_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\ship\\ship_readiness_report.md"
+  },
+  "missing_items": [],
+  "passed": true
+}

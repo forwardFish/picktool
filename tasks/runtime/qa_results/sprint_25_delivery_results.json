@@ -1,0 +1,124 @@
+{
+  "generated_at": "2026-04-12T19:47:36",
+  "project": "familyEducation",
+  "sprint_id": "sprint_25_bootstrap_and_traceability",
+  "completed_story_ids": [
+    "FE-114",
+    "FE-115",
+    "FE-116"
+  ],
+  "failed_story_ids": [],
+  "story_reports": [
+    {
+      "story_id": "FE-114",
+      "requirement_ids": [
+        "GOV-001",
+        "GOV-002",
+        "BILL14-PROGRAM-LANE"
+      ],
+      "test_case_ids": [
+        "TC-GOV-001",
+        "TC-GOV-002",
+        "TC-BILL14-001"
+      ],
+      "expected_evidence": [
+        "v6_backlog_bootstrap_packet",
+        "continuity_switch_report",
+        "inheritance_rules_doc",
+        "planning_validator_root_update"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-115",
+      "requirement_ids": [
+        "GOV-001",
+        "BILL14-BASELINE",
+        "BILL14-NON-REGRESSION"
+      ],
+      "test_case_ids": [
+        "TC-GOV-002",
+        "TC-BILL14-002",
+        "TC-BILL14-003"
+      ],
+      "expected_evidence": [
+        "bill14_requirement_rows",
+        "bill14_traceability_rows",
+        "billing_test_matrix_expansion",
+        "public_copy_baseline_evidence_plan"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    },
+    {
+      "story_id": "FE-116",
+      "requirement_ids": [
+        "GOV-003",
+        "BILL14-PROGRAM-LANE",
+        "BILL14-FINAL-ACCEPT"
+      ],
+      "test_case_ids": [
+        "TC-GOV-004",
+        "TC-BILL14-004",
+        "FP-BILL14-001"
+      ],
+      "expected_evidence": [
+        "sprint_25_traceability_audit",
+        "v6_bootstrap_acceptance_packet",
+        "baseline_gap_evidence_index",
+        "ship_packet",
+        "document_release_packet",
+        "retro_packet"
+      ],
+      "status": "done",
+      "acceptance_status": "approved",
+      "accepted": true,
+      "evidence_contract_complete": true,
+      "formal_flow_complete": true
+    }
+  ],
+  "requirement_statuses": [
+    {
+      "requirement_id": "BILL14-BASELINE",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "BILL14-FINAL-ACCEPT",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "BILL14-NON-REGRESSION",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "BILL14-PROGRAM-LANE",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "GOV-001",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "GOV-002",
+      "status": "Green"
+    },
+    {
+      "requirement_id": "GOV-003",
+      "status": "Green"
+    }
+  ],
+  "post_hook_artifacts": {
+    "document_release_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_25_bootstrap_and_traceability\\document_release_report.md",
+    "retro_path": "D:\\lyh\\agent\\agent-frame\\agentsystem\\runs\\sprints\\familyEducation\\sprint_25_bootstrap_and_traceability\\retro_report.md",
+    "ship_report_path": "D:\\lyh\\agent\\agent-frame\\.meta\\familyEducation\\ship\\ship_readiness_report.md"
+  },
+  "missing_items": [],
+  "passed": true
+}

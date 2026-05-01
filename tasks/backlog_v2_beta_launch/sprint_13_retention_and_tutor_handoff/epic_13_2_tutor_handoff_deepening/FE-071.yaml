@@ -1,0 +1,80 @@
+project: "familyEducation"
+task_id: "FE-071"
+task_name: "Tutor Workspace And Share Analytics Upgrade"
+sprint: "Sprint 13 Retention And Tutor Handoff"
+epic: "Tutor Handoff Deepening"
+story_id: "FE-071"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "owner_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Deepen the tutor workspace with recent shares, owner notes, share analytics, and revoke visibility."
+business_value: "Improves collaborative utility without turning tutor into its own account product."
+requirement_ids:
+  - "TUT2-001"
+  - "TUT2-002"
+test_case_ids:
+  - "PAGE2-TUT-001"
+  - "PAGE2-SHR-001"
+  - "API2-SHR-001"
+  - "DATA2-SHR-001"
+  - "CLICK2-007"
+expected_evidence:
+  - "workspace_screenshots"
+  - "share_analytics_snapshot"
+  - "browse_console_log"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-070."
+  - "Read the tutor/share requirement rows before editing workspace or share lifecycle UI."
+acceptance_criteria:
+  - "Tutor workspace surfaces recent shared reports, owner notes, and share usage context."
+  - "Share analytics and revoke state remain owner-scoped and consistent with share lifecycle data."
+constraints:
+  - "Do not add standalone tutor login or a separate tutor product model."
+out_of_scope:
+  - "Privacy deletion flows."
+dependencies:
+  - "FE-070"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/tutor"
+  - "http://127.0.0.1:3000/share/[token]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/tutor"
+related_files:
+  - "app/(dashboard)/dashboard/tutor/page.tsx"
+  - "app/api/reports/[reportId]/share-stats/route.ts"
+  - "app/api/reports/[reportId]/share/revoke/route.ts"
+primary_files:
+  - "app/(dashboard)/dashboard/tutor/page.tsx"
+  - "components/tutor/*"
+  - "app/api/reports/[reportId]/share-stats/route.ts"
+secondary_files:
+  - "app/api/share/[token]/meta/route.ts"
+test_cases:
+  normal:
+    - "Execute PAGE2-TUT-001, PAGE2-SHR-001, API2-SHR-001, DATA2-SHR-001, and CLICK2-007."
+  exception:
+    - "Verify revoked or expired share links do not continue to appear as active handoff paths."

@@ -1,0 +1,83 @@
+project: "familyEducation"
+task_id: "FE-111"
+task_name: "Sprint 23 Light-Lane Acceptance"
+sprint: "Sprint 23 Light-Lane Mapping"
+epic: "Sprint 23 Acceptance"
+story_id: "FE-111"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "program_level_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Accept Sprint 23 only if every light-do row is delegated to the dependent v4/player-history lanes and remains secondary to the report."
+business_value: "Prevents the boundary split from silently turning enhancements into unbounded new scope."
+requirement_ids:
+  - "GOV-003"
+  - "BND134-WALKTHROUGH-LITE"
+  - "BND134-PLAYBACK-LITE"
+  - "BND134-WEEKLY-TIMELINE-LITE"
+test_case_ids:
+  - "TC-GOV-004"
+  - "TC-BND134-004"
+expected_evidence:
+  - "sprint_23_light_lane_audit"
+  - "v4_dependency_delegation_packet"
+  - "secondary_experience_assertion"
+  - "planning_validation_output"
+required_modes:
+  - "plan-eng-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-108, FE-109, and FE-110."
+acceptance_criteria:
+  - "All light-do rows are mapped to v4 deck/player stories or accepted history hooks."
+  - "No light-do row is documented as a homepage hero, primary product layer, or mandatory Stage 1 completion condition."
+  - "The light-lane acceptance packet explicitly names v4 as the dependent execution lane."
+constraints:
+  - "Do not pass Sprint 23 if any light-do row lacks a dependency map."
+out_of_scope:
+  - "Postpone guardrails and full boundary closeout."
+dependencies:
+  - "FE-108"
+  - "FE-109"
+  - "FE-110"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+  - "http://127.0.0.1:3000/share/[token]/play"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/reports/[reportId]/play"
+  - "http://127.0.0.1:3000/share/[token]/play"
+related_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/sprint_23_light_lane_mapping/*"
+primary_files:
+  - "docs/requirements/*"
+  - "docs/testing/*"
+  - "tasks/backlog_v5_stage1_boundary_1_3_4/sprint_23_light_lane_mapping/*"
+secondary_files:
+  - "tasks/backlog_v4_diagnosis_player_1_3_x/*"
+  - "tasks/backlog_v1/*"
+test_cases:
+  normal:
+    - "Run the light-lane audit and confirm every row is delegated and secondary."
+  exception:
+    - "Fail if walkthrough, playback, export, or compare is documented as a new must-do Stage 1 execution lane."

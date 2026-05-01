@@ -1,0 +1,99 @@
+project: "familyEducation"
+task_id: "FE-017"
+task_name: "Retry Timeout And Failed Recovery Paths"
+sprint: "Sprint 2 Upload And Run Lifecycle"
+epic: "Run Lifecycle"
+story_id: "FE-017"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "parent_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Handle failed, timeout, and needs_review states with user-visible next actions."
+business_value: "Prevents abandoned runs and reduces support friction."
+requirement_ids:
+  - "RUN-004"
+  - "RUN-005"
+test_case_ids:
+  - "PAGE-RUN-004"
+  - "PAGE-RUN-005"
+  - "PAGE-RUN-006"
+  - "API-RUN-003"
+  - "CLICK-008"
+expected_evidence:
+  - "before_after_screenshots"
+  - "browse_console_log"
+  - "browse_network_log"
+  - "qa_test_output"
+  - "acceptance_checklist"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档.md and docs/saas-starter 一天落地实施说明.md as the product truth source."
+  - "Read docs/requirements/prd_requirement_index.md and docs/requirements/prd_traceability_matrix.md before making scope decisions."
+  - "Dependencies accepted: FE-016."
+acceptance_criteria:
+  - "失败的 run 必须支持重试。"
+  - "超时 run 必须提供明确提示和支持入口。"
+constraints:
+  - "Do not mark requirement rows green without attached evidence."
+  - "Do not expand beyond the declared route/API/schema/document scope unless a blocker explicitly requires it."
+  - "Collect browse, design, and browser QA evidence for the changed routes."
+out_of_scope:
+  - "Any requirement not explicitly listed in requirement_ids."
+dependencies:
+  - "FE-016"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/runs/[runId]"
+related_files:
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+  - "app/api/runs/[runId]/retry/route.ts"
+primary_files:
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+  - "app/api/runs/[runId]/retry/route.ts"
+secondary_files:
+  - "app/(dashboard)/dashboard/runs/[runId]/page.tsx"
+story_inputs:
+  - "The linked requirement IDs from the PRD requirement index."
+  - "The linked tests from the page/click/API/data/AI matrices."
+  - "The current starter repository structure and route layout."
+story_process:
+  - "Confirm the requirement and test scope before touching code or docs."
+  - "Implement only the declared route/API/schema/document scope."
+  - "Produce the evidence listed under expected_evidence and update the traceability row status accordingly."
+story_outputs:
+  - "Scoped code or documentation changes."
+  - "Acceptance evidence tied to the declared test_case_ids."
+  - "A delivery packet suitable for downstream Sprint Acceptance."
+verification_basis:
+  - "All declared test_case_ids execute or are deterministically evidenced."
+  - "Review, code acceptance, and acceptance gate pass without blocker findings."
+  - "Requirement rows tied to this Story move to Green only with evidence."
+test_cases:
+  normal:
+    - "Execute PAGE-RUN-004 and capture pass evidence."
+    - "Execute PAGE-RUN-005 and capture pass evidence."
+    - "Execute PAGE-RUN-006 and capture pass evidence."
+  exception:
+    - "Run the negative or edge coverage associated with CLICK-008."

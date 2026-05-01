@@ -1,0 +1,78 @@
+project: "familyEducation"
+task_id: "FE-094"
+task_name: "Deck Admin Review Surface"
+sprint: "Sprint 20 Admin Export And Release"
+epic: "Deck Admin Review"
+story_id: "FE-094"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "admin_review_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Add an internal deck review route with regenerate controls and trial playback before final release."
+business_value: "Gives the team a safe place to review deck quality before parents or tutors see a guided walkthrough."
+requirement_ids:
+  - "DECK13-ADMIN-REVIEW"
+test_case_ids:
+  - "PAGE-DCK-013"
+  - "PAGE-DCK-014"
+  - "PAGE-DCK-015"
+  - "CLICK-DCK-005"
+  - "API-DCK-003"
+  - "API-DCK-004"
+expected_evidence:
+  - "deck_admin_review_queue_screenshot"
+  - "trial_playback_output"
+  - "admin_regenerate_output"
+  - "deck_review_api_smoke_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependencies accepted: FE-093."
+acceptance_criteria:
+  - "Internal review route exists at /admin/review/[runId]/deck."
+  - "Admins can approve, reject, regenerate slide, regenerate actions, and launch trial playback."
+  - "The review surface stays internal-only and does not leak into parent or share routes."
+constraints:
+  - "Reuse the existing admin review security gate."
+out_of_scope:
+  - "Public export download links and final acceptance closeout."
+dependencies:
+  - "FE-093"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/admin/review/[runId]/deck"
+qa_urls:
+  - "http://127.0.0.1:3000/admin/review/[runId]/deck"
+related_files:
+  - "app/admin/review/[runId]/deck/page.tsx"
+  - "app/api/admin/review/[runId]/deck/route.ts"
+  - "app/api/decks/[deckId]/regenerate-slide/route.ts"
+  - "app/api/decks/[deckId]/regenerate-actions/route.ts"
+primary_files:
+  - "app/admin/review/[runId]/deck/page.tsx"
+  - "app/api/admin/review/[runId]/deck/route.ts"
+secondary_files:
+  - "components/*deck*"
+  - "lib/family/admin-review.ts"
+  - "lib/family/*deck*"
+test_cases:
+  normal:
+    - "Open a generated deck in admin review, run a trial playback, and approve or regenerate it."
+  exception:
+    - "Block non-admin access to the deck review surface."

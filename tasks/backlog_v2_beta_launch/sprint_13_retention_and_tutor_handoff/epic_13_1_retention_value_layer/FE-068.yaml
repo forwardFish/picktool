@@ -1,0 +1,73 @@
+project: "familyEducation"
+task_id: "FE-068"
+task_name: "History Trends And Weekly Review APIs"
+sprint: "Sprint 13 Retention And Tutor Handoff"
+epic: "Retention Value Layer"
+story_id: "FE-068"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "authenticated_browser_required"
+auth_expectations: "owner_auth_required"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Add the history, trend, and compare API layer needed for retention-focused weekly review."
+business_value: "Creates the data backbone for repeat usage after the first diagnosis."
+requirement_ids:
+  - "RET2-001"
+test_case_ids:
+  - "API2-RET-001"
+  - "API2-RET-002"
+  - "DATA2-RET-001"
+expected_evidence:
+  - "api_contract_snapshot"
+  - "data_integrity_output"
+  - "qa_test_output"
+  - "traceability_row_update"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-067."
+  - "Read the retention API rows before touching history or compare aggregation."
+acceptance_criteria:
+  - "History and compare APIs return owner-scoped progression data only."
+  - "Trend snapshots stay deterministic across repeated reads."
+constraints:
+  - "Do not mix reports across children or accounts."
+out_of_scope:
+  - "Child-detail UI rendering."
+dependencies:
+  - "FE-067"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+qa_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+related_files:
+  - "app/api/children/[childId]/history/route.ts"
+  - "app/api/children/[childId]/trends/route.ts"
+  - "app/api/reports/[reportId]/compare/route.ts"
+primary_files:
+  - "app/api/children/[childId]/history/route.ts"
+  - "app/api/children/[childId]/trends/route.ts"
+  - "lib/history/*"
+secondary_files:
+  - "docs/testing/next_phase/api_data_ai_test_matrix.md"
+test_cases:
+  normal:
+    - "Execute API2-RET-001, API2-RET-002, and DATA2-RET-001."
+  exception:
+    - "Verify cross-child or cross-account compare attempts fail safely."

@@ -1,0 +1,81 @@
+project: "familyEducation"
+task_id: "FE-050"
+task_name: "Vercel Project And Environment Baseline"
+sprint: "Sprint 9 Production Readiness Foundation"
+epic: "Production Foundation"
+story_id: "FE-050"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "runtime_and_browser_required"
+auth_expectations: "route_specific"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Establish the preview and production environment baseline, callback configuration, and release-lane environment checklist for a real Beta."
+business_value: "Prevents the product from claiming Beta readiness while still relying on local-only deployment assumptions."
+requirement_ids:
+  - "GOV2-001"
+  - "GOV2-002"
+  - "PROD-001"
+test_case_ids:
+  - "TC-GOV2-001"
+  - "TC-GOV2-002"
+  - "OPS2-DEP-001"
+  - "OPS2-DEP-002"
+expected_evidence:
+  - "environment_checklist"
+  - "deployment_config_review"
+  - "smoke_test_output"
+  - "traceability_row_update"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Read docs/需求文档_1.1.md and docs/handoff/full_system_summary.md as the product truth sources."
+  - "Read docs/requirements/next_phase_requirement_index.md and docs/requirements/next_phase_traceability_matrix.md before making scope decisions."
+  - "Read docs/testing/next_phase/master_test_plan.md and the linked matrices before implementation."
+acceptance_criteria:
+  - "Preview and production environment assumptions are documented and mapped to callback, base URL, and provider configuration needs."
+  - "The Story only closes with smoke-ready environment evidence and linked traceability updates."
+constraints:
+  - "Do not claim remote deployment steps were run if they were not actually executed."
+  - "Do not introduce undocumented env requirements outside the declared Beta lane."
+out_of_scope:
+  - "Production storage migration logic."
+dependencies: []
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+qa_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/sign-in"
+related_files:
+  - "docs/requirements/next_phase_requirement_index.md"
+  - "docs/testing/next_phase/master_test_plan.md"
+  - "docs/release/creem_payment_plan.md"
+primary_files:
+  - "vercel.json"
+  - ".env.example"
+  - "docs/requirements/next_phase_traceability_matrix.md"
+secondary_files:
+  - "README.md"
+  - "PROJECT_STATE.md"
+test_cases:
+  normal:
+    - "Execute OPS2-DEP-001 and capture the declared environment baseline."
+    - "Execute OPS2-DEP-002 against the public and auth entry routes."
+  exception:
+    - "Verify that any missing callback or base-URL requirement is surfaced as a documented blocker rather than hidden."

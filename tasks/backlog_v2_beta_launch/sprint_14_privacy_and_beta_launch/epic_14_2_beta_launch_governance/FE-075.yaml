@@ -1,0 +1,80 @@
+project: "familyEducation"
+task_id: "FE-075"
+task_name: "Beta Launch Smoke And Release Checklist"
+sprint: "Sprint 14 Privacy And Beta Launch"
+epic: "Beta Launch Governance"
+story_id: "FE-075"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ordinary_story"
+session_policy: "runtime_and_browser_required"
+auth_expectations: "mixed_route_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Define and run the Beta launch smoke and release checklist without overstating remote execution."
+business_value: "Creates a trustworthy last-mile release discipline."
+requirement_ids:
+  - "REL2-001"
+  - "GOV2-004"
+test_case_ids:
+  - "OPS2-BETA-001"
+  - "FP2-002"
+  - "TC-GOV2-006"
+expected_evidence:
+  - "beta_smoke_output"
+  - "release_checklist"
+  - "blocker_register"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-074."
+  - "Read docs/testing/next_phase/final_program_acceptance.md before defining the smoke gate."
+acceptance_criteria:
+  - "A deterministic smoke and release checklist exists for the declared Beta lane."
+  - "Any incomplete remote step is documented as follow-up rather than implied complete."
+constraints:
+  - "Do not claim production deployment success without actual evidence."
+out_of_scope:
+  - "Final handoff documentation package."
+dependencies:
+  - "FE-074"
+preview_base_url: "http://127.0.0.1:3000"
+browser_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+preview_urls:
+  - "http://127.0.0.1:3000/"
+  - "http://127.0.0.1:3000/pricing"
+  - "http://127.0.0.1:3000/dashboard/billing"
+related_files:
+  - "scripts/run_sprint14_smoke.mjs"
+  - "scripts/run_sprint14_browser_smoke.mjs"
+  - "scripts/run_sprint14_delivery.py"
+primary_files:
+  - "scripts/delivery_runner.py"
+  - "scripts/run_final_program_acceptance.py"
+  - "scripts/run_sprint14_smoke.mjs"
+  - "scripts/run_sprint14_browser_smoke.mjs"
+  - "scripts/run_sprint14_delivery.py"
+  - "docs/testing/next_phase/final_program_acceptance.md"
+secondary_files:
+  - "tasks/runtime/qa_results/*"
+test_cases:
+  normal:
+    - "Execute OPS2-BETA-001 and FP2-002 for the declared Beta lane."
+  exception:
+    - "Verify any missing external prerequisite is surfaced as a blocker in the checklist."

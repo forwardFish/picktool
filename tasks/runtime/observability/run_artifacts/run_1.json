@@ -1,0 +1,17 @@
+{
+  "id": "run_cost_1775721654130_0f28ddd2",
+  "createdAt": "2026-04-09T08:00:54.130Z",
+  "runId": 1,
+  "userId": 1,
+  "engine": "openai",
+  "pageCount": 5,
+  "labeledItemCount": 10,
+  "status": "done",
+  "metadata": {
+    "confidence": 0.81,
+    "reviewReason": null
+  },
+  "estimatedInputTokens": 6000,
+  "estimatedOutputTokens": 2050,
+  "estimatedUsd": 0.0422
+}

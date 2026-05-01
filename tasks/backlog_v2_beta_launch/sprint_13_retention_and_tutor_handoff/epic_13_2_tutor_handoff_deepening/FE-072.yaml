@@ -1,0 +1,97 @@
+project: "familyEducation"
+task_id: "FE-072"
+task_name: "Retention And Tutor Acceptance"
+sprint: "Sprint 13 Retention And Tutor Handoff"
+epic: "Tutor Handoff Deepening"
+story_id: "FE-072"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_only"
+agent_policy: "auto"
+blast_radius: "L1"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "sprint_acceptance_story"
+session_policy: "full_sprint_audit_required"
+auth_expectations: "authenticated_review"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Close Sprint 13 only when retention and tutor-handoff flows are both useful, scoped, and evidenced."
+business_value: "Protects the repeat-usage and collaboration layer before Beta launch."
+requirement_ids:
+  - "GOV2-003"
+  - "RET2-001"
+  - "RET2-002"
+  - "RET2-003"
+  - "TUT2-001"
+  - "TUT2-002"
+test_case_ids:
+  - "TC-GOV2-003"
+  - "PAGE2-CHD-001"
+  - "PAGE2-CHD-002"
+  - "PAGE2-TUT-001"
+  - "PAGE2-SHR-001"
+  - "API2-RET-001"
+  - "API2-RET-002"
+  - "API2-RET-003"
+  - "API2-SHR-001"
+  - "DATA2-RET-001"
+  - "DATA2-SHR-001"
+  - "CLICK2-006"
+  - "CLICK2-007"
+expected_evidence:
+  - "sprint_acceptance_report"
+  - "traceability_audit"
+  - "browser_evidence_manifest"
+  - "ship_packet"
+  - "document_release_packet"
+  - "retro_packet"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+  - "ship"
+  - "document-release"
+  - "retro"
+entry_criteria:
+  - "Dependencies accepted: FE-068, FE-069, FE-070, FE-071."
+  - "Read docs/testing/next_phase/sprint_acceptance_template.md before starting Sprint audit work."
+acceptance_criteria:
+  - "Sprint 13 closes only when retention and tutor-handoff rows are green with latest evidence."
+  - "Any ownership leak, revoked-share inconsistency, or weak trend evidence blocks acceptance."
+constraints:
+  - "Do not close the Sprint on screenshots alone without API/data verification."
+out_of_scope:
+  - "Privacy and launch-governance work."
+dependencies:
+  - "FE-068"
+  - "FE-069"
+  - "FE-070"
+  - "FE-071"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/dashboard/children/[childId]"
+  - "http://127.0.0.1:3000/dashboard/tutor"
+qa_urls:
+  - "http://127.0.0.1:3000/share/[token]"
+related_files:
+  - "tasks/runtime/sprint_acceptance/sprint_13_acceptance_report.md"
+  - "tasks/runtime/traceability_audits/sprint_13_traceability_audit.md"
+primary_files:
+  - "docs/requirements/next_phase_traceability_matrix.md"
+  - "docs/testing/next_phase/sprint_acceptance_template.md"
+secondary_files:
+  - "PROJECT_STATE.md"
+  - "docs/handoff/current_handoff.md"
+test_cases:
+  normal:
+    - "Execute all Sprint 13 page, click, API, and data rows."
+    - "Audit all Sprint 13 requirement rows against latest evidence."
+  exception:
+    - "Fail the Sprint if trend data, share analytics, or revoke visibility is incomplete."

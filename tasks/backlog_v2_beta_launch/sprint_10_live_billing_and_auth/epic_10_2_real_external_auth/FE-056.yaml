@@ -1,0 +1,83 @@
+project: "familyEducation"
+task_id: "FE-056"
+task_name: "Google OAuth Production Configuration And UX Hardening"
+sprint: "Sprint 10 Live Billing And Auth"
+epic: "Real External Auth"
+story_id: "FE-056"
+auto_run: true
+execution_policy: "continuous_full_sprint"
+interaction_policy: "non_interactive_auto_run"
+pause_policy: "story_boundary_or_shared_blocker_only"
+agent_policy: "auto"
+blast_radius: "L2"
+execution_mode: "Safe"
+mode: "Safe"
+story_type: "ui_story"
+session_policy: "public_route_with_auth_variants"
+auth_expectations: "email_and_google_supported"
+workflow_enforcement_policy: "strict_agentsystem"
+upstream_agent_parity: "required"
+approval_required: false
+goal: "Keep normal account auth intact while completing the production-grade Google OAuth flow and safe fallback UX."
+business_value: "Improves sign-in conversion without forcing all users into a single auth provider."
+requirement_ids:
+  - "AUTH2-001"
+  - "AUTH2-002"
+test_case_ids:
+  - "PAGE2-SIN-001"
+  - "PAGE2-SUP-001"
+  - "API2-AUTH-001"
+  - "CLICK2-010"
+  - "NF2-002"
+expected_evidence:
+  - "before_after_screenshots"
+  - "oauth_callback_transcript"
+  - "browse_console_log"
+  - "qa_test_output"
+required_modes:
+  - "plan-eng-review"
+  - "browse"
+  - "plan-design-review"
+  - "design-consultation"
+  - "design-review"
+  - "qa"
+  - "review"
+  - "code_acceptance"
+  - "acceptance_gate"
+  - "doc_writer"
+entry_criteria:
+  - "Dependency accepted: FE-055."
+  - "Read the auth and fallback rows before changing login or sign-up UX."
+acceptance_criteria:
+  - "Email sign-in/sign-up remains available and functional."
+  - "Google OAuth success, cancel, and unconfigured cases use user-friendly handling without raw secret names or config leakage."
+constraints:
+  - "Do not remove standard account auth."
+  - "Do not display raw env-variable names or stack traces to end users."
+out_of_scope:
+  - "Customer portal or checkout lifecycle."
+dependencies:
+  - "FE-055"
+preview_base_url: "http://127.0.0.1:3000"
+preview_urls:
+  - "http://127.0.0.1:3000/sign-in"
+  - "http://127.0.0.1:3000/sign-up"
+qa_urls:
+  - "http://127.0.0.1:3000/sign-in"
+related_files:
+  - "app/api/auth/google/start/route.ts"
+  - "app/api/auth/google/callback/route.ts"
+  - "app/(login)/login.tsx"
+primary_files:
+  - "lib/auth/google.ts"
+  - "app/api/auth/google/start/route.ts"
+  - "app/api/auth/google/callback/route.ts"
+secondary_files:
+  - "app/(login)/sign-in/page.tsx"
+  - "app/(login)/sign-up/page.tsx"
+test_cases:
+  normal:
+    - "Execute PAGE2-SIN-001, API2-AUTH-001, and CLICK2-010."
+    - "Confirm the sign-up page still follows PAGE2-SUP-001."
+  exception:
+    - "Verify cancel and missing-config variants show safe user messaging and keep email auth usable."
