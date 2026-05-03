@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CapCut Product Detail - AI Tool Decision Assistant</title>
+  <style>
+    :root {
+      --bg: #020611;
+      --panel: rgba(7, 15, 36, .78);
+      --panel-2: rgba(8, 18, 43, .72);
+      --line: rgba(83, 150, 255, .38);
+      --line-soft: rgba(136, 162, 220, .18);
+      --text: rgba(255, 255, 255, .94);
+      --muted: rgba(255, 255, 255, .62);
+      --blue: #43b9ff;
+      --purple: #9b4dff;
+      --violet: #7a5cff;
+      --green: #18e985;
+      --red: #ff5158;
+      --orange: #ff983d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+    button { font: inherit; cursor: pointer; }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      padding: 22px 0 34px;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(86, 85, 255, .16), transparent 18%),
+        radial-gradient(circle at 74% 20%, rgba(198, 74, 255, .10), transparent 8%),
+        radial-gradient(circle at 18% 34%, rgba(70, 163, 255, .07), transparent 18%),
+        linear-gradient(180deg, #020410 0%, #050917 55%, #030611 100%);
+    }
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+    }
+    .page::before {
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.66) 0 .8px, transparent 1.5px),
+        radial-gradient(circle, rgba(106,174,255,.36) 0 .8px, transparent 1.6px),
+        radial-gradient(circle, rgba(187,106,255,.24) 0 .8px, transparent 1.6px);
+      background-position: 8px 10px, 34px 52px, 12px 18px;
+      background-size: 80px 80px, 120px 120px, 150px 150px;
+      opacity: .74;
+    }
+    .page::after {
+      background:
+        radial-gradient(ellipse at 76% 22%, rgba(79, 104, 255, .32), transparent 17%),
+        radial-gradient(ellipse at 83% 20%, rgba(190, 72, 255, .22), transparent 8%),
+        radial-gradient(ellipse at 18% 38%, rgba(47, 157, 255, .12), transparent 18%);
+      filter: blur(2px);
+      opacity: .75;
+    }
+
+    .earth {
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      bottom: -128px;
+      width: 1280px;
+      height: 265px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse at center, rgba(114, 94, 255, .40) 0%, rgba(74, 144, 255, .22) 34%, rgba(40, 73, 140, .13) 48%, transparent 66%);
+      filter: blur(1.5px);
+    }
+    .earth::before {
+      content: "";
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      bottom: 86px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(95,142,255,0), rgba(117,161,255,.78) 18%, rgba(185,110,255,.84) 50%, rgba(115,164,255,.72) 82%, rgba(95,142,255,0));
+      box-shadow: 0 0 20px rgba(116,150,255,.62), 0 0 42px rgba(154,93,255,.38);
+    }
+    .earth::after {
+      content: "";
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      bottom: 75px;
+      height: 78px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 28% 60%, rgba(255, 161, 65, .42) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 45% 68%, rgba(255, 192, 70, .35) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 63% 55%, rgba(255, 170, 70, .36) 0 1px, transparent 1.5px),
+        radial-gradient(ellipse at center, rgba(72,130,255,.10), rgba(72,130,255,0) 70%);
+      background-size: 32px 18px, 42px 22px, 36px 20px, auto;
+      opacity: .75;
+    }
+
+    .app {
+      width: min(100% - 76px, 1024px);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 26px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 760;
+      letter-spacing: -.035em;
+      color: rgba(255,255,255,.94);
+    }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 12px rgba(132, 84, 255, .68));
+    }
+    .login {
+      height: 42px;
+      padding: 0 19px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.02);
+      color: rgba(255,255,255,.86);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 28px 8px;
+      color: #35bfff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 560;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 38px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+    .capcut-logo {
+      width: 235px;
+      height: 235px;
+      border-radius: 35px;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow:
+        0 0 34px rgba(80,155,255,.48),
+        0 0 18px rgba(102, 93, 255, .42),
+        inset 0 0 0 1px rgba(0,0,0,.05);
+    }
+    .capcut-symbol {
+      position: relative;
+      width: 154px;
+      height: 112px;
+    }
+    .capcut-symbol span { position: absolute; display: block; background: #050505; border-radius: 5px; }
+    .capcut-symbol .a { left: 10px; top: 16px; width: 132px; height: 18px; transform: skewY(-24deg); }
+    .capcut-symbol .b { left: 10px; bottom: 16px; width: 132px; height: 18px; transform: skewY(24deg); }
+    .capcut-symbol .c { left: 3px; top: 24px; width: 150px; height: 18px; transform: rotate(-34deg); }
+    .capcut-symbol .d { left: 3px; bottom: 24px; width: 150px; height: 18px; transform: rotate(34deg); }
+
+    .hero-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 72px;
+      line-height: .92;
+      letter-spacing: -.06em;
+      font-weight: 780;
+      text-shadow: 0 0 18px rgba(255,255,255,.10);
+    }
+    .verify {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #2e8cff;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 850;
+      box-shadow: 0 0 18px rgba(46,140,255,.52);
+    }
+    .subtitle {
+      color: rgba(255,255,255,.74);
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: -.025em;
+      margin-bottom: 22px;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      height: 43px;
+      padding: 0 18px;
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.02);
+      color: rgba(255,255,255,.82);
+      font-size: 15px;
+      box-shadow: inset 0 0 16px rgba(255,255,255,.02);
+    }
+    .chip .violet { color: var(--purple); }
+    .chip .green { color: var(--green); }
+    .chip .amber { color: #ffbf38; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+    .primary,
+    .secondary {
+      height: 64px;
+      border-radius: 14px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 650;
+      border: 0;
+    }
+    .primary {
+      min-width: 330px;
+      background: linear-gradient(90deg, #3d8bff 0%, #c24dff 100%);
+      box-shadow: 0 0 28px rgba(97,88,255,.24), inset 0 0 18px rgba(255,255,255,.16);
+    }
+    .secondary {
+      min-width: 250px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.02);
+      box-shadow: inset 0 0 16px rgba(255,255,255,.02);
+    }
+
+    .card {
+      position: relative;
+      border-radius: 24px;
+      border: 1px solid rgba(64, 145, 255, .42);
+      background: linear-gradient(180deg, rgba(6, 14, 36, .80), rgba(3, 10, 28, .88));
+      box-shadow:
+        0 0 28px rgba(54,129,255,.14),
+        0 0 34px rgba(184,76,255,.08),
+        inset 0 0 32px rgba(72,124,255,.05);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(190,78,255,.14);
+    }
+
+    .glance {
+      margin: 0 0 34px;
+      padding: 28px 34px 30px;
+      border-color: rgba(103, 126, 255, .56);
+      box-shadow:
+        0 0 30px rgba(103,126,255,.20),
+        0 0 28px rgba(168,78,255,.17),
+        inset 0 0 36px rgba(72,124,255,.06);
+    }
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .star-small {
+      width: 31px;
+      height: 31px;
+      filter: drop-shadow(0 0 10px rgba(132,84,255,.6));
+      flex: 0 0 auto;
+    }
+    .section-heading h2 {
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -.04em;
+      font-weight: 760;
+    }
+    .glance-table {
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(4, 10, 25, .26);
+    }
+    .glance-row {
+      display: grid;
+      grid-template-columns: 54px 190px 1fr;
+      align-items: center;
+      min-height: 71px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+    .glance-row:last-child { border-bottom: 0; }
+    .glance-icon {
+      color: #37b9ff;
+      font-size: 24px;
+      display: grid;
+      place-items: center;
+    }
+    .glance-title {
+      color: rgba(255,255,255,.92);
+      font-size: 17px;
+      font-weight: 720;
+    }
+    .glance-desc {
+      color: rgba(255,255,255,.68);
+      font-size: 16px;
+      line-height: 1.4;
+      padding-right: 20px;
+    }
+
+    .block { margin-bottom: 34px; }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .feature-card {
+      min-height: 218px;
+      padding: 34px 26px 28px;
+      border-radius: 19px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: radial-gradient(circle at 50% 0%, rgba(143, 79, 255, .16), transparent 44%), rgba(8, 18, 42, .70);
+      text-align: center;
+      box-shadow: inset 0 0 24px rgba(72,124,255,.04);
+    }
+    .feature-card.violet { border-color: rgba(159, 75, 255, .65); box-shadow: 0 0 20px rgba(159,75,255,.12), inset 0 0 24px rgba(159,75,255,.05); }
+    .feature-card.blue { border-color: rgba(65, 167, 255, .68); box-shadow: 0 0 20px rgba(65,167,255,.12), inset 0 0 24px rgba(65,167,255,.05); }
+    .feature-card.green { border-color: rgba(24, 233, 133, .66); box-shadow: 0 0 20px rgba(24,233,133,.11), inset 0 0 24px rgba(24,233,133,.045); }
+    .feature-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 21px;
+      display: grid;
+      place-items: center;
+      font-size: 41px;
+    }
+    .feature-card.violet .feature-icon { color: #a95aff; }
+    .feature-card.blue .feature-icon { color: #39aaff; }
+    .feature-card.green .feature-icon { color: var(--green); }
+    .feature-card h3 {
+      font-size: 23px;
+      line-height: 1.2;
+      letter-spacing: -.035em;
+      margin-bottom: 12px;
+    }
+    .feature-card p {
+      color: rgba(255,255,255,.68);
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .fit-card {
+      padding: 26px 31px;
+      border-radius: 19px;
+      border-color: rgba(24, 233, 133, .62);
+      box-shadow: 0 0 20px rgba(24,233,133,.10), 0 0 18px rgba(255,82,88,.10), inset 0 0 28px rgba(72,124,255,.04);
+    }
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+    .divider {
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,.16), transparent);
+    }
+    .fit-col h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 23px;
+      letter-spacing: -.03em;
+      margin-bottom: 16px;
+    }
+    .fit-badge {
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 850;
+      font-size: 16px;
+    }
+    .fit-badge.good { border: 2px solid var(--green); color: var(--green); }
+    .fit-badge.bad { border: 2px solid var(--red); color: var(--red); }
+    .fit-list {
+      display: grid;
+      gap: 11px;
+      list-style: none;
+    }
+    .fit-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 9px;
+      color: rgba(255,255,255,.72);
+      font-size: 16px;
+      line-height: 1.35;
+    }
+    .fit-list .goodmark { color: var(--green); font-weight: 850; }
+    .fit-list .badmark { color: var(--red); font-weight: 850; }
+
+    .alt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .alt-card {
+      min-height: 205px;
+      padding: 21px 23px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.11);
+      background: rgba(8, 18, 42, .70);
+      box-shadow: inset 0 0 24px rgba(72,124,255,.035);
+    }
+    .alt-card.violet { border-color: rgba(159,75,255,.65); }
+    .alt-card.blue { border-color: rgba(65,167,255,.62); }
+    .alt-card.green { border-color: rgba(24,233,133,.56); }
+    .alt-head {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 17px;
+      align-items: center;
+      margin-bottom: 13px;
+    }
+    .alt-logo {
+      width: 61px;
+      height: 61px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      font-weight: 850;
+    }
+    .alt-card.violet .alt-logo { color: #b064ff; border: 2px solid #9c4dff; background: rgba(97,37,150,.18); }
+    .alt-card.blue .alt-logo { color: #45b4ff; border: 2px solid #2d8fff; background: rgba(33,96,170,.18); }
+    .alt-card.green .alt-logo { color: var(--green); border: 2px solid rgba(24,233,133,.7); background: rgba(20,139,92,.14); }
+    .alt-card h3 {
+      font-size: 23px;
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+    .alt-card p {
+      color: rgba(255,255,255,.67);
+      font-size: 16px;
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+    .alt-card a {
+      color: #38bfff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 620;
+    }
+
+    footer {
+      position: relative;
+      margin-top: 54px;
+      text-align: center;
+      color: rgba(255,255,255,.72);
+      padding-bottom: 10px;
+    }
+    .tagline {
+      font-size: 16px;
+      margin-bottom: 14px;
+      text-shadow: 0 0 16px rgba(120, 140, 255, .45);
+    }
+    .copyright {
+      color: rgba(255,255,255,.42);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .app { width: calc(100% - 32px); }
+      .hero { grid-template-columns: 1fr; gap: 24px; }
+      .capcut-logo { width: 190px; height: 190px; }
+      h1 { font-size: 58px; }
+      .subtitle { font-size: 19px; }
+      .glance-row { grid-template-columns: 48px 1fr; padding: 14px 0; }
+      .glance-title { grid-column: 2; }
+      .glance-desc { grid-column: 2; padding-right: 12px; margin-top: 4px; }
+      .feature-grid, .alt-grid { grid-template-columns: 1fr; }
+      .fit-grid { grid-template-columns: 1fr; }
+      .divider { height: 1px; }
+      .primary, .secondary { width: 100%; min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="earth" aria-hidden="true"></div>
+
+    <div class="app">
+      <header>
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 2L39.4 24.6L62 32L39.4 39.4L32 62L24.6 39.4L2 32L24.6 24.6L32 2Z" fill="url(#brandGradient)"/>
+            <path d="M32 16.8L35.9 28.1L47.2 32L35.9 35.9L32 47.2L28.1 35.9L16.8 32L28.1 28.1L32 16.8Z" fill="white"/>
+            <defs>
+              <linearGradient id="brandGradient" x1="7" y1="7" x2="57" y2="57" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#57DAFF"/>
+                <stop offset=".5" stop-color="#6F61FF"/>
+                <stop offset="1" stop-color="#C84CFF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>AI Tool Decision Assistant</span>
+        </div>
+        <button class="login">Log in</button>
+      </header>
+
+      <a class="back" href="#">← Back to search</a>
+
+      <section class="hero" aria-label="CapCut overview">
+        <div class="capcut-logo" aria-hidden="true">
+          <div class="capcut-symbol">
+            <span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <div class="hero-title">
+            <h1>CapCut</h1>
+            <span class="verify">✓</span>
+          </div>
+          <p class="subtitle">Fast short-video editing for creators and marketers.</p>
+          <div class="chips">
+            <span class="chip"><span class="violet">▣</span> Video editing</span>
+            <span class="chip"><span class="green">$</span> Free / Paid</span>
+            <span class="chip"><span class="amber">★</span> Beginner</span>
+          </div>
+          <div class="actions">
+            <button class="primary">Open official website ↗</button>
+            <button class="secondary">▱&nbsp;&nbsp;Save tool</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card glance" aria-label="At a glance">
+        <div class="section-heading">
+          <svg class="star-small" viewBox="0 0 64 64" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 2L39.4 24.6L62 32L39.4 39.4L32 62L24.6 39.4L2 32L24.6 24.6L32 2Z" fill="url(#starSmall1)"/>
+            <path d="M32 16.8L35.9 28.1L47.2 32L35.9 35.9L32 47.2L28.1 35.9L16.8 32L28.1 28.1L32 16.8Z" fill="white"/>
+            <defs><linearGradient id="starSmall1" x1="7" y1="7" x2="57" y2="57"><stop stop-color="#57DAFF"/><stop offset=".5" stop-color="#6F61FF"/><stop offset="1" stop-color="#C84CFF"/></linearGradient></defs>
+          </svg>
+          <h2>At a glance</h2>
+        </div>
+        <div class="glance-table">
+          <div class="glance-row">
+            <div class="glance-icon">▣</div>
+            <div class="glance-title">Best for</div>
+            <div class="glance-desc">Short-form video editing, captions, templates, effects, and quick exports.</div>
+          </div>
+          <div class="glance-row">
+            <div class="glance-icon">⊘</div>
+            <div class="glance-title">Not for</div>
+            <div class="glance-desc">Cinematic long-form editing or advanced color grading and finishing.</div>
+          </div>
+          <div class="glance-row">
+            <div class="glance-icon">✓</div>
+            <div class="glance-title">Works best when</div>
+            <div class="glance-desc">You need fast, template-based videos for social or ads.</div>
+          </div>
+          <div class="glance-row">
+            <div class="glance-icon">⇄</div>
+            <div class="glance-title">Switch if</div>
+            <div class="glance-desc">You need deeper control, pro features, or long-form workflows.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" aria-label="What CapCut does">
+        <div class="section-heading">
+          <svg class="star-small" viewBox="0 0 64 64" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 2L39.4 24.6L62 32L39.4 39.4L32 62L24.6 39.4L2 32L24.6 24.6L32 2Z" fill="url(#starSmall2)"/>
+            <path d="M32 16.8L35.9 28.1L47.2 32L35.9 35.9L32 47.2L28.1 35.9L16.8 32L28.1 28.1L32 16.8Z" fill="white"/>
+            <defs><linearGradient id="starSmall2" x1="7" y1="7" x2="57" y2="57"><stop stop-color="#57DAFF"/><stop offset=".5" stop-color="#6F61FF"/><stop offset="1" stop-color="#C84CFF"/></linearGradient></defs>
+          </svg>
+          <h2>What CapCut does</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card violet">
+            <div class="feature-icon">▰</div>
+            <h3>Edit short videos</h3>
+            <p>Cut, trim, add music, text, effects, and transitions.</p>
+          </article>
+          <article class="feature-card blue">
+            <div class="feature-icon">CC</div>
+            <h3>Add captions & templates</h3>
+            <p>Auto-captions, templates, and styles in one click.</p>
+          </article>
+          <article class="feature-card green">
+            <div class="feature-icon">📣</div>
+            <h3>Create social-ready ads</h3>
+            <p>Resize, add hooks, and export for any platform.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" aria-label="Fit check">
+        <div class="section-heading">
+          <svg class="star-small" viewBox="0 0 64 64" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 2L39.4 24.6L62 32L39.4 39.4L32 62L24.6 39.4L2 32L24.6 24.6L32 2Z" fill="url(#starSmall3)"/>
+            <path d="M32 16.8L35.9 28.1L47.2 32L35.9 35.9L32 47.2L28.1 35.9L16.8 32L28.1 28.1L32 16.8Z" fill="white"/>
+            <defs><linearGradient id="starSmall3" x1="7" y1="7" x2="57" y2="57"><stop stop-color="#57DAFF"/><stop offset=".5" stop-color="#6F61FF"/><stop offset="1" stop-color="#C84CFF"/></linearGradient></defs>
+          </svg>
+          <h2>When it fits — and when to switch</h2>
+        </div>
+
+        <div class="card fit-card">
+          <div class="fit-grid">
+            <div class="fit-col">
+              <h3><span class="fit-badge good">✓</span>Good fit</h3>
+              <ul class="fit-list">
+                <li><span class="goodmark">✓</span><span>Creating TikTok, Reels, and Shorts</span></li>
+                <li><span class="goodmark">✓</span><span>Quick edits with templates and captions</span></li>
+                <li><span class="goodmark">✓</span><span>Mobile-first creators and small teams</span></li>
+                <li><span class="goodmark">✓</span><span>Fast exports and social-ready formats</span></li>
+                <li><span class="goodmark">✓</span><span>No advanced editing experience needed</span></li>
+              </ul>
+            </div>
+            <div class="divider"></div>
+            <div class="fit-col">
+              <h3><span class="fit-badge bad">×</span>Not ideal</h3>
+              <ul class="fit-list">
+                <li><span class="badmark">×</span><span>Cinematic long-form editing</span></li>
+                <li><span class="badmark">×</span><span>Advanced color grading and finishing</span></li>
+                <li><span class="badmark">×</span><span>Heavy multi-cam and complex timelines</span></li>
+                <li><span class="badmark">×</span><span>Precision audio & advanced VFX</span></li>
+                <li><span class="badmark">×</span><span>Full text-to-video generation</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" aria-label="Consider alternatives">
+        <div class="section-heading">
+          <svg class="star-small" viewBox="0 0 64 64" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 2L39.4 24.6L62 32L39.4 39.4L32 62L24.6 39.4L2 32L24.6 24.6L32 2Z" fill="url(#starSmall4)"/>
+            <path d="M32 16.8L35.9 28.1L47.2 32L35.9 35.9L32 47.2L28.1 35.9L16.8 32L28.1 28.1L32 16.8Z" fill="white"/>
+            <defs><linearGradient id="starSmall4" x1="7" y1="7" x2="57" y2="57"><stop stop-color="#57DAFF"/><stop offset=".5" stop-color="#6F61FF"/><stop offset="1" stop-color="#C84CFF"/></linearGradient></defs>
+          </svg>
+          <h2>Consider alternatives</h2>
+        </div>
+
+        <div class="alt-grid">
+          <article class="alt-card violet">
+            <div class="alt-head">
+              <div class="alt-logo">R</div>
+              <h3>Runway / Kling</h3>
+            </div>
+            <p>Switch when you need AI video generation, effects, or advanced creative control.</p>
+            <a href="#">Explore alternative →</a>
+          </article>
+          <article class="alt-card blue">
+            <div class="alt-head">
+              <div class="alt-logo">▶</div>
+              <h3>HeyGen</h3>
+            </div>
+            <p>Switch when you need AI avatars, talking-head videos, and localization at scale.</p>
+            <a href="#">Explore alternative →</a>
+          </article>
+          <article class="alt-card green">
+            <div class="alt-head">
+              <div class="alt-logo">Pr</div>
+              <h3>Premiere / DaVinci</h3>
+            </div>
+            <p>Switch when you need pro-grade editing, color, audio, and complex long-form projects.</p>
+            <a href="#">Explore alternative →</a>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <div class="tagline">✦ Make better tool decisions. Save time. Get better results.</div>
+        <div class="copyright">© 2026 AI Tool Decision Assistant · All rights reserved.</div>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
