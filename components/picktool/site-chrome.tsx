@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { BrandMark } from '@/components/picktool/brand';
 
 export function SiteHeader() {
@@ -7,14 +7,9 @@ export function SiteHeader() {
       <Link href="/" aria-label="AI Tool Decision Assistant home">
         <BrandMark />
       </Link>
-      <nav className="hidden items-center gap-6 text-sm text-slate-300 sm:flex">
-        <Link href="/#how-it-works" className="transition hover:text-white">
-          How it works
-        </Link>
-        <Link href="/#examples" className="transition hover:text-white">
-          Examples
-        </Link>
-      </nav>
+      <button className="whitespace-nowrap rounded-xl border border-cyan-300/35 bg-slate-950/45 px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_18px_rgba(83,133,255,0.08)]">
+        Log in
+      </button>
     </header>
   );
 }
@@ -34,7 +29,7 @@ export function SiteFooter() {
       <BrandMark />
       <div className="flex flex-wrap gap-5">
         <span>About</span>
-        <span>How it works</span>
+        <span>Decision guide</span>
         <span>Privacy</span>
         <span>Terms</span>
       </div>
@@ -42,3 +37,4 @@ export function SiteFooter() {
     </footer>
   );
 }
+
