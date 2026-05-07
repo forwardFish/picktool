@@ -13,7 +13,7 @@ type DecisionFormProps = {
   disabled?: boolean;
 };
 
-export function DecisionForm({ initialTask = '', compact = false, onTaskSubmit, submitLabel = 'Get Decision', disabled = false }: DecisionFormProps) {
+export function DecisionForm({ initialTask = '', compact = false, onTaskSubmit, submitLabel = 'Start workflow', disabled = false }: DecisionFormProps) {
   const router = useRouter();
   const [task, setTask] = useState(initialTask);
   const [error, setError] = useState('');
@@ -71,7 +71,7 @@ export function DecisionForm({ initialTask = '', compact = false, onTaskSubmit, 
           className="m-3 inline-flex min-h-14 items-center justify-center gap-3 rounded-[1.35rem] bg-[linear-gradient(90deg,var(--cyan),var(--blue),var(--magenta))] px-7 text-base font-semibold text-white shadow-[0_18px_50px_rgba(126,86,255,0.38)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-65"
         >
           <Sparkles className="size-5" aria-hidden="true" />
-          {disabled ? 'Getting decision...' : submitLabel}
+          {disabled ? 'Planning workflow...' : submitLabel}
           <ArrowRight className="size-5" aria-hidden="true" />
         </button>
       </form>
@@ -106,3 +106,4 @@ function formatExample(example: string) {
 
   return example.replace(/^I want to /, '').replace(/\.$/, '');
 }
+

@@ -51,3 +51,5 @@ _tmp_*
 temp/
 scripts/__pycache__/
 *.pyc
+.omx/
+docs/pic/backup/
