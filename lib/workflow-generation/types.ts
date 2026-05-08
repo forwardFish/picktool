@@ -12,6 +12,11 @@ export type WorkflowTool = {
   note: string;
   badge?: string;
   status: ToolRole;
+  source?: 'manual' | 'toolify' | 'other';
+  websiteUrl?: string;
+  detailSlug?: string;
+  actionPrompt?: string;
+  useSteps?: string[];
 };
 
 export type UpgradeOptionKey = 'professional' | 'budget' | 'automated' | 'advanced_visual' | 'full_plan' | 'good_enough';
@@ -57,6 +62,8 @@ export type WorkflowPlan = {
   upgradeDirections: UpgradeOption[];
   skippedTools: SkippedTool[];
   nextActionLabel: string;
+  catalogBacked?: boolean;
+  catalogCandidateSlugs?: string[];
   createdAt: string;
   updatedAt: string;
 };

@@ -75,6 +75,7 @@ async function expectCopilotFlow() {
     if (!body.sessionId) throw new Error('/api/copilot/start missing sessionId');
     if (body.currentPlan?.planType !== 'basic') throw new Error('/api/copilot/start did not return basic plan');
     if (body.fullPlanState !== 'collapsed') throw new Error('/api/copilot/start should be collapsed');
+    if (body.currentPlan?.catalogBacked !== true) throw new Error('/api/copilot/start did not use catalog-backed recommendation');
   }, 'POST /api/copilot/start');
 
   await postJson('/api/workflow/generate', { input: '我有一个毕业设计，想用 AI 帮我剪辑展示视频。', optionKey: 'professional', includeFullPlan: true }, 200, (body) => {
@@ -127,8 +128,25 @@ async function expectCopilotFlow() {
   if (!full.fullPlan) throw new Error('Full plan flow did not return fullPlan');
 }
 
+async function expectToolCatalogFlow() {
+  await expectPage('/tools-dataset', ['Local AI Tool Dataset', 'Total tools', 'Safety filtered']);
+
+  await postJson('/api/tools/search', { input: 'Landing Page' }, 200, (body) => {
+    if (!Array.isArray(body.tools)) throw new Error('/api/tools/search missing tools');
+    if (typeof body.totalTools !== 'number') throw new Error('/api/tools/search missing totalTools');
+  }, 'POST /api/tools/search');
+
+  for (const input of ['AI 视频剪辑', 'PDF 转 PPT', 'Landing Page']) {
+    await postJson('/api/tools/recommend', { input }, 200, (body) => {
+      if (!body.taskIntent?.taskType) throw new Error(`/api/tools/recommend missing taskIntent for ${input}`);
+      if (!Array.isArray(body.selectedTools) || body.selectedTools.length < 1) throw new Error(`/api/tools/recommend missing selected tools for ${input}`);
+      if (!Array.isArray(body.scoringEvidence) || body.scoringEvidence.length < 1) throw new Error(`/api/tools/recommend missing scoring evidence for ${input}`);
+    }, `POST /api/tools/recommend ${input}`);
+  }
+}
+
 const nextArgs = ['exec', 'next', 'start', '-p', String(port), '-H', '127.0.0.1'];
-const smokeEnv = { ...process.env, ARCHIVE_STORE: 'memory', LLM_PROVIDER: process.env.LLM_PROVIDER || 'mock' };
+const smokeEnv = { ...process.env, ARCHIVE_STORE: 'memory', LLM_PROVIDER: process.env.LLM_PROVIDER || 'local' };
 const server = process.platform === 'win32'
   ? spawn(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pnpm ${nextArgs.join(' ')}`], { stdio: ['ignore', 'pipe', 'pipe'], env: smokeEnv })
   : spawn('pnpm', nextArgs, { stdio: ['ignore', 'pipe', 'pipe'], env: smokeEnv });
@@ -151,6 +169,7 @@ try {
   await expectPage('/', ['AI Task Workflow Copilot', 'Get a simple', 'AI workflow', '开始规划']);
   await expectPage('/copilot', ['AI Task Workflow Copilot', 'Starting your AI workflow copilot']);
   await expectPage('/archive', ['Saved workflow archive']);
+  await expectToolCatalogFlow();
   await expectPage('/results?task=I%20want%20to%20create%20a%20product%20promo%20video%20for%20TikTok.', [
     'Best Tool Setup for This Task',
     'How to use it',
@@ -184,6 +203,7 @@ try {
   await expectCopilotFlow();
   await expectJson('/api/health', 200, (body) => {
     if (body.ok !== true) throw new Error('/api/health missing ok=true');
+    if (body.providerMode !== 'local') throw new Error('/api/health expected local provider mode');
     if (body.archiveStore !== 'memory') throw new Error('/api/health expected memory archive store in local smoke');
     if (body.sessionStore !== 'memory') throw new Error('/api/health expected memory session store in local smoke');
   }, 'GET /api/health');

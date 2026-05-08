@@ -2,6 +2,8 @@
 import assert from 'node:assert/strict';
 import { POST } from '../app/api/decision/route.ts';
 import { GET as GET_TOOL } from '../app/api/tools/[slug]/route.ts';
+import { POST as SEARCH_TOOLS } from '../app/api/tools/search/route.ts';
+import { POST as RECOMMEND_TOOLS } from '../app/api/tools/recommend/route.ts';
 import { GET as GET_SETUP } from '../app/api/setups/[slug]/route.ts';
 import { POST as START_COPILOT } from '../app/api/copilot/start/route.ts';
 import { POST as SELECT_OPTION } from '../app/api/copilot/option/route.ts';
@@ -53,6 +55,33 @@ test('GET /api/tools/capcut returns CapCut detail', async () => {
   assert.ok(body.worthUsingIf.length > 0);
 });
 
+test('POST /api/tools/search returns local catalog results', async () => {
+  const response = await SEARCH_TOOLS(new Request('http://localhost/api/tools/search', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ input: 'Landing Page' })
+  }));
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.ok(Array.isArray(body.tools));
+  assert.ok(body.totalTools >= body.tools.length);
+});
+
+test('POST /api/tools/recommend returns task intent and scoring evidence', async () => {
+  const response = await RECOMMEND_TOOLS(new Request('http://localhost/api/tools/recommend', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ input: 'AI 视频剪辑' })
+  }));
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.taskIntent.taskType, 'video_editing');
+  assert.ok(body.selectedTools.length >= 1);
+  assert.ok(body.scoringEvidence.length >= 1);
+});
+
 test('GET /api/tools/not-existing returns 404', async () => {
   const response = await GET_TOOL(new Request('http://localhost/api/tools/not-existing'), {
     params: Promise.resolve({ slug: 'not-existing' })
@@ -97,6 +126,7 @@ test('POST /api/copilot/start returns initial good-enough plan', async () => {
   assert.equal(body.matchedTemplateSlug, 'graduation-project-video');
   assert.equal(body.currentPlan.planType, 'basic');
   assert.equal(body.fullPlanState, 'collapsed');
+  assert.equal(body.currentPlan.catalogBacked, true);
 });
 
 test('copilot option, full plan, and refine API flow works', async () => {

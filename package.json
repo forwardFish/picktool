@@ -8,7 +8,9 @@
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.ts",
-    "test:smoke": "node scripts/smoke-test.mjs"
+    "test:smoke": "node scripts/smoke-test.mjs",
+    "tools:crawl": "node scripts/crawl-toolify.mjs",
+    "tools:normalize": "node scripts/normalize-tools.mjs && node scripts/build-tool-details.mjs && node scripts/build-tool-index.mjs && node scripts/inspect-tool-data.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "4.1.7",

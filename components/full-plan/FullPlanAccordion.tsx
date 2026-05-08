@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { ChevronDown, ChevronUp, ClipboardCheck, FileText, FolderOpen, Scissors } from 'lucide-react';
+import { ToolActionButtons } from '@/components/tool-actions/ToolActionButtons';
 import type { FullExecutionPlan, FullPlanState, ModuleType } from '@/lib/workflow-generation/types';
 
 type FullPlanAccordionProps = {
@@ -54,6 +55,7 @@ export function FullPlanAccordion({ state, fullPlan, onGenerate, onRefine, isLoa
                   <div key={tool.slug} className="rounded-xl border border-white/10 bg-slate-950/45 p-3">
                     <p className="font-semibold text-white">{tool.name}</p>
                     <p className="text-sm text-slate-400">{tool.role}</p>
+                    <ToolActionButtons tool={tool} />
                   </div>
                 ))}
               </div>

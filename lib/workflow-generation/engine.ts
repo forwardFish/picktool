@@ -1,4 +1,9 @@
 ﻿import { fallbackTemplate, baseUpgradeOptions, refinementOptions, taskTemplates, toolCatalog } from './templates.ts';
+import { recommendTools } from '../tool-catalog/recommend-tools.ts';
+import { buildToolActions } from '../tool-catalog/tool-actions.ts';
+import { getAiToolBySlug } from '../tool-catalog/load-tools.ts';
+import { resolveToolDetailSlug } from '../tool-catalog/tool-details.ts';
+import type { AiTool } from '../tool-catalog/types.ts';
 import type {
   ChatMessage,
   CurrentPlanSidebarState,
@@ -40,6 +45,23 @@ function cloneTool(tool: WorkflowTool, overrides: Partial<WorkflowTool> = {}): W
   return { ...tool, ...overrides };
 }
 
+function workflowToolFromCatalog(tool: AiTool, status: WorkflowTool['status'] = 'optional'): WorkflowTool {
+  const actions = buildToolActions(tool);
+  return {
+    slug: tool.slug,
+    name: tool.name,
+    role: tool.bestFor[0] ?? tool.primaryCategory,
+    note: tool.shortDescription,
+    badge: tool.primaryCategory,
+    status,
+    source: tool.source,
+    websiteUrl: tool.websiteUrl,
+    detailSlug: resolveToolDetailSlug(tool.slug),
+    actionPrompt: actions.find((action) => action.type === 'copy_prompt')?.value,
+    useSteps: actions.find((action) => action.type === 'steps')?.value.split('\n')
+  };
+}
+
 function isVideoTemplate(slug: string) {
   return slug === 'graduation-project-video' || slug === 'tiktok-product-promo-video' || slug === 'general-ai-workflow';
 }
@@ -54,6 +76,63 @@ function appendToolIfMissing(tools: WorkflowTool[], tool: WorkflowTool) {
 
 function planToolsWith(plan: WorkflowPlan, tool: WorkflowTool) {
   return appendToolIfMissing(plan.tools.map((item) => cloneTool(item)), tool);
+}
+
+function applyCatalogRecommendation(plan: WorkflowPlan, optionKey?: UpgradeOptionKey): WorkflowPlan {
+  const recommendation = recommendTools({
+    input: plan.taskInput,
+    optionKey,
+    constraints: {
+      budget: 'free_first',
+      skillLevel: 'beginner',
+      speed: optionKey === 'automated' ? 'fast' : undefined
+    }
+  });
+  const existing = new Set(plan.tools.map((tool) => tool.slug));
+  const enrichedPlanTools = plan.tools.map((tool) => {
+    const catalogTool = getAiToolBySlug(tool.slug);
+    if (!catalogTool) return tool;
+    const catalogActions = buildToolActions(catalogTool, plan.taskInput);
+    return {
+      ...tool,
+      source: catalogTool.source,
+      websiteUrl: catalogTool.websiteUrl,
+      detailSlug: resolveToolDetailSlug(tool.slug),
+      actionPrompt: catalogActions.find((action) => action.type === 'copy_prompt')?.value,
+      useSteps: catalogActions.find((action) => action.type === 'steps')?.value.split('\n')
+    };
+  });
+  const mayAddCatalogTools = plan.templateSlug === 'landing-page' || plan.templateSlug === 'general-ai-workflow';
+  const additions = recommendation.selectedTools
+    .filter((tool) => mayAddCatalogTools && !existing.has(tool.slug) && tool.source !== 'manual')
+    .slice(0, plan.planType === 'basic' ? 1 : 2)
+    .map((tool) => workflowToolFromCatalog(tool, plan.planType === 'basic' ? 'optional' : 'upgrade'));
+  const skippedBySlug = new Set(plan.skippedTools.map((tool) => tool.toolSlug));
+  const skippedTools = [
+    ...plan.skippedTools,
+    ...recommendation.skippedTools
+      .filter(({ tool }) => !skippedBySlug.has(tool.slug) && tool.source !== 'manual')
+      .slice(0, 3)
+      .map(({ tool, reason }) => ({ toolSlug: tool.slug, name: tool.name, reason }))
+  ];
+
+  const tools = additions.length ? [...enrichedPlanTools, ...additions] : enrichedPlanTools;
+  if (!additions.length && skippedTools.length === plan.skippedTools.length) {
+    return {
+      ...plan,
+      tools,
+      catalogBacked: recommendation.catalogStats.totalTools > 0,
+      catalogCandidateSlugs: recommendation.selectedTools.map((tool) => tool.slug)
+    };
+  }
+  return {
+    ...plan,
+    tools,
+    skippedTools,
+    combinationLabel: additions.length ? tools.map((tool) => tool.name).join(' + ') : plan.combinationLabel,
+    catalogBacked: true,
+    catalogCandidateSlugs: recommendation.selectedTools.map((tool) => tool.slug)
+  };
 }
 
 function isDocumentTemplate(slug: string) {
@@ -100,7 +179,7 @@ function optionSet(planType: PlanType): UpgradeOption[] {
 
 export function buildBasicPlan(template: TaskTemplate, taskInput: string): WorkflowPlan {
   const timestamp = now();
-  return {
+  const plan: WorkflowPlan = {
     id: createId('plan'),
     templateSlug: template.slug,
     taskInput,
@@ -119,6 +198,7 @@ export function buildBasicPlan(template: TaskTemplate, taskInput: string): Workf
     createdAt: timestamp,
     updatedAt: timestamp
   };
+  return applyCatalogRecommendation(plan);
 }
 
 export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): WorkflowPlan {
@@ -128,7 +208,7 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
 
   if (optionKey === 'professional') {
     const tools = planToolsWith(plan, cloneTool(toolCatalog.canva, { status: planHasTool(plan, 'canva') ? 'core' : 'upgrade' }));
-    return {
+    return applyCatalogRecommendation({
       ...plan,
       id: createId('plan'),
       title: 'Professional plan',
@@ -145,12 +225,12 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
       upgradeDirections: optionSet('professional'),
       nextActionLabel: 'View full plan',
       updatedAt: timestamp
-    };
+    }, optionKey);
   }
 
   if (optionKey === 'budget') {
     const tools = plan.tools.map((tool) => cloneTool(tool, { status: tool.status === 'upgrade' ? 'optional' : tool.status }));
-    return {
+    return applyCatalogRecommendation({
       ...plan,
       id: createId('plan'),
       title: 'Budget plan',
@@ -165,14 +245,14 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
       upgradeDirections: optionSet('basic'),
       nextActionLabel: 'View full plan',
       updatedAt: timestamp
-    };
+    }, optionKey);
   }
 
   if (optionKey === 'automated') {
     const tools = videoFlow
       ? [cloneTool(toolCatalog.chatgpt, { status: 'core' }), cloneTool(toolCatalog.invideo, { status: 'upgrade' }), cloneTool(toolCatalog.canva, { status: 'optional' })]
       : planToolsWith(plan, cloneTool(toolCatalog.canva, { status: planHasTool(plan, 'canva') ? 'core' : 'upgrade', role: isWebTemplate(plan.templateSlug) ? 'Template and layout acceleration' : 'Template and layout acceleration' }));
-    return {
+    return applyCatalogRecommendation({
       ...plan,
       id: createId('plan'),
       title: 'Automated plan',
@@ -189,7 +269,7 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
       upgradeDirections: optionSet('automated'),
       nextActionLabel: 'View full plan',
       updatedAt: timestamp
-    };
+    }, optionKey);
   }
 
   if (optionKey === 'advanced_visual') {
@@ -197,7 +277,7 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
     const tools = videoFlow
       ? appendToolIfMissing(professionalTools, cloneTool(toolCatalog.runway, { status: 'optional' }))
       : planToolsWith(plan, cloneTool(toolCatalog.canva, { status: planHasTool(plan, 'canva') ? 'core' : 'upgrade', role: isDocumentTemplate(plan.templateSlug) ? 'Advanced presentation design' : 'Advanced page design system' }));
-    return {
+    return applyCatalogRecommendation({
       ...plan,
       id: createId('plan'),
       title: videoFlow ? 'Advanced visual plan' : 'Advanced presentation plan',
@@ -214,7 +294,7 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
       upgradeDirections: optionSet('advanced_visual'),
       nextActionLabel: 'View full plan',
       updatedAt: timestamp
-    };
+    }, optionKey);
   }
 
   return { ...plan, updatedAt: timestamp };

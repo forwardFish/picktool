@@ -1,2 +1,1 @@
-﻿export { createMockProvider } from './provider.ts';
-
+export { createLocalProvider, createMockProvider } from './provider.ts';

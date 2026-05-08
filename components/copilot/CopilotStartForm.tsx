@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { AlertCircle, FileText, Loader2, Search, Send, Sparkles } from 'lucide-react';
+import { AlertCircle, FileText, Loader2, Search, Sparkles } from 'lucide-react';
 
 const examples = [
   '毕业设计展示视频',
@@ -24,18 +24,24 @@ const examplePrompts: Record<string, string> = {
 
 export function CopilotStartForm() {
   const router = useRouter();
-  const [task, setTask] = useState(examplePrompts['毕业设计展示视频']);
+  const [task, setTask] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   async function start() {
+    const input = task.trim();
+    if (input.length < 3) {
+      setError('请先输入一个真实任务，再开始生成方案。');
+      return;
+    }
+
     setIsLoading(true);
     setError('');
     try {
       const response = await fetch('/api/copilot/start', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ input: task })
+        body: JSON.stringify({ input })
       });
       const payload = await response.json();
       if (!response.ok) throw new Error(typeof payload.error === 'string' ? payload.error : 'Unable to start the copilot.');

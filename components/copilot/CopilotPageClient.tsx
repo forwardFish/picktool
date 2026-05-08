@@ -20,8 +20,6 @@ type CopilotPayload = {
   savedArchiveId?: string;
 };
 
-const defaultTask = '我有一个毕业设计，想用 AI 帮我剪辑展示视频。';
-
 type CopilotPageClientProps = {
   initialSessionId?: string;
   initialTask?: string;
@@ -35,7 +33,7 @@ export function CopilotPageClient({ initialSessionId, initialTask }: CopilotPage
   const [mobilePlanOpen, setMobilePlanOpen] = useState(false);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved'>('idle');
 
-  const task = initialTask || defaultTask;
+  const task = initialTask?.trim() ?? '';
 
   async function requestJson(path: string, body?: object, method = 'POST') {
     const response = await fetch(path, {
@@ -51,6 +49,12 @@ export function CopilotPageClient({ initialSessionId, initialTask }: CopilotPage
   useEffect(() => {
     let alive = true;
     async function boot() {
+      if (!initialSessionId && !task) {
+        setIsLoading(false);
+        setError('请先从首页输入一个真实任务，再进入 Copilot 生成方案。');
+        return;
+      }
+
       setIsLoading(true);
       setError('');
       try {
@@ -141,7 +145,7 @@ export function CopilotPageClient({ initialSessionId, initialTask }: CopilotPage
         <div className="max-w-lg rounded-3xl border border-rose-300/30 bg-rose-300/10 p-8 text-center">
           <AlertCircle className="mx-auto mb-4 size-8 text-rose-200" aria-hidden="true" />
           <p>{error || 'Unable to load the copilot.'}</p>
-          <Link href="/" className="mt-5 inline-flex rounded-2xl bg-white px-4 py-2 font-bold text-slate-950">Back home</Link>
+          <Link href="/" className="mt-5 inline-flex rounded-2xl bg-white px-4 py-2 font-bold text-slate-950">回到首页输入任务</Link>
         </div>
       </main>
     );

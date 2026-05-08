@@ -57,13 +57,13 @@ test('v2 non-video templates keep downstream workflow task-centered', () => {
   assert.match(combined, /slide|ppt|幻灯片/);
   assert.equal(/capcut|invideo|runway|kling|剪辑成片/.test(combined), false);
 });
-test('v2 provider defaults to mock without API keys', async () => {
+test('v2 provider defaults to local deterministic generation without API keys', async () => {
   const provider = getConfiguredProvider({ LLM_PROVIDER: 'openai' } as unknown as NodeJS.ProcessEnv);
   const base = buildBasicPlan(matchTaskTemplate('毕业设计展示视频'), '毕业设计展示视频');
   const fullPlan = await provider.generateFullPlan(base);
 
-  assert.equal(provider.name, 'mock');
-  assert.equal(provider.mode, 'mock');
+  assert.equal(provider.name, 'local');
+  assert.equal(provider.mode, 'local');
   assert.equal(fullPlan.recommendation.combinationLabel, base.combinationLabel);
 });
 

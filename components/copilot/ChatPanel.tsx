@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Loader2, Send, Sparkles } from 'lucide-react';
+import { ToolActionButtons } from '@/components/tool-actions/ToolActionButtons';
 import type { ChatMessage as ChatMessageType, UpgradeOptionKey, WorkflowPlan } from '@/lib/workflow-generation/types';
 
 function ToolTile({ tool }: { tool: WorkflowPlan['tools'][number] }) {
@@ -12,6 +13,7 @@ function ToolTile({ tool }: { tool: WorkflowPlan['tools'][number] }) {
       </div>
       <p className="font-bold text-white">{tool.name}</p>
       <p className="mt-1 text-sm text-slate-400">{tool.role}</p>
+      <ToolActionButtons tool={tool} />
     </div>
   );
 }
