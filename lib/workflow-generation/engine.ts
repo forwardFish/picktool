@@ -153,24 +153,24 @@ function deliverableLabel(plan: WorkflowPlan) {
 function optionSet(planType: PlanType): UpgradeOption[] {
   if (planType === 'professional') {
     return [
-      { key: 'advanced_visual', label: '看更高级方案', shortLabel: 'Advanced visuals', description: 'Consider a higher-polish presentation layer only if the basic output feels too plain.', icon: '💠' },
-      { key: 'good_enough', label: '现在这套就够了', shortLabel: 'Good enough', description: 'Confirm this setup and generate the execution plan when ready.', icon: '✅' },
-      { key: 'full_plan', label: '查看完整方案', shortLabel: 'View full plan', description: 'Generate the full execution plan for this current setup.', icon: '📄' }
+      { key: 'advanced_visual', label: '看更高级方案', shortLabel: '高级视觉', description: 'Consider a higher-polish presentation layer only if the basic output feels too plain.', icon: '💠' },
+      { key: 'good_enough', label: '现在这套就够了', shortLabel: '够用了', description: 'Confirm this setup and generate the execution plan when ready.', icon: '✅' },
+      { key: 'full_plan', label: '查看完整方案', shortLabel: '完整方案', description: 'Generate the full execution plan for this current setup.', icon: '📄' }
     ];
   }
 
   if (planType === 'automated') {
     return [
-      { key: 'budget', label: '对比基础方案', shortLabel: 'Compare basic', description: 'Go back to a more controllable manual editing setup.', icon: '⚖️' },
-      { key: 'good_enough', label: '现在这套就够了', shortLabel: 'Good enough', description: 'Use this faster automated combination.', icon: '✅' },
-      { key: 'full_plan', label: '查看完整方案', shortLabel: 'View full plan', description: 'Generate the full execution plan for this current setup.', icon: '📄' }
+      { key: 'budget', label: '对比基础方案', shortLabel: '基础方案', description: 'Go back to a more controllable manual editing setup.', icon: '⚖️' },
+      { key: 'good_enough', label: '现在这套就够了', shortLabel: '够用了', description: 'Use this faster automated combination.', icon: '✅' },
+      { key: 'full_plan', label: '查看完整方案', shortLabel: '完整方案', description: 'Generate the full execution plan for this current setup.', icon: '📄' }
     ];
   }
 
   if (planType === 'advanced_visual') {
     return [
-      { key: 'professional', label: '回到专业实用方案', shortLabel: 'Back to practical', description: 'Return to the practical polished plan without adding unnecessary tools.', icon: '↩️' },
-      { key: 'full_plan', label: '查看完整方案', shortLabel: 'View full plan', description: 'Generate the plan for the advanced presentation path.', icon: '📄' }
+      { key: 'professional', label: '回到专业实用方案', shortLabel: '实用方案', description: 'Return to the practical polished plan without adding unnecessary tools.', icon: '↩️' },
+      { key: 'full_plan', label: '查看完整方案', shortLabel: '完整方案', description: 'Generate the plan for the advanced presentation path.', icon: '📄' }
     ];
   }
 
@@ -211,10 +211,10 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
     return applyCatalogRecommendation({
       ...plan,
       id: createId('plan'),
-      title: 'Professional plan',
+      title: '更专业方案',
       planType: 'professional',
       stepNumber: 2,
-      stepTitle: 'More professional',
+      stepTitle: '更专业一点',
       combinationLabel: tools.map((tool) => tool.name).join(' + '),
       summary: videoFlow
         ? 'Add Canva on top of the basic editing workflow for covers, title pages, information pages, and cleaner visual presentation.'
@@ -223,7 +223,7 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
       statusDescription: 'The plan has been upgraded based on your choice.',
       tools,
       upgradeDirections: optionSet('professional'),
-      nextActionLabel: 'View full plan',
+      nextActionLabel: '查看完整方案',
       updatedAt: timestamp
     }, optionKey);
   }
@@ -233,17 +233,17 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
     return applyCatalogRecommendation({
       ...plan,
       id: createId('plan'),
-      title: 'Budget plan',
+      title: '更省钱方案',
       planType: 'budget',
       stepNumber: 2,
-      stepTitle: 'Save money',
+      stepTitle: '更省钱一点',
       combinationLabel: `${tools.map((tool) => tool.name).join(' + ')} (free tiers first)`,
       summary: `Stay with free tiers and the current task-fit tools first. Avoid paid add-ons until the ${deliverable} structure is confirmed.`,
       statusLabel: 'Free tiers first',
       statusDescription: 'Keeps the workflow practical while minimizing subscriptions.',
       tools,
       upgradeDirections: optionSet('basic'),
-      nextActionLabel: 'View full plan',
+      nextActionLabel: '查看完整方案',
       updatedAt: timestamp
     }, optionKey);
   }
@@ -255,10 +255,10 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
     return applyCatalogRecommendation({
       ...plan,
       id: createId('plan'),
-      title: 'Automated plan',
+      title: '更自动化方案',
       planType: 'automated',
       stepNumber: 3,
-      stepTitle: 'More automated',
+      stepTitle: '更自动化一点',
       combinationLabel: videoFlow ? 'ChatGPT / Claude + InVideo (Canva optional)' : `${tools.map((tool) => tool.name).join(' + ')} (template accelerated)`,
       summary: videoFlow
         ? 'Use InVideo for a faster template-based first cut. Keep Canva optional for cover and visual polish. Choose this when speed matters more than control.'
@@ -267,7 +267,7 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
       statusDescription: 'Suitable for fast output with less manual production work.',
       tools,
       upgradeDirections: optionSet('automated'),
-      nextActionLabel: 'View full plan',
+      nextActionLabel: '查看完整方案',
       updatedAt: timestamp
     }, optionKey);
   }
@@ -280,10 +280,10 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
     return applyCatalogRecommendation({
       ...plan,
       id: createId('plan'),
-      title: videoFlow ? 'Advanced visual plan' : 'Advanced presentation plan',
+      title: videoFlow ? '高级视觉方案' : '高级展示方案',
       planType: 'advanced_visual',
       stepNumber: 3,
-      stepTitle: videoFlow ? 'Advanced visual option' : 'Advanced presentation option',
+      stepTitle: videoFlow ? '高级视觉选项' : '高级展示选项',
       combinationLabel: videoFlow ? `${tools.map((tool) => tool.name).join(' + ')} (optional advanced visuals)` : `${tools.map((tool) => tool.name).join(' + ')} (advanced layout)`,
       summary: videoFlow
         ? 'Only add advanced AI visuals when your project lacks footage or needs generated scenes. Otherwise the professional plan is safer and faster.'
@@ -292,7 +292,7 @@ export function applyUpgrade(plan: WorkflowPlan, optionKey: UpgradeOptionKey): W
       statusDescription: 'More polish, but only useful after the core content is clear.',
       tools,
       upgradeDirections: optionSet('advanced_visual'),
-      nextActionLabel: 'View full plan',
+      nextActionLabel: '查看完整方案',
       updatedAt: timestamp
     }, optionKey);
   }

@@ -15,10 +15,10 @@ export function ArchiveDetailClient({ id }: { id: string }) {
       try {
         const response = await fetch(`/api/archive/${encodeURIComponent(id)}`);
         const payload = await response.json();
-        if (!response.ok) throw new Error(typeof payload.error === 'string' ? payload.error : 'Archive item not found.');
+        if (!response.ok) throw new Error(typeof payload.error === 'string' ? payload.error : '没有找到这个存档。');
         setItem(payload);
       } catch (detailError) {
-        setError(detailError instanceof Error ? detailError.message : 'Archive item not found.');
+        setError(detailError instanceof Error ? detailError.message : '没有找到这个存档。');
       } finally {
         setIsLoading(false);
       }
@@ -30,10 +30,10 @@ export function ArchiveDetailClient({ id }: { id: string }) {
     <main className="min-h-dvh bg-[#050915] px-5 py-8 text-white">
       <div className="mx-auto max-w-5xl">
         <header className="mb-8 flex items-center justify-between gap-4">
-          <Link href="/archive" className="text-slate-300">← Archive</Link>
-          <Link href="/copilot" className="rounded-2xl bg-violet-600 px-4 py-3 font-semibold">New workflow</Link>
+          <Link href="/archive" className="text-slate-300">← 存档</Link>
+          <Link href="/copilot" className="rounded-2xl bg-violet-600 px-4 py-3 font-semibold">新建方案</Link>
         </header>
-        {isLoading ? <div className="flex items-center gap-3"><Loader2 className="size-5 animate-spin" /> Loading archive item...</div> : null}
+        {isLoading ? <div className="flex items-center gap-3"><Loader2 className="size-5 animate-spin" /> 正在加载存档...</div> : null}
         {error ? <div className="rounded-2xl border border-rose-300/30 bg-rose-300/10 p-5 text-rose-50">{error}</div> : null}
         {item ? (
           <article className="space-y-6 rounded-3xl border border-white/10 bg-slate-950/60 p-6">
@@ -61,7 +61,7 @@ export function ArchiveDetailClient({ id }: { id: string }) {
             ) : null}
             {item.workflowData.refinements?.length ? (
               <section className="space-y-3">
-                <h2 className="text-xl font-bold">Generated refinements</h2>
+                <h2 className="text-xl font-bold">已生成的细化内容</h2>
                 {item.workflowData.refinements.map((output) => (
                   <div key={output.id} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
                     <p className="font-bold">{output.title}</p>

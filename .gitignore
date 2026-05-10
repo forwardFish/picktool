@@ -53,3 +53,9 @@ scripts/__pycache__/
 *.pyc
 .omx/
 docs/pic/backup/
+
+# crawler local artifacts
+toolify_ai_source_crawler/data/*.sqlite
+toolify_ai_source_crawler/data/*.html
+toolify_ai_source_crawler/data/test_export/
+toolify_ai_source_crawler/data/export/*.csv

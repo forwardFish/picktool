@@ -85,7 +85,7 @@ async def capture():
             await capture_page(browser, 'home-desktop.png', '/', {'width': 1440, 'height': 1000}, 'Get a simple')
             await capture_page(browser, 'home-mobile.png', '/', {'width': 390, 'height': 900, 'is_mobile': True}, 'Get a simple')
             await capture_copilot_full(browser)
-            await capture_page(browser, 'archive-empty-desktop.png', '/archive', {'width': 1440, 'height': 1000}, 'Saved workflow archive')
+            await capture_page(browser, 'archive-empty-desktop.png', '/archive', {'width': 1440, 'height': 1000}, '已保存方案')
             await browser.close()
     finally:
         stop(proc)

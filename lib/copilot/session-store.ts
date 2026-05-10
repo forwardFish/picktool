@@ -81,7 +81,7 @@ async function applyOptionToSession(session: CopilotSession, optionKey: UpgradeO
 
   if (optionKey === 'full_plan' || optionKey === 'good_enough') {
     session.fullPlanState = 'ready';
-    session.messages.push(message('assistant', 'The current setup is ready for a full execution plan. Click View full plan to expand the detailed steps and outputs.'));
+    session.messages.push(message('assistant', '当前方案已经可以生成完整执行方案了。点击“查看完整方案”后，我会展开详细步骤和交付内容。'));
     return saveSession(session);
   }
 
@@ -109,7 +109,7 @@ export async function appendUserMessage(sessionId: string, content: string): Pro
   if (optionIntent) return applyOptionToSession(session, optionIntent, content);
 
   session.messages.push(message('user', content));
-  session.messages.push(message('assistant', 'I got it. You can say “more professional”, “save money”, “more automated”, or “view full plan”, and I will update the current plan.'));
+  session.messages.push(message('assistant', '收到。你可以说“更专业一点”“更省钱一点”“更自动化一点”或“查看完整方案”，我会同步更新当前方案。'));
   return saveSession(session);
 }
 
@@ -130,8 +130,8 @@ export async function generateFullPlanForSession(sessionId: string): Promise<Cop
   session.sidebarState = buildSidebarState(markedPlan);
   session.fullPlan = fullPlan;
   session.fullPlanState = 'expanded';
-  session.messages.push(message('user', 'View full plan'));
-  session.messages.push(message('assistant', 'Here is the concise full execution plan based on your current setup.', 'full_plan', { fullPlan }));
+  session.messages.push(message('user', '查看完整方案'));
+  session.messages.push(message('assistant', '这是基于当前方案生成的简洁完整执行方案。', 'full_plan', { fullPlan }));
   return saveSession(session);
 }
 
@@ -153,7 +153,7 @@ export async function refineSessionModule(sessionId: string, moduleType: ModuleT
   session.sidebarState = buildSidebarState(markedPlan);
   session.fullPlanState = 'completed';
   session.refinements.push(output);
-  session.messages.push(message('assistant', `Generated: ${output.title}`, 'refinement', { generatedOutput: output }));
+  session.messages.push(message('assistant', `已生成：${output.title}`, 'refinement', { generatedOutput: output }));
   return saveSession(session);
 }
 

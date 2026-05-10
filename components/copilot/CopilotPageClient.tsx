@@ -133,7 +133,7 @@ export function CopilotPageClient({ initialSessionId, initialTask }: CopilotPage
       <main className="flex min-h-dvh items-center justify-center bg-slate-950 text-white">
         <div className="flex items-center gap-3 rounded-3xl border border-white/10 bg-white/[0.04] p-8">
           <Loader2 className="size-6 animate-spin text-violet-300" aria-hidden="true" />
-          Starting your AI workflow copilot...
+          正在启动你的工作流助手...
         </div>
       </main>
     );
@@ -164,7 +164,7 @@ export function CopilotPageClient({ initialSessionId, initialTask }: CopilotPage
             {saveState === 'saving' ? <Loader2 className="size-4 animate-spin" aria-hidden="true" /> : saveState === 'saved' ? <CheckCircle2 className="size-4" aria-hidden="true" /> : <Save className="size-4" aria-hidden="true" />}
             {saveState === 'saved' ? '已保存' : '保存方案'}
           </button>
-          <Link href="/archive" className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 font-semibold text-white"><Archive className="size-4" aria-hidden="true" />Archive</Link>
+          <Link href="/archive" className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 font-semibold text-white"><Archive className="size-4" aria-hidden="true" />存档</Link>
           <div className="size-11 rounded-full bg-gradient-to-br from-slate-200 to-blue-200" aria-hidden="true" />
         </div>
       </header>
@@ -194,7 +194,7 @@ export function CopilotPageClient({ initialSessionId, initialTask }: CopilotPage
             <p className="mt-3 text-lg text-white">{data.sidebarState.recommendationLabel}</p>
             <p className="mt-2 text-slate-300">{data.sidebarState.combinationLabel}</p>
             <p className="mt-4 rounded-2xl border border-emerald-300/30 bg-emerald-400/10 p-3 text-emerald-100">{data.sidebarState.statusLabel}</p>
-            <button type="button" onClick={() => setMobilePlanOpen(false)} className="mt-5 w-full rounded-2xl bg-violet-600 px-4 py-3 font-bold">Close</button>
+            <button type="button" onClick={() => setMobilePlanOpen(false)} className="mt-5 w-full rounded-2xl bg-violet-600 px-4 py-3 font-bold">关闭</button>
           </div>
         </div>
       ) : null}

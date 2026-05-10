@@ -167,8 +167,8 @@ function stopServer() {
 try {
   await waitForServer();
   await expectPage('/', ['AI Task Workflow Copilot', 'Get a simple', 'AI workflow', '开始规划']);
-  await expectPage('/copilot', ['AI Task Workflow Copilot', 'Starting your AI workflow copilot']);
-  await expectPage('/archive', ['Saved workflow archive']);
+  await expectPage('/copilot', ['AI Task Workflow Copilot', '正在启动你的工作流助手']);
+  await expectPage('/archive', ['已保存方案']);
   await expectToolCatalogFlow();
   await expectPage('/results?task=I%20want%20to%20create%20a%20product%20promo%20video%20for%20TikTok.', [
     'Best Tool Setup for This Task',
@@ -179,15 +179,14 @@ try {
   ]);
   await expectPage('/tools/capcut', [
     'CapCut',
-    'Decision Summary',
-    'Worth using if',
-    'Best-fit Tasks',
-    'Use when',
-    'Do not start here when',
-    'Role in workflow',
-    'Best setups including this tool',
-    'Better options if',
-    'Practical details'
+    'What is CapCut?',
+    'How to use CapCut?',
+    "CapCut's Core Features",
+    'Pricing',
+    'Top alternatives',
+    'Reviews',
+    'Q&amp;A',
+    'Related topics'
   ]);
   await expectPage('/setups/tiktok-product-promo-video', [
     'Setup Hero',

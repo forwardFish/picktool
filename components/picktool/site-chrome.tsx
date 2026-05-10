@@ -9,10 +9,10 @@ export function SiteHeader() {
       </Link>
       <div className="flex items-center gap-3">
         <Link href="/archive" className="hidden rounded-xl border border-violet-300/25 bg-slate-950/35 px-4 py-2 text-sm font-semibold text-slate-100 sm:inline-flex">
-          Archive
+          存档
         </Link>
         <button className="whitespace-nowrap rounded-xl border border-cyan-300/35 bg-slate-950/45 px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_18px_rgba(83,133,255,0.08)]">
-          Log in
+          登录
         </button>
       </div>
     </header>
@@ -34,9 +34,9 @@ export function SiteFooter() {
       <BrandMark />
       <div className="flex flex-wrap gap-5">
         <Link href="/copilot">Copilot</Link>
-        <Link href="/archive">Archive</Link>
-        <span>Privacy</span>
-        <span>Terms</span>
+        <Link href="/archive">存档</Link>
+        <span>隐私</span>
+        <span>条款</span>
       </div>
       <span>2026 AI Task Workflow Copilot.</span>
     </footer>

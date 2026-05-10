@@ -63,28 +63,28 @@ export const baseUpgradeOptions: UpgradeOption[] = [
   {
     key: 'professional',
     label: '更专业一点',
-    shortLabel: 'More professional',
+    shortLabel: '更专业',
     description: 'Add Canva or a stronger presentation layer for cleaner layout and deliverable polish.',
     icon: '💎'
   },
   {
     key: 'budget',
     label: '更省钱一点',
-    shortLabel: 'Save money',
+    shortLabel: '更省钱',
     description: 'Prioritize free tiers and avoid paid add-ons until the workflow is proven.',
     icon: '🪙'
   },
   {
     key: 'automated',
     label: '更自动化一点',
-    shortLabel: 'More automated',
+    shortLabel: '更自动化',
     description: 'Use templates and AI-assisted structure if speed matters more than fine manual control.',
     icon: '⚡'
   },
   {
     key: 'full_plan',
     label: '我想看完整方案',
-    shortLabel: 'View full plan',
+    shortLabel: '完整方案',
     description: 'Generate the execution steps only after you confirm this direction.',
     icon: '📄'
   }
