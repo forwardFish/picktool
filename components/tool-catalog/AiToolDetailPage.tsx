@@ -9,17 +9,23 @@ type AiToolDetailPageProps = {
 };
 
 function formatNumber(value?: number) {
-  if (typeof value !== 'number') return 'Not available';
+  if (typeof value !== 'number') return '暂无数据';
   if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(value >= 10_000_000 ? 1 : 2)}M`;
   if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
   return String(value);
 }
 
 function pricingLabel(value: AiToolDetail['pricing']['model']) {
-  if (value === 'free') return 'Free';
-  if (value === 'freemium') return 'Free / Paid';
-  if (value === 'paid') return 'Paid';
-  return 'Unknown';
+  if (value === 'free') return '免费';
+  if (value === 'freemium') return '免费 / 付费';
+  if (value === 'paid') return '付费';
+  return '未知';
+}
+
+function detailStatusLabel(value: AiToolDetailPageProps['detailStatus']) {
+  if (value === 'partial') return '部分详情';
+  if (value === 'basic') return '基础详情';
+  return '完整详情';
 }
 
 function Stat({ icon, label, value }: { icon: ReactNode; label: string; value: string }) {
@@ -53,17 +59,17 @@ function InfoTile({ title, body, icon }: { title: string; body: string; icon: Re
 
 export function AiToolDetailPage({ detail, detailStatus }: AiToolDetailPageProps) {
   const tabs = [
-    ['overview', 'Overview'],
-    ['alternatives', 'Alternatives'],
-    ['pricing', 'Pricing'],
-    ['reviews', 'Reviews'],
-    ['qa', 'Q&A']
+    ['overview', '概览'],
+    ['alternatives', '替代工具'],
+    ['pricing', '价格'],
+    ['reviews', '评价'],
+    ['qa', '问答']
   ] as const;
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
-        <Link href="/" className="hover:text-cyan-100">Home</Link>
+        <Link href="/" className="hover:text-cyan-100">首页</Link>
         <span>/</span>
         <span>{detail.hero.category}</span>
         <span>/</span>
@@ -79,20 +85,20 @@ export function AiToolDetailPage({ detail, detailStatus }: AiToolDetailPageProps
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="text-5xl font-bold tracking-normal text-white sm:text-6xl">{detail.name}</h1>
             <span className="rounded-full border border-blue-300/40 bg-blue-400/15 px-3 py-1 text-sm font-bold text-blue-100">
-              {detail.source === 'toolify' ? 'Toolify verified data' : 'Local catalog'}
+              {detail.source === 'toolify' ? 'Toolify 数据' : '本地目录'}
             </span>
             {detailStatus !== 'full' ? (
               <span className="rounded-full border border-amber-300/35 bg-amber-300/10 px-3 py-1 text-sm font-semibold text-amber-100">
-                {detailStatus} detail
+                {detailStatusLabel(detailStatus)}
               </span>
             ) : null}
           </div>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-200">{detail.hero.tagline}</p>
           <div className="mt-5 flex flex-wrap gap-2">
-            <Stat icon={<Star className="size-4" aria-hidden="true" />} label="Rating" value={typeof detail.hero.rating === 'number' && detail.hero.rating > 0 ? `${detail.hero.rating}` : 'No rating'} />
-            <Stat icon={<MessageCircle className="size-4" aria-hidden="true" />} label="Reviews" value={formatNumber(detail.hero.reviewsCount)} />
-            <Stat icon={<Bookmark className="size-4" aria-hidden="true" />} label="Saves" value={formatNumber(detail.hero.savedCount)} />
-            <Stat icon={<Users className="size-4" aria-hidden="true" />} label="Visits" value={formatNumber(detail.hero.monthlyVisitors)} />
+            <Stat icon={<Star className="size-4" aria-hidden="true" />} label="评分" value={typeof detail.hero.rating === 'number' && detail.hero.rating > 0 ? `${detail.hero.rating}` : '暂无评分'} />
+            <Stat icon={<MessageCircle className="size-4" aria-hidden="true" />} label="评价" value={formatNumber(detail.hero.reviewsCount)} />
+            <Stat icon={<Bookmark className="size-4" aria-hidden="true" />} label="收藏" value={formatNumber(detail.hero.savedCount)} />
+            <Stat icon={<Users className="size-4" aria-hidden="true" />} label="访问" value={formatNumber(detail.hero.monthlyVisitors)} />
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             {detail.websiteUrl ? (
@@ -117,21 +123,21 @@ export function AiToolDetailPage({ detail, detailStatus }: AiToolDetailPageProps
         ))}
       </nav>
 
-      <SectionCard id="overview" title={`What is ${detail.name}?`}>
+      <SectionCard id="overview" title={`${detail.name} 是什么？`}>
         <div className="grid gap-6 lg:grid-cols-[1fr_1.05fr]">
           <div>
             <p className="text-base leading-7 text-slate-300">{detail.overview.whatIs}</p>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              <InfoTile icon={<Gauge className="size-5" aria-hidden="true" />} title="Why it matters" body={detail.overview.whyItMatters} />
-              <InfoTile icon={<Users className="size-5" aria-hidden="true" />} title="Who it's for" body={detail.overview.whoItsFor} />
-              <InfoTile icon={<ExternalLink className="size-5" aria-hidden="true" />} title="Where it works" body={detail.overview.whereItWorks} />
-              <InfoTile icon={<CheckCircle2 className="size-5" aria-hidden="true" />} title="What you get" body={detail.overview.whatYouGet} />
+              <InfoTile icon={<Gauge className="size-5" aria-hidden="true" />} title="为什么值得关注" body={detail.overview.whyItMatters} />
+              <InfoTile icon={<Users className="size-5" aria-hidden="true" />} title="适合谁使用" body={detail.overview.whoItsFor} />
+              <InfoTile icon={<ExternalLink className="size-5" aria-hidden="true" />} title="适用场景" body={detail.overview.whereItWorks} />
+              <InfoTile icon={<CheckCircle2 className="size-5" aria-hidden="true" />} title="可以得到什么" body={detail.overview.whatYouGet} />
             </div>
           </div>
           <div className="min-h-[330px] rounded-2xl border border-white/10 bg-[#07111f] p-5">
             <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
               <span className="font-bold text-white">{detail.name}</span>
-              <span className="rounded-lg bg-cyan-400 px-3 py-1 text-xs font-bold text-slate-950">Export</span>
+              <span className="rounded-lg bg-cyan-400 px-3 py-1 text-xs font-bold text-slate-950">导出</span>
             </div>
             <div className="flex min-h-48 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-900/45 via-slate-900 to-blue-900/45">
               <div className="text-center">
@@ -148,11 +154,11 @@ export function AiToolDetailPage({ detail, detailStatus }: AiToolDetailPageProps
         </div>
       </SectionCard>
 
-      <SectionCard id="how-to-use" title={`How to use ${detail.name}?`}>
+      <SectionCard id="how-to-use" title={`如何使用 ${detail.name}？`}>
         <p className="text-base leading-7 text-slate-300">{detail.howToUse}</p>
       </SectionCard>
 
-      <SectionCard id="features" title={`${detail.name}'s Core Features`}>
+      <SectionCard id="features" title={`${detail.name} 的核心功能`}>
         <div className="grid gap-3 md:grid-cols-2">
           {detail.features.core.slice(0, 8).map((feature) => (
             <div key={feature} className="flex gap-3 text-sm leading-6 text-slate-300">
@@ -174,17 +180,17 @@ export function AiToolDetailPage({ detail, detailStatus }: AiToolDetailPageProps
         </div>
       </SectionCard>
 
-      <SectionCard id="pricing" title="Pricing">
+      <SectionCard id="pricing" title="价格">
         <div className="grid gap-3 md:grid-cols-4">
-          <InfoTile icon={<BadgeDollarSign className="size-5" aria-hidden="true" />} title="Pricing model" body={pricingLabel(detail.pricing.model)} />
-          <InfoTile icon={<CheckCircle2 className="size-5" aria-hidden="true" />} title="Free plan" body={detail.pricing.freePlan} />
-          <InfoTile icon={<Star className="size-5" aria-hidden="true" />} title="Paid plans" body={detail.pricing.paidPlan} />
-          <InfoTile icon={<Gauge className="size-5" aria-hidden="true" />} title="Billing" body={detail.pricing.billing} />
+          <InfoTile icon={<BadgeDollarSign className="size-5" aria-hidden="true" />} title="收费模式" body={pricingLabel(detail.pricing.model)} />
+          <InfoTile icon={<CheckCircle2 className="size-5" aria-hidden="true" />} title="免费方案" body={detail.pricing.freePlan} />
+          <InfoTile icon={<Star className="size-5" aria-hidden="true" />} title="付费方案" body={detail.pricing.paidPlan} />
+          <InfoTile icon={<Gauge className="size-5" aria-hidden="true" />} title="计费方式" body={detail.pricing.billing} />
         </div>
         <p className="mt-4 text-sm leading-6 text-slate-400">{detail.pricing.note}</p>
       </SectionCard>
 
-      <SectionCard id="alternatives" title="Top alternatives">
+      <SectionCard id="alternatives" title="替代工具">
         {detail.alternatives.length ? (
           <div className="grid gap-4 md:grid-cols-3">
             {detail.alternatives.map((tool) => (
@@ -196,24 +202,24 @@ export function AiToolDetailPage({ detail, detailStatus }: AiToolDetailPageProps
             ))}
           </div>
         ) : (
-          <p className="text-slate-400">Toolify data did not include enough same-category alternatives for this tool yet.</p>
+          <p className="text-slate-400">当前本地 Toolify 数据还没有收录足够的同类替代工具。</p>
         )}
       </SectionCard>
 
-      <SectionCard id="reviews" title="Reviews">
+      <SectionCard id="reviews" title="评价">
         <p className="text-slate-300">
-          Toolify data currently provides rating and review counts only. We do not invent review text.
+          当前 Toolify 数据只提供评分和评价数量；这里不会编造具体评价内容。
         </p>
       </SectionCard>
 
-      <SectionCard id="qa" title="Q&A">
+      <SectionCard id="qa" title="问答">
         <p className="text-slate-300">
-          Public Q&A content was not captured in the local Toolify dataset. This section intentionally shows an empty state.
+          本地 Toolify 数据暂未抓取公开问答内容，因此这里保持为空状态。
         </p>
       </SectionCard>
 
       <section className="rounded-2xl border border-white/10 bg-slate-950/58 p-5">
-        <h2 className="text-xl font-bold text-white">Related topics</h2>
+        <h2 className="text-xl font-bold text-white">相关主题</h2>
         <div className="mt-4 flex flex-wrap gap-2">
           {detail.relatedTopics.map((topic) => (
             <span key={topic} className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-slate-200"># {topic}</span>

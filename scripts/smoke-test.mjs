@@ -179,14 +179,14 @@ try {
   ]);
   await expectPage('/tools/capcut', [
     'CapCut',
-    'What is CapCut?',
-    'How to use CapCut?',
-    "CapCut's Core Features",
-    'Pricing',
-    'Top alternatives',
-    'Reviews',
-    'Q&amp;A',
-    'Related topics'
+    'CapCut 是什么？',
+    '如何使用 CapCut？',
+    'CapCut 的核心功能',
+    '价格',
+    '替代工具',
+    '评价',
+    '问答',
+    '相关主题'
   ]);
   await expectPage('/setups/tiktok-product-promo-video', [
     'Setup Hero',
