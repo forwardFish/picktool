@@ -45,6 +45,10 @@ function priceLabel(model) {
   return 'Unknown';
 }
 
+function pricingNote(model) {
+  return `Toolify catalog pricing model: ${priceLabel(model)}. Verify current pricing on the official website before purchase.`;
+}
+
 function levelFromCategories(categories, features) {
   const text = [...categories, ...features].join(' ').toLowerCase();
   if (/api|developer|automation|agent|advanced|enterprise/.test(text)) return 'Intermediate';
@@ -163,7 +167,7 @@ function detailFromRaw(row, rows) {
       freePlan: model === 'paid' ? 'Not confirmed in Toolify data' : 'Yes or available through a free/freemium entry point',
       paidPlan: model === 'free' ? 'Not required by catalog pricing model' : priceLabel(model),
       billing: /year|month|subscription/i.test(row.pricing_text || row.pricing_model || '') ? 'Monthly / yearly availability should be verified on the official site' : 'Verify current billing on the official website',
-      note: sentence(row.pricing_text, `Toolify catalog pricing model: ${priceLabel(model)}.`)
+      note: pricingNote(model)
     },
     alternatives: alternativesFor(row, rows),
     relatedTopics: relatedTopics(categories, tags, useCases),
